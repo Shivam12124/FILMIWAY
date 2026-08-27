@@ -6379,26 +6379,30 @@
   },
   "4478": {
     "Title": "Indecent Proposal",
+    "lastVerifiedDate": "August 27, 2026",
     "Age": "16+",
     "Summary": "Aged 16+ for explicit sex and brief nudity, and moderate language.",
     "scenes": [
       {
         "start": "0:05:25",
         "end": "0:06:15",
-        "type": "Sexual Content & Nudity (Woman)",
-        "severity": "High"
+        "type": "Sex & Nudity (Woman)",
+        "severity": "High",
+        "description": "Diana Murphy (Demi Moore) and David Murphy (Woody Harrelson) engage in passionate kissing and sexual intercourse on the floor, featuring female topless nudity of Diana Murphy (Demi Moore)."
       },
       {
         "start": "0:16:25",
         "end": "0:17:35",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Diana Murphy (Demi Moore) and David Murphy (Woody Harrelson) engage in passionate kissing and intimate physical contact on a hotel bed."
       },
       {
         "start": "0:40:26",
         "end": "0:41:25",
-        "type": "Nudity (Woman)",
-        "severity": "Moderate"
+        "type": "Sex & Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Diana Murphy (Demi Moore) and David Murphy (Woody Harrelson) lie side by side on a bed, with their lower bodies concealed by a sheet, featuring female topless nudity of Diana Murphy (Demi Moore) in several frames as the sheet shifts."
       },
       {
         "start": "",
