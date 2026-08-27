@@ -4232,26 +4232,30 @@
   },
   "1018": {
     "Title": "Mulholland Drive",
+    "lastVerifiedDate": "August 27, 2026",
     "Age": "16+",
     "Summary": "Aged 16+ for moderate violence, nudity, and mild language.",
     "scenes": [
       {
         "start": "0:23:32",
         "end": "0:24:30",
-        "type": "Nudity",
-        "severity": "Moderate"
+        "type": "Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Shower sequence in the apartment where Rita (Laura Harring) is seen showering behind a translucent glass door from Betty Elms' (Naomi Watts) perspective, featuring partially obscured female nudity."
       },
       {
         "start": "1:38:45",
         "end": "1:42:18",
-        "type": "Nudity",
-        "severity": "High"
+        "type": "Sex & Nudity (Women)",
+        "severity": "High",
+        "description": "Intimate lesbian encounter in bed between Betty Elms (Naomi Watts) and Rita (Laura Harring), featuring female topless nudity, passionate kissing, and intimate physical contact."
       },
       {
         "start": "2:01:27",
         "end": "2:02:59",
-        "type": "Nudity",
-        "severity": "High"
+        "type": "Sex & Nudity (Women)",
+        "severity": "High",
+        "description": "Intimate encounter on the couch between Diane Selwyn (Naomi Watts) and Camilla Rhodes (Laura Harring), featuring female topless nudity, kissing, and physical intimacy."
       },
       {
         "start": "",

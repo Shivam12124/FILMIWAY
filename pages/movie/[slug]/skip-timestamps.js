@@ -915,8 +915,10 @@ export async function getStaticProps({ params }) {
     const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
     const profanityScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
 
-    // 🏆 GOLDMINE HIGH-CTR FORMULA: Matches exact user search queries ("timestamps to skip") safely
-    const metaTitle = `${baseMovie.Title} – Timestamps to Skip & Parents Guide | Filmiway`;
+    // 🏆 GOLDMINE HIGH-CTR FORMULA: Front-loads Parents Guide & Timestamps to Skip for top Google ranking
+    const metaTitle = hasExactTimestamps
+        ? `${baseMovie.Title} – Parents Guide & Timestamps to Skip | Filmiway`
+        : `${baseMovie.Title} – Parents Guide & Age Rating | Filmiway`;
     let metaDesc = '';
 
     if (hasExactTimestamps) {
