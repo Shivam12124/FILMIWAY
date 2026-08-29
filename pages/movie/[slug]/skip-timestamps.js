@@ -916,7 +916,8 @@ export async function getStaticProps({ params }) {
 
     // ⚡ DYNAMIC SEO META TITLE & META DESCRIPTION GENERATOR
     const movieYear = baseMovie.Year || baseMovie.year || (cacheData.release_date ? cacheData.release_date.substring(0, 4) : '');
-    const displayTitleWithYear = movieYear ? `${baseMovie.Title} (${movieYear})` : baseMovie.Title;
+    const cleanBaseTitle = (baseMovie.Title || '').replace(/\s*\(\d{4}\)$/, '').trim();
+    const displayTitleWithYear = movieYear ? `${cleanBaseTitle} (${movieYear})` : cleanBaseTitle;
 
     const hasExactTimestamps = resolvedSensitiveScenes.some(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
     const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));

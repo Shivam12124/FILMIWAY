@@ -20,7 +20,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 194662, "imdbID": "tt2562232", "Title": "Birdman", "year": 2014, "genre": "Comedy", "runtime": 119, "rank": 8 },
     { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 9 },
     { "tmdbId": 242582, "imdbID": "tt2872718", "Title": "Nightcrawler", "year": 2014, "genre": "Thriller", "runtime": 117, "rank": 10 },
-    { "tmdbId": 1339713, "imdbID": "tt37287335", "Title": "Obsession (2025)", "year": 2025, "genre": "Thriller, Horror", "runtime": 104, "rank": "BONUS" },
+    { "tmdbId": 1339713, "imdbID": "tt37287335", "Title": "Obsession", "year": 2025, "genre": "Thriller, Horror", "runtime": 104, "rank": "BONUS" },
     { "tmdbId": 933260, "imdbID": "tt17526714", "Title": "The Substance", "year": 2024, "genre": "Horror, Sci-Fi", "runtime": 141, "rank": "BONUS" }
 ];
 
