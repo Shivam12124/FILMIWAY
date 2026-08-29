@@ -1,9 +1,9 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 27 Movies  
-**Total Enriched Scenes:** 116 Scenes  
+**Total Fully Enriched Movies:** 28 Movies  
+**Total Enriched Scenes:** 122 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
-**Last Updated:** August 29, 2026  
+**Last Updated:** August 30, 2026  
 
 ---
 
@@ -28,7 +28,7 @@
 | 15 | **The Terminator** | `218` | **2 / 2** | Sarah Connor (Linda Hamilton), Kyle Reese (Michael Biehn) |
 | 16 | **Back to the Future** | `105` | **1 / 1** | Biff Tannen (Thomas F. Wilson), Lorraine Baines (Lea Thompson) |
 | 17 | **Oppenheimer** | `872585` | **3 / 3** | J. Robert Oppenheimer (Cillian Murphy), Jean Tatlock (Florence Pugh) |
-| 18 | **Obsession (2025)** | `1339713` | **2 / 2** | Lead Characters (2025 Release) |
+| 18 | **Obsession** | `1339713` | **2 / 2** | Lead Characters (2025 Release) |
 | 19 | **Indecent Proposal** | `4478` | **3 / 3** | Diana Murphy (Demi Moore), David Murphy (Woody Harrelson), John Gage (Robert Redford) |
 | 20 | **Mulholland Drive** | `1018` | **3 / 3** | Betty Elms / Diane Selwyn (Naomi Watts), Rita / Camilla Rhodes (Laura Harring) |
 | 21 | **Black Swan** | `44214` | **5 / 5** | Nina Sayers (Natalie Portman), Lily (Mila Kunis), Thomas Leroy (Vincent Cassel) |
@@ -38,10 +38,11 @@
 | 25 | **Total Recall (1990)** | `861` | **3 / 3** | Douglas Quaid (Arnold Schwarzenegger), Mary (Lycia Naff), Lori Quaid (Sharon Stone) |
 | 26 | **After Hours (1985)** | `10843` | **2 / 2** | Paul Hackett (Griffin Dunne), Kiki Bridges (Linda Fiorentino), Marcy Franklin (Rosanna Arquette) |
 | 27 | **Into the Wild (2007)** | `5915` | **4 / 4** | Christopher McCandless (Emile Hirsch), Sonja (Signe Egholm Olsen), Jan Burres (Catherine Keener) |
+| 28 | **Under the Skin (2013)** | `97370` | **6 / 6** | The Female / Alien (Scarlett Johansson), The Deformed Man (Adam Pearson) |
 
 ---
 
 ## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **116 Scenes**
+- **Total Timestamp Scenes Enriched:** **122 Scenes**
 - **Average Scenes Per Movie:** ~4.8 Scenes
 - **Search Intent Target:** High-converting Google US keywords (*"parents guide timestamps"*, *"skip sex scenes"*, *"character timecodes"*).

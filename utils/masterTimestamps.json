@@ -12290,72 +12290,67 @@
   },
   "97370": {
     "Title": "Under the Skin",
+    "lastVerifiedDate": "August 30, 2026",
     "scenes": [
       {
         "start": "0:07:07",
         "end": "0:08:50",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "White void sequence where the alien Female (Scarlett Johansson) is initially seen completely naked before undressing a deceased woman lying on the floor and putting on her clothes, featuring full-body female nudity."
       },
       {
         "start": "0:20:38",
         "end": "0:20:50",
         "type": "Nudity (Man)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Black void sequence where a lured male victim follows the alien Female (Scarlett Johansson) and undresses completely naked, featuring full-body male nudity."
       },
       {
         "start": "0:34:10",
-        "end": "0:35:10",
-        "type": "Suggestive Clothing (Undergarments)",
-        "severity": "Mild"
-      },
-      {
-        "start": "0:34:42",
         "end": "0:37:02",
-        "type": "Nudity (Man)",
-        "severity": "High"
+        "type": "Suggestive Clothing & Nudity (Man)",
+        "severity": "High",
+        "description": "Black void sequence where the alien Female (Scarlett Johansson) undresses down to her bra and panties to lure another male victim, who undresses completely naked, featuring male full-body nudity."
       },
       {
         "start": "0:58:15",
-        "end": "0:58:35",
-        "type": "Suggestive Clothing (Undergarments)",
-        "severity": "Mild"
-      },
-      {
-        "start": "0:58:36",
-        "end": "0:59:50",
+        "end": "0:59:45",
         "type": "Nudity (Man & Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Black void sequence where The Deformed Man (Adam Pearson) and the alien Female (Scarlett Johansson) undress completely naked, featuring full-body male and female nudity."
       },
       {
         "start": "1:16:50",
         "end": "1:18:15",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where the alien Female (Scarlett Johansson) stands completely naked in front of a full-length mirror, closely examining her human body, featuring female full-frontal nudity."
       },
       {
         "start": "1:24:51",
         "end": "1:26:35",
         "type": "Partial Nudity & Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where a male character undresses the alien Female (Scarlett Johansson) and they engage in intercourse, featuring partial female nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Deeply disturbing alien harvesting sequences where victims are sucked into a void and their skin is left behind, plus a violent attempted assault."
+        "description": "Disturbing alien harvesting sequences where victims dissolve into a liquid void, a tragic rough-sea drowning, a man struck in the head with a rock, and an intense forest attempted assault where an alien being's human skin is torn before being set on fire."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "Moderate",
-        "description": "Occasional strong language and aggressive street harassment."
+        "description": "Infrequent strong language including occasional uses of the F-word and shit, spoken in thick regional Scottish accents and street dialogue."
       }
     ],
     "Age": "18+",
-    "Summary": "Aged 18+ for surreal alien body horror, disturbing deaths, and explicit imagery."
+    "Summary": "Aged 18+ for disturbing sci-fi horror violence, explicit sexual content, full-body male and female nudity, and occasional strong language."
   },
   "101299": {
     "Title": "The Hunger Games: Catching Fire",
