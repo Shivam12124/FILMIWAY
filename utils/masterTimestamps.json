@@ -3065,38 +3065,44 @@
   },
   "670": {
     "Title": "Oldboy",
+    "lastVerifiedDate": "August 29, 2026",
     "Age": "18+",
     "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
     "scenes": [
       {
         "start": "0:11:05",
         "end": "0:11:30",
-        "type": "Sexual content (Masturbation)",
-        "severity": "High"
+        "type": "Sexual Content (Masturbation)",
+        "severity": "Moderate",
+        "description": "Oh Dae-su (Choi Min-sik) masturbates (off-screen) while watching women on television during his captivity, with no nudity shown."
       },
       {
         "start": "0:57:25",
         "end": "1:01:56",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Sequence where gang members restrain Mi-do (Kang Hye-jung) and unbutton her shirt, featuring female topless nudity."
       },
       {
         "start": "1:03:35",
         "end": "1:04:57",
-        "type": "Sex",
-        "severity": "High"
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Intimate encounter in bed between Oh Dae-su (Choi Min-sik) and Mi-do (Kang Hye-jung), featuring passionate kissing, sexual intercourse, and full-body nudity of both characters."
       },
       {
         "start": "1:23:25",
         "end": "1:24:17",
-        "type": "Nudity (Woman)",
-        "severity": "High"
+        "type": "Sex & Nudity (Woman)",
+        "severity": "High",
+        "description": "Flashback sequence depicting intimate contact between a younger Lee Woo-jin (Yoo Ji-tae) and Lee Soo-ah (Yoon Jin-seo), featuring explicit close-up female topless nudity."
       },
       {
         "start": "1:30:10",
         "end": "1:30:32",
-        "type": "Partial Nudity (Man)",
-        "severity": "Mild"
+        "type": "Nudity (Man)",
+        "severity": "Moderate",
+        "description": "Lee Woo-jin (Yoo Ji-tae) walks out of the shower, featuring male rear nudity."
       },
       {
         "start": "",
@@ -3785,38 +3791,42 @@
   },
   "861": {
     "Title": "Total Recall",
+    "lastVerifiedDate": "August 29, 2026",
     "scenes": [
       {
         "start": "55:50",
         "end": "56:00",
-        "type": "Nudity",
-        "severity": "Moderate"
+        "type": "Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Mars bar sequence where Mary (Lycia Naff) unbuttons her top in front of Douglas Quaid (Arnold Schwarzenegger), featuring female topless nudity with three breasts exposed."
       },
       {
         "start": "59:50",
         "end": "59:59",
-        "type": "Nudity",
-        "severity": "Moderate"
+        "type": "Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Venusville bar sequence where Mary (Lycia Naff) appears again in the crowd, featuring female topless nudity."
       },
       {
         "start": "1:13:00",
         "end": "1:13:05",
-        "type": "Nudity",
-        "severity": "Moderate"
+        "type": "Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Venusville sequence where Mary (Lycia Naff) appears for a third time during the chaos, featuring brief female topless nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Over-the-top sci-fi violence with severed limbs, human shields, bloody shootings, and suffocating bulging eyes."
+        "description": "Extremely graphic sci-fi violence throughout. Features bloody shootouts, groin kicks between Lori Quaid (Sharon Stone) and Douglas Quaid (Arnold Schwarzenegger), severed arms from an elevator fight, neck stabbings, drill impalement, human corpse shields, and iconic Martian decompression scenes with bulging eyes."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Heavy 1990s action-movie swearing, including around 50+ uses of the F-word."
+        "description": "Heavy swearing throughout, including over 30 uses of the F-word (including sexual contexts), alongside frequent strong profanity, anatomical expletives, and crude insults."
       }
     ],
     "Age": "17+",
@@ -6894,30 +6904,35 @@
   },
   "5915": {
     "Title": "Into the Wild",
+    "lastVerifiedDate": "August 29, 2026",
     "scenes": [
       {
         "start": "0:58:52",
         "end": "1:02:30",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Outdoor campsite sequence where Sonja (Signe Egholm Olsen) remains topless wearing bikini bottoms while conversing with Christopher McCandless (Emile Hirsch), featuring female chest nudity."
       },
       {
-        "start": "1:13:02",
-        "end": "1:13:07",
+        "start": "1:30:14",
+        "end": "1:30:21",
         "type": "Nudity (Man)",
-        "severity": "High"
+        "severity": "High",
+        "description": "River sequence where Christopher McCandless (Emile Hirsch) floats naked in the water, featuring distant male full-frontal nudity."
       },
       {
         "start": "1:39:31",
         "end": "1:39:35",
         "type": "Sex (Implied)",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "Trailer sequence where Jan Burres (Catherine Keener) and her partner Rainey (Brian H. Dierker) share an intimate moment together, featuring implied sexual activity."
       },
       {
         "start": "1:52:38",
         "end": "1:52:58",
         "type": "Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Drive-by sequence past a nudist camp where several people are briefly seen completely naked, but not that graphic."
       },
       {
         "start": "",
@@ -8827,6 +8842,7 @@
   },
   "10843": {
     "Title": "After Hours",
+    "lastVerifiedDate": "August 29, 2026",
     "Age": "14+",
     "Summary": "Aged 14+ for mild violence, brief nudity, and mild language.",
     "scenes": [
@@ -8834,27 +8850,29 @@
         "start": "0:20:08",
         "end": "0:20:20",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Room sequence where Kiki Bridges (Linda Fiorentino) enters holding her bra in her hand, featuring female topless nudity."
       },
       {
         "start": "0:48:20",
         "end": "0:48:45",
         "type": "Partial Nudity (Woman)",
-        "severity": "Moderate"
+        "severity": "Mild",
+        "description": "Bedroom sequence where Paul Hackett (Griffin Dunne) pulls back a bedsheet from Marcy Franklin (Rosanna Arquette), who lies topless while already covering her chest with her hands."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "Mild",
-        "description": "Features crime violence as a man is hunted by an angry vigilante mob mistakenly suspecting him of burglary. Includes a fatal shooting with visible blood, a sleeping pill overdose corpse view, dialogue referencing mob dismemberment, and a trapped rat."
+        "description": "Features crime violence as Paul Hackett (Griffin Dunne) is hunted by an angry SoHo vigilante mob. Includes a fatal diner shooting with a bloody corpse, Marcy Franklin (Rosanna Arquette) committing suicide via overdose, burn victim imagery, and Paul being painfully encased in plaster as a statue."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "Mild",
-        "description": "Mild to moderate language includes occasional uses of the S-word, religious exclamations, coarse anatomical graffiti, and a homophobic slur used during a confrontation."
+        "description": "Moderate language throughout, including strong profanity, scatological expletives, crude anatomical graffiti, and a homophobic slur during a club confrontation."
       }
     ]
   },
@@ -9283,32 +9301,30 @@
   },
   "11423": {
     "Title": "Memories of Murder",
+    "lastVerifiedDate": "August 29, 2026",
     "Age": "16+",
     "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and moderate language.",
     "scenes": [
       {
         "start": "9:58",
         "end": "10:10",
-        "type": "Sex",
-        "severity": "Moderate"
+        "type": "Sex & Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Intimate sequence where Kwak Seol-young (Jeon Mi-seon) straddles Detective Park Doo-man (Song Kang-ho), filmed from behind featuring female rear nudity and side profile of her chest while he remains covered by sheets."
       },
       {
         "start": "54:34",
-        "end": "54:55",
-        "type": "Nudity",
-        "severity": "Mild"
+        "end": "54:47",
+        "type": "Partial Nudity (Men)",
+        "severity": "Mild",
+        "description": "Public bathhouse sequence where Detective Park Doo-man (Song Kang-ho) inspects men in the locker room for body hair based on a hunch about the killer, with no genitalia shown."
       },
       {
-        "start": "1:01:12",
-        "end": "1:02:40",
-        "type": "Sexual content",
-        "severity": "Moderate"
-      },
-      {
-        "start": "1:25:12",
-        "end": "1:25:47",
-        "type": "Nudity",
-        "severity": "Mild"
+        "start": "1:01:30",
+        "end": "1:02:52",
+        "type": "Sexual Content (Masturbation)",
+        "severity": "Moderate",
+        "description": "Construction site sequence where a man pulls female bra and panties from his pants and masturbates before being interrupted, with no nudity shown."
       },
       {
         "start": "",
@@ -10993,38 +11009,44 @@
   },
   "44214": {
     "Title": "Black Swan",
+    "lastVerifiedDate": "August 29, 2026",
     "Age": "16+",
     "Summary": "Aged 16+ for brutal graphic violence, explicit sex, and moderate language.",
     "scenes": [
       {
         "start": "39:40",
         "end": "40:40",
-        "type": "Sexual Content",
-        "severity": "High"
+        "type": "Sexual Content (Masturbation)",
+        "severity": "High",
+        "description": "Bedroom sequence where Nina Sayers (Natalie Portman) masturbates under the bed sheet."
       },
       {
-        "start": "48:52",
-        "end": "49:10",
+        "start": "48:40",
+        "end": "49:15",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Thomas Leroy (Vincent Cassel) and Nina Sayers (Natalie Portman) kiss passionately as he engages in intimate physical contact, caressing her clothed chest and touching between her legs."
       },
       {
         "start": "51:20",
         "end": "51:40",
-        "type": "Sexual Content",
-        "severity": "High"
+        "type": "Sexual Content (Masturbation)",
+        "severity": "High",
+        "description": "Bathtub sequence where Nina Sayers (Natalie Portman) masturbates with audible moaning, with no nudity shown."
       },
       {
         "start": "1:08:20",
         "end": "1:11:01",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Intimate lesbian encounter in bed where Lily (Mila Kunis) undresses Nina Sayers (Natalie Portman), featuring passionate kissing and oral physical intimacy, with camera angles obscuring nudity."
       },
       {
         "start": "1:20:20",
         "end": "1:20:40",
-        "type": "Sex",
-        "severity": "High"
+        "type": "Sexual Content",
+        "severity": "Moderate",
+        "description": "Intimate encounter where Thomas Leroy (Vincent Cassel) passionately kisses Lily (Mila Kunis) and caresses her clothed body, featuring physical touching with no nudity or sex shown."
       },
       {
         "start": "",
@@ -11539,12 +11561,14 @@
   },
   "64690": {
     "Title": "Drive",
+    "lastVerifiedDate": "August 29, 2026",
     "scenes": [
       {
         "start": "1:04:41",
         "end": "1:06:25",
         "type": "Nudity (Women)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Dressing room sequence where Driver (Ryan Gosling) confronts a man in a strip club backroom, featuring multiple strippers with female topless nudity."
       },
       {
         "start": "",

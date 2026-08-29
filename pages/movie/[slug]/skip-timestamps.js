@@ -50,7 +50,11 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '77', '496243', '670', '44214', '345', '769', '424', '98', '857', '278', '603', '181886', '930564', '43939', '1422',
     '210577', '146233', '1949', '949', '37799', '244786', '530915', '7345', '9346', 'tt0086200',
     '8363', 'tt0829482', // Superbad
-    '10843', 'tt0088680' // After Hours (1985)
+    '10843', 'tt0088680', // After Hours (1985)
+    // 🌟 ALL 27 ENRICHED MOVIES HALL PASS
+    '216015', '664413', '152584', '4588', '210577', '290098', '402', '1278', '617', '597',
+    '550', '9346', '278', '300669', '218', '105', '872585', '1339713', '4478', '1018',
+    '44214', '670', '64690', '11423', '861', '10843', '5915'
 ]);
 
 // ✅ YOUR MASTERPIECE HERO BANNER (Made Universal & SEO/CLS Optimized!)
@@ -911,14 +915,17 @@ export async function getStaticProps({ params }) {
     }
 
     // ⚡ DYNAMIC SEO META TITLE & META DESCRIPTION GENERATOR
+    const movieYear = baseMovie.Year || baseMovie.year || (cacheData.release_date ? cacheData.release_date.substring(0, 4) : '');
+    const displayTitleWithYear = movieYear ? `${baseMovie.Title} (${movieYear})` : baseMovie.Title;
+
     const hasExactTimestamps = resolvedSensitiveScenes.some(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
     const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
     const profanityScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
 
     // 🏆 GOLDMINE HIGH-CTR FORMULA: Front-loads Parents Guide & Timestamps to Skip for top Google ranking
     const metaTitle = hasExactTimestamps
-        ? `${baseMovie.Title} – Parents Guide & Timestamps to Skip | Filmiway`
-        : `${baseMovie.Title} – Parents Guide & Age Rating | Filmiway`;
+        ? `${displayTitleWithYear} – Parents Guide & Timestamps to Skip`
+        : `${displayTitleWithYear} – Parents Guide & Age Rating`;
     let metaDesc = '';
 
     if (hasExactTimestamps) {
