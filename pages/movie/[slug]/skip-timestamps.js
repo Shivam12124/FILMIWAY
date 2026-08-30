@@ -51,10 +51,10 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '210577', '146233', '1949', '949', '37799', '244786', '530915', '7345', '9346', 'tt0086200',
     '8363', 'tt0829482', // Superbad
     '10843', 'tt0088680', // After Hours (1985)
-    // 🌟 ALL 28 ENRICHED MOVIES HALL PASS
+    // 🌟 ALL 29 ENRICHED MOVIES HALL PASS
     '216015', '664413', '152584', '4588', '210577', '290098', '402', '1278', '617', '597',
     '550', '9346', '278', '300669', '218', '105', '872585', '1339713', '4478', '1018',
-    '44214', '670', '64690', '11423', '861', '10843', '5915', '97370'
+    '44214', '670', '64690', '11423', '861', '10843', '5915', '97370', '28'
 ]);
 
 // ✅ YOUR MASTERPIECE HERO BANNER (Made Universal & SEO/CLS Optimized!)
@@ -324,7 +324,7 @@ export default function UniversalMoviePage({ movie }) {
     // Explicit Overrides for Runtime (Matching SensitiveContentTimelineSection.js perfectly)
     if (movie.tmdbId === 51876) currentRuntime = "105 min (Unrated Version)";
     if (movie.tmdbId === 187) currentRuntime = "141 min (Unrated Extended Version)";
-    if (movie.tmdbId === 28) currentRuntime = "181 min (Final Cut)";
+    if (movie.tmdbId === 28) currentRuntime = "183 min (Final Cut)";
     if (movie.tmdbId === 652 || movie.imdbID === 'tt0332452') currentRuntime = "196 min (Director's Cut)";
     if (movie.tmdbId === 76341) currentRuntime = "120 min";
     if (movie.tmdbId === 311) currentRuntime = "249 min";
@@ -825,7 +825,7 @@ export async function getStaticProps({ params }) {
     const tmdbIdNum = Number(baseMovie.tmdbId);
     if (tmdbIdNum === 51876) finalRuntime = "105 min (Unrated Version)";
     else if (tmdbIdNum === 187) finalRuntime = "141 min (Unrated Extended Version)";
-    else if (tmdbIdNum === 28) finalRuntime = "181 min (Final Cut)";
+    else if (tmdbIdNum === 28) finalRuntime = "183 min (Final Cut)";
     else if (tmdbIdNum === 652 || baseMovie.imdbID === 'tt0332452') finalRuntime = "3 hours 16 min (Director's Cut)";
     else if (tmdbIdNum === 76341) finalRuntime = "120 min";
     else if (tmdbIdNum === 311) finalRuntime = "249 min";

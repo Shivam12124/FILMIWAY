@@ -130,54 +130,60 @@
   },
   "28": {
     "Title": "Apocalypse Now",
+    "lastVerifiedDate": "August 30, 2026",
     "scenes": [
       {
         "start": "0:07:17",
         "end": "0:07:30",
         "type": "Nudity (Man)",
-        "severity": "High"
+        "severity": "Moderate",
+        "description": "Saigon hotel room sequence where Captain Benjamin L. Willard (Martin Sheen) experiences a drunken breakdown, featuring brief male frontal nudity."
       },
       {
         "start": "0:08:17",
         "end": "0:08:27",
         "type": "Partial Nudity (Man)",
-        "severity": "High"
+        "severity": "Moderate",
+        "description": "Hotel room sequence where Captain Benjamin L. Willard (Martin Sheen) is seen passed out on the bed as military escorts arrive, featuring male rear nudity."
       },
       {
         "start": "1:05:25",
         "end": "1:06:06",
         "type": "Nudity (Poster)",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "USO performance sequence where soldiers hold up centerfold magazine posters of Playmates Carrie Foster (Colleen Camp) and Terri Beatty (Cynthia Wood), featuring female chest nudity."
       },
       {
         "start": "2:04:38",
         "end": "2:05:38",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "French plantation sequence where Roxanne Sarrault (Aurore Clément) undresses under a mosquito net beside Captain Benjamin L. Willard (Martin Sheen), featuring female topless nudity."
       },
       {
         "start": "2:15:27",
         "end": "2:16:40",
         "type": "Nudity (Man)",
-        "severity": "High"
+        "severity": "Moderate",
+        "description": "Jungle outpost arrival sequence where Captain Benjamin L. Willard (Martin Sheen) and his crew witness deceased soldiers hanging from trees and structures, featuring male full-body nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Intense war combat featuring point-blank shootings, explosions, decapitations, and graphic animal sacrifice."
+        "description": "Brutal graphic war violence featuring intense village bombings, civilian massacres, impalements, severed heads, mutilated bodies hanging from trees, a bloody machete killing, and the real slaughter of a water buffalo."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Heavy use of military and casual profanity, including repeated F-bombs and racial slurs."
+        "description": "Pervasive strong language throughout with 90+ uses of the F-word, crude slurs, sexual references, and severe wartime profanity."
       }
     ],
     "Age": "18+",
-    "Summary": "Aged 18+ for brutal graphic violence, brief nudity, and strong language throughout."
+    "Summary": "Aged 18+ for brutal graphic war violence, severed limbs, pervasive wartime profanity, and brief nudity."
   },
   "33": {
     "Title": "Unforgiven",

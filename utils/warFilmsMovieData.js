@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 857, "imdbID": "tt0120815", "Title": "Saving Private Ryan", "year": 1998, "genre": "Drama, War", "runtime": 169, "rank": 1 },
-    { "tmdbId": 28, "imdbID": "tt0078788", "Title": "Apocalypse Now", "year": 1979, "genre": "Drama, War", "runtime": 154, "rank": 2 },
+    { "tmdbId": 28, "imdbID": "tt0078788", "Title": "Apocalypse Now", "year": 1979, "genre": "Drama, War", "runtime": 183, "rank": 2 },
     { "tmdbId": 947, "imdbID": "tt0056172", "Title": "Lawrence of Arabia", "year": 1962, "genre": "Adventure, Biography, Drama, War", "runtime": 216, "rank": 3 },
     { "tmdbId": 25237, "imdbID": "tt0091251", "Title": "Come and See", "year": 1985, "genre": "Drama, War", "runtime": 142, "rank": 4 },
     { "tmdbId": 424, "imdbID": "tt0108052", "Title": "Schindler's List", "year": 1993, "genre": "Biography, Drama, History, War", "runtime": 195, "rank": 5 },
@@ -446,7 +446,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     
     // 🔥 Explicit Override for Apocalypse Now & Troy
-    if (movie.tmdbId === 28) currentRuntime = "3 hours 1 min (Final Cut)";
+    if (movie.tmdbId === 28) currentRuntime = "3 hours 3 min (Final Cut)";
     if (movie.tmdbId === 652) currentRuntime = "3 hours 16 min (Director's Cut)";
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
@@ -663,7 +663,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
     
     // 🔥 Explicit Override for Apocalypse Now & Troy
-    if (tmdbId === 28) finalRuntime = "3 hours 1 min (Final Cut)";
+    if (tmdbId === 28) finalRuntime = "3 hours 3 min (Final Cut)";
     if (tmdbId === 652) finalRuntime = "3 hours 16 min (Director's Cut)";
 
 

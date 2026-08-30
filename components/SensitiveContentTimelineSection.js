@@ -374,7 +374,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
     // Explicit Override for Apocalypse Now
     if (movie.tmdbId === 28) {
-        currentRuntime = "181 min (Final Cut)";
+        currentRuntime = "183 min (Final Cut)";
     }
 
     // Explicit Override for Troy

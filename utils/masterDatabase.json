@@ -49,7 +49,7 @@
     "Title": "Apocalypse Now",
     "year": 1979,
     "genre": "Drama, War",
-    "runtime": 154,
+    "runtime": 183,
     "rank": 2,
     "slug": "apocalypse-now",
     "sourceFile": "warFilmsMovieData.js"

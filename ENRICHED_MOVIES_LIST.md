@@ -1,7 +1,7 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 28 Movies  
-**Total Enriched Scenes:** 122 Scenes  
+**Total Fully Enriched Movies:** 29 Movies  
+**Total Enriched Scenes:** 127 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
 **Last Updated:** August 30, 2026  
 
@@ -39,6 +39,12 @@
 | 26 | **After Hours (1985)** | `10843` | **2 / 2** | Paul Hackett (Griffin Dunne), Kiki Bridges (Linda Fiorentino), Marcy Franklin (Rosanna Arquette) |
 | 27 | **Into the Wild (2007)** | `5915` | **4 / 4** | Christopher McCandless (Emile Hirsch), Sonja (Signe Egholm Olsen), Jan Burres (Catherine Keener) |
 | 28 | **Under the Skin (2013)** | `97370` | **6 / 6** | The Female / Alien (Scarlett Johansson), The Deformed Man (Adam Pearson) |
+| 29 | **Apocalypse Now (1979)** | `28` | **5 / 5** | Captain Benjamin L. Willard (Martin Sheen), Roxanne Sarrault (Aurore Clément) |
+
+---
+
+## 📊 Summary Statistics:
+- **Total Timestamp Scenes Enriched:** **127 Scenes**
 
 ---
 
