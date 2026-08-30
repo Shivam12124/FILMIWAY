@@ -1,7 +1,7 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 29 Movies  
-**Total Enriched Scenes:** 127 Scenes  
+**Total Fully Enriched Movies:** 30 Movies  
+**Total Enriched Scenes:** 135 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
 **Last Updated:** August 30, 2026  
 
@@ -40,15 +40,11 @@
 | 27 | **Into the Wild (2007)** | `5915` | **4 / 4** | Christopher McCandless (Emile Hirsch), Sonja (Signe Egholm Olsen), Jan Burres (Catherine Keener) |
 | 28 | **Under the Skin (2013)** | `97370` | **6 / 6** | The Female / Alien (Scarlett Johansson), The Deformed Man (Adam Pearson) |
 | 29 | **Apocalypse Now (1979)** | `28` | **5 / 5** | Captain Benjamin L. Willard (Martin Sheen), Roxanne Sarrault (Aurore Clément) |
+| 30 | **Fifty Shades Darker (2017)** | `341174` | **8 / 8** | Christian Grey (Jamie Dornan), Anastasia Steele (Dakota Johnson) |
 
 ---
 
 ## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **127 Scenes**
-
----
-
-## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **122 Scenes**
-- **Average Scenes Per Movie:** ~4.8 Scenes
+- **Total Timestamp Scenes Enriched:** **135 Scenes**
+- **Average Scenes Per Movie:** ~4.5 Scenes
 - **Search Intent Target:** High-converting Google US keywords (*"parents guide timestamps"*, *"skip sex scenes"*, *"character timecodes"*).

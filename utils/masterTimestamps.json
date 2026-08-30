@@ -14802,70 +14802,79 @@
   },
   "341174": {
     "Title": "Fifty Shades Darker",
+    "lastVerifiedDate": "August 30, 2026",
     "Age": "18+",
-    "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and moderate language.",
+    "Summary": "Aged 18+ for pervasive explicit sexual content, full-body nudity, erotic themes, moderate violence, and language.",
     "scenes": [
       {
         "start": "0:21:52",
         "end": "0:24:21",
         "type": "Nudity & Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where Christian Grey (Jamie Dornan) undresses Anastasia Steele (Dakota Johnson) and they engage in sexual intercourse on the bed, featuring female full-body nudity."
       },
       {
         "start": "0:34:40",
         "end": "0:37:25",
         "type": "Suggestive Clothing",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Apartment sequence where Anastasia Steele (Dakota Johnson) wears suggestive black lingerie while conversing and sharing an intimate moment with Christian Grey (Jamie Dornan)."
       },
       {
         "start": "0:42:49",
         "end": "0:44:32",
         "type": "Nudity & Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Playroom sequence where Christian Grey (Jamie Dornan) undresses Anastasia Steele (Dakota Johnson), spanks her, and they engage in sexual intercourse, featuring female full-body nudity."
       },
       {
         "start": "0:50:35",
         "end": "0:52:24",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Yacht shower sequence where Christian Grey (Jamie Dornan) and Anastasia Steele (Dakota Johnson) share an intimate moment under the shower, featuring female topless nudity."
       },
       {
-        "start": "1:04:05",
+        "start": "1:02:10",
         "end": "1:04:37",
         "type": "Partial Nudity (Woman) & Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where Christian Grey (Jamie Dornan) restrains Anastasia Steele's (Dakota Johnson) legs with cuffs on the bed before they engage in sexual intercourse, featuring partial female nudity."
       },
       {
         "start": "1:23:35",
         "end": "1:23:51",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Billiard room sequence where Christian Grey (Jamie Dornan) lifts Anastasia Steele (Dakota Johnson) onto a pool table and they engage in sexual intercourse."
       },
       {
         "start": "1:34:11",
         "end": "1:34:50",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom implied post-sex sequence where Anastasia Steele (Dakota Johnson) gets out of bed, featuring female topless nudity."
       },
       {
         "start": "1:51:05",
         "end": "1:54:12",
         "type": "Nudity & Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Shower and bedroom sequence where Christian Grey (Jamie Dornan) and Anastasia Steele (Dakota Johnson) share an intimate shower before moving to the bed, where he blindfolds and handcuffs her for sexual intercourse, featuring female full-body nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "Mild",
-        "description": "Moderate violence and threat-related content, including gunfire, attempted sexual assault, a helicopter crash, physical confrontations."
+        "severity": "Moderate",
+        "description": "Moderate dramatic violence including an armed confrontation with a gun, an explosive helicopter crash, workplace physical harassment, slaps, childhood abuse flashbacks, and discussions of suicide."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "Moderate",
-        "description": "Strong language throughout, including repeated uses of the F-word and other coarse profanity, along with crude insults."
+        "description": "Moderate coarse language including half a dozen F-bombs, frequent sexual references, crude insults, and anatomical terms."
       }
     ]
   },
