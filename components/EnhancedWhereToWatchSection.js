@@ -506,22 +506,22 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           </div>
         )}
 
-        <div className="text-center sm:text-left w-full flex flex-col gap-2 z-10">
-          <div className="text-[11px] font-bold uppercase tracking-[0.25em] text-yellow-500/90 group-hover:text-yellow-400 transition-colors">
+        <div className="text-center sm:text-left w-full flex flex-col gap-1.5 sm:gap-2 z-10">
+          <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-yellow-500/90 sm:text-yellow-400 group-hover:text-yellow-300 transition-colors">
             Featured on Amazon
           </div>
-          <div className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-50 transition-colors">
+          <div className="text-xl sm:text-2xl lg:text-3xl font-semibold sm:font-bold text-white group-hover:text-yellow-50 transition-colors">
             {provider.isFallback ? `Find ${movie.Title} on Amazon` : `Watch ${movie.Title}`}
           </div>
-          <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
-            <span>{provider.provider_name}</span>
-            <span className="w-1 h-1 rounded-full bg-gray-600" />
-            <span className="text-yellow-500/80 font-medium">{typeLabel}</span>
+          <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 group-hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2">
+            <span className="font-medium">{provider.provider_name}</span>
+            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-600 sm:bg-gray-500" />
+            <span className="text-yellow-500/80 sm:text-yellow-400 font-medium">{typeLabel}</span>
           </div>
         </div>
 
         <div className="shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10">
-          <div className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-yellow-500 text-black font-semibold tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25">
+          <div className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-yellow-500 text-black font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25">
             <Play fill="currentColor" size={16} />
             {typeLabel}
           </div>
@@ -536,7 +536,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-2xl font-light text-gray-200 mb-6 flex items-center gap-3 tracking-wide">
+      <h2 className="text-xl sm:text-2xl lg:text-3xl font-light sm:font-bold text-gray-200 sm:text-white mb-5 sm:mb-6 flex items-center gap-2.5 sm:gap-3 tracking-wide">
         <Play className="text-yellow-500 w-5 h-5 sm:w-6 sm:h-6" />
         Where to Watch
       </h2>
@@ -549,7 +549,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           <Loader className="w-5 h-5 animate-spin text-gray-500" />
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
 
           {fallbackMessage && selectedRegion && selectedRegion !== userCountry && (
             <motion.div
@@ -558,7 +558,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               className="flex items-center gap-2 px-1"
             >
               <Info size={14} className="text-gray-500" />
-              <p className="text-gray-400 text-sm font-light tracking-wide">
+              <p className="text-gray-400 text-xs sm:text-sm font-light tracking-wide">
                 {fallbackMessage}
               </p>
             </motion.div>
@@ -566,10 +566,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
           {selectedRegionInfo && availableRegions.length > 0 && (
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md">
-              <div className="flex items-center gap-4">
-                <span className="text-3xl drop-shadow-md">{selectedRegionInfo.flag}</span>
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <span className="text-2xl sm:text-3xl drop-shadow-md">{selectedRegionInfo.flag}</span>
                 <div className="flex flex-col">
-                  <span className="text-gray-200 font-medium text-sm sm:text-base">
+                  <span className="text-gray-200 sm:text-white font-medium text-sm sm:text-base">
                     {selectedRegionInfo.name}
                   </span>
                   {selectedRegion === userCountry ? (
@@ -588,9 +588,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               {otherRegions.length > 0 && (
                 <button
                   onClick={() => setShowOtherRegions(!showOtherRegions)}
-                  className="flex items-center justify-center sm:justify-between gap-2 px-4 py-2.5 sm:py-2 rounded-lg sm:rounded-full bg-white/5 hover:bg-white/10 border border-white/5 transition-all w-full sm:w-auto group"
+                  className="flex items-center justify-center sm:justify-between gap-2 px-4 py-2 sm:py-2 rounded-lg sm:rounded-full bg-white/5 hover:bg-white/10 border border-white/5 transition-all w-full sm:w-auto group cursor-pointer"
                 >
-                  <span className="text-[13px] text-gray-300 font-medium">Change Region</span>
+                  <span className="text-xs sm:text-[13px] text-gray-300 font-medium">Change Region</span>
                   {showOtherRegions ? <ChevronUp size={14} className="text-gray-400 group-hover:text-white" /> : <ChevronDown size={14} className="text-gray-400 group-hover:text-white" />}
                 </button>
               )}
@@ -605,8 +605,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
               >
-                <div className="p-5 rounded-2xl border border-white/5 bg-black/40 backdrop-blur-sm">
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+                <div className="p-5 sm:p-6 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm">
+                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">
                     Also available in
                   </h3>
                   <div className="flex flex-wrap gap-2.5 max-h-72 overflow-y-auto pr-2 custom-scrollbar">
@@ -622,10 +622,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                             setShowOtherRegions(false);
                             setFallbackMessage(null);
                           }}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/5 bg-white/[0.03] hover:bg-white/10 hover:border-white/20 transition-all text-gray-300 hover:text-white group"
+                          className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/10 hover:border-white/25 transition-all text-gray-300 hover:text-white group cursor-pointer"
                         >
-                          <span className="text-base grayscale-[30%] group-hover:grayscale-0">{region.flag}</span>
-                          <span className="text-[13px] font-medium">{region.name}</span>
+                          <span className="text-lg grayscale-[30%] group-hover:grayscale-0">{region.flag}</span>
+                          <span className="text-xs sm:text-sm font-medium">{region.name}</span>
                         </button>
                       );
                     })}
@@ -656,10 +656,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                   <div className="flex justify-center -mt-4">
                     <button
                       onClick={() => setShowAllOptions(true)}
-                      className="px-5 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[13px] text-gray-300 hover:text-white flex items-center gap-2"
+                      className="px-6 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-xs sm:text-sm text-gray-200 hover:text-white flex items-center gap-2 cursor-pointer font-medium"
                     >
                       Show other viewing options
-                      <ChevronDown size={14} />
+                      <ChevronDown size={16} />
                     </button>
                   </div>
                 )}
@@ -672,8 +672,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         animate={{ opacity: 1 }}
                         className="space-y-4"
                       >
-                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-500/80 flex items-center gap-2">
-                          <div className="w-1 h-1 rounded-full bg-yellow-500" />
+                        <h3 className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.2em] text-yellow-400 flex items-center gap-2.5">
+                          <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(234,179,8,0.6)]" />
                           Stream with Subscription
                         </h3>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
@@ -690,8 +690,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         animate={{ opacity: 1 }}
                         className="space-y-4"
                       >
-                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 flex items-center gap-2">
-                          <div className="w-1 h-1 rounded-full bg-gray-400" />
+                        <h3 className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.2em] text-gray-300 flex items-center gap-2.5">
+                          <div className="w-2 h-2 rounded-full bg-gray-400" />
                           Rent Digital Copy
                         </h3>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
@@ -708,8 +708,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         animate={{ opacity: 1 }}
                         className="space-y-4"
                       >
-                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 flex items-center gap-2">
-                          <div className="w-1 h-1 rounded-full bg-gray-400" />
+                        <h3 className="text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.2em] text-gray-300 flex items-center gap-2.5">
+                          <div className="w-2 h-2 rounded-full bg-gray-400" />
                           Buy Digital Copy
                         </h3>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">

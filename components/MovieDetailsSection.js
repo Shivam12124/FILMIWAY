@@ -769,7 +769,7 @@ const MovieDetailsSection = React.memo(({
 
   return (
     <motion.div
-      className="max-w-4xl mx-auto w-full flex flex-col gap-6 sm:gap-8 mt-8 sm:mt-12"
+      className="max-w-4xl lg:max-w-[1045px] mx-auto w-full flex flex-col gap-6 sm:gap-8 mt-8 sm:mt-12"
       initial={{ opacity: 1, y: 40 }} // WAS: opacity: 0
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -812,7 +812,7 @@ const MovieDetailsSection = React.memo(({
       </div>
 
       {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
-      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto">
+      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl lg:max-w-[1045px] mx-auto">
         <SensitiveContentTimelineSection movie={{ ...movie, Runtime: runtime }} sensitiveScenes={sensitiveScenes} />
       </div>
 
