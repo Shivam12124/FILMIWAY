@@ -9,40 +9,113 @@ import {
 } from '../utils/movieData';
 
 const SEOFAQSection = ({ movie }) => {
-    const [openIndex, setOpenIndex] = useState(null);
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    // ⚡ Open the first high-intent FAQ by default for immediate visibility
+    const [openIndex, setOpenIndex] = useState(0);
+    const movieInfo = COMPLETE_MOVIE_DATA[movie?.tmdbId];
     const title = movie?.Title || "this film";
-    
-    // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes Dynamic Timestamp FAQ)
-    // This ensures your UI matches the Bot Schema 1:1 using the new universal Intensity Metric.
     const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
-    const faqsRaw = (movie?.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
-    const faqsFromData = faqsRaw ? faqsRaw.map(faq => {
-        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
-            return {
-                ...faq,
-                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
-            };
+    
+    // Resolve sensitive scenes from movie props or cache
+    const sensitiveScenes = movie?.resolvedSensitiveScenes || movie?.sensitiveScenes || [];
+    
+    // Filter scenes for Sex / Sexual Content vs Nudity
+    const sexScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
+        const t = (s.type || '').toLowerCase();
+        const d = (s.description || '').toLowerCase();
+        if ((t.includes('suggestive') || t.includes('bikini') || t.includes('lingerie')) && 
+            !t.includes('sex') && !t.includes('sexual') && !t.includes('intimate') && !t.includes('masturbation') && !d.includes('sex') && !d.includes('sexual') && !d.includes('masturbation')) {
+            return false;
         }
-        return faq;
-    }) : [];
+        return t.includes('sex') || t.includes('sexual') || t.includes('steamy') || t.includes('erotic') || 
+               t.includes('intercourse') || t.includes('intimate') || t.includes('masturbation') || t.includes('touching') ||
+               d.includes('sex') || d.includes('sexual') || d.includes('masturbation');
+    });
 
-    const hasTimestamps = movie?.resolvedSensitiveScenes && movie?.resolvedSensitiveScenes.length > 0;
-    const watchAlongFAQ = hasTimestamps ? {
-        question: `How does the Filmiway Live Watch-Along feature work for ${movie?.Title}?`,
-        answer: `Filmiway provides a free Live Watch-Along sync timer for ${movie?.Title}. Tap "Start Watch-Along" on your phone when the movie starts on your TV to receive live alerts 15 seconds before sensitive scenes occur, allowing you to skip them effortlessly.`
-    } : {
-        question: `Does ${movie?.Title} require a Watch-Along skip timer?`,
-        answer: `No. Filmiway editors have verified that ${movie?.Title} contains no explicit sexual content or intimate scenes.`
+    const nudityScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
+        const t = (s.type || '').toLowerCase();
+        const d = (s.description || '').toLowerCase();
+        if ((t.includes('suggestive') || t.includes('bikini') || t.includes('lingerie')) && 
+            !t.includes('nudity') && !t.includes('topless') && !t.includes('bare') && !t.includes('naked') && !d.includes('nudity') && !d.includes('topless') && !d.includes('naked')) {
+            return false;
+        }
+        return t.includes('nudity') || t.includes('topless') || t.includes('bare') || t.includes('naked') || 
+               d.includes('nudity') || d.includes('topless') || d.includes('naked');
+    });
+
+    // 🏆 ALWAYS EXACTLY 2 DEDICATED FEATURE FAQS FOR EVERY SINGLE MOVIE:
+    // FAQ 1: Does [Title] have sex scenes?
+    const sexList = sexScenes.length > 0
+        ? sexScenes.map(s => {
+            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+            const label = s.type || 'Sex / Sexual Content';
+            const severity = s.severity ? ` (${s.severity})` : '';
+            return `• ${timeRange} - ${label}${severity}`;
+        }).join('\n')
+        : null;
+
+    const faqSex = {
+        question: `Does ${title} have sex scenes? If yes, what are the timestamps to skip them?`,
+        answer: sexList 
+            ? `Yes. ${title} contains ${sexScenes.length} scene${sexScenes.length > 1 ? 's' : ''} with sex or sexual content. Exact skip timestamps:\n\n${sexList}\n\nVerified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
+            : `No. Filmiway editors have manually verified that ${title} contains zero sex scenes throughout its full ${currentRuntime} runtime.`
     };
 
-    if (!faqsFromData.some(f => (f.question || f.q || '').includes("Watch-Along"))) {
+    // FAQ 2: Does [Title] have nudity?
+    const nudityList = nudityScenes.length > 0
+        ? nudityScenes.map(s => {
+            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+            const label = s.type || 'Nudity';
+            const severity = s.severity ? ` (${s.severity})` : '';
+            return `• ${timeRange} - ${label}${severity}`;
+        }).join('\n')
+        : null;
+
+    const faqNudity = {
+        question: `Does ${title} have nudity? If yes, what are the timestamps to skip it?`,
+        answer: nudityList 
+            ? `Yes. ${title} contains ${nudityScenes.length} scene${nudityScenes.length > 1 ? 's' : ''} featuring nudity. Exact skip timestamps:\n\n${nudityList}\n\nVerified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
+            : `No. Filmiway editors have manually verified that ${title} is free of nudity throughout its full ${currentRuntime} runtime.`
+    };
+
+    const generatedExplicitFAQs = [faqSex, faqNudity];
+
+    // Load base FAQs and filter out legacy vague questions (limiting base to 3 max to prevent FAQ floodgate)
+    const faqsRaw = (movie?.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const cleanedBaseFAQs = (faqsRaw || [])
+        .filter(f => {
+            const q = (f.question || f.q || '').toLowerCase();
+            return !q.includes('inappropriate scenes') && 
+                   !q.includes('does ' + (title || '').toLowerCase() + ' have sex scenes') && 
+                   !q.includes('does ' + (title || '').toLowerCase() + ' have nudity') &&
+                   !q.includes('why does filmiway provide skip timestamps');
+        })
+        .map(faq => {
+            if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+                return {
+                    ...faq,
+                    answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+                };
+            }
+            return faq;
+        })
+        .slice(0, 3); // ⚡ Cap base FAQs to top 3 so total section stays lean & clean (5 FAQs max total)
+
+    const faqsFromData = [...generatedExplicitFAQs, ...cleanedBaseFAQs];
+
+    const hasTimestamps = sensitiveScenes.length > 0;
+    const watchAlongFAQ = hasTimestamps ? {
+        question: `How does the Filmiway Live Watch-Along feature work for ${title}?`,
+        answer: `Filmiway provides a free Live Watch-Along sync timer for ${title}. Tap "Start Watch-Along" on your phone when the movie starts on your TV to receive live alerts 15 seconds before sensitive scenes occur, allowing you to skip them effortlessly.`
+    } : null;
+
+    if (watchAlongFAQ && !faqsFromData.some(f => (f.question || f.q || '').includes("Watch-Along"))) {
         faqsFromData.push(watchAlongFAQ);
     }
 
-    // 🔥 Safety check - return null if no FAQs found
+    // Safety check - return null if no FAQs found
     if (!faqsFromData || faqsFromData.length === 0) {
-        console.log('⚠️ No mind-bending FAQs found for:', movie?.Title);
         return null;
     }
 
@@ -64,7 +137,7 @@ const SEOFAQSection = ({ movie }) => {
                         <span>Frequently Asked Questions About <span className="font-semibold text-yellow-300">{title}</span></span>
                     </h2>
                     <p className="text-gray-400 mt-2 text-sm sm:text-base max-w-2xl leading-relaxed">
-                        Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes.
+                        Explore our Parents Guide, verified skip timestamps, and expert scene analysis for {title}.
                     </p>
                 </div>
             </div>
@@ -83,6 +156,7 @@ const SEOFAQSection = ({ movie }) => {
                         <button
                             onClick={() => toggleFAQ(index)}
                             className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                            aria-expanded={openIndex === index}
                         >
                             {/* 🔥 The exact question (Parents Guide or Intensity) */}
                             <span className="text-base sm:text-lg font-medium text-yellow-200 pr-4">

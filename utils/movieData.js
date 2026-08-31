@@ -863,12 +863,56 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const firstSeverity = heavyScenes[0].severity || 'Moderate';
         const overallSeverity = getHighestSeverityInfo(heavyScenes);
 
-        const uiDetailedList = heavyScenes.map(s => {
-            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
-            return `• ${timeRange}`;
-        }).join('\n');
-        
-        const startTimesList = heavyScenes.map(s => s.start).join(', ');
+        // Filter for specific Sex Scenes and Nudity Scenes
+        const sexScenes = heavyScenes.filter(s => {
+            const t = (s.type || '').toLowerCase();
+            const d = (s.description || '').toLowerCase();
+            return t.includes('sex') || t.includes('sexual') || t.includes('steamy') || t.includes('erotic') || t.includes('intercourse') || t.includes('intimate') || d.includes('sex') || d.includes('sexual');
+        });
+
+        const nudityScenes = heavyScenes.filter(s => {
+            const t = (s.type || '').toLowerCase();
+            const d = (s.description || '').toLowerCase();
+            return t.includes('nudity') || t.includes('topless') || t.includes('bare') || t.includes('naked') || t.includes('bikini') || t.includes('lingerie') || d.includes('nudity') || d.includes('topless') || d.includes('naked');
+        });
+
+        const explicitFaqsToInsert = [];
+
+        if (sexScenes.length > 0) {
+            const sexList = sexScenes.map(s => {
+                const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+                const label = s.type || 'Sex Scene';
+                const severity = s.severity ? ` (${s.severity})` : '';
+                return `• ${timeRange} - ${label}${severity}`;
+            }).join('\n');
+
+            explicitFaqsToInsert.push({
+                question: `Does ${movieTitle} have sex scenes? If yes, what are the timestamps to skip them?`,
+                answer: `Yes. ${movieTitle} contains ${sexScenes.length} explicit sex scene${sexScenes.length > 1 ? 's' : ''}. Exact skip timestamps:\n\n${sexList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+            });
+        }
+
+        if (nudityScenes.length > 0) {
+            const nudityList = nudityScenes.map(s => {
+                const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+                const label = s.type || 'Nudity';
+                const severity = s.severity ? ` (${s.severity})` : '';
+                return `• ${timeRange} - ${label}${severity}`;
+            }).join('\n');
+
+            explicitFaqsToInsert.push({
+                question: `Does ${movieTitle} have nudity? If yes, what are the timestamps to skip it?`,
+                answer: `Yes. ${movieTitle} contains ${nudityScenes.length} scene${nudityScenes.length > 1 ? 's' : ''} featuring nudity. Exact skip timestamps:\n\n${nudityList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+            });
+        }
+
+        if (explicitFaqsToInsert.length === 0) {
+            explicitFaqsToInsert.push({
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} contains zero explicit sex scenes and no nudity in the ${finalRuntime} runtime.`
+            });
+        }
+
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
@@ -886,10 +930,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             };
 
         staticFaqs.unshift(
-            {
-                question: `Does ${movieTitle} have inappropriate scenes? If yes, how to skip them while watching with family?`,
-                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. To ensure a safe family movie night, you can use these exact skip timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
-            },
+            ...explicitFaqsToInsert,
             {
                 question: `Why does Filmiway provide skip timestamps for ${movieTitle}?`,
                 answer: `Filmiway provides exact skip timestamps for ${movieTitle} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
@@ -899,8 +940,8 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     } else {
         staticFaqs.unshift(
             {
-                question: `Does ${movieTitle} have inappropriate scenes?`,
-                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} is completely free of explicit sex scenes and nudity.`
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,

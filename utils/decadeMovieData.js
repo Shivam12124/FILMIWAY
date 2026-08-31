@@ -58,10 +58,10 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:23:14", end: "0:24:46", type: "Sex & Nudity", severity: "High" },
             { start: "1:14:38", end: "1:15:14", type: "Nudity", severity: "High" },
-            { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" }
-        ,
-            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
-            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." }]
+            { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" },
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Features approximately 8 uses of strong profanity (F-words), occasional moderate vulgarities, mild anatomical and scatological references, alongside aggressive personal insults during closed-door interrogation scenes." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Features intense psychological horror, a woman's tragic suicide by sedative overdose and bathtub drowning, and visceral hallucinations of atomic destruction—including skin peeling from a woman's face, stepping on a charred corpse, and harrowing descriptions of the Hiroshima and Nagasaki casualties." }
+        ]
     },
 
     // Sinners
