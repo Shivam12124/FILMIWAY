@@ -1,7 +1,7 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 31 Movies  
-**Total Enriched Scenes:** 137 Scenes  
+**Total Fully Enriched Movies:** 32 Movies  
+**Total Enriched Scenes:** 139 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
 **Last Updated:** August 31, 2026  
 
@@ -42,10 +42,11 @@
 | 29 | **Apocalypse Now (1979)** | `28` | **5 / 5** | Captain Benjamin L. Willard (Martin Sheen), Roxanne Sarrault (Aurore Clément) |
 | 30 | **Fifty Shades Darker (2017)** | `341174` | **8 / 8** | Christian Grey (Jamie Dornan), Anastasia Steele (Dakota Johnson) |
 | 31 | **The Housemaid (2025)** | `1368166` | **2 / 2** | Millie Calloway (Sydney Sweeney), Andrew Winchester (Brandon Sklenar) |
+| 32 | **Bound (1996)** | `9303` | **2 / 2** | Corky (Gina Gershon), Violet (Jennifer Tilly) |
 
 ---
 
 ## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **137 Scenes**
-- **Average Scenes Per Movie:** ~4.4 Scenes
+- **Total Timestamp Scenes Enriched:** **139 Scenes**
+- **Average Scenes Per Movie:** ~4.3 Scenes
 - **Search Intent Target:** High-converting Google US keywords (*"parents guide timestamps"*, *"skip sex scenes"*, *"character timecodes"*).

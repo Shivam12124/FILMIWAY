@@ -7939,34 +7939,37 @@
   },
   "9303": {
     "Title": "Bound",
-    "Age": "16+",
-    "Summary": "Aged 16+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
+    "lastVerifiedDate": "August 31, 2026",
+    "Age": "18+",
+    "Summary": "Aged 18+ for graphic violence, intense sexual content with full-body nudity, and frequent strong language.",
     "scenes": [
       {
         "start": "0:13:00",
         "end": "0:15:30",
         "type": "Sexual Content",
-        "severity": "High"
+        "severity": "High",
+        "description": "Seduction sequence on the couch where Violet (Jennifer Tilly) initiates physical contact with Corky (Gina Gershon), leading to passionate kissing and intimate touching under her clothes before they are interrupted."
       },
       {
         "start": "0:19:35",
         "end": "0:20:55",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where Violet (Jennifer Tilly) and Corky (Gina Gershon) engage in a passionate sexual encounter on the bed, featuring female full-body nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Strong violence includes bloody shootings, graphic injury detail, a disturbing finger mutilation scene, physical assault, and several scenes with visible blood and corpse depictions."
+        "description": "Intense violence featuring brutal point-blank shootings with heavy blood pools, severe beatings, a man's face violently slammed against a toilet, graphic thumb amputation with pliers, and a bloody fatal shooting where blood mixes into spilled paint."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "Moderate",
-        "description": "Moderate language includes occasional use of the F-word alongside other coarse profanity and insulting language."
+        "description": "Frequent coarse language throughout including recurring uses of the F-word, derogatory insults, and aggressive profanity."
       }
     ]
   },
