@@ -19297,36 +19297,39 @@
   },
   "1368166": {
     "Title": "The Housemaid",
+    "lastVerifiedDate": "August 31, 2026",
     "scenes": [
       {
         "start": "0:54:40",
         "end": "0:56:55",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Bedroom sequence where Andrew Winchester (Brandon Sklenar) passionately kisses and undresses Millie Calloway (Sydney Sweeney) before they engage in sexual intercourse on the bed, featuring female full-body nudity and male rear nudity with no explicit frontal exposure."
       },
       {
         "start": "1:08:10",
         "end": "1:08:40",
-        "type": "Partial Nudity & Steamy Scene",
-        "severity": "Moderate"
+        "type": "Sexual Content & Partial Nudity (Man)",
+        "severity": "Moderate",
+        "description": "Montage sequence where Millie Calloway (Sydney Sweeney) and Andrew Winchester (Brandon Sklenar) share passionate kisses, intimate touching, and undressing, featuring only male rear nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Graphic and deeply unsettling scenes of poisoning, induced miscarriage, and a shocking, fiery suicide."
+        "description": "Intense psychological thriller violence featuring brutal blunt-force killings, bloody neck stabbings, severe domestic torture, forced self-mutilation with broken glass, tooth extraction with pliers, and fatal stair falls."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "Moderate",
-        "description": "Occasional strong language in the subtitled dialogue, paired with explicit themes."
+        "severity": "High",
+        "description": "Pervasive strong language throughout with 50+ uses of the F-word, frequent coarse swearing, crude insults, and obscene gestures."
       }
     ],
     "Age": "18+",
-    "Summary": "Aged 18+ for graphic poisoning, forced miscarriage, fiery suicide, and domestic abuse."
+    "Summary": "Aged 18+ for brutal violence and torture, pervasive strong language, and explicit sexual content with nudity."
   },
   "1368337": {
     "Title": "The Odyssey",
