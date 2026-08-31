@@ -328,27 +328,11 @@ export const PARASITE_MOVIE_FAQS = {
         { question: "Does Parasite have profanity or swearing?", answer: "The profanity in Parasite is rated as Moderate. Moderate coarse language throughout, including several uses of the F-word alongside other mild to moderate profanity, crude remarks, and occasional vulgar expressions." },
         { question: "Why is Parasite rated R?", answer: "Parasite earns its R rating due to high sexual content and nudity, high violence, and moderate profanity. Specifically, the film contains Moderate coarse language throughout, including several uses of the F-word alongside other mild to moderate profanity, crude remarks, and occasional vulgar expressions. Strong violence featuring strangulation, blunt-force killings, bloody injuries, fatal falls, and a graphic mass knife attack. Adults can use our timestamps to skip the explicit content." },
         ],
-  'The Handmaiden': [
-        { question: "Does The Handmaiden have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Handmaiden is rated as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
-        { question: "Does The Handmaiden have profanity or swearing?", answer: "The profanity in The Handmaiden is rated as High. Frequent use of strong profanity and sexually explicit language throughout." },
-        { question: "Why is The Handmaiden rated R?", answer: "The Handmaiden earns its R rating due to high sexual content and nudity, moderate violence, and high profanity. Specifically, the film contains Frequent use of strong profanity and sexually explicit language throughout. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation. Adults can use our timestamps to skip the explicit content." },
-        { 
-      question: "How does the three-part structure of The Handmaiden reframes the story?", 
-      answer: "The film employs a 'Rashomon-style' narrative where events are replayed from shifting perspectives. Part 1 establishes a standard con; Part 2 reveals a secret alliance between the women that completely subverts previous scenes; and Part 3 executes the final retribution. This structure masterfully transforms a tale of victimization into one of ultimate empowerment." 
-    },
-    { 
-      question: "What is the symbolism behind the language switching in The Handmaiden?", 
-      answer: "Language is used as a weapon of colonial and patriarchal power. Characters switch to Japanese (the occupier's tongue) to assert authority or conceal the truth, while Korean is reserved for intimacy and rebellion. Sook-hee’s destruction of the Japanese library symbolizes the physical and cultural dismantling of the men who imprisoned Hideko." 
-    },
-    { 
-      question: "Is the romance in The Handmaiden genuine or part of the con?", 
-      answer: "While the relationship begins as a mutual deception, it evolves into a profound, genuine love. Their romance serves as the film’s ultimate act of defiance against the men who view them as mere commodities to be collected, traded, or married for fortune. It is love as an act of class and gender warfare." 
-    },
-    { 
-      question: "What does the octopus represent in The Handmaiden?", 
-      answer: "The octopus is a direct reference to the famous Japanese erotic print 'The Dream of the Fisherman's Wife,' symbolizing the Uncle's perverse, objectifying fantasies. By keeping it in a tank, the film highlights his obsession with 'collecting' and trapping exotic life—books, art, and women—in a stagnant, controlled environment." 
-    }
-  ],
+          'The Handmaiden': [
+        { question: "What is The Handmaiden?", answer: "The Handmaiden is an acclaimed 2016 psychological erotic thriller movie directed by Park Chan-wook, starring Kim Min-hee and Kim Tae-ri. It is a standalone feature film set in 1930s Korea and is completely unrelated to the television series The Handmaid's Tale." }
+    ],
+
+
 
   'Burning': [
     { 

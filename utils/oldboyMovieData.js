@@ -458,27 +458,11 @@ export const OLDBOY_MOVIE_FAQS = {
     }
   ],
 
-  'The Handmaiden': [
-        { question: "Does The Handmaiden have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Handmaiden is rated as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
-        { question: "Does The Handmaiden have profanity or swearing?", answer: "The profanity in The Handmaiden is rated as High. Frequent use of strong profanity and sexually explicit language throughout." },
-        { question: "Why is The Handmaiden rated R?", answer: "The Handmaiden earns its R rating due to high sexual content and nudity, moderate violence, and high profanity. Specifically, the film contains Frequent use of strong profanity and sexually explicit language throughout. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation. Adults can use our timestamps to skip the explicit content." },
-        { 
-      question: "Is this Park Chan-wook's most sensual cinematic achievement?", 
-      answer: "Erotic deception transforms into genuine love across revolutionary four-timeline structure. Initial con-artist manipulation evolves into authentic connection defying genre expectations. Victorian novel adaptation Koreanized brilliantly. Sensuality serves narrative complexity rather than exploitation, elevating erotic thriller into high art territory." 
-    },
-    { 
-      question: "How many structural twists completely reframe the narrative?", 
-      answer: "Mind-bending architecture where every revelation reframes previous acts entirely. Four perspectives reveal deception layers exponentially. Victorian source material Koreanized through cultural specificity while preserving core genius. Audience orientation constantly recalibrated equals Oldboy revelation impact multiplied across entire runtime." 
-    },
-    { 
-      question: "Why faced global censorship despite critical acclaim?", 
-      answer: "Explicit erotic sequences pushed boundaries beyond most art cinema. Multiple countries heavily censored or banned outright. Still achieved #1 Park Chan-wook ranking among international critics. Commercial success despite controversy proves artistic integrity transcends cultural prudishness, cementing provocative reputation." 
-    },
-    { 
-      question: "How does it contrast tonally with brutal Oldboy?", 
-      answer: "Same director delivers sensual liberation versus brutal isolation. Deception transforms into empowerment rather than destruction. Feminine gaze replaces masculine rage. Erotic awakening celebrates human connection while Oldboy mourns fractured identity. Both explore manipulation extremes from completely opposite emotional perspectives." 
-    }
-  ],
+          'The Handmaiden': [
+        { question: "What is The Handmaiden?", answer: "The Handmaiden is an acclaimed 2016 psychological erotic thriller movie directed by Park Chan-wook, starring Kim Min-hee and Kim Tae-ri. It is a standalone feature film set in 1930s Korea and is completely unrelated to the television series The Handmaid's Tale." }
+    ],
+
+
 
   'Confessions': [
     { 

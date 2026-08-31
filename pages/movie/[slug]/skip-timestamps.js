@@ -380,18 +380,10 @@ export default function UniversalMoviePage({ movie }) {
         answer: `Filmiway provides exact skip timestamps for ${movie.Title} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
     } : null;
 
-    const dynamicTemplateFaqs = [faq1, faq2, educationalFaq, faq3, faq4, faq5].filter(Boolean);
+    const dynamicTemplateFaqs = [faq1, faq2, educationalFaq, faq5].filter(Boolean);
+    const filteredFaqs = dynamicTemplateFaqs;
 
-    // Filter template FAQs for non-whitelisted movies
-    let filteredFaqs = dynamicTemplateFaqs;
-    if (!isVerifiedParentsGuideMovie) {
-        filteredFaqs = dynamicTemplateFaqs.filter(faq => {
-            const q = (faq.question || '').toLowerCase();
-            return !q.includes('violence and gore') && !q.includes('profanity or swearing');
-        });
-    }
-
-    const rawFaqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
+    const rawFaqs = (movie.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : (getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || []);
     const faqs = [...filteredFaqs];
 
     rawFaqs.forEach(customFaq => {
@@ -972,6 +964,8 @@ export async function getStaticProps({ params }) {
     const isAug22Movie = tmdbIdNum === 617 || tmdbIdNum === 1339713;
     const lastVerifiedDate = (sensitiveData && sensitiveData.lastVerifiedDate) ? sensitiveData.lastVerifiedDate : (isAug22Movie ? "August 22, 2026" : (isVerifiedParentsGuideMovie ? "August 14, 2026" : augDates[dateSeed % augDates.length]));
 
+    const customFaqs = collectionData?.getVisibleMovieFAQs ? collectionData.getVisibleMovieFAQs(baseMovie.Title, baseMovie.tmdbId, finalRuntime) : [];
+
     const movie = {
         ...baseMovie,
         poster_path: explicitOverride ? explicitOverride.poster : (cacheData.poster_path || null),
@@ -990,6 +984,7 @@ export async function getStaticProps({ params }) {
         primaryCollectionTitle: primaryTitle || null,
         resolvedMovieInfo,
         resolvedSensitiveScenes,
+        customFaqs: customFaqs || [],
         isTrueStory,
         metaTitle,
         metaDesc,

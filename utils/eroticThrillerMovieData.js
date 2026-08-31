@@ -353,15 +353,11 @@ export const EROTIC_THRILLER_MOVIE_FAQS = {
         { question: "What do the masks symbolize?", answer: "The masks represent the anonymity that immense wealth buys. They allow the high-society characters to shed their public, respectable personas and indulge in their darkest impulses without facing any real-world consequences." },
         { question: "Is the film truly about a secret society?", answer: "While the secret society is the visual centerpiece, Kubrick uses it primarily as a mirror. The true horror of the film is a husband's realization that he does not truly know his wife's inner life, making the domestic tension far scarier than the cult." }
     ],
-    'The Handmaiden': [
-        { question: "Does The Handmaiden have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Handmaiden is rated as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
-        { question: "Does The Handmaiden have profanity or swearing?", answer: "The profanity in The Handmaiden is rated as High. Frequent use of strong profanity and sexually explicit language throughout." },
-        { question: "Why is The Handmaiden rated R?", answer: "The Handmaiden earns its R rating due to high sexual content and nudity, moderate violence, and high profanity. Specifically, the film contains Frequent use of strong profanity and sexually explicit language throughout. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation. Adults can use our timestamps to skip the explicit content." },
-        { question: "Why is the film split into three parts?", answer: "Director Park Chan-wook uses the three-act structure to repeatedly pull the rug out from under the audience. Each part forces the viewer to re-evaluate who is manipulating whom, turning the narrative into an intricate puzzle box." },
-        { question: "How does the setting reflect the themes?", answer: "Set in 1930s Japanese-occupied Korea, the setting acts as a macro-level mirror for the plot. The fusion of traditional Korean architecture with Western/Japanese additions symbolizes the loss of identity and the pervasive theme of colonization and control." },
-        { question: "What is the meaning of the destroyed books?", answer: "The destruction of the rare book collection is an act of reclaiming agency. The books were tools of oppression used by the uncle to control his niece. By destroying them, the protagonists physically dismantle the system of their abuse." },
-        { question: "Is Count Fujiwara a mastermind or a pawn?", answer: "He begins the film believing he is the mastermind, relying on arrogant assumptions about class and gender. His ultimate downfall occurs because he underestimates the intelligence and loyalty of the women he planned to exploit." }
+            'The Handmaiden': [
+        { question: "What is The Handmaiden?", answer: "The Handmaiden is an acclaimed 2016 psychological erotic thriller movie directed by Park Chan-wook, starring Kim Min-hee and Kim Tae-ri. It is a standalone feature film set in 1930s Korea and is completely unrelated to the television series The Handmaid's Tale." }
     ],
+
+
     'Lust, Caution': [
         { question: "Does Lust, Caution have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Lust, Caution is rated as Moderate. Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior." },
         { question: "Does Lust, Caution have profanity or swearing?", answer: "The profanity in Lust, Caution is rated as Moderate. Minimal use of strong language (approximately 1 use of the F-word)." },

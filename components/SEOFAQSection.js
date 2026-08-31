@@ -16,7 +16,7 @@ const SEOFAQSection = ({ movie }) => {
     // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes Dynamic Timestamp FAQ)
     // This ensures your UI matches the Bot Schema 1:1 using the new universal Intensity Metric.
     const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
-    const faqsRaw = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsRaw = (movie?.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
     const faqsFromData = faqsRaw ? faqsRaw.map(faq => {
         if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
             return {
