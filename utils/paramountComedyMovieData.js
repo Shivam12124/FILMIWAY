@@ -92,10 +92,11 @@ export const SENSITIVE_TIMELINES = {
     // 10. Trading Places
     1621: { 
         scenes: [
-            { start: "0:22:20", end: "0:23:10", type: "Lingerie", severity: "Mild" },
-            { start: "0:43:00", end: "0:44:00", type: "Nudity", severity: "High" },
-            { start: "1:00:40", end: "1:00:50", type: "Nudity", severity: "High" },
-            { start: "1:10:30", end: "1:10:40", type: "Nudity", severity: "High" }
+            { start: "0:43:00", end: "0:44:00", type: "Nudity", severity: "High", description: "New Year party scene featuring women dancing topless with full bare chest nudity." },
+            { start: "1:00:40", end: "1:00:50", type: "Nudity", severity: "High", description: "Ophelia (Jamie Lee Curtis) undresses in front of Louis Winthorpe (Dan Aykroyd), showing topless nudity." },
+            { start: "1:10:30", end: "1:10:40", type: "Nudity", severity: "High", description: "Ophelia (Jamie Lee Curtis) removes her top again in front of Louis Winthorpe (Dan Aykroyd), showing topless nudity." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Mild", description: "Includes fist fights, gun threats at gunpoint, a shotgun revenge plot, a failed suicide attempt, and a gorilla costume incident without graphic injuries or deaths." },
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Frequent strong profanity throughout, including multiple F-bombs, coarse language, racial slurs, and homophobic insults." }
         ] 
     }
 };

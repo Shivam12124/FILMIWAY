@@ -50,3 +50,7 @@
 - **Fast Movie Addition Rule:** When asked to add a new movie or bonus movie, ALWAYS follow the 5-step protocol in `ADD_MOVIE_BLUEPRINT.md` / `.agents/skills/add-movie-guide/SKILL.md`.
 - Never hardcode fake poster URLs; always run `node scripts/cache-tmdb-data.js`.
 - Always update `masterDatabase.json`, `masterTimestamps.json`, `tmdbCache.json`, `data/collections.js`, `utils/*Data.js`, and `utils/*Routes.js` simultaneously.
+
+## 6. Content Warning & Parents Guide Writing Rules
+- **No Genre Framing:** NEVER include genre words (e.g. "comedic", "slapstick", "romantic", "action") in Violence & Gore or Content Advisory descriptions. State the content facts directly.
+- **No Explicit Swear Words:** NEVER write out raw explicit curse words (e.g., F-word, motherfucker, S-word, N-word) in Profanity summaries. Use sanitized, professional terms instead (e.g., "frequent F-bombs", "strong language", "racial slurs", "homophobic insults", "derogatory terms").
