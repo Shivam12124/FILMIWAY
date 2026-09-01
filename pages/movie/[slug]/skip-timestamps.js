@@ -52,6 +52,8 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '8363', 'tt0829482', // Superbad
     '10843', 'tt0088680', // After Hours (1985)
     '1621', 'tt0086465', // Trading Places (1983)
+    '65754', 'tt1568346', // The Girl with the Dragon Tattoo (2011)
+    '1934', 'tt0138097', // Shakespeare in Love (1998)
     // 🌟 ALL 32 ENRICHED MOVIES HALL PASS
     '216015', '664413', '152584', '4588', '210577', '290098', '402', '1278', '617', '597',
     '550', '9346', '278', '300669', '218', '105', '872585', '1339713', '4478', '1018',

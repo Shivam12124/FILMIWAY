@@ -63,9 +63,11 @@ export const SENSITIVE_TIMELINES = {
     },
     65754: { // The Girl with the Dragon Tattoo
         scenes: [
-            { start: '00:54:00', end: '00:55:00', type: 'Sex', severity: 'High' },
-            { start: '00:57:15', end: '00:57:30', type: 'Nudity', severity: 'High' },
-            { start: '01:38:40', end: '01:40:00', type: 'Sex & Nudity', severity: 'Extreme' }
+            { start: '00:46:55', end: '00:47:14', type: 'Sex & Nudity', severity: 'High', description: 'Nils Bjurman (Yorick van Wageningen) forces Lisbeth Salander (Rooney Mara) into a coerced sexual act.' },
+            { start: '00:54:00', end: '00:55:00', type: 'Sex & Nudity', severity: 'High', description: 'Disturbing scene where Nils Bjurman (Yorick van Wageningen) sexually assaults Lisbeth Salander (Rooney Mara) while she is restrained on a bed; features female rear nudity.' },
+            { start: '00:57:15', end: '00:57:30', type: 'Nudity', severity: 'High', description: 'Lisbeth Salander (Rooney Mara) is shown showering, featuring full-body nudity without explicit genital detail.' },
+            { start: '01:38:40', end: '01:40:00', type: 'Sex & Nudity', severity: 'High', description: 'Lisbeth Salander (Rooney Mara) and Mikael Blomkvist (Daniel Craig) engage in an intimate sexual encounter on a bed, featuring full-body female nudity.' },
+            { start: '', end: '', type: 'Violence & Gore', severity: 'High', description: 'Extremely graphic sexual violence, physical assaults, and revenge retaliation; disturbing crime scene photos displaying mutilation and decapitation; intense torture involving suffocation and power tools; animal cruelty featuring a dismembered cat; car crashes and self-stitched gunshot wounds.' },
         ]
     },
     13855: { scenes: [] }, // The Chaser

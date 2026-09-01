@@ -5418,39 +5418,43 @@
         "start": "0:47:35",
         "end": "0:47:45",
         "type": "Nudity",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "William Shakespeare (Joseph Fiennes) undresses Viola de Lesseps (Gwyneth Paltrow), showing topless female nudity as they kiss passionately."
       },
       {
         "start": "0:48:50",
         "end": "0:49:25",
         "type": "Nudity",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Viola de Lesseps (Gwyneth Paltrow) and William Shakespeare (Joseph Fiennes) wake up together in bed, showing brief topless nudity."
       },
       {
         "start": "0:54:00",
         "end": "0:55:25",
-        "type": "Nudity",
-        "severity": "Moderate"
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Viola de Lesseps (Gwyneth Paltrow) and William Shakespeare (Joseph Fiennes) engage in a passionate sexual encounter in bed, with intimate touching and visible topless female nudity."
       },
       {
         "start": "1:04:35",
         "end": "1:05:02",
         "type": "Sex",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "A couple is briefly shown engaging in a short, humorous sex scene in bed."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "Mild",
-        "description": "Stage swordfights, a brief barroom duel, and an off-screen stabbing."
+        "description": "Stage swordfights, a heated duel resulting in a bloody head wound, knife threats, a brief torture sequence over burning coals, and off-screen animal cruelty."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "Moderate",
-        "description": "Elizabethan banter mixed with modern expletives and sexual innuendo."
+        "severity": "Mild",
+        "description": "Mild profanity throughout, featuring one F-word, occasional mild expletives, and period-specific oaths."
       }
     ],
     "Age": "14+",
@@ -11599,36 +11603,46 @@
     "Title": "The Girl with the Dragon Tattoo",
     "scenes": [
       {
+        "start": "00:46:55",
+        "end": "00:47:14",
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Nils Bjurman (Yorick van Wageningen) forces Lisbeth Salander (Rooney Mara) into a coerced sexual act."
+      },
+      {
         "start": "00:54:00",
         "end": "00:55:00",
-        "type": "Sex",
-        "severity": "High"
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Disturbing scene where Nils Bjurman (Yorick van Wageningen) sexually assaults Lisbeth Salander (Rooney Mara) while she is restrained on a bed; features female rear nudity."
       },
       {
         "start": "00:57:15",
         "end": "00:57:30",
         "type": "Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Lisbeth Salander (Rooney Mara) is shown showering, featuring full-body nudity without explicit genital detail."
       },
       {
         "start": "01:38:40",
         "end": "01:40:00",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Lisbeth Salander (Rooney Mara) and Mikael Blomkvist (Daniel Craig) engage in an intimate sexual encounter on a bed, featuring full-body female nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Extremely graphic scenes of brutal sexual assault, a serial killer's torture dungeon, suffocations, and heavy gore."
+        "description": "Extremely graphic sexual violence, physical assaults, and revenge retaliation; disturbing crime scene photos displaying mutilation and decapitation; intense torture involving suffocation and power tools; animal cruelty featuring a dismembered cat; car crashes and self-stitched gunshot wounds."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Pervasive strong language, F-bombs, and incredibly crude sexual insults."
+        "description": "Strong language throughout, including multiple F-bombs (some printed on clothing), coarse profanity, and crude derogatory terms."
       }
     ],
     "Age": "18+",

@@ -30,10 +30,12 @@ export const SENSITIVE_TIMELINES = {
     251: { scenes: [] }, // Ghost
     1934: { // Shakespeare in Love
         scenes: [
-            { start: "0:47:35", end: "0:47:45", type: "Nudity", severity: "Moderate" },
-            { start: "0:48:50", end: "0:49:25", type: "Nudity", severity: "Moderate" },
-            { start: "0:54:00", end: "0:55:25", type: "Nudity", severity: "Moderate" },
-            { start: "1:04:35", end: "1:05:02", type: "Sex", severity: "Mild" }
+            { start: "0:47:35", end: "0:47:45", type: "Nudity", severity: "Moderate", description: "William Shakespeare (Joseph Fiennes) undresses Viola de Lesseps (Gwyneth Paltrow), showing topless female nudity as they kiss passionately." },
+            { start: "0:48:50", end: "0:49:25", type: "Nudity", severity: "Moderate", description: "Viola de Lesseps (Gwyneth Paltrow) and William Shakespeare (Joseph Fiennes) wake up together in bed, showing brief topless nudity." },
+            { start: "0:54:00", end: "0:55:25", type: "Sex & Nudity", severity: "High", description: "Viola de Lesseps (Gwyneth Paltrow) and William Shakespeare (Joseph Fiennes) engage in a passionate sexual encounter in bed, with intimate touching and visible topless female nudity." },
+            { start: "1:04:35", end: "1:05:02", type: "Sex", severity: "Mild", description: "A couple is briefly shown engaging in a short, humorous sex scene in bed." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Mild", description: "Stage swordfights, a heated duel resulting in a bloody head wound, knife threats, a brief torture sequence over burning coals, and off-screen animal cruelty." },
+            { start: "", end: "", type: "Profanity", severity: "Mild", description: "Mild profanity throughout, featuring one F-word, occasional mild expletives, and period-specific oaths." }
         ] 
     }, 
     51828: { // One Day
