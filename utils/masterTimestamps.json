@@ -28,14 +28,16 @@
       {
         "start": "0:35:38",
         "end": "0:36:00",
-        "type": "Nudity (Woman)",
-        "severity": "Moderate"
+        "type": "Nudity",
+        "severity": "Moderate",
+        "description": "Forrest Gump (Tom Hanks) is shown an adult magazine page with a visible topless woman photograph, not graphic."
       },
       {
         "start": "0:37:15",
         "end": "0:38:02",
-        "type": "Partial Nudity (Woman)",
-        "severity": "Mild"
+        "type": "Nudity",
+        "severity": "Moderate",
+        "description": "Jenny Curran (Robin Wright) sings naked on a club stage holding an acoustic guitar in front, showing rear and side-profile nudity without explicit exposure."
       },
       {
         "start": "",
@@ -563,14 +565,9 @@
       {
         "start": "1:32:35",
         "end": "1:32:57",
-        "type": "Nudity (Woman)",
-        "severity": "High"
-      },
-      {
-        "start": "2:35:15",
-        "end": "2:37:12",
-        "type": "Nudity (Woman)",
-        "severity": "Moderate"
+        "type": "Nudity",
+        "severity": "High",
+        "description": "Manny Ribera (Steven Bauer) is in bed with Miriam (Sue Bowser), with visible female buttocks behind a curtain followed by clear topless female nudity."
       },
       {
         "start": "",
@@ -3292,13 +3289,15 @@
         "start": "1:10:40",
         "end": "1:11:00",
         "type": "Nudity",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "The camera pans across bedroom wall art in Dick Hallorann's (Scatman Crothers) apartment, showing topless female poster."
       },
       {
         "start": "1:13:10",
         "end": "1:16:00",
         "type": "Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Jack Torrance (Jack Nicholson) encounters a young woman (Lia Beldam) emerging naked from a bathtub, showing full-frontal female nudity."
       },
       {
         "start": "",
@@ -4210,26 +4209,30 @@
       {
         "start": "0:05:50",
         "end": "0:08:09",
-        "type": "Nudity (Man)",
-        "severity": "Moderate"
+        "type": "Nudity",
+        "severity": "Moderate",
+        "description": "In an apartment bedroom, The Butcher (Philippe Nahon) engages in a conversation while sitting unclothed on a bed, with visible male frontal and rear nudity."
       },
       {
         "start": "0:12:23",
         "end": "0:22:40",
-        "type": "Nudity (Men), Sex & Sexual Content (Masturbation)",
-        "severity": "High"
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Marcus (Vincent Cassel) and Pierre (Albert Dupontel) search an underground gay nightclub, showing pervasive male frontal nudity, explicit sexual acts, and public masturbation by male patrons."
       },
       {
         "start": "0:45:00",
         "end": "0:53:40",
-        "type": "Nudity (Man & Woman) & Sex",
-        "severity": "High"
+        "type": "Sexual Violence & Nudity",
+        "severity": "High",
+        "description": "Prolonged and graphic non-consensual sexual assault of Alex (Monica Bellucci) by Le Ténia (Jo Prestia) in a red-lit tunnel, showing severe physical violence, nudity, and highly disturbing content."
       },
       {
         "start": "1:15:36",
         "end": "1:26:07",
-        "type": "Nudity (Man & Woman)",
-        "severity": "High"
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "description": "Alex (Monica Bellucci) and Marcus (Vincent Cassel) share an intimate morning in their bedroom, showing extended full-frontal and rear female nudity, male nudity, and passionate consensual sexual activity in bed."
       },
       {
         "start": "",

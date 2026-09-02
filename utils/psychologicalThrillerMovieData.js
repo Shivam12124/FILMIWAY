@@ -82,8 +82,8 @@ export const SENSITIVE_TIMELINES = {
         { start: '58:52', end: '59:05', type: 'Sexual Content', severity: 'Moderate' }
     ]},
     694: { scenes: [
-        { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild' },
-        { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High' }
+        { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild', description: "The camera pans across bedroom wall art in Dick Hallorann's (Scatman Crothers) apartment, showing topless female poster." },
+        { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High', description: "Jack Torrance (Jack Nicholson) encounters a young woman (Lia Beldam) emerging naked from a bathtub, showing full-frontal female nudity." }
     ]},
     340666: { 
         scenes: [

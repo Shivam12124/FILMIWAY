@@ -1,9 +1,9 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 32 Movies  
-**Total Enriched Scenes:** 139 Scenes  
+**Total Fully Enriched Movies:** 40 Movies  
+**Total Enriched Scenes:** 166 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
-**Last Updated:** August 31, 2026  
+**Last Updated:** September 2, 2026  
 
 ---
 
@@ -43,10 +43,36 @@
 | 30 | **Fifty Shades Darker (2017)** | `341174` | **8 / 8** | Christian Grey (Jamie Dornan), Anastasia Steele (Dakota Johnson) |
 | 31 | **The Housemaid (2025)** | `1368166` | **2 / 2** | Millie Calloway (Sydney Sweeney), Andrew Winchester (Brandon Sklenar) |
 | 32 | **Bound (1996)** | `9303` | **2 / 2** | Corky (Gina Gershon), Violet (Jennifer Tilly) |
+| 33 | **Superbad (2007)** | `8363` | **4 / 4** | Evan (Michael Cera), Seth (Jonah Hill), Fogell / McLovin (Christopher Mintz-Plasse) |
+| 34 | **Trading Places (1983)** | `1621` | **3 / 3** | Louis Winthorpe III (Dan Aykroyd), Ophelia (Jamie Lee Curtis) |
+| 35 | **The Girl with the Dragon Tattoo (2011)** | `65754` | **6 / 6** | Lisbeth Salander (Rooney Mara), Nils Bjurman (Yorick van Wageningen), Mikael Blomkvist (Daniel Craig) |
+| 36 | **Shakespeare in Love (1998)** | `1934` | **6 / 6** | Viola de Lesseps (Gwyneth Paltrow), William Shakespeare (Joseph Fiennes) |
+| 37 | **Forrest Gump (1994)** | `13` | **2 / 2** | Forrest Gump (Tom Hanks), Jenny Curran (Robin Wright) |
+| 38 | **Scarface (1983)** | `111` | **1 / 1** | Manny Ribera (Steven Bauer), Miriam (Sue Bowser) |
+| 39 | **The Shining (1980)** | `694` | **2 / 2** | Dick Hallorann (Scatman Crothers), Jack Torrance (Jack Nicholson), Young Woman in Bath (Lia Beldam) |
+| 40 | **Irréversible (2002)** | `979` | **4 / 4** | The Butcher (Philippe Nahon), Marcus (Vincent Cassel), Pierre (Albert Dupontel), Alex (Monica Bellucci), Le Ténia (Jo Prestia) |
 
 ---
 
 ## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **139 Scenes**
+- **Total Timestamp Scenes Enriched:** **166 Scenes**
+- **Average Scenes Per Movie:** ~4.1 Scenes
+
+---
+
+## 📊 Summary Statistics:
+- **Total Timestamp Scenes Enriched:** **162 Scenes**
+- **Average Scenes Per Movie:** ~4.2 Scenes
+
+---
+
+## 📊 Summary Statistics:
+- **Total Timestamp Scenes Enriched:** **160 Scenes**
+- **Average Scenes Per Movie:** ~4.2 Scenes
+
+---
+
+## 📊 Summary Statistics:
+- **Total Timestamp Scenes Enriched:** **159 Scenes**
 - **Average Scenes Per Movie:** ~4.3 Scenes
 - **Search Intent Target:** High-converting Google US keywords (*"parents guide timestamps"*, *"skip sex scenes"*, *"character timecodes"*).

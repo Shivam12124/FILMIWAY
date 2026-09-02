@@ -59,10 +59,10 @@ export const SENSITIVE_TIMELINES = {
     // 3. Irreversible
     979: { 
         scenes: [
-            { start: "0:05:50", end: "0:08:09", type: "Nudity (Man)", severity: "Moderate" },
-            { start: "0:12:23", end: "0:22:40", type: "Nudity (Men), Sex & Sexual Content (Masturbation)", severity: "High" },
-            { start: "0:45:00", end: "0:53:40", type: "Nudity (Man & Woman) & Sex", severity: "High" },
-            { start: "1:15:36", end: "1:26:07", type: "Nudity (Man & Woman)", severity: "High" }
+            { start: "0:05:50", end: "0:08:09", type: "Nudity", severity: "Moderate", description: "In an apartment bedroom, The Butcher (Philippe Nahon) engages in a conversation while sitting unclothed on a bed, with visible male frontal and rear nudity." },
+            { start: "0:12:23", end: "0:22:40", type: "Sex & Nudity", severity: "High", description: "Marcus (Vincent Cassel) and Pierre (Albert Dupontel) search an underground gay nightclub, showing pervasive male frontal nudity, explicit sexual acts, and public masturbation by male patrons." },
+            { start: "0:45:00", end: "0:53:40", type: "Sexual Violence & Nudity", severity: "High", description: "Prolonged and graphic non-consensual sexual assault of Alex (Monica Bellucci) by Le Ténia (Jo Prestia) in a red-lit tunnel, showing severe physical violence, nudity, and highly disturbing content." },
+            { start: "1:15:36", end: "1:26:07", type: "Sex & Nudity", severity: "High", description: "Alex (Monica Bellucci) and Marcus (Vincent Cassel) share an intimate morning in their bedroom, showing extended full-frontal and rear female nudity, male nudity, and passionate consensual sexual activity in bed." }
         ]
     },
 

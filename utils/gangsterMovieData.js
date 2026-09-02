@@ -85,8 +85,7 @@ export const SENSITIVE_TIMELINES = {
     // 7. Scarface
     111: {
         scenes: [
-            { start: "1:32:35", end: "1:32:57", type: "Nudity (Woman)", severity: "High" },
-            { start: "2:35:15", end: "2:37:12", type: "Nudity (Woman)", severity: "Moderate" } 
+            { start: "1:32:35", end: "1:32:57", type: "Nudity", severity: "High", description: "Manny Ribera (Steven Bauer) is in bed with Miriam (Sue Bowser), with visible female buttocks behind a curtain followed by clear topless female nudity." }
         ]
     },
 

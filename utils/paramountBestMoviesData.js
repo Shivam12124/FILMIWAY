@@ -34,8 +34,8 @@ export const SENSITIVE_TIMELINES = {
     // Forrest Gump
     13: { 
         scenes: [
-            { start: "35:50", end: "35:55", type: "Nudity (Woman)", severity: "High" },
-            { start: "37:15", end: "38:02", type: "Partial Nudity (Woman)", severity: "Moderate" }
+            { start: "0:35:38", end: "0:36:00", type: "Nudity", severity: "Moderate", description: "Forrest Gump (Tom Hanks) is shown an adult magazine page with a visible topless woman photograph, not graphic." },
+            { start: "0:37:15", end: "0:38:02", type: "Nudity", severity: "Moderate", description: "Jenny Curran (Robin Wright) sings naked on a club stage holding an acoustic guitar in front, showing rear and side-profile nudity without explicit exposure." }
         ] 
     }, 
     
