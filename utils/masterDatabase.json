@@ -6587,5 +6587,16 @@
     "rank": 4,
     "slug": "predator-killer-of-killers",
     "sourceFile": "huluActionMovieData.js"
+  },
+  {
+    "tmdbId": 437586,
+    "imdbID": "tt5613484",
+    "Title": "Mid90s",
+    "year": 2018,
+    "genre": "Drama",
+    "runtime": 85,
+    "rank": "BONUS",
+    "slug": "mid90s",
+    "sourceFile": "a24MovieData.js"
   }
 ]

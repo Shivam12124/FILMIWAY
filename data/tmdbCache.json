@@ -1,4 +1,24 @@
 {
+  "437586": {
+    "tmdbId": "437586",
+    "poster_path": "/9Tw0Y3DK5kGIU9X1yw3Q9gCkOlb.jpg",
+    "backdrop_path": "/BOeORWljjIPGuCwUgLls24ctF3.jpg",
+    "runtime": 86,
+    "release_date": "2018-10-19",
+    "overview": "In 1990s Los Angeles, a 13-year-old spends his summer navigating between a troubled home life and a crew of new friends he meets at a skate shop.",
+    "ageRating": "R",
+    "director": "Jonah Hill",
+    "cast": [
+      "Sunny Suljic",
+      "Katherine Waterston",
+      "Lucas Hedges",
+      "Na-kel Smith",
+      "Olan Prenatt"
+    ],
+    "budget": "$17,00,000",
+    "revenue": "$93,03,022",
+    "tagline": "fall. get back up."
+  },
   "tt7160372": {
     "tmdbId": "467244",
     "poster_path": "/hUu9zyZmDd8VZegKi1iK1Vk0RYS.jpg",
@@ -10804,5 +10824,25 @@
     "budget": "$20,000,000",
     "revenue": "$37,182,814",
     "tagline": "Every minute counts."
+  },
+  "tt5613484": {
+    "tmdbId": "437586",
+    "poster_path": "/9Tw0Y3DK5kGIU9X1yw3Q9gCkOlb.jpg",
+    "backdrop_path": "/BOeORWljjIPGuCwUgLls24ctF3.jpg",
+    "runtime": 86,
+    "release_date": "2018-10-19",
+    "overview": "In 1990s Los Angeles, a 13-year-old spends his summer navigating between a troubled home life and a crew of new friends he meets at a skate shop.",
+    "ageRating": "R",
+    "director": "Jonah Hill",
+    "cast": [
+      "Sunny Suljic",
+      "Katherine Waterston",
+      "Lucas Hedges",
+      "Na-kel Smith",
+      "Olan Prenatt"
+    ],
+    "budget": "$17,00,000",
+    "revenue": "$93,03,022",
+    "tagline": "fall. get back up."
   }
 }

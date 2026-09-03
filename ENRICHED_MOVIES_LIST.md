@@ -1,9 +1,9 @@
 # 🎬 Filmiway Enriched Timestamp Movies Audit List
 
-**Total Fully Enriched Movies:** 40 Movies  
-**Total Enriched Scenes:** 166 Scenes  
+**Total Fully Enriched Movies:** 41 Movies  
+**Total Enriched Scenes:** 167 Scenes  
 **Status:** 100% Complete with Character & Actor Named Timestamp Descriptions  
-**Last Updated:** September 2, 2026  
+**Last Updated:** September 3, 2026  
 
 ---
 
@@ -51,18 +51,13 @@
 | 38 | **Scarface (1983)** | `111` | **1 / 1** | Manny Ribera (Steven Bauer), Miriam (Sue Bowser) |
 | 39 | **The Shining (1980)** | `694` | **2 / 2** | Dick Hallorann (Scatman Crothers), Jack Torrance (Jack Nicholson), Young Woman in Bath (Lia Beldam) |
 | 40 | **Irréversible (2002)** | `979` | **4 / 4** | The Butcher (Philippe Nahon), Marcus (Vincent Cassel), Pierre (Albert Dupontel), Alex (Monica Bellucci), Le Ténia (Jo Prestia) |
+| 41 | **Mid90s (2018)** | `437586` | **1 / 1** | Stevie (Sunny Suljic), Estee (Alexa Demie), Ian (Lucas Hedges), Ray (Na-Kel Smith) |
 
 ---
 
 ## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **166 Scenes**
+- **Total Timestamp Scenes Enriched:** **167 Scenes**
 - **Average Scenes Per Movie:** ~4.1 Scenes
-
----
-
-## 📊 Summary Statistics:
-- **Total Timestamp Scenes Enriched:** **162 Scenes**
-- **Average Scenes Per Movie:** ~4.2 Scenes
 
 ---
 

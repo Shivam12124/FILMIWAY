@@ -20,7 +20,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 530385, "imdbID": "tt8772262", "Title": "Midsommar", "year": 2019, "genre": "Horror", "runtime": 148, "rank": 8 },
     { "tmdbId": 901563, "imdbID": "tt9660502", "Title": "Close", "year": 2022, "genre": "Drama", "runtime": 104, "rank": 9 },
     { "tmdbId": 785084, "imdbID": "tt13833688", "Title": "The Whale", "year": 2022, "genre": "Drama", "runtime": 117, "rank": 10 },
-    { "tmdbId": 1100099, "imdbID": "tt27131358", "Title": "We Live in Time", "year": 2024, "genre": "Drama", "runtime": 108, "rank": "BONUS" }
+    { "tmdbId": 1100099, "imdbID": "tt27131358", "Title": "We Live in Time", "year": 2024, "genre": "Drama", "runtime": 108, "rank": "BONUS" },
+    { "tmdbId": 437586, "imdbID": "tt5613484", "Title": "Mid90s", "year": 2018, "genre": "Drama", "runtime": 85, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -35,7 +36,8 @@ export const STRATEGIC_QUOTES = {
     530385: "Do you feel held by him? Does he feel like home to you?", // Midsommar
     901563: "I miss him.", // Close
     785084: "I need to know that I have done one right thing with my life!", // The Whale
-    1100099: "I think I'm starting to realize that the things that happen to you... they don't define you, it's what you do with them." // We Live in Time
+    1100099: "I think I'm starting to realize that the things that happen to you... they don't define you, it's what you do with them.", // We Live in Time
+    437586: "A lot of the time we feel like our lives the worst, but I think if you looked in anybody else's window, you'd trade your stuff for their stuff in a second." // Mid90s
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -119,6 +121,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "38:10", end: "38:20", type: "Nudity", severity: "Moderate" },
             { start: "57:15", end: "58:15", type: "Nudity", severity: "Moderate" }
         ]
+    },
+
+    // 12. Mid90s
+    437586: {
+        scenes: [
+            { start: "0:50:45", end: "0:51:50", type: "Sexual Content", severity: "Moderate", description: "Stevie (Sunny Suljic) and Estee (Alexa Demie) share an intimate kissing scene in which sexual activity is clearly implied. The scene has been regarded as disturbing and uncomfortable by some viewers due to the significant age disparity between the characters and the actors involved. Sunny Suljic was 11 years old when the film was shot, while Alexa Demie was 28." }
+        ]
     }
 };
 
@@ -133,7 +142,8 @@ export const FALLBACK_POSTERS = {
     530385: "https://image.tmdb.org/t/p/w500/5m1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
     901563: "https://image.tmdb.org/t/p/w500/6o1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
     785084: "https://image.tmdb.org/t/p/w500/7p1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
-    1100099: "https://image.tmdb.org/t/p/w500/jZc0wHkplfNnL3Tq6n3w8F6z3b3.jpg"
+    1100099: "https://image.tmdb.org/t/p/w500/jZc0wHkplfNnL3Tq6n3w8F6z3b3.jpg",
+    437586: "https://image.tmdb.org/t/p/w500/9Tw0Y3DK5kGIU9X1yw3Q9gCkOlb.jpg"
 };
 
 // ✅ MAPPING NOTE:
@@ -324,6 +334,22 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "An up-and-coming chef and a recent divorcée find their lives forever changed when a chance encounter brings them together.",
         themes: ["Love", "Grief", "Time"]
+    }),
+    // 12. Mid90s
+    437586: createMovieData({ 
+        emotionalResonance: 88, artisticComplexity: 78, visceralImpact: 82, complexityLevel: "MEDIUM", 
+        dominantColor: "#d97706", rating: 7.4, criticsScore: 80, audienceScore: 81, director: "Jonah Hill", 
+        cast: ["Sunny Suljic", "Lucas Hedges", "Na-Kel Smith", "Olan Prenatt", "Gio Galicia", "Alexa Demie"], boxOffice: "$9.3 million", budget: "$1.7 million",
+        dna: { Drama: 50, Comedy: 30, "Coming-of-Age": 20 },
+        scenes: [
+            { time: 5, intensity: 70, label: "Sibling Fight", color: "#b45309" },
+            { time: 25, intensity: 50, label: "The Skate Shop", color: "#d97706" },
+            { time: 50, intensity: 75, label: "House Party", color: "#f59e0b" },
+            { time: 70, intensity: 85, label: "The Car Ride", color: "#dc2626" },
+            { time: 82, intensity: 90, label: "Hospital Room", color: "#ffffff" }
+        ],
+        synopsis: "In 1990s Los Angeles, a thirteen-year-old boy spends his summer navigating between his troubled home life and a group of newly found skateboard friends he meets at a Motor Avenue skate shop.",
+        themes: ["Adolescence", "Skate Culture", "Brotherhood", "Escapism"]
     })
 };
 

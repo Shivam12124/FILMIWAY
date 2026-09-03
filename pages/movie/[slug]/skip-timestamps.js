@@ -58,6 +58,7 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '111', 'tt0086250', // Scarface (1983)
     '694', 'tt0081505', // The Shining (1980)
     '979', 'tt0290673', // Irréversible (2002)
+    '437586', 'tt5613484', // Mid90s (2018)
     // 🌟 ALL 32 ENRICHED MOVIES HALL PASS
     '216015', '664413', '152584', '4588', '210577', '290098', '402', '1278', '617', '597',
     '550', '9346', '278', '300669', '218', '105', '872585', '1339713', '4478', '1018',
@@ -684,7 +685,8 @@ export async function getStaticProps({ params }) {
     if (!primarySlug || (baseMovie.imdbID === 'tt33397980' && primarySlug !== 'best-enemies-to-lovers-movies')) {
         const sourceMap = {
             'enemiesToLoversMovieData.js': 'best-enemies-to-lovers-movies',
-            'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies'
+            'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies',
+            'a24MovieData.js': 'best-a24-movies'
         };
         if (baseMovie.sourceFile && sourceMap[baseMovie.sourceFile]) {
             primarySlug = sourceMap[baseMovie.sourceFile];

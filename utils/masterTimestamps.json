@@ -19395,5 +19395,19 @@
     ],
     "Age": "18+",
     "Summary": "Aged 18+ for hard-R animated Predator carnage, decapitations, severed limbs, and intense action swearing."
+  },
+  "437586": {
+    "Title": "Mid90s",
+    "Age": "16+",
+    "Summary": "Aged 16+ for pervasive strong language, teen drug and alcohol use, domestic violence, and sexual content involving minors.",
+    "scenes": [
+      {
+        "start": "0:50:45",
+        "end": "0:51:50",
+        "type": "Sexual Content",
+        "severity": "Moderate",
+        "description": "Stevie (Sunny Suljic) and Estee (Alexa Demie) engage in an intimate kissing sequence with implied sexual activity, noted by many viewers as uncomfortable due to the significant age disparity between the characters."
+      }
+    ]
   }
 }

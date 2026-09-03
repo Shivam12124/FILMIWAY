@@ -1012,7 +1012,7 @@ export const COLLECTIONS = {
       { label: "ATMOSPHERIC", desc: "Distinct visual style" },
       { label: "EMOTIONAL", desc: "Deeply resonant" }
     ],
-    movies: ['tt19770238', 'tt7160372', 'tt5649144', 'tt7984734', 'tt21064584', 'tt4925292', 'tt7784604', 'tt8772262', 'tt9660502', 'tt13833688', 'tt27131358'],
+    movies: ['tt19770238', 'tt7160372', 'tt5649144', 'tt7984734', 'tt21064584', 'tt4925292', 'tt7784604', 'tt8772262', 'tt9660502', 'tt13833688', 'tt27131358', 'tt5613484'],
     relatedCollections: ['best-thought-provoking-movies', 'best-psychological-thriller-movies', 'best-drama-movies-on-hbo-max']
   },
 
