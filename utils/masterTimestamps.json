@@ -14286,6 +14286,7 @@
   },
   "293660": {
     "Title": "Deadpool",
+    "lastVerifiedDate": "September 4, 2026",
     "Age": "17+",
     "Summary": "Aged 17+ for brutal graphic violence, explicit sex and nudity, and strong language throughout. A mature superhero movie, definitely not for kids.",
     "scenes": [
@@ -14293,13 +14294,15 @@
         "start": "23:21",
         "end": "24:40",
         "type": "Sex & Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "A fast-paced montage of Wade Wilson (Ryan Reynolds) and Vanessa (Morena Baccarin) having sex across various occasions, and Vanessa's (Morena Baccarin) topless nudity."
       },
       {
         "start": "1:11:06",
         "end": "1:11:40",
         "type": "Nudity (Women)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Features a strip club environment with clear topless female nudity as dancers perform on stage in front of Wade Wilson (Ryan Reynolds)."
       },
       {
         "start": "",
