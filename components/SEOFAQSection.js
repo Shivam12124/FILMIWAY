@@ -18,20 +18,7 @@ const SEOFAQSection = ({ movie }) => {
     // Resolve sensitive scenes from movie props or cache
     const sensitiveScenes = movie?.resolvedSensitiveScenes || movie?.sensitiveScenes || [];
     
-    // Filter scenes for Sex / Sexual Content vs Nudity
-    const sexScenes = sensitiveScenes.filter(s => {
-        if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
-        const t = (s.type || '').toLowerCase();
-        const d = (s.description || '').toLowerCase();
-        if ((t.includes('suggestive') || t.includes('bikini') || t.includes('lingerie')) && 
-            !t.includes('sex') && !t.includes('sexual') && !t.includes('intimate') && !t.includes('masturbation') && !d.includes('sex') && !d.includes('sexual') && !d.includes('masturbation')) {
-            return false;
-        }
-        return t.includes('sex') || t.includes('sexual') || t.includes('steamy') || t.includes('erotic') || 
-               t.includes('intercourse') || t.includes('intimate') || t.includes('masturbation') || t.includes('touching') ||
-               d.includes('sex') || d.includes('sexual') || d.includes('masturbation');
-    });
-
+    // 1. Nudity Scenes (Captures any nudity, partial nudity, topless, bare)
     const nudityScenes = sensitiveScenes.filter(s => {
         if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
         const t = (s.type || '').toLowerCase();
@@ -44,22 +31,69 @@ const SEOFAQSection = ({ movie }) => {
                d.includes('nudity') || d.includes('topless') || d.includes('naked');
     });
 
-    // 🏆 ALWAYS EXACTLY 2 DEDICATED FEATURE FAQS FOR EVERY SINGLE MOVIE:
+    // 2. Explicit Sex Scenes (Actual intercourse, oral sex, masturbation, steamy erotic acts - excludes pure nudity and non-intercourse sexual content)
+    const sexScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
+        const t = (s.type || '').toLowerCase();
+        const d = (s.description || '').toLowerCase();
+
+        // If it's pure nudity/partial nudity without sex or intercourse, it belongs ONLY in Nudity
+        if ((t.startsWith('nudity') || t.startsWith('partial nudity') || t === 'nudity' || t === 'partial nudity') && 
+            !t.includes('sex') && !t.includes('intercourse') && !d.includes('intercourse') && !d.includes('having sex') && !d.includes('oral sex') && !d.includes('masturbation')) {
+            return false;
+        }
+
+        // Exclude purely non-sexual tags
+        if (t.includes('non-sexual') || t.includes('non sexual')) {
+            return false;
+        }
+
+        // If it is just general 'sexual content' without explicit sex / intercourse
+        if (t.includes('sexual content') && !t.includes('sex &') && !t.includes('explicit sex') && !t.includes('sex scene') && !t.includes('intercourse') && !d.includes('intercourse') && !d.includes('having sex') && !d.includes('masturbation')) {
+            return false;
+        }
+
+        // Must depict actual sex, intercourse, masturbation, oral, or steamy erotic acts
+        return /\bsex\b/i.test(t) || t.includes('sex &') || t.includes('intercourse') || t.includes('steamy') || t.includes('erotic') || 
+               t.includes('masturbation') || t.includes('blowjob') || t.includes('oral') ||
+               d.includes('having sex') || d.includes('intercourse') || d.includes('sexual intercourse') || d.includes('masturbation');
+    });
+
+    // 3. Sexual Content Scenes that are NOT explicit sex scenes (Lingerie, Suggestive, Sensual Dancing)
+    const sexualContentOnlyScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none') return false;
+        if (sexScenes.includes(s) || nudityScenes.includes(s)) return false;
+        const t = (s.type || '').toLowerCase();
+        const d = (s.description || '').toLowerCase();
+        return t.includes('sexual content') || t.includes('lingerie') || t.includes('suggestive') || t.includes('bikini') || d.includes('sexual content') || d.includes('lingerie');
+    });
+
+    // 🏆 DEDICATED FEATURE FAQS:
     // FAQ 1: Does [Title] have sex scenes?
-    const sexList = sexScenes.length > 0
-        ? sexScenes.map(s => {
+    let sexAnswer = '';
+    if (sexScenes.length > 0) {
+        const sexList = sexScenes.map(s => {
             const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
-            const label = s.type || 'Sex / Sexual Content';
+            const label = s.type || 'Sex Scene';
             const severity = s.severity ? ` (${s.severity})` : '';
             return `• ${timeRange} - ${label}${severity}`;
-        }).join('\n')
-        : null;
+        }).join('\n');
+        sexAnswer = `Yes. ${title} contains ${sexScenes.length} explicit sex scene${sexScenes.length > 1 ? 's' : ''}. Exact skip timestamps:\n\n${sexList}\n\nVerified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
+    } else if (sexualContentOnlyScenes.length > 0) {
+        const contentList = sexualContentOnlyScenes.map(s => {
+            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+            const label = s.type || 'Sexual Content';
+            const severity = s.severity ? ` (${s.severity})` : '';
+            return `• ${timeRange} - ${label}${severity}`;
+        }).join('\n');
+        sexAnswer = `No. Filmiway editors have verified that ${title} contains zero explicit sex scenes throughout its ${currentRuntime} runtime, but it does feature ${sexualContentOnlyScenes.length} scene${sexualContentOnlyScenes.length > 1 ? 's' : ''} with suggestive sexual content or lingerie:\n\n${contentList}\n\nVerified by Filmiway editors for the ${currentRuntime} runtime.`;
+    } else {
+        sexAnswer = `No. Filmiway editors have manually verified that ${title} contains zero sex scenes throughout its full ${currentRuntime} runtime.`;
+    }
 
     const faqSex = {
         question: `Does ${title} have sex scenes? If yes, what are the timestamps to skip them?`,
-        answer: sexList 
-            ? `Yes. ${title} contains ${sexScenes.length} scene${sexScenes.length > 1 ? 's' : ''} with sex or sexual content. Exact skip timestamps:\n\n${sexList}\n\nVerified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
-            : `No. Filmiway editors have manually verified that ${title} contains zero sex scenes throughout its full ${currentRuntime} runtime.`
+        answer: sexAnswer
     };
 
     // FAQ 2: Does [Title] have nudity?

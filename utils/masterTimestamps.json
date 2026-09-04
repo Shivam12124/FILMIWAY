@@ -9854,7 +9854,7 @@
       {
         "start": "7:07",
         "end": "7:14",
-        "type": " Nudity",
+        "type": "Nudity",
         "severity": "Moderate"
       },
       {
@@ -9879,7 +9879,8 @@
       }
     ],
     "Age": "16+",
-    "Summary": "Aged 16+ for tense time-travel slasher violence, scissor stabbings, and moderate language."
+    "Summary": "Aged 16+ for tense time-travel slasher violence, scissor stabbings, and moderate language.",
+    "lastVerifiedDate": "September 4, 2026"
   },
   "14337": {
     "Title": "Primer",
@@ -9977,7 +9978,7 @@
       {
         "start": "12:21",
         "end": "12:24",
-        "type": "Partial Nudity (Non-Sexual)",
+        "type": "Partial Nudity",
         "severity": "Mild"
       },
       {
@@ -9996,7 +9997,8 @@
       }
     ],
     "Age": "14+",
-    "Summary": "Aged 14+ for intense martial arts combat, bone-breaking strikes, and bloodless executions."
+    "Summary": "Aged 14+ for intense martial arts combat, bone-breaking strikes, and bloodless executions.",
+    "lastVerifiedDate": "September 4, 2026"
   },
   "14919": {
     "Title": "Batman: Mask of the Phantasm",
@@ -10898,13 +10900,13 @@
       {
         "start": "58:10",
         "end": "1:00:10",
-        "type": "Nudity (Non-Sexual)",
+        "type": "Nudity",
         "severity": "High"
       },
       {
         "start": "1:07:27",
         "end": "1:07:37",
-        "type": "Partial Nudity (Non-Sexual)",
+        "type": "Partial Nudity",
         "severity": "Mild"
       },
       {
@@ -10923,7 +10925,8 @@
       }
     ],
     "Age": "16+",
-    "Summary": "Aged 16+ for heavy crude humor, constant sexual slang, and pervasive F-words."
+    "Summary": "Aged 16+ for heavy crude humor, constant sexual slang, and pervasive F-words.",
+    "lastVerifiedDate": "September 4, 2026"
   },
   "40807": {
     "Title": "50/50",
@@ -12869,7 +12872,7 @@
       {
         "start": "2:04:35",
         "end": "2:04:55",
-        "type": "Nudity (Non-Sexual)",
+        "type": "Nudity",
         "severity": "Moderate"
       },
       {
@@ -12886,7 +12889,8 @@
         "severity": "High",
         "description": "Strong language throughout, including around 89 uses of the F-word and variations, frequent coarse profanity, mild vulgar references, and repeated insulting language. The dialogue also includes occasional offensive stereotypes and an obscene gesture."
       }
-    ]
+    ],
+    "lastVerifiedDate": "September 4, 2026"
   },
   "157336": {
     "Title": "Interstellar",
@@ -14043,7 +14047,7 @@
       {
         "start": "0:28:37",
         "end": "0:28:47",
-        "type": "Nudity, non sexual",
+        "type": "Nudity",
         "severity": "Moderate"
       },
       {
@@ -14062,7 +14066,8 @@
       }
     ],
     "Age": "18+",
-    "Summary": "Aged 18+ for brutal cartel violence, mutilated bodies hanging from bridges, and constant military profanity."
+    "Summary": "Aged 18+ for brutal cartel violence, mutilated bodies hanging from bridges, and constant military profanity.",
+    "lastVerifiedDate": "September 4, 2026"
   },
   "273895": {
     "Title": "Selma",
@@ -15503,7 +15508,7 @@
       {
         "start": "00:09:20",
         "end": "00:11:00",
-        "type": "Sexual Content & Nudity ",
+        "type": "Sexual Content & Nudity",
         "severity": "Moderate"
       },
       {
@@ -15520,7 +15525,8 @@
         "severity": "Moderate",
         "description": "Moderate language includes occasional use of coarse profanity, with a few uses of the F-word alongside other mild to moderate swear words."
       }
-    ]
+    ],
+    "lastVerifiedDate": "September 4, 2026"
   },
   "400617": {
     "Title": "Phantom Thread",
@@ -15818,6 +15824,20 @@
     ],
     "Age": "18+",
     "Summary": "Aged 18+ for extreme, graphic religious body horror, gruesome childbirth imagery, and impalements."
+  },
+  "437586": {
+    "Title": "Mid90s",
+    "Age": "16+",
+    "Summary": "Aged 16+ for pervasive strong language, teen drug and alcohol use, domestic violence, and sexual content involving minors.",
+    "scenes": [
+      {
+        "start": "0:50:45",
+        "end": "0:51:50",
+        "type": "Sexual Content",
+        "severity": "Moderate",
+        "description": "Stevie (Sunny Suljic) and Estee (Alexa Demie) engage in an intimate kissing sequence with implied sexual activity, noted by many viewers as uncomfortable due to the significant age disparity between the characters."
+      }
+    ]
   },
   "438631": {
     "Title": "Dune",
@@ -18268,7 +18288,7 @@
       {
         "start": "0:47:45",
         "end": "0:48:10",
-        "type": "Nudity(Men, non sexual)",
+        "type": "Nudity (Men)",
         "severity": "High"
       },
       {
@@ -18280,7 +18300,7 @@
       {
         "start": "1:29:20",
         "end": "1:29:55",
-        "type": "Partial Nudity (Man, non sexual)",
+        "type": "Partial Nudity (Man)",
         "severity": "Mild"
       },
       {
@@ -18297,7 +18317,8 @@
         "severity": "High",
         "description": "Strong language throughout, including over 50 uses of the F-word and its derivatives, along with occasional mature references, mild obscenities, and name-calling. The dialogue also includes a few scatological terms and an isolated obscene gesture, plus frequent heated exchanges and exclamations."
       }
-    ]
+    ],
+    "lastVerifiedDate": "September 4, 2026"
   },
   "938614": {
     "Title": "Late Night with the Devil",
@@ -18374,7 +18395,7 @@
       {
         "start": "0:23:05",
         "end": "0:23:25",
-        "type": "Partial Nudity (Non-Sexual)",
+        "type": "Partial Nudity",
         "severity": "Mild"
       },
       {
@@ -18393,7 +18414,8 @@
       }
     ],
     "Age": "All ages",
-    "Summary": "Suitable for all ages; serene, meditative Japanese drama with zero physical conflict."
+    "Summary": "Suitable for all ages; serene, meditative Japanese drama with zero physical conflict.",
+    "lastVerifiedDate": "September 4, 2026"
   },
   "986054": {
     "Title": "Theater Camp",
@@ -19398,19 +19420,5 @@
     ],
     "Age": "18+",
     "Summary": "Aged 18+ for hard-R animated Predator carnage, decapitations, severed limbs, and intense action swearing."
-  },
-  "437586": {
-    "Title": "Mid90s",
-    "Age": "16+",
-    "Summary": "Aged 16+ for pervasive strong language, teen drug and alcohol use, domestic violence, and sexual content involving minors.",
-    "scenes": [
-      {
-        "start": "0:50:45",
-        "end": "0:51:50",
-        "type": "Sexual Content",
-        "severity": "Moderate",
-        "description": "Stevie (Sunny Suljic) and Estee (Alexa Demie) engage in an intimate kissing sequence with implied sexual activity, noted by many viewers as uncomfortable due to the significant age disparity between the characters."
-      }
-    ]
   }
 }

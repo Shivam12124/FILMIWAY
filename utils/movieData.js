@@ -864,16 +864,42 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const overallSeverity = getHighestSeverityInfo(heavyScenes);
 
         // Filter for specific Sex Scenes and Nudity Scenes
-        const sexScenes = heavyScenes.filter(s => {
-            const t = (s.type || '').toLowerCase();
-            const d = (s.description || '').toLowerCase();
-            return t.includes('sex') || t.includes('sexual') || t.includes('steamy') || t.includes('erotic') || t.includes('intercourse') || t.includes('intimate') || d.includes('sex') || d.includes('sexual');
-        });
-
         const nudityScenes = heavyScenes.filter(s => {
             const t = (s.type || '').toLowerCase();
             const d = (s.description || '').toLowerCase();
-            return t.includes('nudity') || t.includes('topless') || t.includes('bare') || t.includes('naked') || t.includes('bikini') || t.includes('lingerie') || d.includes('nudity') || d.includes('topless') || d.includes('naked');
+            return t.includes('nudity') || t.includes('topless') || t.includes('bare') || t.includes('naked') || 
+                   d.includes('nudity') || d.includes('topless') || d.includes('naked');
+        });
+
+        const sexScenes = heavyScenes.filter(s => {
+            const t = (s.type || '').toLowerCase();
+            const d = (s.description || '').toLowerCase();
+
+            // Exclude pure nudity without sex acts
+            if ((t.startsWith('nudity') || t.startsWith('partial nudity') || t === 'nudity' || t === 'partial nudity') && 
+                !t.includes('sex') && !t.includes('intercourse') && !d.includes('intercourse') && !d.includes('having sex') && !d.includes('oral sex') && !d.includes('masturbation')) {
+                return false;
+            }
+
+            if (t.includes('non-sexual') || t.includes('non sexual')) {
+                return false;
+            }
+
+            // If it is just general 'sexual content' without explicit sex / intercourse
+            if (t.includes('sexual content') && !t.includes('sex &') && !t.includes('explicit sex') && !t.includes('sex scene') && !t.includes('intercourse') && !d.includes('intercourse') && !d.includes('having sex') && !d.includes('masturbation')) {
+                return false;
+            }
+
+            return /\bsex\b/i.test(t) || t.includes('sex &') || t.includes('intercourse') || t.includes('steamy') || t.includes('erotic') || 
+                   t.includes('masturbation') || t.includes('blowjob') || t.includes('oral') ||
+                   d.includes('having sex') || d.includes('intercourse') || d.includes('sexual intercourse') || d.includes('masturbation');
+        });
+
+        const sexualContentOnlyScenes = heavyScenes.filter(s => {
+            if (sexScenes.includes(s) || nudityScenes.includes(s)) return false;
+            const t = (s.type || '').toLowerCase();
+            const d = (s.description || '').toLowerCase();
+            return t.includes('sexual content') || t.includes('lingerie') || t.includes('suggestive') || t.includes('bikini') || d.includes('sexual content') || d.includes('lingerie');
         });
 
         const explicitFaqsToInsert = [];
@@ -890,6 +916,23 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 question: `Does ${movieTitle} have sex scenes? If yes, what are the timestamps to skip them?`,
                 answer: `Yes. ${movieTitle} contains ${sexScenes.length} explicit sex scene${sexScenes.length > 1 ? 's' : ''}. Exact skip timestamps:\n\n${sexList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             });
+        } else if (sexualContentOnlyScenes.length > 0) {
+            const contentList = sexualContentOnlyScenes.map(s => {
+                const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+                const label = s.type || 'Sexual Content';
+                const severity = s.severity ? ` (${s.severity})` : '';
+                return `• ${timeRange} - ${label}${severity}`;
+            }).join('\n');
+
+            explicitFaqsToInsert.push({
+                question: `Does ${movieTitle} have sex scenes? If yes, what are the timestamps to skip them?`,
+                answer: `No. Filmiway editors have verified that ${movieTitle} contains zero explicit sex scenes throughout its ${finalRuntime} runtime, but it does feature ${sexualContentOnlyScenes.length} scene${sexualContentOnlyScenes.length > 1 ? 's' : ''} with suggestive sexual content or lingerie:\n\n${contentList}\n\nVerified by Filmiway editors for the ${finalRuntime} runtime.`
+            });
+        } else {
+            explicitFaqsToInsert.push({
+                question: `Does ${movieTitle} have sex scenes? If yes, what are the timestamps to skip them?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} contains zero sex scenes throughout its full ${finalRuntime} runtime.`
+            });
         }
 
         if (nudityScenes.length > 0) {
@@ -904,12 +947,10 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 question: `Does ${movieTitle} have nudity? If yes, what are the timestamps to skip it?`,
                 answer: `Yes. ${movieTitle} contains ${nudityScenes.length} scene${nudityScenes.length > 1 ? 's' : ''} featuring nudity. Exact skip timestamps:\n\n${nudityList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             });
-        }
-
-        if (explicitFaqsToInsert.length === 0) {
+        } else {
             explicitFaqsToInsert.push({
-                question: `Does ${movieTitle} have sex scenes or nudity?`,
-                answer: `No. Filmiway editors have manually verified that ${movieTitle} contains zero explicit sex scenes and no nudity in the ${finalRuntime} runtime.`
+                question: `Does ${movieTitle} have nudity? If yes, what are the timestamps to skip it?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of nudity throughout its full ${finalRuntime} runtime.`
             });
         }
 

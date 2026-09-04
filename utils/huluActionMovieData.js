@@ -29,7 +29,7 @@ export const SENSITIVE_TIMELINES = {
     // 2. Ip Man
     14756: { 
         scenes: [
-            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Mild" }
+            { start: "12:21", end: "12:24", type: "Partial Nudity", severity: "Mild" }
         ] 
     },
     // 3. Dawn of the Planet of the Apes
@@ -39,7 +39,7 @@ export const SENSITIVE_TIMELINES = {
     // 5. The Equalizer
     156022: { 
         scenes: [
-            { start: "2:04:35", end: "2:04:55", type: "Nudity (Non-Sexual)", severity: "Moderate" }
+            { start: "2:04:35", end: "2:04:55", type: "Nudity", severity: "Moderate" }
         ] 
     },
     // 6. Kingsman: The Secret Service

@@ -62,8 +62,8 @@ export const SENSITIVE_TIMELINES = {
     39939: { 
         scenes: [
             { start: "44:10", end: "45:15", type: "Nudity", severity: "High" },
-            { start: "58:10", end: "1:00:10", type: "Nudity (Non-Sexual)", severity: "High" },
-            { start: "1:07:27", end: "1:07:37", type: "Partial Nudity (Non-Sexual)", severity: "Mild" }
+            { start: "58:10", end: "1:00:10", type: "Nudity", severity: "High" },
+            { start: "1:07:27", end: "1:07:37", type: "Partial Nudity", severity: "Mild" }
         ] 
     },
 

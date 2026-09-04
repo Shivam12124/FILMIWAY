@@ -47,9 +47,9 @@ export const SENSITIVE_TIMELINES = {
     937287: { // Challengers
         scenes: [
             { start: "0:04:20", end: "0:04:42", type: "Lingerie", severity: "Mild" },
-            { start: "0:47:45", end: "0:48:10", type: "Nudity(Men, non sexual)", severity: "High" },
+            { start: "0:47:45", end: "0:48:10", type: "Nudity (Men)", severity: "High" },
             { start: "1:02:30", end: "1:04:55", type: "Sexual Content & Lingerie", severity: "Moderate" },
-            { start: "1:29:20", end: "1:29:55", type: "Partial Nudity (Man, non sexual)", severity: "Mild" }
+            { start: "1:29:20", end: "1:29:55", type: "Partial Nudity (Man)", severity: "Mild" }
         ] 
     },
     293863: { scenes: [] }, // The Age of Adaline
