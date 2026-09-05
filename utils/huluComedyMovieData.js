@@ -4,7 +4,7 @@ import masterTimestamps from './masterTimestamps.json';
 // CALIBRATION: 0-20 (Setup) | 20-40 (Light) | 40-60 (Funny) | 60-75 (Chaos) | 75-85 (Implosion) | 85-95 (Extreme) | 95-100 (Genre-Defining)
 
 export const TMDB_CONFIG = {
-      API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
+    API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',
     IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
     POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
@@ -26,53 +26,53 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Comedy Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Superbad
-    8363: { 
+    8363: {
         scenes: [
             { start: "4:45", end: "4:55", type: "Nudity", severity: "Moderate" },
             { start: "9:38", end: "9:45", type: "Nudity", severity: "High" },
             { start: "18:15", end: "20:30", type: "Sexual Content", severity: "Mild" }
-        ] 
+        ]
     },
 
     // 2. O Brother, Where Art Thou?
-    134: { scenes: [] }, 
+    134: { scenes: [] },
 
     // 3. Borat
-    496: { 
+    496: {
         scenes: [
             { start: "3:36", end: "3:50", type: "Partial Nudity", severity: "Moderate" },
             { start: "55:15", end: "58:20", type: "Sexual Content & Nudity", severity: "High" }
-        ] 
+        ]
     },
 
     // 4. Bullet Train
-    718930: { scenes: [] }, 
+    718930: { scenes: [] },
 
     // 5. Palm Springs
-    587792: { 
+    587792: {
         scenes: [
             { start: "1:12", end: "1:55", type: "Sexual Content", severity: "Moderate" },
             { start: "29:53", end: "29:59", type: "Partial Nudity", severity: "Mild" },
             { start: "31:20", end: "31:30", type: "Sexual Content", severity: "Moderate" },
             { start: "39:20", end: "39:30", type: "Sex", severity: "Moderate" }
-        ] 
+        ]
     },
 
     // 6. Super Troopers
-    39939: { 
+    39939: {
         scenes: [
             { start: "44:10", end: "45:15", type: "Nudity", severity: "High" },
             { start: "58:10", end: "1:00:10", type: "Nudity", severity: "High" },
             { start: "1:07:27", end: "1:07:37", type: "Partial Nudity", severity: "Mild" }
-        ] 
+        ]
     },
 
     // 7. Twinless
-    1245347: { 
+    1245347: {
         scenes: [
             { start: "23:45", end: "25:15", type: "Sex & Nudity", severity: "High" },
             { start: "1:04:25", end: "1:06:10", type: "Sex & Nudity", severity: "High" }
-        ] 
+        ]
     },
 
     // 8. Big
@@ -92,10 +92,10 @@ export const FALLBACK_POSTERS = {
     718930: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaPETYiXe2FOUVy.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1SBNmo4JG2ziZFnXA23jJ2Sbd.jpg",
     39939: "https://image.tmdb.org/t/p/w500/3s9Y5w27dGHX03aA7Y5W6v.jpg",
-   1245347: "https://image.tmdb.org/t/p/w500/placeholder.jpg",
+    1245347: "https://image.tmdb.org/t/p/w500/placeholder.jpg",
     2280: "https://image.tmdb.org/t/p/w500/ur1593c.jpg",
-  986054: "https://image.tmdb.org/t/p/w500/3X.jpg",
-  7512: "https://image.tmdb.org/t/p/w500/gZ.jpg"
+    986054: "https://image.tmdb.org/t/p/w500/3X.jpg",
+    7512: "https://image.tmdb.org/t/p/w500/gZ.jpg"
 };
 
 // ✅ HELPER: Single Metric "Laughter Index"
@@ -109,13 +109,13 @@ export const COMPLETE_MOVIE_DATA = {
     // 1. Superbad (TEEN CHAOS PEAK)
     // Curve: Desperation -> Failure -> Escalation -> Explosion -> Acceptance.
     // Peak: 95 (The Cop Car Ride - Absolute Chaos).
-    8363: createMovieData({ 
-        laughterIndex: 90, 
-        complexityLevel: "LEGENDARY", 
-        dominantColor: "#ef4444", rating: 7.6, criticsScore: 88, audienceScore: 87, director: "Greg Mottola", 
-        cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"], boxOffice: "$170 million", budget: "$20 million", 
+    8363: createMovieData({
+        laughterIndex: 90,
+        complexityLevel: "LEGENDARY",
+        dominantColor: "#ef4444", rating: 7.6, criticsScore: 88, audienceScore: 87, director: "Greg Mottola",
+        cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"], boxOffice: "$170 million", budget: "$20 million",
         dna: { "Comedy": 70, "Coming of Age": 30 },
-   scenes: [
+        scenes: [
             { time: 15, intensity: 40, label: "The Fake ID" }, // Mild anxiety over McLovin.
             { time: 40, intensity: 78, label: "The Liquor Store Robbery" }, // Fogell gets punched. Real danger spikes.
             { time: 70, intensity: 85, label: "The Cop Car Joyride" }, // Shooting stop signs. Insane escalation.
@@ -129,11 +129,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 2. O Brother, Where Art Thou? (ADVENTURE PEAK)
     // Curve: Escape -> Music -> Obstacle -> Triumph -> Salvation.
     // Peak: 88 (Man of Constant Sorrow - Musical Triumph).
-    134: createMovieData({ 
-        laughterIndex: 88, 
-        complexityLevel: "MASTERPIECE", 
-        dominantColor: "#ca8a04", rating: 7.7, criticsScore: 79, audienceScore: 89, director: "Joel Coen", 
-        cast: ["George Clooney", "John Turturro", "Tim Blake Nelson"], boxOffice: "$71 million", budget: "$26 million", 
+    134: createMovieData({
+        laughterIndex: 88,
+        complexityLevel: "MASTERPIECE",
+        dominantColor: "#ca8a04", rating: 7.7, criticsScore: 79, audienceScore: 89, director: "Joel Coen",
+        cast: ["George Clooney", "John Turturro", "Tim Blake Nelson"], boxOffice: "$71 million", budget: "$26 million",
         dna: { "Comedy": 50, "Adventure": 30, "Music": 20 },
         scenes: [
             { time: 15, intensity: 25, label: "Chain Gang Escape", color: "#a16207" }, // Setup
@@ -149,11 +149,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 3. Borat (GENRE-DEFINING CHAOS)
     // Curve: Culture Clash -> Offense -> Discomfort -> Extreme Shock -> Resolution.
     // Peak: 98 (The Hotel Fight - Extreme Discomfort).
-    496: createMovieData({ 
-        laughterIndex: 98, 
-        complexityLevel: "CHAOTIC", 
-        dominantColor: "#fcd34d", rating: 7.4, criticsScore: 91, audienceScore: 79, director: "Larry Charles", 
-        cast: ["Sacha Baron Cohen", "Ken Davitian", "Luenell"], boxOffice: "$262 million", budget: "$18 million", 
+    496: createMovieData({
+        laughterIndex: 98,
+        complexityLevel: "CHAOTIC",
+        dominantColor: "#fcd34d", rating: 7.4, criticsScore: 91, audienceScore: 79, director: "Larry Charles",
+        cast: ["Sacha Baron Cohen", "Ken Davitian", "Luenell"], boxOffice: "$262 million", budget: "$18 million",
         dna: { "Satire": 60, "Mockumentary": 40 },
         scenes: [
             { time: 10, intensity: 30, label: "Arrival in NY", color: "#facc15" }, // Setup
@@ -169,11 +169,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 4. Bullet Train (ACTION COMEDY)
     // Curve: Mission -> Complication -> Chaos -> Spectacle -> Aftermath.
     // Peak: 90 (The Train Crash - Visual Spectacle).
-    718930: createMovieData({ 
-        laughterIndex: 85, 
-        complexityLevel: "ACTION-PACKED", 
-        dominantColor: "#ec4899", rating: 7.3, criticsScore: 54, audienceScore: 76, director: "David Leitch", 
-        cast: ["Brad Pitt", "Joey King", "Aaron Taylor-Johnson"], boxOffice: "$239 million", budget: "$90 million", 
+    718930: createMovieData({
+        laughterIndex: 85,
+        complexityLevel: "ACTION-PACKED",
+        dominantColor: "#ec4899", rating: 7.3, criticsScore: 54, audienceScore: 76, director: "David Leitch",
+        cast: ["Brad Pitt", "Joey King", "Aaron Taylor-Johnson"], boxOffice: "$239 million", budget: "$90 million",
         dna: { "Action": 50, "Comedy": 50 },
         scenes: [
             { time: 20, intensity: 35, label: "The Briefcase", color: "#db2777" }, // Setup
@@ -189,11 +189,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 5. Palm Springs (SCI-FI ROM-COM)
     // Curve: Resignation -> Discovery -> Fun -> Despair -> Hope.
     // Peak: 88 (The Bridge Scene - Emotional Crisis).
-    587792: createMovieData({ 
-        laughterIndex: 88, 
-        complexityLevel: "SMART", 
-        dominantColor: "#34d399", rating: 7.4, criticsScore: 94, audienceScore: 88, director: "Max Barbakow", 
-        cast: ["Andy Samberg", "Cristin Milioti", "J.K. Simmons"], boxOffice: "Streaming", budget: "$5 million", 
+    587792: createMovieData({
+        laughterIndex: 88,
+        complexityLevel: "SMART",
+        dominantColor: "#34d399", rating: 7.4, criticsScore: 94, audienceScore: 88, director: "Max Barbakow",
+        cast: ["Andy Samberg", "Cristin Milioti", "J.K. Simmons"], boxOffice: "Streaming", budget: "$5 million",
         dna: { "Sci-Fi": 40, "Romance": 30, "Comedy": 30 },
         scenes: [
             { time: 15, intensity: 25, label: "The Cave", color: "#10b981" }, // Setup
@@ -209,11 +209,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 6. Super Troopers (STONER / LOW STAKES)
     // Curve: Prank -> Rivalry -> Screw Up -> Redemption -> Chaos.
     // Peak: 75 (The Drug Bust - Narrative Climax).
-    39939: createMovieData({ 
-        laughterIndex: 75, 
-        complexityLevel: "CULT CLASSIC", 
-        dominantColor: "#1d4ed8", rating: 7.0, criticsScore: 36, audienceScore: 90, director: "Jay Chandrasekhar", 
-        cast: ["Jay Chandrasekhar", "Kevin Heffernan", "Steve Lemme"], boxOffice: "$23 million", budget: "$1.2 million", 
+    39939: createMovieData({
+        laughterIndex: 75,
+        complexityLevel: "CULT CLASSIC",
+        dominantColor: "#1d4ed8", rating: 7.0, criticsScore: 36, audienceScore: 90, director: "Jay Chandrasekhar",
+        cast: ["Jay Chandrasekhar", "Kevin Heffernan", "Steve Lemme"], boxOffice: "$23 million", budget: "$1.2 million",
         dna: { "Comedy": 80, "Crime": 20 },
         scenes: [
             { time: 5, intensity: 40, label: "The Opening Stop", color: "#2563eb" }, // Setup
@@ -229,11 +229,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 7. Twinless (DARK BUDDY COMEDY)
     // Curve: Grief -> Meeting -> Bonding -> Shock -> Acceptance.
     // Peak: 78 (The Twist - Narrative Shift).
-   1245347: createMovieData({ 
-        laughterIndex: 80, 
-        complexityLevel: "FRESH", 
-        dominantColor: "#8b5cf6", rating: 7.0, criticsScore: 85, audienceScore: 80, director: "James Griffiths", 
-        cast: ["Dylan O'Brien", "James Sweeney", "Lauren Lapkus"], boxOffice: "N/A", budget: "N/A", 
+    1245347: createMovieData({
+        laughterIndex: 80,
+        complexityLevel: "FRESH",
+        dominantColor: "#8b5cf6", rating: 7.0, criticsScore: 85, audienceScore: 80, director: "James Griffiths",
+        cast: ["Dylan O'Brien", "James Sweeney", "Lauren Lapkus"], boxOffice: "N/A", budget: "N/A",
         dna: { "Comedy": 60, "Drama": 40 },
         scenes: [
             { time: 10, intensity: 20, label: "The Loss", color: "#a78bfa" }, // Setup/Sadness
@@ -249,11 +249,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 8. Big (NOSTALGIC / WARM)
     // Curve: Wish -> Fear -> Wonder -> Success -> Goodbye.
     // Peak: 85 (The Giant Piano - Pure Joy).
-    2280: createMovieData({ 
-        laughterIndex: 75, 
-        complexityLevel: "NOSTALGIC", 
-        dominantColor: "#3b82f6", rating: 7.3, criticsScore: 98, audienceScore: 89, director: "Penny Marshall", 
-        cast: ["Tom Hanks", "Elizabeth Perkins", "Robert Loggia"], boxOffice: "$151 million", budget: "$18 million", 
+    2280: createMovieData({
+        laughterIndex: 75,
+        complexityLevel: "NOSTALGIC",
+        dominantColor: "#3b82f6", rating: 7.3, criticsScore: 98, audienceScore: 89, director: "Penny Marshall",
+        cast: ["Tom Hanks", "Elizabeth Perkins", "Robert Loggia"], boxOffice: "$151 million", budget: "$18 million",
         dna: { "Comedy": 50, "Fantasy": 30, "Romance": 20 },
         scenes: [
             { time: 15, intensity: 25, label: "Zoltar Speaks", color: "#60a5fa" }, // Setup
@@ -269,11 +269,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 9. Theater Camp (MOCKUMENTARY / CRINGE)
     // Curve: Crisis -> Auditions -> Chaos -> Performance -> Triumph.
     // Peak: 82 (The Show - Controlled Chaos).
-  986054: createMovieData({ 
-        laughterIndex: 82, 
-        complexityLevel: "MOCKUMENTARY", 
-        dominantColor: "#f43f5e", rating: 7.0, criticsScore: 86, audienceScore: 80, director: "Molly Gordon", 
-        cast: ["Ben Platt", "Molly Gordon", "Noah Galvin"], boxOffice: "$4 million", budget: "N/A", 
+    986054: createMovieData({
+        laughterIndex: 82,
+        complexityLevel: "MOCKUMENTARY",
+        dominantColor: "#f43f5e", rating: 7.0, criticsScore: 86, audienceScore: 80, director: "Molly Gordon",
+        cast: ["Ben Platt", "Molly Gordon", "Noah Galvin"], boxOffice: "$4 million", budget: "N/A",
         dna: { "Comedy": 80, "Musical": 20 },
         scenes: [
             { time: 10, intensity: 30, label: "Joan Coma", color: "#fb7185" }, // Setup
@@ -289,11 +289,11 @@ export const COMPLETE_MOVIE_DATA = {
     // 10. Idiocracy (SATIRE / FRUSTRATION)
     // Curve: Experiment -> Awakening -> Arrest -> Trial -> Resolution.
     // Peak: 80 (The Monster Truck Rally - Peak Stupidity).
-  7512: createMovieData({ 
-        laughterIndex: 80, 
-        complexityLevel: "SATIRE", 
-        dominantColor: "#eab308", rating: 6.5, criticsScore: 71, audienceScore: 60, director: "Mike Judge", 
-        cast: ["Luke Wilson", "Maya Rudolph", "Dax Shepard"], boxOffice: "$0.5 million", budget: "$2 million", 
+    7512: createMovieData({
+        laughterIndex: 80,
+        complexityLevel: "SATIRE",
+        dominantColor: "#eab308", rating: 6.5, criticsScore: 71, audienceScore: 60, director: "Mike Judge",
+        cast: ["Luke Wilson", "Maya Rudolph", "Dax Shepard"], boxOffice: "$0.5 million", budget: "$2 million",
         dna: { "Sci-Fi": 40, "Comedy": 60 },
         scenes: [
             { time: 10, intensity: 15, label: "Hibernation", color: "#facc15" }, // Setup
@@ -313,10 +313,10 @@ export const STRATEGIC_QUOTES = {
     718930: "Diesel is a diesel.",
     587792: "Today, tomorrow, it's all the same.",
     39939: "The snozberries taste like snozberries.",
-   1245347: "We are the twinless.",
+    1245347: "We are the twinless.",
     2280: "I wish I were big.",
-  986054: "Joan, still.",
-  7512: "It's got electrolytes."
+    986054: "Joan, still.",
+    7512: "It's got electrolytes."
 };
 
 export const CINEMATIC_COLORS = {
@@ -335,116 +335,116 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { question: "Does Superbad have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Superbad is rated as Mild. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication." },
         { question: "Does Superbad have profanity or swearing?", answer: "The profanity in Superbad is rated as High. Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs." },
         { question: "Why is Superbad rated R?", answer: "Superbad earns its R rating due to high sexual content and nudity, mild violence, and high profanity. Specifically, the film contains Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication. Adults can use our timestamps to skip the explicit content." },
-        { 
-            question: "Why is 'McLovin' such a famous movie meme?", 
-            answer: "The joke stems from the character Fogell choosing a single, nonsensical moniker for a fake ID instead of a standard name. Seth Rogen revealed the name was inspired by the idea of a 'sexy Irish R&B singer.' It became a cultural touchstone for teen awkwardness in the late 2000s." 
+        {
+            question: "Why is 'McLovin' such a famous movie meme?",
+            answer: "The joke stems from the character Fogell choosing a single, nonsensical moniker for a fake ID instead of a standard name. Seth Rogen revealed the name was inspired by the idea of a 'sexy Irish R&B singer.' It became a cultural touchstone for teen awkwardness in the late 2000s."
         },
-        { 
-            question: "Is the friendship between Seth and Evan based on real people?", 
-            answer: "Yes. Writers Seth Rogen and Evan Goldberg wrote the script at age 13 as a semi-autobiographical project. The lead characters are named after them, and the dialogue was specifically crafted to capture the authentic, messy way suburban teens actually talk." 
+        {
+            question: "Is the friendship between Seth and Evan based on real people?",
+            answer: "Yes. Writers Seth Rogen and Evan Goldberg wrote the script at age 13 as a semi-autobiographical project. The lead characters are named after them, and the dialogue was specifically crafted to capture the authentic, messy way suburban teens actually talk."
         },
-        { 
-            question: "How much of the movie was improvised?", 
-            answer: "While the plot was scripted, the banter between Jonah Hill and Michael Cera was heavily improvised to keep the chemistry natural. However, the famous 'penis drawing' montage was fully scripted—Seth Rogen actually drew those as a teenager." 
+        {
+            question: "How much of the movie was improvised?",
+            answer: "While the plot was scripted, the banter between Jonah Hill and Michael Cera was heavily improvised to keep the chemistry natural. However, the famous 'penis drawing' montage was fully scripted—Seth Rogen actually drew those as a teenager."
         },
-        { 
-            question: "Content Advisory: Nudity and Language", 
-            answer: "Superbad is a hard R-rated comedy. It contains frequent profanity and comedic nudity. Key timestamps for sensitive content: 4:45, 9:38, and a sequence from 18:15 to 20:30." 
+        {
+            question: "Content Advisory: Nudity and Language",
+            answer: "Superbad is a hard R-rated comedy. It contains frequent profanity and comedic nudity. Key timestamps for sensitive content: 4:45, 9:38, and a sequence from 18:15 to 20:30."
         }
     ],
 
     'O Brother, Where Art Thou?': [
-        { 
-            question: "Is this movie a direct retelling of 'The Odyssey'?", 
-            answer: "It’s a 'folk-art' adaptation. Set in the 1930s Deep South, it mirrors Homer’s epic: Everett (Odysseus) tries to return to his wife Penny (Penelope) while encountering parallels like the Cyclops (a one-eyed salesman) and the Sirens (women at the river)." 
+        {
+            question: "Is this movie a direct retelling of 'The Odyssey'?",
+            answer: "It’s a 'folk-art' adaptation. Set in the 1930s Deep South, it mirrors Homer’s epic: Everett (Odysseus) tries to return to his wife Penny (Penelope) while encountering parallels like the Cyclops (a one-eyed salesman) and the Sirens (women at the river)."
         },
-        { 
-            question: "Did George Clooney actually sing 'Man of Constant Sorrow'?", 
-            answer: "No. While Clooney practiced for weeks, his voice was dubbed by bluegrass artist Dan Tyminski. However, co-star Tim Blake Nelson (Delmar) did perform his own vocals for 'In the Jailhouse Now.'" 
+        {
+            question: "Did George Clooney actually sing 'Man of Constant Sorrow'?",
+            answer: "No. While Clooney practiced for weeks, his voice was dubbed by bluegrass artist Dan Tyminski. However, co-star Tim Blake Nelson (Delmar) did perform his own vocals for 'In the Jailhouse Now.'"
         },
-        { 
-            question: "Why does the movie have a unique 'sepia' look?", 
-            answer: "It was the first feature film to be entirely color-corrected digitally. The Coen Brothers wanted a 'dust bowl' aesthetic. Since Mississippi was too green during filming, they digitally tinted every frame to look like an old, sun-faded postcard." 
+        {
+            question: "Why does the movie have a unique 'sepia' look?",
+            answer: "It was the first feature film to be entirely color-corrected digitally. The Coen Brothers wanted a 'dust bowl' aesthetic. Since Mississippi was too green during filming, they digitally tinted every frame to look like an old, sun-faded postcard."
         }
     ],
 
     'Borat': [
-        { 
-            question: "How much of Borat is real vs. scripted?", 
-            answer: "Only the main characters were scripted. The reactions from the public were 100% real. Sacha Baron Cohen stayed in character for weeks at a time to provoke genuine responses, often resulting in the police being called (over 90 times during production)." 
+        {
+            question: "How much of Borat is real vs. scripted?",
+            answer: "Only the main characters were scripted. The reactions from the public were 100% real. Sacha Baron Cohen stayed in character for weeks at a time to provoke genuine responses, often resulting in the police being called (over 90 times during production)."
         },
-        { 
-            question: "Is the depiction of Kazakhstan accurate?", 
-            answer: "No, it’s a total caricature. The 'Kazakh' village was actually filmed in Romania, and the language Borat speaks is a mix of Hebrew and gibberish. Ironically, Kazakhstan later used Borat's 'Very Nice!' catchphrase for their official 2020 tourism campaign." 
+        {
+            question: "Is the depiction of Kazakhstan accurate?",
+            answer: "No, it’s a total caricature. The 'Kazakh' village was actually filmed in Romania, and the language Borat speaks is a mix of Hebrew and gibberish. Ironically, Kazakhstan later used Borat's 'Very Nice!' catchphrase for their official 2020 tourism campaign."
         },
-        { 
-            question: "Content Advisory: Graphic Humour & Nudity", 
-            answer: "The film is known for extreme 'cringe comedy.' Note: There is a highly graphic scene involving full male nudity from 55:15 to 58:20 that is a major talking point of the film." 
+        {
+            question: "Content Advisory: Graphic Humour & Nudity",
+            answer: "The film is known for extreme 'cringe comedy.' Note: There is a highly graphic scene involving full male nudity from 55:15 to 58:20 that is a major talking point of the film."
         }
     ],
 
     'Bullet Train': [
         { question: "Does Bullet Train have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Bullet Train is rated as High. Intense action violence throughout, featuring frequent gunfights and sword combat with many bloody deaths including slashing, impalement, and gunshot injuries. Includes brief dismemberment imagery and disturbing body disposal scenes." },
         { question: "Does Bullet Train have profanity or swearing?", answer: "The profanity in Bullet Train is rated as High. Strong language throughout, including over 100 uses of the F-word and variations, frequent coarse profanity, and extensive insulting and sexualized language. The dialogue also includes repeated scatological and mild obscenities." },
-        { 
-            question: "What is the 'Thomas the Tank Engine' obsession about?", 
-            answer: "It’s a character philosophy for the assassin Lemon. He uses the children's show to categorize people's personalities (e.g., being a 'Diesel' means you're untrustworthy). This absurdist logic is a core part of the film’s 'action-comedy' DNA." 
+        {
+            question: "What is the 'Thomas the Tank Engine' obsession about?",
+            answer: "It’s a character philosophy for the assassin Lemon. He uses the children's show to categorize people's personalities (e.g., being a 'Diesel' means you're untrustworthy). This absurdist logic is a core part of the film’s 'action-comedy' DNA."
         },
-        { 
-            question: "Did Brad Pitt really do his own stunts at 58?", 
-            answer: "Yes, approximately 95% of them. Director David Leitch (who was Pitt’s former stunt double) designed the fights to be 'Jackie Chan-style'—using the environment and props rather than just traditional martial arts." 
+        {
+            question: "Did Brad Pitt really do his own stunts at 58?",
+            answer: "Yes, approximately 95% of them. Director David Leitch (who was Pitt’s former stunt double) designed the fights to be 'Jackie Chan-style'—using the environment and props rather than just traditional martial arts."
         },
-        { 
-            question: "Is there a post-credits scene or cameo I should watch for?", 
-            answer: "Keep an eye out for an uncredited cameo by Ryan Reynolds as 'Carver.' It was a 'revenge' cameo after Brad Pitt appeared for one second in Reynolds' 'Deadpool 2'." 
+        {
+            question: "Is there a post-credits scene or cameo I should watch for?",
+            answer: "Keep an eye out for an uncredited cameo by Ryan Reynolds as 'Carver.' It was a 'revenge' cameo after Brad Pitt appeared for one second in Reynolds' 'Deadpool 2'."
         }
     ],
 
     'Palm Springs': [
-        { 
-            question: "How long was Nyles actually stuck in the time loop?", 
-            answer: "The movie is vague, but the writer suggested Nyles was stuck for over 40 years. Some fans calculate it as centuries given his mastery of quantum physics and the complex choreography he performs during the wedding." 
+        {
+            question: "How long was Nyles actually stuck in the time loop?",
+            answer: "The movie is vague, but the writer suggested Nyles was stuck for over 40 years. Some fans calculate it as centuries given his mastery of quantum physics and the complex choreography he performs during the wedding."
         },
-        { 
-            question: "How does it differ from 'Groundhog Day'?", 
-            answer: "Unlike 'Groundhog Day,' where one person is trapped, Palm Springs explores the nihilism of being trapped *with someone else*. It’s less about 'becoming a better person' and more about finding a reason to care in an infinite world." 
+        {
+            question: "How does it differ from 'Groundhog Day'?",
+            answer: "Unlike 'Groundhog Day,' where one person is trapped, Palm Springs explores the nihilism of being trapped *with someone else*. It’s less about 'becoming a better person' and more about finding a reason to care in an infinite world."
         },
-        { 
-            question: "Content Advisory: Sex and Nudity", 
-            answer: "Features comedic sexual situations and brief nudity. Notable timestamps: 1:12, 29:53 (partial nudity), and 31:20." 
+        {
+            question: "Content Advisory: Sex and Nudity",
+            answer: "Features comedic sexual situations and brief nudity. Notable timestamps: 1:12, 29:53 (partial nudity), and 31:20."
         }
     ],
 
     'Idiocracy': [
-        { 
-            question: "Is the story about Crocs being 'future shoes' true?", 
-            answer: "Yes. The costume designer chose Crocs because they were a tiny startup at the time and she thought they looked 'too stupid' for anyone to wear in real life. By the time the movie gained a cult following, Crocs had become a multi-billion dollar global brand." 
+        {
+            question: "Is the story about Crocs being 'future shoes' true?",
+            answer: "Yes. The costume designer chose Crocs because they were a tiny startup at the time and she thought they looked 'too stupid' for anyone to wear in real life. By the time the movie gained a cult following, Crocs had become a multi-billion dollar global brand."
         },
-        { 
-            question: "Why is this movie considered a 'prophetic' comedy?", 
-            answer: "In Tier 1 countries, 'Idiocracy' is often cited as a warning. It satirizes the commercialization of politics, the decline of language, and the rise of anti-intellectualism. Many fans joke that the film has shifted from 'comedy' to 'documentary.'" 
+        {
+            question: "Why is this movie considered a 'prophetic' comedy?",
+            answer: "In Tier 1 countries, 'Idiocracy' is often cited as a warning. It satirizes the commercialization of politics, the decline of language, and the rise of anti-intellectualism. Many fans joke that the film has shifted from 'comedy' to 'documentary.'"
         }
     ],
 
     'Twinless': [
-        { 
-            question: "What is the 'Traumedy' genre of this 2025 hit?", 
-            answer: "Twinless is a prime example of a 'Trauma-Comedy.' It uses the dark, awkward reality of losing a sibling to fuel a buddy-comedy dynamic between Dylan O'Brien and James Sweeney. It's meant for fans of 'The Bear' or 'Fleabag' who like humor mixed with heavy emotion." 
+        {
+            question: "What is the 'Traumedy' genre of this 2025 hit?",
+            answer: "Twinless is a prime example of a 'Trauma-Comedy.' It uses the dark, awkward reality of losing a sibling to fuel a buddy-comedy dynamic between Dylan O'Brien and James Sweeney. It's meant for fans of 'The Bear' or 'Fleabag' who like humor mixed with heavy emotion."
         },
-        { 
-            question: "Is it a streaming-only release?", 
-            answer: "Yes, it was developed as a Hulu Original to capitalize on the 'prestige comedy' trend. It’s a key recommendation for users looking for high-concept stories that aren't traditional sitcoms." 
+        {
+            question: "Is it a streaming-only release?",
+            answer: "Yes, it was developed as a Hulu Original to capitalize on the 'prestige comedy' trend. It’s a key recommendation for users looking for high-concept stories that aren't traditional sitcoms."
         }
     ],
 
     'Big': [
-        { 
-            question: "Was the floor piano scene real or CGI?", 
-            answer: "It was 100% real. Tom Hanks and Robert Loggia practiced the choreography for weeks. There were no stunt doubles or digital edits; they actually played the notes with their feet on a custom-built 16-foot keyboard." 
+        {
+            question: "Was the floor piano scene real or CGI?",
+            answer: "It was 100% real. Tom Hanks and Robert Loggia practiced the choreography for weeks. There were no stunt doubles or digital edits; they actually played the notes with their feet on a custom-built 16-foot keyboard."
         },
-        { 
-            question: "Why is Tom Hanks' performance considered legendary?", 
-            answer: "Hanks didn't play a 'stupid adult'; he studied the movements of 12-year-olds. He focused on their boundless energy and lack of social self-consciousness, which is why the 'baby corn' scene feels so authentically childish." 
+        {
+            question: "Why is Tom Hanks' performance considered legendary?",
+            answer: "Hanks didn't play a 'stupid adult'; he studied the movements of 12-year-olds. He focused on their boundless energy and lack of social self-consciousness, which is why the 'baby corn' scene feels so authentically childish."
         }
     ]
 };
@@ -491,7 +491,7 @@ const calculateSkipStats = (scenes) => {
     });
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
-    if (totalSeconds === 0) return "< 1 min"; 
+    if (totalSeconds === 0) return "< 1 min";
     if (mins === 0) return `${secs} sec`;
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
@@ -516,11 +516,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const heavyScenes = sensitiveScenes.filter(s => {
         if (!s.start || s.start.trim() === '') return false;
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     const sceneCount = heavyScenes.length;
-    
+
     // 🔥 DYNAMIC SEO META DESCRIPTION GENERATOR
     const targetMovies = {
         "Eyes Wide Shut": "R",
@@ -532,7 +532,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         "Gone Girl": "R",
         "Basic Instinct": "R"
     };
-    
+
     let schemaDesc = '';
     if (targetMovies[movie.Title]) {
         const mpaaRating = targetMovies[movie.Title];
@@ -540,14 +540,14 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             // 🔥 Prioritize Sex/Nudity over Suggestive Clothing
             const heavyOnly = heavyScenes.filter(s => s.type?.toLowerCase().match(/sex|nudity|explicit/));
             const lightOnly = heavyScenes.filter(s => !s.type?.toLowerCase().match(/sex|nudity|explicit/));
-            
+
             // Grab the top 2 priority scenes, then sort them chronologically
             const selectedScenes = [...heavyOnly, ...lightOnly].slice(0, 2);
             selectedScenes.sort((a, b) => heavyScenes.indexOf(a) - heavyScenes.indexOf(b));
-            
+
             // Format with start, end, and TYPE reason!
             const firstTwo = selectedScenes.map(s => s.end ? `${s.start} to ${s.end} (${s.type})` : `${s.start} (${s.type})`).join(' and ');
-            
+
             schemaDesc = `Why is ${movie.Title} rated ${mpaaRating}? Use our parents guide to skip mature content. Skip scenes at ${firstTwo}.`;
         } else {
             schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
@@ -567,7 +567,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': schemaDesc,
         'genre': movie.genre,
-        'url': `https://www.filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`, 
+        'url': `https://www.filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -577,11 +577,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const staticFaqs = HULU_COMEDY_MOVIE_FAQS[movie.Title] ? [...HULU_COMEDY_MOVIE_FAQS[movie.Title]] : [];
     const intensityScenes = movieInfo?.scenes || [];
-    
-    const schemaFaqs = staticFaqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+
+    const schemaFaqs = staticFaqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer }
     }));
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
@@ -594,9 +594,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What is the suitable age to watch ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}`
             }
         });
     }
@@ -622,7 +622,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = familyUnsafeTypes.join(' and ');
 
-        const familyFaqSchema = familyUnsafeTypes.length > 0 
+        const familyFaqSchema = familyUnsafeTypes.length > 0
             ? {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
@@ -644,9 +644,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
                 }
             },
             {
@@ -664,23 +664,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.`
                 }
             },
             {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
                 }
             }
         );
     }
 
-const faqSchema = {
+    const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -695,7 +695,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const staticFaqs = HULU_COMEDY_MOVIE_FAQS[movieTitle] ? [...HULU_COMEDY_MOVIE_FAQS[movieTitle]] : [];
     const masterScenes = masterTimestamps[String(tmdbId)]?.scenes || [];
     const sensitiveScenes = [...(SENSITIVE_TIMELINES[tmdbId]?.scenes || [])];
-    
+
     const parseTimeToSeconds = (t) => {
         if (!t) return -1;
         const parts = String(t).trim().split(':').map(Number);
@@ -798,13 +798,13 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
             return `• ${timeRange}`;
         }).join('\n');
-        
+
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
-        
-                let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
+
+        let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 
         const familyFaqUI = familyUnsafeTypes.length > 0
             ? {
@@ -843,9 +843,9 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     return staticFaqs;
 };
 
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
+export const fetchMovieFromTMDB = async (tmdbId) => ({
+    poster_path: null,
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie'
 });
 
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;

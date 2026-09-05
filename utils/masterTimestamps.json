@@ -7626,19 +7626,22 @@
         "start": "0:04:45",
         "end": "0:04:55",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "A brief scene shows Seth (Jonah Hill) and Evan (Michael Cera) viewing adult magazine material containing female topless nudity."
       },
       {
         "start": "0:09:38",
         "end": "0:09:45",
         "type": "Nudity (Women)",
-        "severity": "High"
+        "severity": "High",
+        "description": "A scene shows Seth (Jonah Hill), Evan (Michael Cera), and Fogell (Christopher Mintz-Plasse) watching an explicit video featuring female topless nudity."
       },
       {
         "start": "0:18:15",
         "end": "0:20:30",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "A scene depicts a younger Seth (Jonah Hill) in flashbacks repeatedly drawing explicit male genitalia imagery."
       },
       {
         "start": "",
@@ -11153,25 +11156,29 @@
         "start": "0:30:00",
         "end": "0:30:30",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "A flashback depicts Cindy (Michelle Williams) and her ex-boyfriend Bobby (Mike Vogel) engaging in sexual intercourse in a bedroom."
       },
       {
         "start": "0:37:09",
         "end": "0:38:45",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "A shower sequence shows Cindy (Michelle Williams) and Dean (Ryan Gosling) in the shower where they appear undressed together while naked, featuring kissing, intimate touching, and female topless nudity."
       },
       {
         "start": "0:58:50",
         "end": "1:00:02",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "In a bedroom, Dean (Ryan Gosling) and Cindy (Michelle Williams) engage in sexual intercourse, featuring female topless nudity."
       },
       {
         "start": "1:02:52",
         "end": "1:03:40",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "A scene depicts Dean (Ryan Gosling) and Cindy (Michelle Williams) involved in explicit oral sexual activity."
       },
       {
         "start": "",
