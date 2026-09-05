@@ -762,6 +762,51 @@ const nextConfig = {
         ],
       },
       {
+        source: '/collection/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/collections',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/genre/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/streaming/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/movie-directory',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
         source: '/_next/data/:path*',
         headers: [
           {
