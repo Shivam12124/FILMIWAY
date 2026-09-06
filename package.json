@@ -26,7 +26,8 @@
     "export": "next export",
     "analyze": "cross-env ANALYZE=true next build",
     "indexnow": "node scripts/indexnow-submit.js",
-    "sync-timestamps": "node scripts/syncTimestamps.js"
+    "sync-timestamps": "node scripts/syncTimestamps.js",
+    "update-tracker": "node scripts/generate-x-trackers.js"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",

@@ -47,12 +47,14 @@ uniqueMoviesMap.forEach((year, title) => {
     }
 });
 
-// Date YYYY-MM-DD for yesterday
+// Date YYYY-MM-DD for today and yesterday
+const now = new Date();
+const todayStr = now.toISOString().split('T')[0];
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
-const dateStr = yesterday.toISOString().split('T')[0];
+const yesterdayStr = yesterday.toISOString().split('T')[0];
 
-// Group into 16 clean search groups (18-20 terms per query)
+// Group into 20 clean search groups (15-16 terms per query)
 const CHUNK_SIZE = 20;
 const chunks = [];
 for (let i = 0; i < flatSearchTerms.length; i += CHUNK_SIZE) {
@@ -61,35 +63,50 @@ for (let i = 0; i < flatSearchTerms.length; i += CHUNK_SIZE) {
 
 let mdContent = `# 🎯 Filmiway High-Traffic X (Twitter) Viral Post Tracker\n\n`;
 mdContent += `*Total Movies Tracked:* **${uniqueMoviesMap.size} Verified Movies with Skip-Timestamps ONLY**\n`;
-mdContent += `*Strict Filter Criteria:* **ONLY Huge Viral Posts with 1,200+ Minimum Likes**\n`;
-mdContent += `*Last Updated:* ${new Date().toLocaleString()}\n\n`;
+mdContent += `*Strict Filter Criteria:* **ONLY Viral Posts with Verified Skip-Timestamps**\n`;
+mdContent += `*Last Updated:* ${new Date().toLocaleString()} (Active Date Window: **${yesterdayStr} to ${todayStr}**)\n\n`;
+mdContent += `> 💡 **Quick Refresh:** To auto-update all search links to today's date every morning, run \`npm run update-tracker\` in your terminal!\n\n`;
 
 mdContent += `--- \n\n`;
-mdContent += `## 🔥 MONSTER VIRAL HITS (min_faves:1200 - Posts with 1,200+ Likes)\n`;
-mdContent += `*Massive active audience: Only top exploding posts with 1,200+ to 50,000+ likes!*\n\n`;
+mdContent += `## 🔥 MONSTER VIRAL HITS - LAST 24 HOURS (min_faves:1200 | since:${yesterdayStr})\n`;
+mdContent += `*Strictly posts under 24 hours old with 1,200+ to 50,000+ likes! Zero 48-hour old clutter.*\n\n`;
 
 chunks.forEach((chunk, index) => {
     const queryGroup = chunk.join(' OR ');
-    const fullQuery = `(${queryGroup}) filter:media min_faves:1200 since:${dateStr} -filter:replies`;
+    const fullQuery = `(${queryGroup}) filter:media min_faves:1200 since:${yesterdayStr} -filter:replies`;
     const encodedQuery = encodeURIComponent(fullQuery);
     const url = `https://x.com/search?q=${encodedQuery}&f=top`;
 
     mdContent += `### 🚀 Group ${index + 1} of ${chunks.length}\n`;
-    mdContent += `👉 [**Scan Group ${index + 1} (1,200+ Minimum Likes Only)**](${url})\n\n`;
+    mdContent += `👉 [**Scan Group ${index + 1} (Last 24h | 1,200+ Likes)**](${url})\n\n`;
 });
 
 mdContent += `---\n\n`;
-mdContent += `## ⚡ RISING VIRAL HITS (min_faves:500 - Posts with 500+ Likes)\n`;
-mdContent += `*High-volume posts with 500+ likes that are rapidly growing!*\n\n`;
+mdContent += `## ⚡ TODAY ONLY - FRESH BREAKING POSTS (min_faves:500 | since:${todayStr})\n`;
+mdContent += `*Strictly brand new posts posted TODAY (${todayStr}) in the last few hours with 500+ likes.*\n\n`;
 
 chunks.forEach((chunk, index) => {
     const queryGroup = chunk.join(' OR ');
-    const fullQuery = `(${queryGroup}) filter:media min_faves:500 since:${dateStr} -filter:replies`;
+    const fullQuery = `(${queryGroup}) filter:media min_faves:500 since:${todayStr} -filter:replies`;
+    const encodedQuery = encodeURIComponent(fullQuery);
+    const url = `https://x.com/search?q=${encodedQuery}&f=top`;
+
+    mdContent += `### ⚡ Group ${index + 1} of ${chunks.length}\n`;
+    mdContent += `👉 [**Scan Group ${index + 1} (Today Only | 500+ Likes)**](${url})\n\n`;
+});
+
+mdContent += `---\n\n`;
+mdContent += `## 📈 RISING VIRAL HITS - LAST 24 HOURS (min_faves:500 | since:${yesterdayStr})\n`;
+mdContent += `*High-velocity rising posts with 500+ likes from the last 24 hours.*\n\n`;
+
+chunks.forEach((chunk, index) => {
+    const queryGroup = chunk.join(' OR ');
+    const fullQuery = `(${queryGroup}) filter:media min_faves:500 since:${yesterdayStr} -filter:replies`;
     const encodedQuery = encodeURIComponent(fullQuery);
     const url = `https://x.com/search?q=${encodedQuery}&f=top`;
 
     mdContent += `### 📈 Group ${index + 1} of ${chunks.length}\n`;
-    mdContent += `👉 [**Scan Group ${index + 1} (500+ Minimum Likes Only)**](${url})\n\n`;
+    mdContent += `👉 [**Scan Group ${index + 1} (Last 24h | 500+ Likes)**](${url})\n\n`;
 });
 
 fs.writeFileSync(outputPath, mdContent, 'utf8');
