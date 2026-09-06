@@ -1,7 +1,7 @@
 // components/TopGuidesSection.js - ELEGANT BANNER LINKING TO TOP 25 COLLECTION 🚀
 import React from 'react';
 import Link from 'next/link';
-import { Flame, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function TopGuidesSection() {
   return (
@@ -9,15 +9,14 @@ export default function TopGuidesSection() {
       <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none"></div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 relative z-10">
         <div className="space-y-2 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-extrabold uppercase tracking-widest">
-            <Flame size={14} className="animate-pulse text-yellow-400" />
+          <div className="inline-flex items-center px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-extrabold uppercase tracking-widest">
             <span>High-Demand Directory</span>
           </div>
           <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
             Top 25 Most Visited Parents Guides & Skip Timestamps
           </h3>
           <p className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 max-w-xl">
-            Explore Filmiway’s most searched movie guides — including Fifty Shades, 365 Days, Oppenheimer, Basic Instinct & 21 more.
+            Explore Filmiway’s most searched movie guides — including Oppenheimer, Fight Club, The Wolf of Wall Street, Titanic & 21 more.
           </p>
         </div>
 
