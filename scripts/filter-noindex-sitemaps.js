@@ -16,7 +16,8 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '210577', '146233', '1949', '949', '37799', '244786', '530915', '7345', '9346', 'tt0086200',
     '8363', 'tt0829482',
     '46705', 'tt1120985',
-    '491584', 'tt7282468'
+    '491584', 'tt7282468',
+    '744857', 'tt16300962'
 ]);
 
 const masterDb = JSON.parse(fs.readFileSync(path.join(__dirname, '../utils/masterDatabase.json'), 'utf8'));
