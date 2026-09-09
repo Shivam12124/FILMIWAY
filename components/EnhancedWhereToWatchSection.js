@@ -220,7 +220,8 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
       IN: 'filmiway-21',
       GB: 'filmiway09-21',
       US: 'filmiway-20',
-      CA: 'filmiway06-20'
+      CA: 'filmiway06-20',
+      ES: 'filmiway00-21'
     };
     const tag = trackingTags[targetCode] || 'filmiway-20';
 
@@ -305,7 +306,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const selectedRegionInfo = ALL_REGIONS.find((r) => r.code === selectedRegion);
 
   // --- NEW LOGIC FOR HERO AMAZON ---
-  const targetRegions = ['US', 'GB', 'CA', 'IN'];
+  const targetRegions = ['US', 'GB', 'CA', 'IN', 'ES'];
   const isTargetRegion = targetRegions.includes(selectedRegion);
   const isUserInTargetRegion = targetRegions.includes(userCountry);
 
