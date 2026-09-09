@@ -191,7 +191,7 @@ async function getAllRegionStreamingData(tmdbId, title) {
   }
 }
 
-function getDeepLink(providerId, region, title, tmdbId, providerName, type) {
+function getDeepLink(providerId, region, title, tmdbId, providerName, type, userCountry) {
   const pId = Number(providerId);
   const name = (providerName || '').toLowerCase();
   const isRentOrBuy = type === 'rent' || type === 'buy';
@@ -210,7 +210,10 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type) {
       IT: 'amazon.it',
       JP: 'amazon.co.jp'
     };
-    const domain = amazonDomains[region] || 'amazon.com';
+    
+    // Direct user to store matching their actual detected location if available, otherwise viewing region
+    const targetCode = (userCountry && amazonDomains[userCountry]) ? userCountry : (region || 'US');
+    const domain = amazonDomains[targetCode] || 'amazon.com';
 
     // Country-specific tracking tag routing
     const trackingTags = {
@@ -219,9 +222,12 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type) {
       US: 'filmiway-20',
       CA: 'filmiway06-20'
     };
-    const tag = trackingTags[region] || 'filmiway-20';
+    const tag = trackingTags[targetCode] || 'filmiway-20';
 
-    return `https://www.${domain}/s?k=${encodeURIComponent(title + " movie")}&tag=${tag}`;
+    // Normalize accents (e.g., "Irréversible" -> "Irreversible") so Amazon search finds the exact movie/physical disc
+    const normalizedTitle = (title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+    return `https://www.${domain}/s?k=${encodeURIComponent(normalizedTitle + " movie")}&tag=${tag}`;
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
 }
@@ -301,6 +307,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   // --- NEW LOGIC FOR HERO AMAZON ---
   const targetRegions = ['US', 'GB', 'CA', 'IN'];
   const isTargetRegion = targetRegions.includes(selectedRegion);
+  const isUserInTargetRegion = targetRegions.includes(userCountry);
+
+  // Check if movie is specifically Irreversible (by slug or tmdbId 979)
+  const isIrreversible = movie?.slug === 'irreversible' || Number(movie?.tmdbId) === 979 || (movie?.Title || '').toLowerCase().includes('irreversible');
 
   let heroAmazonProvider = null;
   let heroAmazonType = null;
@@ -310,7 +320,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const isAmazon = (p) => p.provider_name.toLowerCase().includes('amazon') || [119, 9, 10, 2100].includes(p.provider_id);
 
-  if (isTargetRegion && currentRegionData) {
+  if (currentRegionData) {
     // Check flatrate first
     const amzFlatrate = filteredFlatrate.find(isAmazon);
     if (amzFlatrate) {
@@ -333,7 +343,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
       }
     }
 
-    // 🔥 FALLBACK: Force Amazon card if not available on Prime but the movie is NOT a streaming exclusive
+    // 🔥 FALLBACK: Force Amazon card if not available on Prime but the movie is NOT a streaming exclusive,
+    // OR if it's Irreversible, OR if the movie fell back to another country for a US/GB/CA/IN visitor
     if (!heroAmazonProvider) {
       const isStreamingExclusive = (filteredFlatrate.length > 0) &&
                                    (filteredRent.length === 0) &&
@@ -343,7 +354,11 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                      return n.includes('netflix') || n.includes('apple tv') || n.includes('disney') || n.includes('hbo max') || n.includes('max');
                                    });
 
-      if (!isStreamingExclusive) {
+      const shouldForceAmazon = isIrreversible ||
+                                (isTargetRegion && !isStreamingExclusive) ||
+                                (isUserInTargetRegion && selectedRegion !== userCountry);
+
+      if (shouldForceAmazon) {
         heroAmazonProvider = {
           provider_id: 9,
           provider_name: 'Amazon',
@@ -353,6 +368,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         heroAmazonType = 'buy';
       }
     }
+  } else if (isIrreversible || isUserInTargetRegion || isTargetRegion) {
+    // Even if no streaming data is available globally, render Amazon card so users can buy physical media or digital copies
+    heroAmazonProvider = {
+      provider_id: 9,
+      provider_name: 'Amazon',
+      logo_path: '/pvske1MyAoymrs5bguRfVqYiM9a.jpg',
+      isFallback: true
+    };
+    heroAmazonType = 'buy';
   }
   const hasOtherOptions = filteredFlatrate.length > 0 || filteredRent.length > 0 || filteredBuy.length > 0;
   const isMovieAvailableInRegion = Boolean(currentRegionData && (heroAmazonProvider || hasOtherOptions));
@@ -461,8 +485,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const HeroAmazonCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type);
-    const typeLabel = provider.isFallback ? 'Buy Blu-ray or Rent' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type, userCountry);
+    const typeLabel = provider.isFallback ? 'Blu-ray / DVD / Prime' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
+    const buttonText = provider.isFallback ? 'Search on Amazon' : typeLabel;
 
     const handleAmazonClick = async () => {
       try {
@@ -516,14 +541,16 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 group-hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2">
             <span className="font-medium">{provider.provider_name}</span>
             <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-600 sm:bg-gray-500" />
-            <span className="text-yellow-500/80 sm:text-yellow-400 font-medium">{typeLabel}</span>
+            <span className="text-yellow-500/80 sm:text-yellow-400 font-medium">
+              {provider.isFallback ? 'Physical & Digital (Blu-ray / DVD / Prime)' : typeLabel}
+            </span>
           </div>
         </div>
 
         <div className="shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10">
           <div className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-yellow-500 text-black font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25">
             <Play fill="currentColor" size={16} />
-            {typeLabel}
+            {buttonText}
           </div>
         </div>
       </motion.button>
@@ -557,9 +584,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center gap-2 px-1"
             >
-              <Info size={14} className="text-gray-500" />
+              <Info size={14} className="text-gray-500 shrink-0" />
               <p className="text-gray-400 text-xs sm:text-sm font-light tracking-wide">
-                {fallbackMessage}
+                {fallbackMessage} {heroAmazonProvider?.isFallback && `(You can buy the Blu-ray, DVD, or rent via Amazon below)`}
               </p>
             </motion.div>
           )}
@@ -730,19 +757,27 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 )}
               </motion.div>
             ) : availableRegions.length === 0 ? (
-              <div className="flex flex-col items-center text-center p-10 rounded-2xl border border-orange-500/20 bg-orange-500/[0.05]">
-                <Globe className="w-10 h-10 text-orange-500 mb-4 opacity-80" />
-                <h3 className="text-base font-semibold text-orange-300 mb-2">No Global Streaming Data</h3>
-                <p className="text-[13px] text-orange-200/70 max-w-md leading-relaxed mb-6">
-                  <strong>{movie?.Title}</strong> is not currently listed on major digital platforms, or TMDB data is unavailable.
-                </p>
-                <button
-                  onClick={() => window.open(`https://www.justwatch.com/search?q=${encodeURIComponent(movie?.Title || '')}`, '_blank')}
-                  className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 transition-all text-orange-400 hover:text-orange-300 text-[13px] font-medium tracking-wide"
-                >
-                  <Search size={14} />
-                  Search JustWatch manually
-                </button>
+              <div className="flex flex-col items-center text-center p-8 sm:p-10 rounded-2xl border border-yellow-500/20 bg-yellow-500/[0.03]">
+                {heroAmazonProvider ? (
+                  <div className="w-full">
+                    <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion || userCountry || 'US'} />
+                  </div>
+                ) : (
+                  <>
+                    <Globe className="w-10 h-10 text-yellow-500 mb-4 opacity-80" />
+                    <h3 className="text-base font-semibold text-yellow-300 mb-2">No Subscription Streaming Available</h3>
+                    <p className="text-[13px] text-gray-300 max-w-md leading-relaxed mb-6">
+                      <strong>{movie?.Title}</strong> is not currently streaming on digital subscription services in this region. You can find physical Blu-ray, DVD, and digital rental editions on Amazon.
+                    </p>
+                    <button
+                      onClick={() => window.open(getDeepLink(9, userCountry || 'US', movie?.Title, movie?.tmdbId, 'Amazon', 'buy', userCountry), '_blank', 'noopener,noreferrer')}
+                      className="group flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-yellow-500/20"
+                    >
+                      <Play fill="currentColor" size={15} />
+                      Find {movie?.Title} on Amazon
+                    </button>
+                  </>
+                )}
               </div>
             ) : null}
           </AnimatePresence>

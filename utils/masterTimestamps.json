@@ -19243,28 +19243,32 @@
     "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and strong language throughout.",
     "scenes": [
       {
-        "start": "0:30:28",
-        "end": "0:40:00",
+        "start": "0:03:10",
+        "end": "0:04:00",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Inside a library, Marty (Timothée Chalamet) and his girlfriend (Odessa A'zion) passionately kiss each other before engaging in sex while standing; thrusting motions and heavy breathing are depicted on camera."
       },
       {
         "start": "0:56:30",
         "end": "0:56:34",
         "type": "Partial Nudity (Man)",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "While Marty (Timothée Chalamet) is inside a bathtub, the bathtub collapses with him in it; brief rear nudity is visible on camera, but mostly obscured by the camera framing."
       },
       {
         "start": "1:20:50",
         "end": "1:21:15",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "A rapid sexual encounter between two characters against a wall; passionate kissing, disrobing, and suggestive movements depicted."
       },
       {
         "start": "1:47:39",
         "end": "1:48:02",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Characters engage in sexual intercourse in a dimly lit setting; simulated thrusting motions, heavy breathing, and exposed bare skin shown."
       },
       {
         "start": "",
