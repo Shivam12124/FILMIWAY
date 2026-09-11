@@ -812,7 +812,9 @@ const MovieDetailsSection = React.memo(({
       </div>
 
       {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
-      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl lg:max-w-[1045px] mx-auto">
+      <div id="timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
+      <div id="skip-timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
+      <div id="parents-guide" className="scroll-mt-24 sm:scroll-mt-28 w-full max-w-4xl lg:max-w-[1045px] mx-auto">
         <SensitiveContentTimelineSection movie={{ ...movie, Runtime: runtime }} sensitiveScenes={sensitiveScenes} />
       </div>
 

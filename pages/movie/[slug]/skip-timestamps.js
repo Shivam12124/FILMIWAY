@@ -319,6 +319,25 @@ export default function UniversalMoviePage({ movie }) {
         }
     }, [movie?.slug, defaultLabel, defaultUrl]);
 
+    // 🚀 AUTO-JUMP DIRECTLY TO TIMESTAMPS TABLE (Fixes mobile bounce rate from X & triggers immediate ad views!)
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const jumpToHash = () => {
+            const hash = window.location.hash?.toLowerCase();
+            if (hash === '#timestamps' || hash === '#skip-timestamps' || hash === '#parents-guide') {
+                const target = document.getElementById('timestamps') || document.getElementById('parents-guide');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        };
+
+        jumpToHash();
+        const t1 = setTimeout(jumpToHash, 250);
+        const t2 = setTimeout(jumpToHash, 600);
+        return () => { clearTimeout(t1); clearTimeout(t2); };
+    }, [movie?.slug]);
+
     if (router.isFallback || !movie) return <div className="min-h-screen bg-black" />;
 
     const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.imdbID || '')) ||

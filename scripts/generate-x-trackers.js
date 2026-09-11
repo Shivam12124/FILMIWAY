@@ -74,6 +74,42 @@ for (let i = 0; i < flatSearchTerms.length; i += CHUNK_SIZE) {
 }
 
 // -------------------------------------------------------------
+// 🔥 RADAR: FILMIWAY TOP 25 MOST VISITED MOVIES
+// Split into 2 safe parts (under 300 chars) so Twitter search never hits length limit!
+// -------------------------------------------------------------
+const top25Part1 = [
+    '"Fifty Shades of Grey"', '"365 Days"', '"The Wolf of Wall Street"', '"Titanic"',
+    '"Basic Instinct"', '"Oppenheimer"', '"Poor Things"', '"Eyes Wide Shut"',
+    '"American Psycho"', '"Wild Things"', '"Unfaithful"', '"Blue Is the Warmest Color"',
+    '"The Dreamers"'
+];
+
+const top25Part2 = [
+    '"Original Sin"', '"Boogie Nights"', '"Malena"', '"Red Sparrow"',
+    '"Secretary"', '"American Pie"', '"Last Tango In Paris"', '"Fight Club"',
+    '"Fatal Attraction"', '"Irreversible"', '"Bound"', '"Obsession"'
+];
+
+// -------------------------------------------------------------
+// 😱 RADAR: "NEVER WATCHING AGAIN", CONTROVERSIAL & CINEMA HISTORY
+// Extreme reactions that trigger millions of views and massive curiosity
+// -------------------------------------------------------------
+const shockingCinemaGroups = [
+    {
+        name: "Never Watching Again & Traumatizing ('Never watching this movie again', 'Scarred me', 'Broke me')",
+        query: '("never watching this again" OR "never watching this movie again" OR "never watching this film again" OR "never rewatching this" OR "scarred me for life" OR "sick to my stomach" OR "this movie traumatized")'
+    },
+    {
+        name: "Cinema History & Masterpieces ('Cinema history', 'History of cinema', 'Changed cinema forever')",
+        query: '("cinema history" OR "history of cinema" OR "changed cinema forever" OR "in the history of cinema" OR "cinema was never the same")'
+    },
+    {
+        name: "Most Shocking & Controversial Cinema ('Most disturbing movie', 'Most controversial', 'Banned in')",
+        query: '("most disturbing movie" OR "most disturbing film" OR "most disturbing scene" OR "most controversial movie" OR "most controversial film" OR "most unhinged movie" OR "banned in")'
+    }
+];
+
+// -------------------------------------------------------------
 // RADAR 1: The "No-Movie-Name" Universal Movie Clip Phrases
 // People tweet pure clips with single sentences without mentioning movie names!
 // -------------------------------------------------------------
@@ -126,10 +162,48 @@ const curatorHubs = [
 const whatMovieQuery = '("what movie is this" OR "what film is this" OR "name of this movie" OR "what is this movie called" OR "drop the movie name")';
 
 let mdContent = `# 🎯 Filmiway Ultra-Advanced X (Twitter) Viral Post Radar\n\n`;
-mdContent += `*Total Movies Tracked:* **${uniqueMoviesMap.size} Verified Movies + Iconic Characters**\n`;
+mdContent += `*Total Movies Tracked:* **${uniqueMoviesMap.size} Verified Movies + Top 25 Powerhouses + Iconic Characters**\n`;
 mdContent += `*Live Date Window:* **${yesterdayStr} to ${todayStr}**\n`;
 mdContent += `*Generation Time:* ${new Date().toLocaleString()}\n\n`;
 mdContent += `> 💡 **One-Click Refresh:** Run \`npm run update-tracker\` in your terminal anytime to auto-refresh all dates and links to the latest 24 hours!\n\n`;
+
+mdContent += `--- \n\n`;
+mdContent += `## 🏆 RADAR 0: FILMIWAY TOP 25 POWERHOUSE MOVIES (Split into 2 Fast Links)\n`;
+mdContent += `*Direct live scans for the **Top 25 Most Visited Parents Guides & Skip Timestamps** on Filmiway. Split into two optimal groups so Twitter/X loads smoothly without hitting character limits!*\n\n`;
+
+// Part 1
+const top25P1Query = `(${top25Part1.join(' OR ')})`;
+const top25P1Monster = `${top25P1Query} filter:media min_faves:800 since:${yesterdayStr} -filter:replies`;
+const top25P1Rising = `${top25P1Query} filter:media min_faves:300 since:${todayStr} -filter:replies`;
+
+mdContent += `### 🎬 Top 25 - Part 1: Fifty Shades, 365 Days, Wolf of Wall Street, Titanic, Oppenheimer, Poor Things, Eyes Wide Shut, etc.\n`;
+mdContent += `* 👉 [**Scan Part 1 Monster Viral (Last 24h | 800+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P1Monster)}&f=top)\n`;
+mdContent += `* ⚡ [**Scan Part 1 Rising Today (Today Only | 300+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P1Rising)}&f=top)\n\n`;
+
+// Part 2
+const top25P2Query = `(${top25Part2.join(' OR ')})`;
+const top25P2Monster = `${top25P2Query} filter:media min_faves:800 since:${yesterdayStr} -filter:replies`;
+const top25P2Rising = `${top25P2Query} filter:media min_faves:300 since:${todayStr} -filter:replies`;
+
+mdContent += `### 🎬 Top 25 - Part 2: Fight Club, Irreversible, Boogie Nights, Original Sin, Malena, Red Sparrow, Secretary, Obsession, etc.\n`;
+mdContent += `* 👉 [**Scan Part 2 Monster Viral (Last 24h | 800+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P2Monster)}&f=top)\n`;
+mdContent += `* ⚡ [**Scan Part 2 Rising Today (Today Only | 300+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P2Rising)}&f=top)\n\n`;
+
+mdContent += `--- \n\n`;
+mdContent += `## 😱 RADAR 0.5: "NEVER WATCHING AGAIN", CONTROVERSIAL & CINEMA HISTORY\n`;
+mdContent += `*Viral tweets where people react to disturbing, shocking, or historical cinematic scenes. These threads are goldmines for dropping Filmiway skip timestamps!*\n\n`;
+
+shockingCinemaGroups.forEach((group, idx) => {
+    const fullQueryMonster = `${group.query} filter:media min_faves:1200 since:${yesterdayStr} -filter:replies`;
+    const urlMonster = `https://x.com/search?q=${encodeURIComponent(fullQueryMonster)}&f=top`;
+
+    const fullQueryRising = `${group.query} filter:media min_faves:400 since:${todayStr} -filter:replies`;
+    const urlRising = `https://x.com/search?q=${encodeURIComponent(fullQueryRising)}&f=top`;
+
+    mdContent += `### ⚡ ${group.name}\n`;
+    mdContent += `* 👉 [**Scan Monster Viral (Last 24h | 1,200+ Likes)**](${urlMonster})\n`;
+    mdContent += `* ⚡ [**Scan Rising Today (Today Only | 400+ Likes)**](${urlRising})\n\n`;
+});
 
 mdContent += `--- \n\n`;
 mdContent += `## 🌟 RADAR 1: "NO-NAME" VIRAL MOVIE CLIPS (Zero Movie Title In Tweet)\n`;
