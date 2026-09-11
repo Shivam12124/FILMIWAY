@@ -617,6 +617,24 @@ export default function UniversalMoviePage({ movie }) {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
+
+                {/* 🚀 SOLUTION 1 (SCOPED TO BLUE IS THE WARMEST COLOR ONLY): Lift Sticky Ad higher on mobile in-app browsers */}
+                {movie?.slug === 'blue-is-the-warmest-color' && (
+                    <style>{`
+                        @media (max-width: 767px) {
+                            body {
+                                padding-bottom: calc(125px + env(safe-area-inset-bottom, 30px)) !important;
+                            }
+                            [class*="mediavine-adhesion"],
+                            [class*="adhesion-wrapper"],
+                            [id*="adhesion"],
+                            [class*="sticky-footer"],
+                            div[style*="position: fixed"][style*="bottom: 0"] {
+                                bottom: max(32px, calc(16px + env(safe-area-inset-bottom, 16px))) !important;
+                            }
+                        }
+                    `}</style>
+                )}
             </Head>
             <Header />
             <main className="journey-content relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
