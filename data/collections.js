@@ -745,7 +745,7 @@ export const COLLECTIONS = {
       { label: "CHARACTER", desc: "Rich studies" },
       { label: "TENSION", desc: "Dramatic weight" }
     ],
-    movies: ['tt0180093', 'tt0084707', 'tt14208870', 'tt13423600', 'tt28323620', 'tt14807308', 'tt1306980', 'tt0082846', 'tt13374522', 'tt7798646'],
+    movies: ['tt0180093', 'tt0084707', 'tt14208870', 'tt13423600', 'tt28323620', 'tt14807308', 'tt1306980', 'tt0082846', 'tt13374522', 'tt7798646', 'tt1403981'],
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-drama-movies-on-hulu', 'best-romance-movies-on-peacock']
   },
 

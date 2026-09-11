@@ -1,6 +1,6 @@
 // utils/peacockDramaMovieRoutes.js - SSG ROUTE MAPPING FOR PEACOCK DRAMA COLLECTION
 
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './peacockDramaMovieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './peacockDramaMovieData.js';
 
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
@@ -42,7 +42,10 @@ export const PEACOCK_DRAMA_MOVIE_SLUGS = {
     'tt13374522': 'mrs-harris-goes-to-paris',
     
     // Rank 10: The Photograph
-    'tt7798646': 'the-photograph'
+    'tt7798646': 'the-photograph',
+
+    // BONUS: Remember Me
+    'tt1403981': 'remember-me'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

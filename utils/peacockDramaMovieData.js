@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 40807, "imdbID": "tt1306980", "Title": "50/50", "slug": "50-50", "year": 2011, "genre": "Comedy", "runtime": 100, "rank": 7 },
     { "tmdbId": 11816, "imdbID": "tt0082846", "Title": "On Golden Pond", "year": 1981, "genre": "Drama", "runtime": 109, "rank": 8 },
     { "tmdbId": 754609, "imdbID": "tt13374522", "Title": "Mrs. Harris Goes to Paris", "year": 2022, "genre": "Comedy", "runtime": 115, "rank": 9 },
-    { "tmdbId": 589049, "imdbID": "tt7798646", "Title": "The Photograph", "year": 2020, "genre": "Romance", "runtime": 106, "rank": 10 }
+    { "tmdbId": 589049, "imdbID": "tt7798646", "Title": "The Photograph", "year": 2020, "genre": "Romance", "runtime": 106, "rank": 10 },
+    { "tmdbId": 23169, "imdbID": "tt1403981", "Title": "Remember Me", "slug": "remember-me", "year": 2010, "genre": "Drama, Romance", "runtime": 113, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     40807: "You can't change your situation. The only thing you can change is how you choose to deal with it.", // 50/50
     11816: "Listen to the loons.", // On Golden Pond
     754609: "It's not just a dress. It's a dream.", // Mrs. Harris Goes to Paris
-    589049: "I wish I had more time." // The Photograph
+    589049: "I wish I had more time.", // The Photograph
+    23169: "Whatever you do in life will be insignificant, but it's very important that you do it." // Remember Me
 };
 
 // ✅ SENSITIVE TIMELINES (Focusing on Trauma, Addiction, and Historical Grief)
@@ -55,7 +57,32 @@ export const SENSITIVE_TIMELINES = {
     40807: { scenes: [] }, // 50/50
     11816: { scenes: [] }, // On Golden Pond
     754609: { scenes: [] }, // Mrs. Harris Goes to Paris
-    589049: { scenes: [] } // The Photograph
+    589049: { scenes: [] }, // The Photograph
+    23169: {
+        scenes: [
+            {
+                start: "0:53:42",
+                end: "0:54:30",
+                type: "Sex",
+                severity: "Moderate",
+                description: "Tyler (Robert Pattinson) and Ally (Emilie de Ravin) kiss passionately and continue into bed having sex; visible thrusting, bare shoulders and backs, accompanied by audible moaning."
+            },
+            {
+                start: "1:14:15",
+                end: "1:14:50",
+                type: "Sexual Content",
+                severity: "Mild",
+                description: "Tyler (Robert Pattinson) and Ally (Emilie de Ravin) embrace and kiss passionately while pressing against a wall with audible moaning; subsequent scene shows them resting in bed together, implying intimacy."
+            },
+            {
+                start: "1:26:50",
+                end: "1:26:55",
+                type: "Sex",
+                severity: "Mild",
+                description: "A television clip plays where a father unexpectedly walks into a room while his adult son and a partner are engaged in intimate relations in bed."
+            }
+        ]
+    }
 };
 
 export const FALLBACK_POSTERS = {
@@ -68,7 +95,8 @@ export const FALLBACK_POSTERS = {
     40807: "https://image.tmdb.org/t/p/w500/555555.jpg",
     11816: "https://image.tmdb.org/t/p/w500/55555.jpg",
     754609: "https://image.tmdb.org/t/p/w500/55555.jpg",
-    589049: "https://image.tmdb.org/t/p/w500/55555.jpg"
+    589049: "https://image.tmdb.org/t/p/w500/55555.jpg",
+    23169: "https://image.tmdb.org/t/p/w500/j7umuMiLCHvWT7wYhFKJOTFSokF.jpg"
 };
 
 // ✅ HELPER: Updated for Drama
@@ -258,6 +286,24 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "When famed photographer Christina Eames dies unexpectedly, she leaves her estranged daughter Mae a safety deposit box containing a photograph that sets her on a journey to find out about her mother's early life. Along the way, Mae finds a romance of her own with a journalist assigned to cover her mother's career.",
         themes: ["Legacy", "Forgiveness", "Black Love"]
+    }),
+
+    // BONUS: Remember Me (2010)
+    23169: createMovieData({
+        emotionalIntensity: 90,
+        complexityLevel: "TRAGIC",
+        dominantColor: "#1e3a8a", rating: 7.1, criticsScore: 27, audienceScore: 68, director: "Allen Coulter",
+        cast: ["Robert Pattinson", "Emilie de Ravin", "Pierce Brosnan"], boxOffice: "$56 million", budget: "$19 million",
+        dna: { "Drama": 60, "Romance": 40 },
+        scenes: [
+            { time: 15, intensity: 50, label: "Tyler Meets Ally", color: "#60a5fa" },
+            { time: 45, intensity: 65, label: "The Secret Revealed", color: "#f59e0b" },
+            { time: 75, intensity: 75, label: "Family Reunion", color: "#10b981" },
+            { time: 95, intensity: 85, label: "Forgiving His Father", color: "#3b82f6" },
+            { time: 110, intensity: 100, label: "The Boardroom Date (September 11)", color: "#ef4444" }
+        ],
+        synopsis: "Rebellious young New Yorker Tyler Hawkins meets Ally Craig after a tragic family loss. Their tender romance helps him heal, but hidden truths and the looming tragedy of September 11, 2001 test the fragility of life and love.",
+        themes: ["Grief", "Family Reconciliation", "Fragility of Life"]
     })
 };
 
