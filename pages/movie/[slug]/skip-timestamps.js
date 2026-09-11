@@ -164,7 +164,7 @@ const UniversalBanner = ({ movie }) => {
                                 {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title || 'Movie'} backdrop banner`} fill priority fetchPriority="high" sizes="100vw" className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                                 <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                             </div>
-                            {trailerKey && (
+                            {trailerKey && movie?.slug !== 'blue-is-the-warmest-color' && (
                                 <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
                                     <motion.button onClick={handlePlayClick} aria-label={`Play trailer for ${movie?.Title || 'Movie'}`} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
                                 </motion.div>
