@@ -208,7 +208,8 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
       FR: 'amazon.fr',
       ES: 'amazon.es',
       IT: 'amazon.it',
-      JP: 'amazon.co.jp'
+      JP: 'amazon.co.jp',
+      SA: 'amazon.sa'
     };
     
     // Direct user to store matching their actual detected location if available, otherwise viewing region
@@ -221,7 +222,8 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
       GB: 'filmiway09-21',
       US: 'filmiway-20',
       CA: 'filmiway06-20',
-      ES: 'filmiway00-21'
+      ES: 'filmiway00-21',
+      SA: 'filmiway08-21'
     };
     const tag = trackingTags[targetCode] || 'filmiway-20';
 
