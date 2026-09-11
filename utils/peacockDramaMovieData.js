@@ -72,7 +72,7 @@ export const SENSITIVE_TIMELINES = {
                 end: "1:14:50",
                 type: "Sexual Content",
                 severity: "Mild",
-                description: "Tyler (Robert Pattinson) and Ally (Emilie de Ravin) embrace and kiss passionately while pressing against a wall with audible moaning; subsequent scene shows them resting in bed together, implying intimacy."
+                description: "Tyler (Robert Pattinson) and Ally (Emilie de Ravin) embrace and kiss passionately while pressing against a wall with audible moaning; subsequent scene shows on bed together, implying sex."
             },
             {
                 start: "1:26:50",
