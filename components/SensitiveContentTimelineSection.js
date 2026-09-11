@@ -863,7 +863,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                                         return (
                                             <React.Fragment key={index}>
-                                                <li className="group rounded-lg sm:rounded-xl lg:rounded-2xl border border-white/[0.06] sm:border-white/10 bg-white/[0.015] sm:bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.15] transition-all duration-300 flex flex-col gap-2.5 sm:gap-3 p-3.5 pl-5 sm:p-5 lg:p-6 shadow-md" style={{ '--accent-color': getMarkerColorHex(scene.severity) }}>
+                                                <li
+                                                    id={index === 0 ? "first-timestamp" : undefined}
+                                                    className="group rounded-lg sm:rounded-xl lg:rounded-2xl border border-white/[0.06] sm:border-white/10 bg-white/[0.015] sm:bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.15] transition-all duration-300 flex flex-col gap-2.5 sm:gap-3 p-3.5 pl-5 sm:p-5 lg:p-6 shadow-md scroll-mt-24 sm:scroll-mt-28"
+                                                    style={{ '--accent-color': getMarkerColorHex(scene.severity) }}
+                                                >
                                                     {isGeneralWarning ? (
                                                         // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
                                                         <div className="flex items-start gap-3 sm:gap-3.5 w-full">

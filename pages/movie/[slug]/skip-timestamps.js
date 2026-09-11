@@ -325,7 +325,7 @@ export default function UniversalMoviePage({ movie }) {
         const jumpToHash = () => {
             const hash = window.location.hash?.toLowerCase();
             if (hash === '#timestamps' || hash === '#skip-timestamps' || hash === '#parents-guide') {
-                const target = document.getElementById('timestamps') || document.getElementById('parents-guide');
+                const target = document.getElementById('first-timestamp') || document.getElementById('timestamps') || document.getElementById('parents-guide');
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
