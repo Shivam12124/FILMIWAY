@@ -79,7 +79,7 @@ export const SENSITIVE_TIMELINES = {
                 end: "1:26:55",
                 type: "Sex",
                 severity: "Mild",
-                description: "A television clip plays where a father unexpectedly walks into a room while his adult son and a partner are engaged in intimate relations in bed."
+                description: "A Movie clip plays at theatre (American Pie 2) where a father unexpectedly walks into a room while his adult son and a partner are engaged in sex on bed."
             }
         ]
     }
