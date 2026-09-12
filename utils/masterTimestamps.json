@@ -5280,33 +5280,43 @@
                 "start": "0:57:20",
                 "end": "0:58:25",
                 "type": "Nudity (Woman)",
-                "severity": "High"
+                "severity": "High",
+                "description": "In a boutique changing room sequence, Jackie Heath (Tamara Tunie) tries on clothes while conversing with Mary Ann (Charlize Theron); features clearly visible topless female nudity."
             },
             {
                 "start": "1:01:18",
                 "end": "1:03:41",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "In a bedroom setting, Kevin (Keanu Reeves) kisses his wife Mary Ann (Charlize Theron) with topless nudity before engaging in sexual intercourse; during the encounter, Kevin experiences hallucinations where Mary Ann's body repeatedly morphs into Christabella (Connie Nielsen), featuring simulated thrusting, brief implied oral sexual activity, and visible female topless and rear nudity."
             },
             {
                 "start": "1:41:41",
                 "end": "1:41:48",
                 "type": "Nudity (Woman)",
-                "severity": "High"
+                "severity": "High",
+                "description": "In a church setting, Mary Ann (Charlize Theron) is shown in a distressed state; features full-body female nudity."
+            },
+            {
+                "start": "2:10:40",
+                "end": "2:13:40",
+                "type": "Nudity & Sex",
+                "severity": "High",
+                "description": "In a penthouse setting, Kevin (Keanu Reeves) and Christabella (Connie Nielsen) engage in sexual intercourse; features full-body female nudity of Christabella (Connie Nielsen), simulated thrusting, and rapid visual montages depicting writhing bodies and explicit nudity."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "High",
-                "description": "Gory demonic hallucinations, violent stabbings, and a bloody suicide sequence."
+                "description": "Features graphic self-inflicted fatalities including a throat-slitting with glass and a point-blank gunshot to the head with heavy blood spray. Depicts a fatal blunt-force beating in a park, a fatal pedestrian vehicle strike, crime scene photographs of murder victims including a child, and an animal sacrifice involving a severed goat head and organs. Includes hallucination sequences depicting demonic facial transformations, a toddler handling bloody internal organs, a severely bruised and cut assault victim, and bodies consumed by flames."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Pervasive strong profanity, explicit sexual dialogue, and blasphemous language."
+                "description": "Features pervasive strong language throughout, including approximately 50 F-bombs, frequent coarse language, crude anatomical and sexual references, blasphemous dialogue, and various milder insults."
             }
         ],
         "Age": "18+",
@@ -19292,11 +19302,18 @@
                 "description": "A rapid sexual encounter between two characters against a wall; passionate kissing, disrobing, and suggestive movements depicted."
             },
             {
-                "start": "1:47:39",
+                "start": "1:47:00",
                 "end": "1:48:02",
-                "type": "Sex",
+                "type": "Sex & Partial Nudity (Woman)",
                 "severity": "High",
-                "description": "Characters engage in sexual intercourse in a dimly lit setting; simulated thrusting motions, heavy breathing, and exposed bare skin shown."
+                "description": "In a public parking setting, Marty (Timothée Chalamet) and Kay (Gwyneth Paltrow) passionately kiss before engaging in sexual intercourse; features simulated thrusting, heavy breathing, and brief visible exposure of Gwyneth Paltrow's breast across some frames."
+            },
+            {
+                "start": "1:55:28",
+                "end": "1:56:04",
+                "type": "Violence & Partial Nudity (Man)",
+                "severity": "Moderate",
+                "description": "In a crowded room in front of several onlookers, Marty (Timothée Chalamet) is physically struck across his bare buttocks with a table tennis paddle by Milton Rockwell (Kevin O'Leary); features visible male rear nudity and repeated physical impacts."
             },
             {
                 "start": "",
