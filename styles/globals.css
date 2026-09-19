@@ -361,3 +361,14 @@ body {
     padding-bottom: 90px;
   }
 }
+
+/* 🚀 IN-CONTENT AD ZERO-GAP AUTO-COLLAPSE (Zero Placeholder on Unfilled) */
+.mediavine-ad[data-ad-unit="in-content"]:empty,
+li:has(.mediavine-ad[data-ad-unit="in-content"]:empty) {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}

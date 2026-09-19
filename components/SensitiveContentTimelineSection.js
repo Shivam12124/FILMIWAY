@@ -11,6 +11,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // 🎬 WATCH-ALONG TIMER — loaded only when user opens it
 const WatchAlongTimer = dynamic(() => import('./WatchAlongTimer'), { ssr: false });
+import FanFavoritesSection from './FanFavoritesSection';
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -183,6 +184,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [showStickyBar, setShowStickyBar] = useState(false);
     const [stickyDismissed, setStickyDismissed] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [isUSUser, setIsUSUser] = useState(false);
 
     const movieId = movie?.slug || movie?.tmdbId?.toString(); // Unique identifier for the movie
 
@@ -243,6 +245,16 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
         // ⚡ DEFER FIREBASE IMPORT BY 5 SECONDS TO PREVENT MAIN THREAD BLOCKING
         const timer = setTimeout(() => fetchVotes(), 5000);
+
+        // 🇺🇸 US User Geolocation Detection for in-content ads (non-blocking)
+        fetch('https://ipinfo.io/json')
+            .then(res => res.json())
+            .then(data => {
+                if (data && (data.country === 'US' || data.country === 'USA')) {
+                    setIsUSUser(true);
+                }
+            })
+            .catch(() => {});
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -934,6 +946,13 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     )}
                                                 </li>
 
+                                                {/* 🔥 SIMILAR MOVIE GUIDES (Positioned just below last timestamp, right above ExpressVPN) */}
+                                                {index === arr.length - 1 && movie?.similarMovies && movie.similarMovies.length > 0 && (
+                                                    <li key="similar-movie-guides-inline" className="list-none w-full my-4 sm:my-5 p-0">
+                                                        <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
+                                                    </li>
+                                                )}
+
                                                 {/* 🚀 ExpressVPN Native Injection: Filmiway User Deal Card (High Readability & Impact) */}
                                                 {index === arr.length - 1 && (
                                                     <li className="relative mt-2 sm:mt-2.5 mb-0 p-4 sm:p-5 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
@@ -990,7 +1009,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                         </a>
                                                     </li>
                                                 )}
-                                            </React.Fragment>
+
+                                                {/* 🚀 MEDIAVINE IN-CONTENT AD (US Users only, below 2nd timestamp, NO placeholder / auto-collapses to 0px) */}
+                                                {isUSUser && (index === 1 || (arr.length <= 2 && index === 0)) ? (
+                                                    <li key={`incontent-ad-${index}`} className="relative my-2 sm:my-2.5 w-full overflow-hidden text-center transition-all duration-300 empty:hidden">
+                                                        <div id={`mv-in-content-ad-${index}`} className="mediavine-ad mv-ad-box w-full mx-auto flex justify-center items-center empty:hidden" data-ad-unit="in-content"></div>
+                                                    </li>
+                                                ) : null}
+                                             </React.Fragment>
                                         );
                                     })}
                                 </ul>

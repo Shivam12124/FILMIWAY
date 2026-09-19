@@ -58,6 +58,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-inception', 'movies-like-se7en']
   },
 
+  // 🦢 MOVIES LIKE BLACK SWAN
+  'movies-like-black-swan': {
+    slug: 'movies-like-black-swan',
+    title: '10 Movies Like Black Swan',
+    stats: { averageRating: 8.0 },
+    badges: [
+      { label: "OBSESSION", desc: "Psychological descent" },
+      { label: "IDENTITY", desc: "Dual reality" },
+      { label: "BODY HORROR", desc: "Visceral transformation" }
+    ],
+    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718', 'tt37287335', 'tt17526714'],
+    relatedCollections: ['best-psychological-thriller-movies', 'best-horror-movies-on-hbo-max', 'movies-like-parasite']
+  },
+
   // 🏔️ BEST SURVIVAL MOVIES
   'best-survival-movies': {
     slug: 'best-survival-movies',
