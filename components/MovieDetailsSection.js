@@ -15,8 +15,6 @@ const EnhancedIntensityGraph = dynamic(() => import('./EnhancedIntensityGraph'),
 // FAQ Sections
 const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
 
-const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'));
-
 const MovieDetailsSection = React.memo(({
   movie,
   fromEyesWideShutCollection,
@@ -818,13 +816,6 @@ const MovieDetailsSection = React.memo(({
         <SensitiveContentTimelineSection movie={{ ...movie, Runtime: runtime }} sensitiveScenes={sensitiveScenes} />
       </div>
 
-
-      {/* ⚡ CLS FIX: Reserve height for Firebase comments so mobile layout stays locked and smooth! */}
-      {movie?.slug !== 'the-substance' && (
-        <div className="w-full min-h-[350px] sm:min-h-[300px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
-          <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
-        </div>
-      )}
 
       {/* ⚡ CLS FIX: Reserve height so region-detection doesn't shift the layout! */}
       <div className="w-full min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">

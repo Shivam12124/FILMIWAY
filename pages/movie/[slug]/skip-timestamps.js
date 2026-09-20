@@ -620,7 +620,7 @@ export default function UniversalMoviePage({ movie }) {
                 )}
 
                 {/* 🚀 PER-MOVIE SCOPED X CAMPAIGN ENHANCEMENTS: Lift Sticky Ad higher on mobile in-app browsers */}
-                {['remember-me', 'blue-is-the-warmest-color', 'titanic', 'oppenheimer', '300', 'the-substance', 'drive', 'anora', 'eyes-wide-shut', 'the-impossible', 'the-shawshank-redemption', 'fight-club', 'obsession', 'the-wolf-of-wall-street', 'the-girl-with-the-dragon-tattoo', 'magnolia', 'blade-runner-2049', 'blade-runner', 'tropic-thunder', 'risky-business', 'troy', 'v-for-vendetta', 'taxi-driver', 'saltburn', 'american-psycho', 'the-town', 'boogie-nights'].includes(movie?.slug) && (
+                {['the-lighthouse', 'remember-me', 'blue-is-the-warmest-color', 'titanic', 'oppenheimer', '300', 'the-substance', 'drive', 'anora', 'eyes-wide-shut', 'the-impossible', 'the-shawshank-redemption', 'fight-club', 'obsession', 'the-wolf-of-wall-street', 'the-girl-with-the-dragon-tattoo', 'magnolia', 'blade-runner-2049', 'blade-runner', 'tropic-thunder', 'risky-business', 'troy', 'v-for-vendetta', 'taxi-driver', 'saltburn', 'american-psycho', 'the-town', 'boogie-nights'].includes(movie?.slug) && (
                     <style>{`
                         @media (max-width: 767px) {
                             body {
