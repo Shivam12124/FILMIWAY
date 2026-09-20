@@ -1052,7 +1052,25 @@ export async function getStaticProps({ params }) {
     // --- DYNAMIC SIMILAR MOVIES ENGINE (SEO & Internal Linking) ---
     const masterTimestampsData = require('../../../utils/masterTimestamps.json');
     let similarMovies = [];
-    if (primarySlug && COLLECTIONS[primarySlug] && COLLECTIONS[primarySlug].movies) {
+
+    // Custom curated overrides for high-priority movies
+    const CUSTOM_SIMILAR_OVERRIDES = {
+        'the-girl-with-the-dragon-tattoo': ['tt37287335', 'tt4016934', 'tt2267998', 'tt15398776'] // Obsession, The Handmaiden, Gone Girl, Oppenheimer
+    };
+
+    if (CUSTOM_SIMILAR_OVERRIDES[baseMovie.slug]) {
+        for (let id of CUSTOM_SIMILAR_OVERRIDES[baseMovie.slug]) {
+            const m = masterDatabase.find(dbm => dbm.imdbID === id);
+            if (m) {
+                const cData = tmdbCache[id] || {};
+                similarMovies.push({
+                    title: m.Title,
+                    slug: m.slug,
+                    poster: cData.poster_path ? `${cData.poster_path}` : null
+                });
+            }
+        }
+    } else if (primarySlug && COLLECTIONS[primarySlug] && COLLECTIONS[primarySlug].movies) {
         let collectionImdbIDs = COLLECTIONS[primarySlug].movies.filter(id => id !== baseMovie.imdbID);
 
         // Filter out empty (noindex) movies and apply family safety guard
