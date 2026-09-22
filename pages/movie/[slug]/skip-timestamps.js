@@ -618,25 +618,6 @@ export default function UniversalMoviePage({ movie }) {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
-
-                {/* 🚀 PER-MOVIE SCOPED X CAMPAIGN ENHANCEMENTS: Lift Sticky Ad higher on mobile in-app browsers */}
-                {['the-lighthouse', 'remember-me', 'blue-is-the-warmest-color', 'titanic', 'oppenheimer', '300', 'the-substance', 'drive', 'anora', 'eyes-wide-shut', 'the-impossible', 'the-shawshank-redemption', 'fight-club', 'obsession', 'the-wolf-of-wall-street', 'the-girl-with-the-dragon-tattoo', 'magnolia', 'blade-runner-2049', 'blade-runner', 'tropic-thunder', 'risky-business', 'troy', 'v-for-vendetta', 'taxi-driver', 'saltburn', 'american-psycho', 'the-town', 'boogie-nights'].includes(movie?.slug) && (
-                    <style>{`
-                        @media (max-width: 767px) {
-                            body {
-                                padding-bottom: calc(125px + env(safe-area-inset-bottom, 30px)) !important;
-                            }
-                            [class*="mediavine-adhesion"],
-                            [class*="adhesion-wrapper"],
-                            [id*="adhesion"],
-                            [class*="sticky-footer"],
-                            div[style*="position: fixed"][style*="bottom: 0"],
-                            div[style*="position:fixed"][style*="bottom:0"] {
-                                bottom: 58px !important;
-                            }
-                        }
-                    `}</style>
-                )}
             </Head>
             <Header />
             <main className="journey-content relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

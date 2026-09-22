@@ -105,3 +105,13 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 
 ## 🎬 Nymphomaniac: Vol. I Verified Example
 - *"Charlotte Gainsbourg & Shia LaBeouf really went full send with Lars von Trier on this one 😂 If you’re planning to watch Nymphomaniac with family... STOP right now. Just no way 😂 It’s NC-17. If you still wanna watch but wanna skip that sex scenes before things get weird: https://www.filmiway.com/movie/nymphomaniac-vol-i/skip-timestamps"*
+
+---
+
+### 🎬 Gone Girl / Channing Tatum Burner Post (LIVE VERIFIED SUCCESS #4!)
+> *"The fact that the burner account hated on everyone else, but the ONLY compliment it ever left was calling Channing Tatum "genuine and funny as hell" is genuinely hilarious 😭 That level of self-hyping digital paper trail is straight out of Gone Girl when Amy Dunne left obvious clues to frame the narrative.*
+> 
+> *David Fincher’s ultimate masterpiece on calculated digital manipulation, though definitely impossible to watch with family cause of the extensive explicit sex scenes and nudity. Timestamps to skip that sex scenes: https://www.filmiway.com/movie/gone-girl/skip-timestamps#timestamps"*
+> **Status:** Live Verified • Algorithm actively pushed the comment to the top • Passed despite the original post having NO mention of Gone Girl, Fincher, Rosamund Pike, or Ben Affleck!  
+> **The Secret Unlocked:** Connecting a viral pop-culture smoking gun (the self-hyping burner comment) to a master-level thematic film benchmark (*Gone Girl*'s digital evidence trail) tricks X's NLP semantic model into treating the reply as top-tier cultural commentary, triggering instant recommendation boosts!
+
