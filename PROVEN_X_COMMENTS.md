@@ -115,3 +115,23 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 > **Status:** Live Verified • Algorithm actively pushed the comment to the top • Passed despite the original post having NO mention of Gone Girl, Fincher, Rosamund Pike, or Ben Affleck!  
 > **The Secret Unlocked:** Connecting a viral pop-culture smoking gun (the self-hyping burner comment) to a master-level thematic film benchmark (*Gone Girl*'s digital evidence trail) tricks X's NLP semantic model into treating the reply as top-tier cultural commentary, triggering instant recommendation boosts!
 
+---
+
+### 🎬 The Raid 2 / Street Fighter Chun-Li Post (LIVE VERIFIED SUCCESS #5 — 4.4M View Tweet!)
+> *"People crying about her legs don’t know she literally ate 12 eggs a day to bulk up, grew her thighs by 6.5 cm, and trained daily in Wushu and Muay Thai for this role. Hammer Girl (Julie Estelle) in The Raid 2 had zero fighting experience before training and ended up delivering the most ferocious female martial arts fight in cinema history. If Callina puts in that same work, Chun-Li is gonna be insane.*
+> 
+> *(Also, if all this fight talk makes you want to rewatch The Raid 2 with family, make sure to skip that sudden explicit nudity scene lol. Timestamps to skip that nudity scene: https://www.filmiway.com/movie/the-raid-2/skip-timestamps#timestamps)"*
+> **Status:** Live Verified • Algorithm actively pushed the comment under a 4.4M View Tweet!  
+> **The Secret Unlocked:** Hitting the #1 controversial debate in the reply section (Chun-Li's leg size) with a real-life physical transformation fact (12 eggs/day, +6.5cm thighs) + connecting to the ultimate martial arts cinema benchmark (*The Raid 2*) commands massive dwell time and upvotes!
+
+---
+
+### 🎬 Network (1976) / Robert Pattinson Primetime Credits (LIVE VERIFIED SUCCESS #6!)
+> *"It’s hilarious that Robert Pattinson got Suki Waterhouse, Daniel Kaluuya, and Bo Burnham involved in a movie that basically turns the real 2000s Dateline predator stings into a modern-day Network 😭 He took those infamous sting operations and turned them into a satire about television ratings, media power, and corruption.*
+> 
+> *Sidney Lumet’s Network is still the gold standard for media satire, though it can definitely get awkward watching with family because of the nudity scenes. Here are the exact timestamps to skip that scene: https://filmiway.com/movie/network/skip-timestamps#timestamps"*
+> **Status:** Live Verified • Algorithm actively pushed the comment!  
+> **The Secret Unlocked:** Connecting a viral pop-culture end-credits Easter egg (Suki Waterhouse, Daniel Kaluuya, Bo Burnham) directly to the film's true thematic predecessor (*Network*'s media ratings satire) creates a high-IQ, authoritative film observation that readers respect and the algorithm pushes!
+
+
+
