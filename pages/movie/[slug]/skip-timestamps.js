@@ -618,6 +618,47 @@ export default function UniversalMoviePage({ movie }) {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
+
+                {/* 🚀 LUST, CAUTION EXCLUSIVE OVERRIDE: Move Sticky Adhesion Ad to TOP */}
+                {movie?.slug === 'lust-caution' && (
+                    <style>{`
+                        [class*="mediavine-adhesion"],
+                        [class*="adhesion-wrapper"],
+                        [id*="adhesion"],
+                        [class*="sticky-footer"],
+                        div[style*="position: fixed"][style*="bottom: 0"],
+                        div[style*="position:fixed"][style*="bottom:0"],
+                        div[style*="position: fixed"][style*="bottom: 0px"],
+                        div[style*="position:fixed"][style*="bottom:0px"] {
+                            top: 56px !important;
+                            bottom: auto !important;
+                            z-index: 9999 !important;
+                        }
+                        @media (min-width: 640px) {
+                            [class*="mediavine-adhesion"],
+                            [class*="adhesion-wrapper"],
+                            [id*="adhesion"],
+                            [class*="sticky-footer"],
+                            div[style*="position: fixed"][style*="bottom: 0"],
+                            div[style*="position:fixed"][style*="bottom:0"],
+                            div[style*="position: fixed"][style*="bottom: 0px"],
+                            div[style*="position:fixed"][style*="bottom:0px"] {
+                                top: 80px !important;
+                            }
+                        }
+                        body {
+                            padding-bottom: 0px !important;
+                        }
+                        main {
+                            padding-top: 130px !important;
+                        }
+                        @media (min-width: 640px) {
+                            main {
+                                padding-top: 170px !important;
+                            }
+                        }
+                    `}</style>
+                )}
             </Head>
             <Header />
             <main className="journey-content entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
