@@ -649,10 +649,10 @@ export default function UniversalMoviePage({ movie }) {
                             }
                         }
 
-                        /* Mobile: Lift sticky banner upward cleanly */
+                        /* Mobile: Banner flush to bottom with zero gap below, and tight content clearance */
                         @media (max-width: 767px) {
                             body {
-                                padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px)) !important;
+                                padding-bottom: 54px !important;
                             }
                             [class*="mediavine-adhesion"],
                             [class*="adhesion-wrapper"],
@@ -662,7 +662,7 @@ export default function UniversalMoviePage({ movie }) {
                             div[style*="position:fixed"][style*="bottom:0"],
                             div[style*="position: fixed"][style*="bottom: 0px"],
                             div[style*="position:fixed"][style*="bottom:0px"] {
-                                bottom: calc(24px + env(safe-area-inset-bottom, 16px)) !important;
+                                bottom: 0px !important;
                                 z-index: 99999 !important;
                             }
                         }
@@ -670,7 +670,7 @@ export default function UniversalMoviePage({ movie }) {
                 )}
             </Head>
             <Header />
-            <main className="journey-content entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <main className="journey-content entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-0 sm:pb-2 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="mb-6 sm:mb-8 relative z-50">
                     <Link href={breadcrumb.url} className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-200 transition-colors text-xs sm:text-sm font-medium tracking-[0.1em] uppercase group">
                         <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
