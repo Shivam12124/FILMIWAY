@@ -172,6 +172,16 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 > **Key Weapon:** Contrast between mainstream comic book blockbusters and extreme low-budget auteur cinema.  
 > **The Secret Unlocked:** Highlighting an actor's polar opposite artistic choices creates instant respect and curiosity, driving high click-through to the timestamp guide.
 
+---
+
+### 🎬 Werwulf Trailer / Robert Eggers Christmas Post (SOULFUL HUMAN TEMPLATE)
+> *"Robert Eggers dropping horror movies on Christmas Day is so funny to me 😭 man genuinely refuses to let people have a peaceful holiday.*
+> 
+> *His entire run since The Witch has been crazy, he just doesn’t miss. Rewatching The Witch with family around is always awkward as hell during that ending scene though lol. If u wanna skip that nudity scenes before things get weird: https://filmiway.com/movie/the-witch/skip-timestamps#timestamps"*
+> **Target Post:** DiscussingFilm Werwulf official trailer drop  
+> **Key Weapon:** Casual conversational banter ("refuses to let people have a peaceful holiday") completely replacing critic jargon.  
+> **The Secret Unlocked:** Stripping out all fancy review buzzwords ("suffocating folklore dread", "nightmare fuel") makes the comment feel 100% authentic, driving higher dwell time and likes.
+
 
 
 
