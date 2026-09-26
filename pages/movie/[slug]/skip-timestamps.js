@@ -619,22 +619,25 @@ export default function UniversalMoviePage({ movie }) {
                     />
                 )}
 
-                {/* 🚀 LUST, CAUTION EXCLUSIVE OVERRIDE: Move Sticky Adhesion Ad to TOP */}
+                {/* 🚀 LUST, CAUTION EXCLUSIVE ADHESION: Fully visible sticky ad with zero top void */}
                 {movie?.slug === 'lust-caution' && (
                     <style>{`
-                        [class*="mediavine-adhesion"],
-                        [class*="adhesion-wrapper"],
-                        [id*="adhesion"],
-                        [class*="sticky-footer"],
-                        div[style*="position: fixed"][style*="bottom: 0"],
-                        div[style*="position:fixed"][style*="bottom:0"],
-                        div[style*="position: fixed"][style*="bottom: 0px"],
-                        div[style*="position:fixed"][style*="bottom:0px"] {
-                            top: 56px !important;
-                            bottom: auto !important;
-                            z-index: 9999 !important;
+                        /* Desktop: Keep at bottom cleanly */
+                        @media (min-width: 768px) {
+                            [class*="mediavine-adhesion"],
+                            [class*="adhesion-wrapper"],
+                            [id*="adhesion"],
+                            [class*="sticky-footer"] {
+                                bottom: 0px !important;
+                                z-index: 99999 !important;
+                            }
                         }
-                        @media (min-width: 640px) {
+
+                        /* Mobile: Lift sticky banner cleanly above navigation bar so it never cuts off */
+                        @media (max-width: 767px) {
+                            body {
+                                padding-bottom: calc(100px + env(safe-area-inset-bottom, 25px)) !important;
+                            }
                             [class*="mediavine-adhesion"],
                             [class*="adhesion-wrapper"],
                             [id*="adhesion"],
@@ -643,18 +646,8 @@ export default function UniversalMoviePage({ movie }) {
                             div[style*="position:fixed"][style*="bottom:0"],
                             div[style*="position: fixed"][style*="bottom: 0px"],
                             div[style*="position:fixed"][style*="bottom:0px"] {
-                                top: 80px !important;
-                            }
-                        }
-                        body {
-                            padding-bottom: 0px !important;
-                        }
-                        main {
-                            padding-top: 130px !important;
-                        }
-                        @media (min-width: 640px) {
-                            main {
-                                padding-top: 170px !important;
+                                bottom: calc(12px + env(safe-area-inset-bottom, 16px)) !important;
+                                z-index: 99999 !important;
                             }
                         }
                     `}</style>

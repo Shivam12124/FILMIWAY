@@ -1010,11 +1010,33 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     </li>
                                                 )}
 
-                                                {/* 🚀 MEDIAVINE IN-CONTENT ADS (Rendered in DOM on initial load, auto-collapses to 0px when unfilled) */}
+                                                {/* 🚀 IN-CONTENT AD SLOT (Between timestamps, professional reserved space that Mediavine fills) */}
                                                 {((index === 1) || (arr.length >= 4 && index === 3) || (arr.length <= 2 && index === 0)) && (
-                                                    <li key={`incontent-ad-${index}`} className="relative my-4 sm:my-6 w-full overflow-hidden text-center transition-all duration-300 empty:hidden list-none">
+                                                    <li key={`incontent-ad-${index}`} className="list-none w-full my-5 sm:my-7">
                                                         <div className="content_hint"></div>
-                                                        <div id={`mv-in-content-ad-${index}`} className="mediavine-ad mv-ad-box w-full mx-auto flex justify-center items-center empty:hidden" data-ad-unit="in-content"></div>
+                                                        <div className="w-full mx-auto max-w-[728px] rounded-xl sm:rounded-2xl border border-white/10 bg-[#0d0d11] p-3 sm:p-4 text-center overflow-hidden shadow-2xl relative">
+                                                            <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/5 px-2">
+                                                                <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">
+                                                                    ADVERTISEMENT
+                                                                </span>
+                                                                <span className="text-[10px] text-gray-600 font-mono tracking-wider">
+                                                                    SPONSORED
+                                                                </span>
+                                                            </div>
+                                                            <div
+                                                                id={`mv-in-content-ad-${index}`}
+                                                                className="mediavine-ad mv-ad-box w-full min-h-[250px] sm:min-h-[280px] flex items-center justify-center mx-auto relative z-10"
+                                                                data-ad-unit="in-content"
+                                                            >
+                                                                <div className="in-content-placeholder text-gray-500 text-xs font-mono tracking-wider flex flex-col items-center justify-center gap-2.5 py-12">
+                                                                    <div className="flex items-center gap-2">
+                                                                        <span className="w-2 h-2 rounded-full bg-yellow-500/60 animate-ping"></span>
+                                                                        <span className="text-gray-400 font-medium">Loading Advertisement...</span>
+                                                                    </div>
+                                                                    <span className="text-[10px] text-gray-600 font-sans">Connecting to sponsor network</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
                                                 )}
                                             </React.Fragment>
