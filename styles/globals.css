@@ -372,3 +372,12 @@ li:has(.mediavine-ad[data-ad-unit="in-content"]:empty) {
   padding: 0 !important;
   border: none !important;
 }
+
+.mediavine-ad[data-ad-unit="in-content"]:not(:empty) {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 1.5rem auto !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}

@@ -840,7 +840,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <div className="relative">
                             <div className="w-full">
                                 {/* 🚀 SEO UPGRADE: Semantic list extraction for search engines */}
-                                <ul className="space-y-2 sm:space-y-2.5 m-0 p-0 list-none timestamp-card-list">
+                                <ul className="space-y-4 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
                                     {[...sensitiveData.scenes].sort((a, b) => {
                                         const aStart = a.start || '';
                                         const bStart = b.start || '';
@@ -1010,13 +1010,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     </li>
                                                 )}
 
-                                                {/* 🚀 MEDIAVINE IN-CONTENT AD (US Users only, below 2nd timestamp, NO placeholder / auto-collapses to 0px) */}
-                                                {isUSUser && (index === 1 || (arr.length <= 2 && index === 0)) ? (
-                                                    <li key={`incontent-ad-${index}`} className="relative my-2 sm:my-2.5 w-full overflow-hidden text-center transition-all duration-300 empty:hidden">
+                                                {/* 🚀 MEDIAVINE IN-CONTENT ADS (Rendered in DOM on initial load, auto-collapses to 0px when unfilled) */}
+                                                {((index === 1) || (arr.length >= 4 && index === 3) || (arr.length <= 2 && index === 0)) && (
+                                                    <li key={`incontent-ad-${index}`} className="relative my-4 sm:my-6 w-full overflow-hidden text-center transition-all duration-300 empty:hidden list-none">
+                                                        <div className="content_hint"></div>
                                                         <div id={`mv-in-content-ad-${index}`} className="mediavine-ad mv-ad-box w-full mx-auto flex justify-center items-center empty:hidden" data-ad-unit="in-content"></div>
                                                     </li>
-                                                ) : null}
-                                             </React.Fragment>
+                                                )}
+                                            </React.Fragment>
                                         );
                                     })}
                                 </ul>
