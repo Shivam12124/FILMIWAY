@@ -160,10 +160,17 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 ### 🎬 The Witch / Robert Eggers Romeo & Juliet Post (SUCCESS TEMPLATE)
 > *"the way “i need a break from darkness” led him straight into a double teen suicide story is insane 😭 man went from traumatizing everyone with The Witch to thinking Shakespeare is his version of a relaxing vacation. his brain is not okay and i respect it.*
 > 
-> *The Witch is still peak folk horror, but rewatching that ending with parents in the room is straight up horrifying lol. if u wanna skip that nudity scenes before things get weird: https://filmiway.com/movie/the-witch/skip-timestamps#timestamps"*
-> **Target Post:** DiscussingFilm Robert Eggers Romeo & Juliet announcement  
-> **Key Weapon:** Matching the exact dark-comedy cynical banter of Film Twitter replies ("his brain is not okay and i respect it").  
-> **The Secret Unlocked:** When an auteur director makes an unhinged, viral quote, matching the humor of the replies and linking back to their defining masterclass (*The Witch*) flows completely naturally without sounding like an ad.
+---
+
+### 🎬 Under the Skin / Scarlett Johansson Marvel & SNL Post (SUCCESS TEMPLATE)
+> *"What’s crazy is that right around this exact same era when she was doing Marvel press and goofy SNL skits, Scarlett went and gave the absolute performance of her career in Under the Skin (2013).*
+> 
+> *Literally went from playing Black Widow in billion-dollar Avengers movies to driving an unmarked van with hidden cameras around Scotland playing a predatory alien.*
+> 
+> *Definitely don't put it on with parents or family around though lol. It contains some very graphic full-frontal nudity scenes that will make the room super awkward. But if you still wanna watch with family or parents, here are the timestamps to skip those scenes: https://filmiway.com/movie/under-the-skin/skip-timestamps#timestamps"*
+> **Target Post:** 1895MT Scarlett Johansson SNL Ultron clip (600K+ views)  
+> **Key Weapon:** Contrast between mainstream comic book blockbusters and extreme low-budget auteur cinema.  
+> **The Secret Unlocked:** Highlighting an actor's polar opposite artistic choices creates instant respect and curiosity, driving high click-through to the timestamp guide.
 
 
 
