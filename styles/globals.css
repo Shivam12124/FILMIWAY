@@ -364,7 +364,7 @@ body {
 /* 🚀 IN-CONTENT AD STYLING (Professional reserved container with auto-hiding placeholder) */
 .mediavine-ad[data-ad-unit="in-content"]:has(iframe) .in-content-placeholder,
 .mediavine-ad[data-ad-unit="in-content"]:has(ins) .in-content-placeholder,
-.mediavine-ad[data-ad-unit="in-content"]:has(div:not(.in-content-placeholder)) .in-content-placeholder {
+.mediavine-ad[data-ad-unit="in-content"]:has(div:not(.in-content-placeholder):not(.content_hint)) .in-content-placeholder {
   display: none !important;
 }
 

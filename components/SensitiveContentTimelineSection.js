@@ -1013,7 +1013,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                 {/* 🚀 IN-CONTENT AD SLOT (Between timestamps, full-width matching timestamp cards + increased height) */}
                                                 {((index === 1) || (arr.length >= 4 && index === 3) || (arr.length <= 2 && index === 0)) && (
                                                     <li key={`incontent-ad-${index}`} className="list-none w-full my-6 sm:my-8">
-                                                        <div className="content_hint"></div>
                                                         <div className="w-full rounded-xl sm:rounded-2xl border border-white/10 bg-[#0d0d11] p-3 sm:p-5 text-center overflow-hidden shadow-2xl relative">
                                                             <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/5 px-2">
                                                                 <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">
@@ -1028,6 +1027,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                                 className="mediavine-ad mv-ad-box w-full min-h-[300px] sm:min-h-[340px] lg:min-h-[360px] flex items-center justify-center mx-auto relative z-10"
                                                                 data-ad-unit="in-content"
                                                             >
+                                                                <div className="content_hint"></div>
                                                                 <div className="in-content-placeholder text-gray-500 text-xs font-mono tracking-wider flex flex-col items-center justify-center gap-2.5 py-16">
                                                                     <div className="flex items-center gap-2">
                                                                         <span className="w-2 h-2 rounded-full bg-yellow-500/60 animate-ping"></span>
