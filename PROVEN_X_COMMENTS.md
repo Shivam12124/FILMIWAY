@@ -155,7 +155,15 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 - **Context:** Works on viral videos, celebrity drama, or news tweets that have **ZERO** movie titles or actor names.
 - **Paragraph 1 (Pure Human/Psychological Analysis):** Dissect the real-world emotion, psychological dynamic, or media behavior shown in the clip/tweet without mentioning any movie.
 - **Paragraph 2 (Thematic Movie Bridge):** Introduce the movie as the cinematic benchmark that explored this exact psychological dynamic (`"That’s basically the psychological setup explored in [Movie Title]..."`).
-- **Paragraph 3 (Natural Skip Warning + Link):** Highlighting family awkwardness and dropping the exact skip timestamp URL.
+---
+
+### 🎬 The Witch / Robert Eggers Romeo & Juliet Post (SUCCESS TEMPLATE)
+> *"the way “i need a break from darkness” led him straight into a double teen suicide story is insane 😭 man went from traumatizing everyone with The Witch to thinking Shakespeare is his version of a relaxing vacation. his brain is not okay and i respect it.*
+> 
+> *The Witch is still peak folk horror, but rewatching that ending with parents in the room is straight up horrifying lol. if u wanna skip that nudity scenes before things get weird: https://filmiway.com/movie/the-witch/skip-timestamps#timestamps"*
+> **Target Post:** DiscussingFilm Robert Eggers Romeo & Juliet announcement  
+> **Key Weapon:** Matching the exact dark-comedy cynical banter of Film Twitter replies ("his brain is not okay and i respect it").  
+> **The Secret Unlocked:** When an auteur director makes an unhinged, viral quote, matching the humor of the replies and linking back to their defining masterclass (*The Witch*) flows completely naturally without sounding like an ad.
 
 
 
