@@ -619,24 +619,40 @@ export default function UniversalMoviePage({ movie }) {
                     />
                 )}
 
-                {/* 🚀 LUST, CAUTION EXCLUSIVE ADHESION: Fully visible sticky ad with zero top void */}
+                {/* 🚀 LUST, CAUTION EXCLUSIVE ADHESION: Regular full desktop banner + lifted mobile banner + minimal bottom space */}
                 {movie?.slug === 'lust-caution' && (
                     <style>{`
-                        /* Desktop: Keep at bottom cleanly */
+                        /* Desktop: Regular full-size leaderboard banner (728x90) cleanly centered at bottom */
                         @media (min-width: 768px) {
                             [class*="mediavine-adhesion"],
                             [class*="adhesion-wrapper"],
                             [id*="adhesion"],
                             [class*="sticky-footer"] {
                                 bottom: 0px !important;
+                                left: 0 !important;
+                                right: 0 !important;
+                                margin-left: auto !important;
+                                margin-right: auto !important;
+                                width: 100% !important;
+                                min-width: 728px !important;
+                                max-width: 970px !important;
+                                min-height: 90px !important;
+                                display: flex !important;
+                                justify-content: center !important;
+                                align-items: center !important;
                                 z-index: 99999 !important;
+                            }
+                            [class*="mediavine-adhesion"] iframe,
+                            [class*="adhesion-wrapper"] iframe,
+                            [id*="adhesion"] iframe {
+                                min-height: 90px !important;
                             }
                         }
 
-                        /* Mobile: Lift sticky banner cleanly above navigation bar so it never cuts off */
+                        /* Mobile: Lift sticky banner upward cleanly */
                         @media (max-width: 767px) {
                             body {
-                                padding-bottom: calc(100px + env(safe-area-inset-bottom, 25px)) !important;
+                                padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px)) !important;
                             }
                             [class*="mediavine-adhesion"],
                             [class*="adhesion-wrapper"],
@@ -646,7 +662,7 @@ export default function UniversalMoviePage({ movie }) {
                             div[style*="position:fixed"][style*="bottom:0"],
                             div[style*="position: fixed"][style*="bottom: 0px"],
                             div[style*="position:fixed"][style*="bottom:0px"] {
-                                bottom: calc(12px + env(safe-area-inset-bottom, 16px)) !important;
+                                bottom: calc(24px + env(safe-area-inset-bottom, 16px)) !important;
                                 z-index: 99999 !important;
                             }
                         }
@@ -654,7 +670,7 @@ export default function UniversalMoviePage({ movie }) {
                 )}
             </Head>
             <Header />
-            <main className="journey-content entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <main className="journey-content entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="mb-6 sm:mb-8 relative z-50">
                     <Link href={breadcrumb.url} className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-200 transition-colors text-xs sm:text-sm font-medium tracking-[0.1em] uppercase group">
                         <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
@@ -672,7 +688,7 @@ export default function UniversalMoviePage({ movie }) {
                 <TopGuidesSection currentSlug={movie.slug} />
 
                 {/* 🔥 TMDB API ATTRIBUTION (Required by TMDB Terms of Service) */}
-                <div className="mt-16 sm:mt-24 pt-8 pb-8 border-t border-white/5 flex flex-col items-center justify-center text-center">
+                <div className="mt-8 sm:mt-12 pt-6 pb-2 border-t border-white/5 flex flex-col items-center justify-center text-center">
                     <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-3 mb-4">
                         <p className="text-gray-500 text-xs sm:text-sm font-light">Movie data and posters powered by</p>
                         <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity flex items-center">
@@ -689,7 +705,7 @@ export default function UniversalMoviePage({ movie }) {
                         This product uses the TMDB API but is not endorsed or certified by TMDB.
                     </p>
                     {/* 🎬 CLEAN REGULAR TEXT FOOTER LINKS */}
-                    <div className="mt-8 border-t border-white/10 pt-6 w-full max-w-4xl mx-auto">
+                    <div className="mt-4 border-t border-white/10 pt-4 w-full max-w-4xl mx-auto">
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium">
                             <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 transition-colors py-0.5">
                                 Skip Awkward Scenes Guide

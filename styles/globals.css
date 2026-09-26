@@ -345,8 +345,7 @@ a:focus-visible {
 
 /* 🚀 BLOCK INTRUSIVE THIRD-PARTY OVERLAYS (MEDIAVINE ADS SAFELY ENABLED) */
 .google-auto-placed,
-ins.adsbygoogle[data-ad-format="autorelaxed"],
-div[id^="google_ads_iframe_"][style*="fixed"] {
+ins.adsbygoogle[data-ad-format="autorelaxed"] {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -354,11 +353,11 @@ div[id^="google_ads_iframe_"][style*="fixed"] {
 
 /* 🛡️ ENSURE PAGE CONTENT NEVER GETS CUT OFF BY MEDIAVINE STICKY ADHESION ADS */
 body {
-  padding-bottom: 70px;
+  padding-bottom: 45px;
 }
 @media (min-width: 768px) {
   body {
-    padding-bottom: 90px;
+    padding-bottom: 55px;
   }
 }
 
