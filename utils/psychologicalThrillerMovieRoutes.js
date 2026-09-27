@@ -13,7 +13,8 @@ export const PSYCH_THRILLER_MOVIE_SLUGS = {
   'tt0361862': 'the-machinist',
   'tt0364569': 'oldboy',
   'tt0075314': 'taxi-driver',
-  'tt0081505': 'the-shining'
+  'tt0081505': 'the-shining',
+  'tt37287335': 'obsession'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

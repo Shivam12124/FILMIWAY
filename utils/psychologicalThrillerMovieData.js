@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 670, imdbID: 'tt0364569', Title: 'Oldboy', year: 2003, genre: 'Action', runtime: 120, rank: 8 },
     { tmdbId: 103, imdbID: 'tt0075314', Title: 'Taxi Driver', year: 1976, genre: 'Crime', runtime: 114, rank: 9 },
     { tmdbId: 694, imdbID: 'tt0081505', Title: 'The Shining', year: 1980, genre: 'Horror', runtime: 146, rank: 10 },
-    { tmdbId: 340666, imdbID: 'tt4550098', Title: 'Nocturnal Animals', year: 2016, genre: 'Thriller, Drama', runtime: 116, rank: 'BONUS' }
+    { tmdbId: 340666, imdbID: 'tt4550098', Title: 'Nocturnal Animals', year: 2016, genre: 'Thriller, Drama', runtime: 116, rank: 'BONUS' },
+    { tmdbId: 1339713, imdbID: 'tt37287335', Title: 'Obsession', year: 2026, genre: 'Horror, Thriller', runtime: 109, rank: 'BONUS' }
 ];
 
 // Helper to ensure default values with the new KILLER metric
@@ -85,6 +86,15 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild', description: "The camera pans across bedroom wall art in Dick Hallorann's (Scatman Crothers) apartment, showing topless female poster." },
         { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High', description: "Jack Torrance (Jack Nicholson) encounters a young woman (Lia Beldam) emerging naked from a bathtub, showing full-frontal female nudity." }
     ]},
+        1339713: {
+        scenes: [
+            { start: '48:15', end: '49:30', type: 'Sexual Content', severity: 'High', description: 'Intense intimate bedroom scene between Bear and Nikki with visible thrusting.' },
+            { start: '1:14:20', end: '1:15:10', type: 'Sexual Content', severity: 'Moderate', description: 'Disturbing and aggressive sexual advances as the obsession escalates.' },
+            { start: '1:38:10', end: '1:38:45', type: 'Nudity', severity: 'High', description: 'Brief graphic female nudity shown during the climactic aftermath.' },
+            { start: '', end: '', type: 'Violence & Gore', severity: 'High', description: 'Strong bloody violence, self-harm, and grisly imagery.' },
+            { start: '', end: '', type: 'Profanity', severity: 'High', description: 'Pervasive strong language throughout.' }
+        ]
+    },
     340666: { 
         scenes: [
             { start: "1:10", end: "4:21", type: "Nudity (Women)", severity: "High" },
@@ -110,7 +120,8 @@ export const FALLBACK_POSTERS = {
     670: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
     103: "https://image.tmdb.org/t/p/w500/ekstpHby5fsBliVqgJ6kL.jpg",
     694: "https://image.tmdb.org/t/p/w500/9w0Vkq1e5c3bWp6b1c1c1.jpg",
-    340666: "https://image.tmdb.org/t/p/w500/tdnziT5NfC1aQz56fP92jTpe6uD.jpg"
+    340666: "https://image.tmdb.org/t/p/w500/tdnziT5NfC1aQz56fP92jTpe6uD.jpg",
+    1339713: "https://image.tmdb.org/t/p/w500/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg"
 };
 
 export const COMPLETE_MOVIE_DATA = {
