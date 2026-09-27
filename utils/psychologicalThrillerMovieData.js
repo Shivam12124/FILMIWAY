@@ -88,11 +88,10 @@ export const SENSITIVE_TIMELINES = {
     ]},
         1339713: {
         scenes: [
-            { start: '48:15', end: '49:30', type: 'Sexual Content', severity: 'High', description: 'Intense intimate bedroom scene between Bear and Nikki with visible thrusting.' },
-            { start: '1:14:20', end: '1:15:10', type: 'Sexual Content', severity: 'Moderate', description: 'Disturbing and aggressive sexual advances as the obsession escalates.' },
-            { start: '1:38:10', end: '1:38:45', type: 'Nudity', severity: 'High', description: 'Brief graphic female nudity shown during the climactic aftermath.' },
-            { start: '', end: '', type: 'Violence & Gore', severity: 'High', description: 'Strong bloody violence, self-harm, and grisly imagery.' },
-            { start: '', end: '', type: 'Profanity', severity: 'High', description: 'Pervasive strong language throughout.' }
+            { start: "0:45:05", end: "0:45:20", type: "Sex & Partial Nudity", severity: "High", description: "A brief sex scene; Bear (Michael Johnston) is seen positioned on top of Nikki (Inde Navarrette). Bear's bare back and buttocks are clearly visible, while Nikki's body and nudity remain obscured from camera view." },
+            { start: "1:37:14", end: "1:37:22", type: "Nudity", severity: "High", description: "Full frontal nudity of a female corpse seated in a chair; genital area is exposed." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail." },
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, mature references, and repeated insults and vulgar expressions." }
         ]
     },
     340666: { 
