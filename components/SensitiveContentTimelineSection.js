@@ -1010,34 +1010,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     </li>
                                                 )}
 
-                                                {/* 🚀 IN-CONTENT AD SLOT (Strictly for Lust, Caution - Between timestamps, full-width matching timestamp cards) */}
-                                                {movie?.slug === 'lust-caution' && ((index === 1) || (arr.length >= 4 && index === 3) || (arr.length <= 2 && index === 0)) && (
-                                                    <li key={`incontent-ad-${index}`} className="list-none w-full my-6 sm:my-8">
-                                                        <div className="w-full rounded-xl sm:rounded-2xl border border-white/10 bg-[#0d0d11] p-3 sm:p-5 text-center overflow-hidden shadow-2xl relative">
-                                                            <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/5 px-2">
-                                                                <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-500">
-                                                                    ADVERTISEMENT
-                                                                </span>
-                                                                <span className="text-[10px] text-gray-600 font-mono tracking-wider">
-                                                                    SPONSORED
-                                                                </span>
-                                                            </div>
-                                                            <div
-                                                                id={`mv-in-content-ad-${index}`}
-                                                                className="incontent-ad-wrapper w-full min-h-[300px] sm:min-h-[340px] lg:min-h-[360px] flex items-center justify-center mx-auto relative z-10"
-                                                            >
-                                                                <div className="content_hint"></div>
-                                                                <div className="in-content-placeholder text-gray-400 text-xs font-mono tracking-wider flex flex-col items-center justify-center gap-2.5 py-12">
-                                                                    <div className="flex items-center gap-2">
-                                                                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 animate-ping"></span>
-                                                                        <span className="text-gray-300 font-medium tracking-wide">ADVERTISEMENT PLACEHOLDER</span>
-                                                                    </div>
-                                                                    <span className="text-[11px] text-gray-500 font-sans">Journey by Mediavine • 300x250 / 336x280 Ad Slot</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                )}
+
                                             </React.Fragment>
                                         );
                                     })}
