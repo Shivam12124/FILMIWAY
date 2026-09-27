@@ -1024,8 +1024,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                             </div>
                                                             <div
                                                                 id={`mv-in-content-ad-${index}`}
-                                                                className="mediavine-ad mv-ad-box w-full min-h-[300px] sm:min-h-[340px] lg:min-h-[360px] flex items-center justify-center mx-auto relative z-10"
-                                                                data-ad-unit="in-content"
+                                                                className="incontent-ad-wrapper w-full min-h-[300px] sm:min-h-[340px] lg:min-h-[360px] flex items-center justify-center mx-auto relative z-10"
                                                             >
                                                                 <div className="content_hint"></div>
                                                                 <div className="in-content-placeholder text-gray-500 text-xs font-mono tracking-wider flex flex-col items-center justify-center gap-2.5 py-16">
