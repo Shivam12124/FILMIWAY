@@ -19,8 +19,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 670, imdbID: 'tt0364569', Title: 'Oldboy', year: 2003, genre: 'Action', runtime: 120, rank: 8 },
     { tmdbId: 103, imdbID: 'tt0075314', Title: 'Taxi Driver', year: 1976, genre: 'Crime', runtime: 114, rank: 9 },
     { tmdbId: 694, imdbID: 'tt0081505', Title: 'The Shining', year: 1980, genre: 'Horror', runtime: 146, rank: 10 },
-    { tmdbId: 340666, imdbID: 'tt4550098', Title: 'Nocturnal Animals', year: 2016, genre: 'Thriller, Drama', runtime: 116, rank: 'BONUS' },
-    { tmdbId: 1339713, imdbID: 'tt37287335', Title: 'Obsession', year: 2026, genre: 'Horror, Thriller', runtime: 109, rank: 'BONUS' }
+    { tmdbId: 340666, imdbID: 'tt4550098', Title: 'Nocturnal Animals', year: 2016, genre: 'Thriller, Drama', runtime: 116, rank: 'BONUS' }
 ];
 
 // Helper to ensure default values with the new KILLER metric
@@ -86,15 +85,7 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild', description: "The camera pans across bedroom wall art in Dick Hallorann's (Scatman Crothers) apartment, showing topless female poster." },
         { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High', description: "Jack Torrance (Jack Nicholson) encounters a young woman (Lia Beldam) emerging naked from a bathtub, showing full-frontal female nudity." }
     ]},
-        1339713: {
-        scenes: [
-            { start: "0:45:05", end: "0:45:20", type: "Sex & Partial Nudity", severity: "High", description: "A brief sex scene; Bear (Michael Johnston) is seen positioned on top of Nikki (Inde Navarrette). Bear's bare back and buttocks are clearly visible, while Nikki's body and nudity remain obscured from camera view." },
-            { start: "1:37:14", end: "1:37:22", type: "Nudity", severity: "High", description: "Full frontal nudity of a female corpse seated in a chair; genital area is exposed." },
-            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail." },
-            { start: "", end: "", type: "Profanity", severity: "High", description: "Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, mature references, and repeated insults and vulgar expressions." }
-        ]
-    },
-    340666: { 
+        340666: { 
         scenes: [
             { start: "1:10", end: "4:21", type: "Nudity (Women)", severity: "High" },
             { start: "39:12", end: "39:25", type: "Partial Nudity (Man)", severity: "Mild" },
