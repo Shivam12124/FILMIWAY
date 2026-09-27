@@ -361,11 +361,12 @@ body {
   }
 }
 
-/* 🚀 IN-CONTENT AD STYLING (Professional reserved container with auto-hiding placeholder) */
+/* 🚀 IN-CONTENT AD STYLING (Auto-hide custom placeholder ONLY when real ad or Journey placeholder is injected) */
 .incontent-ad-wrapper:has(iframe) .in-content-placeholder,
 .incontent-ad-wrapper:has(ins) .in-content-placeholder,
 .incontent-ad-wrapper:has([class*="mediavine"]) .in-content-placeholder,
-.incontent-ad-wrapper:has(div:not(.in-content-placeholder):not(.content_hint)) .in-content-placeholder {
+.incontent-ad-wrapper:has([class*="journey-ad"]) .in-content-placeholder,
+.incontent-ad-wrapper:has([id*="mediavine"]) .in-content-placeholder {
   display: none !important;
 }
 
