@@ -840,7 +840,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <div className="relative">
                             <div className="w-full">
                                 {/* 🚀 SEO UPGRADE: Semantic list extraction for search engines */}
-                                <ul className="space-y-4 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
+                                <ul className="journey-content space-y-4 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
                                     {[...sensitiveData.scenes].sort((a, b) => {
                                         const aStart = a.start || '';
                                         const bStart = b.start || '';
