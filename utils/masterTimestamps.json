@@ -57,74 +57,77 @@
   },
   "14": {
     "Title": "American Beauty",
+    "lastVerifiedDate": "September 29, 2026",
     "scenes": [
       {
         "start": "0:02:01",
         "end": "0:02:14",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Lester Burnham (Kevin Spacey) masturbates in the shower during his morning routine; features suggestive arm movements and voiceover dialogue, with no graphic nudity shown."
       },
       {
         "start": "0:03:22",
         "end": "0:03:24",
         "type": "Nudity (Woman / Image)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Jane Burnham (Thora Birch) is seen browsing on her computer when an image pops up showing brief female topless nudity."
       },
       {
         "start": "0:19:30",
         "end": "0:20:07",
         "type": "Partial Nudity (Woman)",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Lester Burnham (Kevin Spacey) lies in bed at night fantasizing about Angela Hayes (Mena Suvari) lying naked on the ceiling; features exposed body with her private areas covered by red rose petals."
       },
       {
         "start": "0:40:38",
         "end": "0:40:42",
         "type": "Partial Nudity (Man)",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "Lester Burnham (Kevin Spacey) exercises naked in his home garage; brief male rear nudity is visible in wide shot as he lifts weights."
       },
       {
-        "start": "0:42:15",
-        "end": "0:42:50",
+        "start": "0:44:15",
+        "end": "0:44:32",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Lester Burnham (Kevin Spacey) lies in bed next to his sleeping wife Carolyn (Annette Bening) and begins masturbating under the blankets while fantasizing about Angela Hayes (Mena Suvari); features suggestive hand motions."
       },
       {
         "start": "0:55:45",
         "end": "0:56:00",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Carolyn Burnham (Annette Bening) and real estate rival Buddy Kane (Peter Gallagher) engage in sexual intercourse in bed inside an empty suburban house; features a rear view of them with suggestive physical movements and heavy breathing, with no kissing or explicit nudity shown."
       },
       {
         "start": "1:10:43",
         "end": "1:11:00",
         "type": "Nudity (Woman)",
-        "severity": "High"
-      },
-      {
-        "start": "1:12:11",
-        "end": "1:12:14",
-        "type": "Partial Nudity (Man)",
-        "severity": "Mild"
+        "severity": "High",
+        "description": "From across the street, Ricky Fitts (Wes Bentley) films Jane Burnham (Thora Birch) through her bedroom window with his camcorder; aware she is being recorded, Jane removes her bra, displaying topless female nudity."
       },
       {
         "start": "1:47:18",
         "end": "1:48:18",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "In Lester's living room, Angela Hayes (Mena Suvari) removes her top in front of Lester Burnham (Kevin Spacey), displaying topless nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "Moderate",
-        "description": "Features a fatal gunshot to the head, blood spatters, and brief domestic physical altercations."
+        "description": "Features a point-blank gunshot execution to the head with visible blood splatter and a pool of blood, domestic physical abuse including a violent paternal beating, facial slaps, and scenes of suicidal distress involving a loaded handgun."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Frequent strong language throughout, including over 30 uses of the F-word and other expletives."
+        "description": "Pervasive strong language throughout, including over 30 F-bombs, frequent coarse profanity, crude sexual dialogue, and repeated homophobic slurs."
       }
     ],
     "Age": "18+",
@@ -19103,38 +19106,44 @@
   },
   "1233413": {
     "Title": "Sinners",
+    "lastVerifiedDate": "September 29, 2026",
     "Age": "18+",
     "Summary": "Aged 18+ for brutal graphic violence, explicit sex and brief nudity, and strong vulgar language throughout.",
     "scenes": [
       {
-        "start": "0:40:33",
+        "start": "0:39:58",
         "end": "0:40:47",
         "type": "Sex",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Smoke (Michael B. Jordan) and Annie (Wunmi Mosaku) engage in sexual intercourse while standing; features suggestive physical movements and heavy breathing, with no nudity shown."
       },
       {
         "start": "0:57:40",
         "end": "0:59:00",
         "type": "Nudity (Woman in Background)",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "During a musical performance sequence, background women are briefly seen with exposed topless nudity at a distance as characters move across the frame."
       },
       {
         "start": "1:00:15",
         "end": "1:01:05",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Samuel Moore (Miles Caton) engages in sexual intercourse with a woman; features direct simulated physical movements and thrusting, with no kissing or nudity shown."
       },
       {
         "start": "1:18:25",
         "end": "1:18:30",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Stack (Michael B. Jordan) and Mary (Hailee Steinfeld) engage in sexual intercourse; captured from a rear angle shot showing physical movement, with no explicit nudity."
       },
       {
         "start": "2:02:10",
         "end": "2:02:28",
         "type": "Partial Nudity (Woman)",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Annie (Wunmi Mosaku) is seen breastfeeding an infant; features a large portion of her bare breast visible on screen."
       },
       {
         "start": "",
@@ -19299,7 +19308,7 @@
         "end": "1:21:15",
         "type": "Sex",
         "severity": "High",
-        "description": "A rapid sexual encounter between two characters against a wall; passionate kissing, disrobing, and suggestive movements depicted."
+        "description": "Marty (Timothée Chalamet) and Kay (Gwyneth Paltrow) engage in sexual intercourse while standing in a shower against the wall; features passionate kissing and suggestive physical movements, with no nudity shown."
       },
       {
         "start": "1:47:00",

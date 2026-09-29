@@ -67,7 +67,7 @@ export const SENSITIVE_TIMELINES = {
     // Sinners
     1233413: { 
         scenes: [
-            { start: "0:40:33", end: "0:40:47", type: "Sex", severity: "Moderate" },
+            { start: "0:39:58", end: "0:40:47", type: "Sex", severity: "Moderate" },
             { start: "0:57:40", end: "0:59:00", type: "Nudity (Woman in Background)", severity: "Moderate" },
             { start: "1:00:15", end: "1:01:05", type: "Sex", severity: "High" },
             { start: "1:18:25", end: "1:18:30", type: "Sex", severity: "High" },

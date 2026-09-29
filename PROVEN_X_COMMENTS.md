@@ -194,6 +194,44 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 > **Key Weapon:** The "18.9K Blue Is the Warmest Color" Blueprint: Extreme Production Fact ➔ Direct Honest Viewer Warning ➔ Clean Skip CTA.  
 > **The Secret Unlocked:** When answering a viral sex scene rumor, validating the extreme production reality before giving an authoritative "strongly advised to skip" advisory establishes maximum credibility, driving thousands of views and clicks.
 
+---
 
+## 🛠️ SAVED CODE: OPTION B (X In-App Browser Sticky Ad Offset Hack)
+> ⚠️ **STATUS: SAVED ONLY - DO NOT APPLY TO CODEBASE YET.**
+> *Hold until user explicitly gives the command: "apply it".*
 
+### Problem
+X's in-app browser has a bottom control bar that covers Mediavine / Journey's sticky bottom ad.
 
+### Code to apply to `pages/_app.js` when approved:
+```javascript
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isXInAppBrowser = /Twitter|TwitterAndroid|TwitterMobile|FBAN|FBAV|Instagram/i.test(ua);
+
+    if (isXInAppBrowser) {
+      const styleId = 'x-inapp-ad-fix';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.innerHTML = `
+          [id*="mediavine"], [class*="mediavine"], 
+          [id*="journey"], [class*="journey"],
+          .mv-adhesive, #mv-adhesive,
+          div[style*="position: fixed"][style*="bottom: 0"],
+          div[style*="position:fixed"][style*="bottom:0"] {
+            bottom: 75px !important;
+            transition: bottom 0.3s ease !important;
+          }
+          body {
+            padding-bottom: 90px !important;
+          }
+        `;
+        document.head.appendChild(style);
+        console.log('[Filmiway Ads] X In-App Browser detected. Lifted sticky ad bottom offset by 75px.');
+      }
+    }
+  }
+}, []);
+```

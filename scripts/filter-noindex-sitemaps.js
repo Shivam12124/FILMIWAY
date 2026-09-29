@@ -18,7 +18,9 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '46705', 'tt1120985',
     '491584', 'tt7282468',
     '744857', 'tt16300962',
-    '1813', 'tt0118971'
+    '1813', 'tt0118971',
+    '14', 'tt0169547', // American Beauty (1999)
+    '1233413', 'tt31193180' // Sinners (2025)
 ]);
 
 const masterDb = JSON.parse(fs.readFileSync(path.join(__dirname, '../utils/masterDatabase.json'), 'utf8'));
