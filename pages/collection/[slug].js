@@ -4636,14 +4636,11 @@ return (
 
                     <RelatedCollections collectionIds={collection.relatedCollections} />
 
-                    {/* âœ… FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
-                    <motion.footer
-                        className="w-full bg-gradient-to-t from-gray-900 to-black pt-12 border-t border-gray-800/30 text-center relative z-20 mt-auto"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 4.5 }}
+                    {/* ✅ FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
+                    <footer
+                        className="w-full bg-gradient-to-b from-gray-900/40 via-black to-black pt-12 pb-4 border-t border-gray-800/40 text-center relative z-20 mt-auto"
                     >
-                        <div className="container mx-auto px-6 pb-12">
+                        <div className="container mx-auto px-6">
                             <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
                                 Curated cinema for discerning viewers • Expert analysis and community insights
                             </p>
@@ -4656,11 +4653,8 @@ return (
                                 <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
                             </div>
                             
-                            <motion.div 
+                            <div 
                                 className="mb-8 pt-6 border-t border-gray-900/50"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 5, duration: 1 }}
                             >
                                 <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
                                     <p className="text-gray-600 text-sm">
@@ -4688,7 +4682,7 @@ return (
                                 <p className="text-gray-700 text-xs mt-2 text-center">
                                     This product uses the TMDB API but is not endorsed or certified by TMDB.
                                 </p>
-                            </motion.div>
+                            </div>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium my-6 pt-6 border-t border-white/10 max-w-4xl mx-auto">
                                 <Link href="/collection/top-25-parents-guides" className="hover:text-yellow-400 text-yellow-400 font-bold transition-colors py-0.5">
@@ -4712,15 +4706,15 @@ return (
                                 </Link>
                             </div>
 
-                            <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-10">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-gray-500 text-xs sm:text-sm py-4">
                                 <span>© 2026 Filmiway</span>
-                                <span></span>
+                                <span className="hidden sm:inline text-gray-700">•</span>
                                 <span>All Rights Reserved</span>
-                                <span></span>
+                                <span className="hidden sm:inline text-gray-700">•</span>
                                 <span>Worry-Free Movie Nights. Skip the Awkward.</span>
                             </div>
                         </div>
-                    </motion.footer>
+                    </footer>
                 </motion.div>
     </div>
 );
