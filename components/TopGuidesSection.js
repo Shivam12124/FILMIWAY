@@ -10,13 +10,13 @@ export default function TopGuidesSection() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 relative z-10">
         <div className="space-y-2 text-center md:text-left">
           <div className="inline-flex items-center px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-400 text-xs font-extrabold uppercase tracking-widest">
-            <span>High-Demand Directory</span>
+            <span>Popular Movie Guides</span>
           </div>
           <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
-            Top 25 Most Visited Parents Guides & Skip Timestamps
+            Top 25 Most Popular Movie Guides & Skip Timestamps
           </h3>
           <p className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 max-w-xl">
-            Explore Filmiway’s most searched movie guides — including Oppenheimer, Fight Club, The Wolf of Wall Street, Titanic & 21 more.
+            Browse Filmiway’s curated collection of reader-favorite film guides — including Oppenheimer, Fight Club, The Wolf of Wall Street, Titanic, and 21 more.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function TopGuidesSection() {
           href="/collection/top-25-parents-guides"
           className="group inline-flex items-center gap-2.5 px-5 py-3 sm:px-7 sm:py-3.5 bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold text-xs sm:text-sm rounded-xl transition-all duration-300 shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/40 shrink-0 cursor-pointer"
         >
-          <span>View Top 25 Collection</span>
+          <span>Explore Top 25 Collection</span>
           <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

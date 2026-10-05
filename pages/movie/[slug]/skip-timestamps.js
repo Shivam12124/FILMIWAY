@@ -673,8 +673,8 @@ export default function UniversalMoviePage({ movie }) {
                     `}</style>
                 )}
 
-                {/* 🚀 OPPENHEIMER EXCLUSIVE MOBILE ADHESION LIFT */}
-                {movie?.slug === 'oppenheimer' && (
+                {/* 🚀 OPPENHEIMER & OBSESSION EXCLUSIVE MOBILE ADHESION LIFT */}
+                {(movie?.slug === 'oppenheimer' || movie?.slug === 'obsession') && (
                     <style>{`
                         @media (max-width: 767px) {
                             body {

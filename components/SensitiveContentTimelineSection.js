@@ -12,6 +12,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 // 🎬 WATCH-ALONG TIMER — loaded only when user opens it
 const WatchAlongTimer = dynamic(() => import('./WatchAlongTimer'), { ssr: false });
 import FanFavoritesSection from './FanFavoritesSection';
+const EnhancedWhereToWatchSection = dynamic(() => import('./EnhancedWhereToWatchSection'));
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -946,13 +947,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     )}
                                                 </li>
 
-                                                {/* 🔥 SIMILAR MOVIE GUIDES (Positioned just below last timestamp, right above ExpressVPN) */}
-                                                {index === arr.length - 1 && movie?.similarMovies && movie.similarMovies.length > 0 && (
-                                                    <li key="similar-movie-guides-inline" className="list-none w-full my-4 sm:my-5 p-0">
-                                                        <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
-                                                    </li>
-                                                )}
-
                                                 {/* 🚀 ExpressVPN Native Injection: Filmiway User Deal Card (High Readability & Impact) */}
                                                 {index === arr.length - 1 && (
                                                     <li className="relative mt-2 sm:mt-2.5 mb-0 p-4 sm:p-5 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
@@ -983,18 +977,18 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                                         </span>
                                                                         <span className="text-gray-600 text-[10px]">•</span>
                                                                         <span className="text-red-400 font-bold text-[11px] sm:text-xs tracking-wide uppercase">
-                                                                            SPECIAL FILMIWAY DEAL • $2.99/MO (+ 4 MONTHS FREE)
+                                                                            SPECIAL FILMIWAY DEAL
                                                                         </span>
                                                                     </div>
 
                                                                     {/* Headline */}
                                                                     <h4 className="text-white font-bold text-sm sm:text-base leading-snug group-hover:text-red-400 transition-colors">
-                                                                        Bypass ISP Throttling & Stream Privately
+                                                                        Streaming <span className="text-white">{movie?.title || movie?.Title || 'this movie'}</span> tonight?
                                                                     </h4>
 
                                                                     {/* Explanation Description */}
                                                                     <p className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1">
-                                                                        Watching <span className="text-white font-semibold">{movie?.title || 'movies'}</span>? ExpressVPN stops ISP speed throttling, hides private browsing from network admins, and unlocks geo-restricted streaming catalogs.
+                                                                        ExpressVPN stops ISP speed throttling and unblocks international streaming libraries with zero buffering.
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -1019,6 +1013,26 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
                             <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
                         </div>
+
+                        {/* 📺 WHERE TO WATCH SECTION (Positioned directly below ExpressVPN deal card & above Similar Movie Guides) */}
+                        <div className="w-full my-6 sm:my-8 min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+                            <style>{`
+                                .clean-injected-component section { 
+                                    margin-top: 0 !important; 
+                                    padding-top: 0 !important; 
+                                    border-top: none !important; 
+                                    margin-bottom: 0 !important;
+                                }
+                            `}</style>
+                            <EnhancedWhereToWatchSection movie={movie} />
+                        </div>
+
+                        {/* 🔥 SIMILAR MOVIE GUIDES (Positioned directly below Where to Watch section) */}
+                        {movie?.similarMovies && movie.similarMovies.length > 0 && (
+                            <div className="w-full my-6 sm:my-8">
+                                <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
+                            </div>
+                        )}
 
                         {/* 🛡️ TIGHTLY STACKED UTILITY CARDS (FAMILY SAFETY SCORE + RECOMMENDED AGE + WATCH-ALONG TIMER) */}
                         <div className="flex flex-col gap-2.5 sm:gap-3">
