@@ -766,12 +766,12 @@ const MovieDetailsSection = React.memo(({
 
   return (
     <motion.div
-      className="max-w-4xl lg:max-w-[1045px] mx-auto w-full flex flex-col gap-6 sm:gap-8 mt-8 sm:mt-12"
+      className="max-w-4xl lg:max-w-[1216px] mx-auto w-full flex flex-col gap-5 sm:gap-7 mt-4 sm:mt-6"
       initial={{ opacity: 1, y: 40 }} // WAS: opacity: 0
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="text-center space-y-6">
+      <div className="text-center space-y-4 sm:space-y-5">
         <motion.h2
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
           style={{ fontFamily: "'Playfair Display', serif" }}
@@ -783,23 +783,23 @@ const MovieDetailsSection = React.memo(({
         </motion.h2>
 
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:space-x-6 text-gray-400 text-xs sm:text-sm tracking-normal sm:tracking-wider uppercase"
+          className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 md:gap-5 text-gray-300 text-sm sm:text-base md:text-lg font-medium tracking-wide uppercase"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <span>{year}</span>
-          <span>•</span>
-          <span suppressHydrationWarning>{director}</span>
-          <span>•</span>
-          <span suppressHydrationWarning>{runtime}</span>
-          <span>•</span>
+          <span className="font-semibold text-white">{year}</span>
+          <span className="text-gray-500 font-bold">•</span>
+          <span className="font-semibold text-white" suppressHydrationWarning>{director}</span>
+          <span className="text-gray-500 font-bold">•</span>
+          <span className="font-semibold text-white" suppressHydrationWarning>{runtime}</span>
+          <span className="text-gray-500 font-bold">•</span>
           <span
-            className="px-2 py-1 rounded border font-medium"
+            className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-md border text-xs sm:text-sm md:text-base font-bold tracking-wider inline-flex items-center justify-center"
             style={{
               color: getAgeRatingColor(ageRating),
               borderColor: getAgeRatingColor(ageRating),
-              backgroundColor: `${getAgeRatingColor(ageRating)}15`
+              backgroundColor: `${getAgeRatingColor(ageRating)}18`
             }}
             suppressHydrationWarning
           >
@@ -811,7 +811,7 @@ const MovieDetailsSection = React.memo(({
       {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
       <div id="timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
       <div id="skip-timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
-      <div id="parents-guide" className="scroll-mt-24 sm:scroll-mt-28 w-full max-w-4xl lg:max-w-[1045px] mx-auto min-h-[400px]">
+      <div id="parents-guide" className="scroll-mt-24 sm:scroll-mt-28 w-full max-w-4xl lg:max-w-[1216px] mx-auto min-h-[400px]">
         <SensitiveContentTimelineSection movie={{ ...movie, Runtime: runtime }} sensitiveScenes={sensitiveScenes} />
       </div>
 

@@ -2,7 +2,7 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer, ExternalLink } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer, ExternalLink, ChevronDown } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import masterTimestamps from '../utils/masterTimestamps.json';
@@ -615,7 +615,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         <>
             {stickyBar}
             <motion.section
-                className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
+                className={filteredHeavyScenes.length === 0 ? "w-full max-w-4xl lg:max-w-[1045px] mx-auto bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8" : "w-full"}
                 initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -641,6 +641,32 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         scrollbar-width: thin;
                         scrollbar-color: rgba(234, 179, 8, 0.5) transparent;
                     }
+                }
+                /* 🎬 TWO-COLUMN MOVIE PAGE: main column + money sidebar (collapses to one column on mobile in priority order) */
+                .fw-grid {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.25rem;
+                }
+                .fw-side {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.25rem;
+                    min-width: 0;
+                }
+                @media (min-width: 1024px) {
+                    .fw-grid {
+                        display: grid;
+                        grid-template-columns: minmax(0, 1fr) 360px;
+                        grid-template-areas: "top side" "bottom side";
+                        grid-template-rows: auto 1fr;
+                        column-gap: 1.5rem;
+                        row-gap: 1.5rem;
+                        align-items: start;
+                    }
+                    .fw-top { grid-area: top; min-width: 0; }
+                    .fw-bottom { grid-area: bottom; min-width: 0; }
+                    .fw-side { grid-area: side; align-self: stretch; }
                 }
                 .timestamp-card-list .group {
                     position: relative;
@@ -705,7 +731,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </div>
                     </div>
                 ) : (
-                    <div className="flex flex-col gap-3 sm:gap-3.5 relative z-50">
+                    <div className="fw-grid relative z-50">
+                    <div className="fw-top relative z-50 flex flex-col gap-3 sm:gap-3.5 bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
 
                         <div className="space-y-2.5 w-full">
                             <div className="flex items-start sm:items-center justify-between w-full gap-2">
@@ -751,6 +778,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </div>
                             </div>
                         </div>
+
+
 
                         {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP (PLACED DIRECTLY UNDER H1 FOR INSTANT SATISFACTION) */}
                         {timelineMarkers.length > 0 && (
@@ -837,11 +866,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </motion.div>
                         )}
 
+                        {/* 📊 QUICK SUMMARY STATS (Positioned above first timestamp and below Parents Guide Tracker) */}
+                        <div className="ml-1 space-y-2 sm:space-y-2.5 pt-3 sm:pt-4 pb-2 sm:pb-3 border-t border-white/5 sm:border-white/10">
+                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-start sm:items-center gap-2 sm:gap-2.5 font-normal">
+                                <CheckCircle size={15} className="text-emerald-500/80 sm:text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+                                <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 sm:text-white font-medium sm:font-bold" suppressHydrationWarning>{currentRuntime}</span></span>
+                            </p>
+
+                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-center gap-2 sm:gap-2.5 font-normal">
+                                <Film size={15} className="text-indigo-400 shrink-0" />
+                                <span>Total scenes flagged: <span className="text-gray-300 sm:text-white font-medium sm:font-bold">{skipStats.totalScenes}</span></span>
+                            </p>
+
+                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-center gap-2 sm:gap-2.5 font-normal">
+                                <FastForward size={15} className="text-yellow-500/80 sm:text-yellow-400 shrink-0" />
+                                <span>Total time to skip: <span className="text-gray-300 sm:text-yellow-400 font-medium sm:font-bold">{skipStats.formattedTime}</span></span>
+                            </p>
+                        </div>
+
                         {/* 🔥 TIMESTAMPS CARD LIST (PROMINENTLY VISIBLE RIGHT AT TOP) */}
                         <div className="relative">
                             <div className="w-full">
                                 {/* 🚀 SEO UPGRADE: Semantic list extraction for search engines */}
-                                <ul className="journey-content space-y-4 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
+                                <ul className="journey-content space-y-2.5 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
                                     {[...sensitiveData.scenes].sort((a, b) => {
                                         const aStart = a.start || '';
                                         const bStart = b.start || '';
@@ -947,62 +994,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                     )}
                                                 </li>
 
-                                                {/* 🚀 ExpressVPN Native Injection: Filmiway User Deal Card (High Readability & Impact) */}
-                                                {index === arr.length - 1 && (
-                                                    <li className="relative mt-2 sm:mt-2.5 mb-0 p-4 sm:p-5 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
-                                                        <a
-                                                            href="https://go.expressvpn.com/c/7564909/1462856/16063"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            onClick={handleExpressVpnClick}
-                                                            className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4"
-                                                        >
-                                                            <div className="flex items-start gap-3.5 min-w-0 flex-1">
-                                                                {/* ExpressVPN Red Icon Shield Box - Aligned to Top */}
-                                                                <div className="w-10 h-10 rounded-xl bg-black/40 flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30 border border-red-500/40 overflow-hidden p-1.5">
-                                                                    <Image
-                                                                        src="/images/expressvpn/Red, Icon.png"
-                                                                        alt="ExpressVPN"
-                                                                        width={32}
-                                                                        height={32}
-                                                                        className="object-contain"
-                                                                    />
-                                                                </div>
-
-                                                                <div className="flex flex-col min-w-0 flex-1">
-                                                                    {/* Perfectly Left-Aligned Header Line */}
-                                                                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                                                                        <span className="font-black text-xs sm:text-[13px] text-white tracking-widest uppercase">
-                                                                            EXPRESSVPN
-                                                                        </span>
-                                                                        <span className="text-gray-600 text-[10px]">•</span>
-                                                                        <span className="text-red-400 font-bold text-[11px] sm:text-xs tracking-wide uppercase">
-                                                                            SPECIAL FILMIWAY DEAL
-                                                                        </span>
-                                                                    </div>
-
-                                                                    {/* Headline */}
-                                                                    <h4 className="text-white font-bold text-sm sm:text-base leading-snug group-hover:text-red-400 transition-colors">
-                                                                        Streaming <span className="text-white">{movie?.title || movie?.Title || 'this movie'}</span> tonight?
-                                                                    </h4>
-
-                                                                    {/* Explanation Description */}
-                                                                    <p className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1">
-                                                                        ExpressVPN stops ISP speed throttling and unblocks international streaming libraries with zero buffering.
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            {/* Red CTA Button */}
-                                                            <div className="shrink-0 w-full lg:w-auto mt-2 lg:mt-0">
-                                                                <div className="flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-red-600/35 transition-all border border-red-500/60 group-hover:scale-[1.02] w-full">
-                                                                    <span>Claim Filmiway Deal ($2.99/mo + 4 Months Free)</span>
-                                                                    <ExternalLink size={14} />
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                )}
 
 
                                             </React.Fragment>
@@ -1014,8 +1005,65 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
                         </div>
 
-                        {/* 📺 WHERE TO WATCH SECTION (Positioned directly below ExpressVPN deal card & above Similar Movie Guides) */}
-                        <div className="w-full my-6 sm:my-8 min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+                        </div>
+                        {/* end fw-top (main column: tracker + stats + timestamps) */}
+
+                        {/* 💰 SIDEBAR — priority order: 1) ExpressVPN  2) Where to Watch (Amazon)  3) Similar Guides  4) Watch-Along Timer.
+                            On mobile this simply stacks directly under the timestamps in the same order. */}
+                        <aside className="fw-side" aria-label="Streaming deals, where to watch and similar movie guides">
+
+                        {/* 1️⃣ EXPRESSVPN AFFILIATE CARD */}
+                        <div className="relative p-4 sm:p-5 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
+                            <a
+                                href="https://go.expressvpn.com/c/7564909/1462856/16063"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={handleExpressVpnClick}
+                                className="flex flex-col gap-4"
+                            >
+                                <div className="flex items-start gap-3.5 min-w-0">
+                                    {/* ExpressVPN Red Icon Shield Box */}
+                                    <div className="w-10 h-10 rounded-xl bg-black/40 flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30 border border-red-500/40 overflow-hidden p-1.5">
+                                        <Image
+                                            src="/images/expressvpn/Red, Icon.png"
+                                            alt="ExpressVPN"
+                                            width={32}
+                                            height={32}
+                                            className="object-contain"
+                                        />
+                                    </div>
+
+                                    <div className="flex flex-col min-w-0 flex-1">
+                                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                                            <span className="font-black text-xs sm:text-[13px] text-white tracking-widest uppercase">
+                                                EXPRESSVPN
+                                            </span>
+                                            <span className="text-gray-600 text-[10px]">•</span>
+                                            <span className="text-red-400 font-bold text-[11px] sm:text-xs tracking-wide uppercase">
+                                                SPECIAL FILMIWAY DEAL
+                                            </span>
+                                        </div>
+
+                                        <h4 className="text-white font-bold text-sm sm:text-base leading-snug group-hover:text-red-400 transition-colors">
+                                            Streaming <span className="text-white">{movie?.title || movie?.Title || 'this movie'}</span> tonight?
+                                        </h4>
+
+                                        <p className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1">
+                                            ExpressVPN stops ISP speed throttling and unblocks international streaming libraries with zero buffering.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Red CTA Button */}
+                                <div className="flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-red-600/35 transition-all border border-red-500/60 group-hover:scale-[1.02] w-full text-center">
+                                    <span>Claim Filmiway Deal ($2.99/mo + 4 Months Free)</span>
+                                    <ExternalLink size={14} className="shrink-0" />
+                                </div>
+                            </a>
+                        </div>
+
+                        {/* 2️⃣ WHERE TO WATCH (Amazon affiliate) */}
+                        <div className="w-full min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 clean-injected-component">
                             <style>{`
                                 .clean-injected-component section { 
                                     margin-top: 0 !important; 
@@ -1024,17 +1072,75 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     margin-bottom: 0 !important;
                                 }
                             `}</style>
-                            <EnhancedWhereToWatchSection movie={movie} />
+                            <EnhancedWhereToWatchSection movie={movie} compact />
+                            <p className="mt-4 text-[10px] text-gray-500 leading-snug text-center">As an Amazon Associate, Filmiway earns from qualifying purchases.</p>
                         </div>
 
-                        {/* 🔥 SIMILAR MOVIE GUIDES (Positioned directly below Where to Watch section) */}
+                        {/* 3️⃣ SIMILAR MOVIE GUIDES */}
                         {movie?.similarMovies && movie.similarMovies.length > 0 && (
-                            <div className="w-full my-6 sm:my-8">
-                                <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
+                            <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5">
+                                <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} compact />
                             </div>
                         )}
 
-                        {/* 🛡️ TIGHTLY STACKED UTILITY CARDS (FAMILY SAFETY SCORE + RECOMMENDED AGE + WATCH-ALONG TIMER) */}
+                        {/* 🛡️ DEDICATED UTILITY CARDS (WATCH-ALONG TIMER) */}
+                        <div className="flex flex-col gap-2.5 sm:gap-3 lg:sticky lg:top-24">
+                            {/* ⏱️ DEDICATED WATCH-ALONG TIMER UTILITY CARD */}
+                            {timelineMarkers.length > 0 && (
+                                <div
+                                    itemScope
+                                    itemType="https://schema.org/SoftwareApplication"
+                                    className="group relative w-full p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-xl overflow-hidden m-0"
+                                >
+                                <meta itemProp="name" content={`Filmiway Live Watch-Along Sync Timer for ${movie?.Title || 'Movie'}`} />
+                                <meta itemProp="applicationCategory" content="MultimediaApplication" />
+                                <meta itemProp="operatingSystem" content="Web, iOS, Android" />
+
+                                {/* Subtle top accent border line */}
+                                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent" />
+
+                                <div className="flex flex-col gap-4 relative z-10">
+                                    {/* Left Side: Title & Explanatory Text */}
+                                    <div className="flex-1 space-y-2 sm:space-y-2.5">
+                                        <div className="flex items-center gap-2">
+                                            <div className="relative flex h-2 w-2 shrink-0">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+                                            </div>
+                                            <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-yellow-500/90 uppercase tracking-[0.18em]">
+                                                Live Synchronization Tool
+                                            </span>
+                                        </div>
+
+                                        <h3 itemProp="headline" className="text-base sm:text-lg lg:text-xl font-bold text-white tracking-tight">
+                                            Filmiway Watch-Along Timer for {movie?.Title || movie?.title || 'this movie'}
+                                        </h3>
+
+                                        <p itemProp="description" className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 leading-relaxed max-w-xl font-light sm:font-normal">
+                                            Sync this live timer on your mobile phone simultaneously while watching <strong className="text-white font-medium">{movie?.Title || movie?.title || 'this movie'}</strong> on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-semibold sm:font-bold">15 seconds before explicit scenes appear</strong>, giving you enough time to skip past them before things get awkward.
+                                        </p>
+                                    </div>
+
+                                    {/* Right Side: Launch Button CTA */}
+                                    <div className="shrink-0 flex items-center">
+                                        <button
+                                            type="button"
+                                            onClick={handleOpenWatchAlong}
+                                            className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group/btn cursor-pointer"
+                                        >
+                                            <Play size={16} className="fill-black text-black transition-transform group-hover/btn:translate-x-0.5" />
+                                            <span>Launch Watch-Along Timer</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        </div>
+                        </aside>
+                        {/* end fw-side */}
+
+                        {/* 📋 BOTTOM CARD: safety score, recommended age and explainer (below the money cards on mobile, under the timestamps on desktop) */}
+                        <div className="fw-bottom flex flex-col gap-3 sm:gap-3.5 bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
                         <div className="flex flex-col gap-2.5 sm:gap-3">
                             {/* 🛡️ FAMILY SAFETY SCORE BADGE */}
                             {minimalistSafetyBadge}
@@ -1059,75 +1165,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     </div>
                                 </motion.div>
                             )}
-
-                            {/* ⏱️ DEDICATED WATCH-ALONG TIMER UTILITY CARD */}
-                            {timelineMarkers.length > 0 && (
-                                <div
-                                    itemScope
-                                    itemType="https://schema.org/SoftwareApplication"
-                                    className="group relative w-full p-4 sm:p-6 lg:p-7 rounded-xl sm:rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-xl overflow-hidden m-0"
-                                >
-                                <meta itemProp="name" content={`Filmiway Live Watch-Along Sync Timer for ${movie?.Title || 'Movie'}`} />
-                                <meta itemProp="applicationCategory" content="MultimediaApplication" />
-                                <meta itemProp="operatingSystem" content="Web, iOS, Android" />
-
-                                {/* Subtle top accent border line */}
-                                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent" />
-
-                                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-5 relative z-10">
-                                    {/* Left Side: Title & Explanatory Text */}
-                                    <div className="flex-1 space-y-2 sm:space-y-2.5">
-                                        <div className="flex items-center gap-2">
-                                            <div className="relative flex h-2 w-2 shrink-0">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
-                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
-                                            </div>
-                                            <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-yellow-500/90 uppercase tracking-[0.18em]">
-                                                Live Synchronization Tool
-                                            </span>
-                                        </div>
-
-                                        <h3 itemProp="headline" className="text-base sm:text-lg lg:text-xl font-bold text-white tracking-tight">
-                                            Filmiway Watch-Along Timer
-                                        </h3>
-
-                                        <p itemProp="description" className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 leading-relaxed max-w-xl font-light sm:font-normal">
-                                            Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-semibold sm:font-bold">15 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
-                                        </p>
-                                    </div>
-
-                                    {/* Right Side: Launch Button CTA */}
-                                    <div className="shrink-0 flex items-center lg:justify-end">
-                                        <button
-                                            type="button"
-                                            onClick={handleOpenWatchAlong}
-                                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 sm:px-7 sm:py-3.5 rounded-xl font-semibold text-xs sm:text-sm bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-black shadow-[0_0_25px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group/btn cursor-pointer"
-                                        >
-                                            <Play size={16} className="fill-black text-black transition-transform group-hover/btn:translate-x-0.5" />
-                                            <span>Launch Watch-Along Timer</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                        </div>
-
-                        {/* 📊 QUICK SUMMARY STATS & EDITORIAL TRANSPARENCY */}
-                        <div className="ml-1 space-y-2 sm:space-y-3 pt-1">
-                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-start sm:items-center gap-2 sm:gap-2.5 font-normal">
-                                <CheckCircle size={15} className="text-emerald-500/80 sm:text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
-                                <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 sm:text-white font-medium sm:font-bold" suppressHydrationWarning>{currentRuntime}</span></span>
-                            </p>
-
-                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-center gap-2 sm:gap-2.5 font-normal">
-                                <Film size={15} className="text-indigo-400 shrink-0" />
-                                <span>Total scenes flagged: <span className="text-gray-300 sm:text-white font-medium sm:font-bold">{skipStats.totalScenes}</span></span>
-                            </p>
-
-                            <p className="text-[13px] sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 flex items-center gap-2 sm:gap-2.5 font-normal">
-                                <FastForward size={15} className="text-yellow-500/80 sm:text-yellow-400 shrink-0" />
-                                <span>Total time to skip: <span className="text-gray-300 sm:text-yellow-400 font-medium sm:font-bold">{skipStats.formattedTime}</span></span>
-                            </p>
                         </div>
 
                         <p className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 leading-relaxed font-light sm:font-normal mt-1 sm:mt-2 max-w-3xl ml-1">
@@ -1147,49 +1184,85 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 return templates[seed % templates.length];
                             })()}
                         </p>
+                            {/* 🔥 ENHANCED ENGAGEMENT FOOTER: INSIDE .fw-bottom so it matches the width and NEVER stretches awkwardly across the empty sidebar area */}
+                            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-4 sm:pt-5 mt-3 sm:mt-4">
+                                <div className="flex items-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em] sm:tracking-widest font-semibold">
+                                    <Shield size={14} className="text-emerald-500/70 sm:text-emerald-400 shrink-0" />
+                                    <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 28, 2026'}</span>
+                                </div>
+
+                                <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
+                                    {/* Social Proof / Prompt */}
+                                    <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300">
+                                        {hasVoted ? (
+                                            <span className="text-emerald-400/90 font-medium sm:font-semibold">Thanks for your feedback!</span>
+                                        ) : helpfulCount > 5 ? (
+                                            <span><strong className="text-gray-200 sm:text-white font-bold">{helpfulCount}</strong> found this helpful. You?</span>
+                                        ) : (
+                                            <span>Was this guide helpful?</span>
+                                        )}
+                                    </div>
+
+                                    <motion.button
+                                        whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
+                                        whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
+                                        onClick={handleVote}
+                                        disabled={hasVoted || isVoting}
+                                        className={`group flex items-center gap-2 sm:gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
+                                            ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
+                                            : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
+                                            }`}
+                                    >
+                                        {hasVoted ? (
+                                            <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
+                                        ) : (
+                                            <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
+                                        )}
+                                    </motion.button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 )}
 
-
-
-
-                {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 sm:border-white/10 pt-4 sm:pt-5 mt-4">
-                    <div className="flex items-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em] sm:tracking-widest font-semibold">
-                        <Shield size={14} className="text-emerald-500/70 sm:text-emerald-400 shrink-0" />
-                        <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 28, 2026'}</span>
-                    </div>
-
-                    <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
-                        {/* Social Proof / Prompt */}
-                        <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300">
-                            {hasVoted ? (
-                                <span className="text-emerald-400/90 font-medium sm:font-semibold">Thanks for your feedback!</span>
-                            ) : helpfulCount > 5 ? (
-                                <span><strong className="text-gray-200 sm:text-white font-bold">{helpfulCount}</strong> found this helpful. You?</span>
-                            ) : (
-                                <span>Was this guide helpful?</span>
-                            )}
+                {/* 🔥 CLEAN MOVIES ENGAGEMENT FOOTER: Only shown when movie has no timestamps */}
+                {filteredHeavyScenes.length === 0 && (
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 sm:border-white/10 pt-4 sm:pt-5 mt-4">
+                        <div className="flex items-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em] sm:tracking-widest font-semibold">
+                            <Shield size={14} className="text-emerald-500/70 sm:text-emerald-400 shrink-0" />
+                            <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 28, 2026'}</span>
                         </div>
 
-                        <motion.button
-                            whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
-                            whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
-                            onClick={handleVote}
-                            disabled={hasVoted || isVoting}
-                            className={`group flex items-center gap-2 sm:gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
-                                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
-                                : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
-                                }`}
-                        >
-                            {hasVoted ? (
-                                <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
-                            ) : (
-                                <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
-                            )}
-                        </motion.button>
+                        <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
+                            <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300">
+                                {hasVoted ? (
+                                    <span className="text-emerald-400/90 font-medium sm:font-semibold">Thanks for your feedback!</span>
+                                ) : helpfulCount > 5 ? (
+                                    <span><strong className="text-gray-200 sm:text-white font-bold">{helpfulCount}</strong> found this helpful. You?</span>
+                                ) : (
+                                    <span>Was this guide helpful?</span>
+                                )}
+                            </div>
+
+                            <motion.button
+                                whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
+                                whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
+                                onClick={handleVote}
+                                disabled={hasVoted || isVoting}
+                                className={`group flex items-center gap-2 sm:gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
+                                    ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
+                                    : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
+                                    }`}
+                            >
+                                {hasVoted ? (
+                                    <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
+                                ) : (
+                                    <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
+                                )}
+                            </motion.button>
+                        </div>
                     </div>
-                </div>
+                )}
             </motion.section>
         </>
     );

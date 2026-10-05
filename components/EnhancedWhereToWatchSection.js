@@ -252,7 +252,7 @@ function selectBestRegion(streamingData, userCountry) {
   };
 }
 
-const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
+const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
   const [streamingData, setStreamingData] = useState({});
   const [userCountry, setUserCountry] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(null);
@@ -489,8 +489,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const HeroAmazonCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type, userCountry);
-    const typeLabel = provider.isFallback ? 'Blu-ray / DVD / Prime' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
-    const buttonText = provider.isFallback ? 'Search on Amazon' : typeLabel;
+    const typeLabel = provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
+    const buttonText = provider.isFallback ? 'Stream or Buy on Amazon' : (type === 'flatrate' ? 'Stream on Amazon' : 'Watch on Amazon');
 
     const handleAmazonClick = async () => {
       try {
@@ -511,7 +511,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     return (
       <motion.button
         onClick={handleAmazonClick}
-        className="group relative w-full p-6 sm:p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"
+        className={compact
+          ? "group relative w-full p-4 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col items-center gap-4 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"
+          : "group relative w-full p-6 sm:p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"}
         whileHover={{ y: -4, scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -519,7 +521,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         <div className="absolute inset-0 bg-yellow-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {logoUrl ? (
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10">
+          <div className={compact ? "relative w-14 h-14 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10" : "relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10"}>
             <Image
               src={logoUrl}
               alt={provider.provider_name}
@@ -534,24 +536,24 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           </div>
         )}
 
-        <div className="text-center sm:text-left w-full flex flex-col gap-1.5 sm:gap-2 z-10">
+        <div className={compact ? "text-center w-full flex flex-col gap-1.5 z-10" : "text-center sm:text-left w-full flex flex-col gap-1.5 sm:gap-2 z-10"}>
           <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-yellow-500/90 sm:text-yellow-400 group-hover:text-yellow-300 transition-colors">
             Featured on Amazon
           </div>
-          <div className="text-xl sm:text-2xl lg:text-3xl font-semibold sm:font-bold text-white group-hover:text-yellow-50 transition-colors">
-            {provider.isFallback ? `Find ${movie.Title} on Amazon` : `Watch ${movie.Title}`}
+          <div className={compact ? "text-base font-bold text-white group-hover:text-yellow-50 transition-colors leading-snug" : "text-xl sm:text-2xl lg:text-3xl font-semibold sm:font-bold text-white group-hover:text-yellow-50 transition-colors"}>
+            Watch {movie.Title} on Amazon
           </div>
-          <div className="text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 group-hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2">
+          <div className={compact ? "text-xs text-gray-300 group-hover:text-white transition-colors flex flex-wrap items-center justify-center gap-2" : "text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 group-hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2"}>
             <span className="font-medium">{provider.provider_name}</span>
             <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-600 sm:bg-gray-500" />
             <span className="text-yellow-500/80 sm:text-yellow-400 font-medium">
-              {provider.isFallback ? 'Physical & Digital (Blu-ray / DVD / Prime)' : typeLabel}
+              {provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : typeLabel}
             </span>
           </div>
         </div>
 
-        <div className="shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10">
-          <div className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-yellow-500 text-black font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25">
+        <div className={compact ? "shrink-0 w-full z-10" : "shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10"}>
+          <div className={compact ? "w-full px-4 py-3 rounded-xl bg-yellow-500 text-black font-semibold text-xs tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25" : "w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-yellow-500 text-black font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25"}>
             <Play fill="currentColor" size={16} />
             {buttonText}
           </div>
@@ -566,7 +568,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-xl sm:text-2xl lg:text-3xl font-light sm:font-bold text-gray-200 sm:text-white mb-5 sm:mb-6 flex items-center gap-2.5 sm:gap-3 tracking-wide">
+      <h2 className={compact ? "text-lg font-bold text-white mb-4 flex items-center gap-2.5 tracking-wide" : "text-xl sm:text-2xl lg:text-3xl font-light sm:font-bold text-gray-200 sm:text-white mb-5 sm:mb-6 flex items-center gap-2.5 sm:gap-3 tracking-wide"}>
         <Play className="text-yellow-500 w-5 h-5 sm:w-6 sm:h-6" />
         Where to Watch
       </h2>
@@ -589,13 +591,13 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             >
               <Info size={14} className="text-gray-500 shrink-0" />
               <p className="text-gray-400 text-xs sm:text-sm font-light tracking-wide">
-                {fallbackMessage} {heroAmazonProvider?.isFallback && `(You can buy the Blu-ray, DVD, or rent via Amazon below)`}
+                {fallbackMessage} {heroAmazonProvider?.isFallback && `(Stream, rent, or buy physical editions on Amazon below)`}
               </p>
             </motion.div>
           )}
 
           {selectedRegionInfo && availableRegions.length > 0 && (
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md">
+            <div className={compact ? "flex flex-col gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md" : "flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md"}>
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <span className="text-2xl sm:text-3xl drop-shadow-md">{selectedRegionInfo.flag}</span>
                 <div className="flex flex-col">
@@ -706,7 +708,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                           <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(234,179,8,0.6)]" />
                           Stream with Subscription
                         </h3>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                        <div className={compact ? "grid grid-cols-3 gap-2.5" : "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4"}>
                           {filteredFlatrate.map((provider) => (
                             <StreamingPlatformCard key={`flatrate-${provider.provider_id}`} provider={provider} type="flatrate" region={selectedRegion} />
                           ))}
@@ -724,7 +726,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                           <div className="w-2 h-2 rounded-full bg-gray-400" />
                           Rent Digital Copy
                         </h3>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                        <div className={compact ? "grid grid-cols-3 gap-2.5" : "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4"}>
                           {filteredRent.map((provider) => (
                             <StreamingPlatformCard key={`rent-${provider.provider_id}`} provider={provider} type="rent" region={selectedRegion} />
                           ))}
@@ -742,7 +744,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                           <div className="w-2 h-2 rounded-full bg-gray-400" />
                           Buy Digital Copy
                         </h3>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                        <div className={compact ? "grid grid-cols-3 gap-2.5" : "grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4"}>
                           {filteredBuy.map((provider) => (
                             <StreamingPlatformCard key={`buy-${provider.provider_id}`} provider={provider} type="buy" region={selectedRegion} />
                           ))}
