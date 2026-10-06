@@ -61,9 +61,14 @@ export default function App({ Component, pageProps }) {
     console.log('🎬 Filmiway - SEO Optimized Version Loaded');
   }, []);
 
-  // ✅ Track Next.js Route Changes in Google Analytics
+  // ✅ Track Next.js Route Changes in Google Analytics + Enforce Scroll to Top
   useEffect(() => {
     const handleRouteChange = (url) => {
+      // ⚡ Always ensure the new page starts at the top of the viewport
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+
       if (typeof window.gtag !== 'undefined') {
         window.gtag('config', 'G-EDS2VZ5HP1', {
           page_path: url,

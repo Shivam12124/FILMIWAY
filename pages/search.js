@@ -166,6 +166,25 @@ export default function SearchPage({ allMovies }) {
   const [results, setResults] = useState([]);
   const [suggestedResults, setSuggestedResults] = useState([]);
   const initializedRef = useRef(false);
+  const searchInputRef = useRef(null);
+
+  // ⚡ ALWAYS RESET SCROLL TO TOP WHEN ENTERING SEARCH PAGE OR QUERY CHANGES
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [router.asPath, q]);
+
+  // ⚡ GENTLE AUTOFOCUS WITHOUT AGGRESSIVE SCROLL DISPLACEMENT
+  useEffect(() => {
+    if (searchInputRef.current && !q) {
+      searchInputRef.current.focus({ preventScroll: true });
+    }
+  }, [q]);
 
   useEffect(() => {
     if (router.isReady && !initializedRef.current) {
@@ -182,7 +201,7 @@ export default function SearchPage({ allMovies }) {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
       if (router.isReady && query !== (router.query.q || '')) {
-        router.replace({ pathname: '/search', query: query ? { q: query } : {} }, undefined, { shallow: true });
+        router.replace({ pathname: '/search', query: query ? { q: query } : {} }, undefined, { shallow: true, scroll: false });
       }
     }, 300);
     return () => clearTimeout(timer);
@@ -281,12 +300,12 @@ export default function SearchPage({ allMovies }) {
             <div className="relative max-w-2xl mx-auto">
               <SearchIcon className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-yellow-500" />
               <input
+                ref={searchInputRef}
                 type="text"
                 value={query}
                 onChange={handleSearchChange}
                 placeholder="Search movies by title..."
                 className="w-full bg-gray-900/60 border border-white/20 rounded-full py-5 pl-16 pr-14 text-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 transition-all shadow-2xl"
-                autoFocus
               />
               {query && (
                 <button 

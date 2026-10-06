@@ -109,7 +109,10 @@ const Header = () => {
     if (searchQuery.trim()) {
       clearCollectionMemory();
       setIsDropdownOpen(false);
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`, undefined, { scroll: true });
     }
   };
 
@@ -205,7 +208,16 @@ const Header = () => {
           <div className="flex items-center space-x-5 sm:space-x-8 shrink-0">
             {/* Search Icon (Visible on mobile ALWAYS except on homepage, and visible on desktop ONLY on the Search page) */}
             {!isHomePage && (
-              <button onClick={() => router.push('/search')} className={`${isSearchPage ? 'block' : 'md:hidden'} text-gray-400 hover:text-white transition-colors`} aria-label="Search">
+              <button 
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                  }
+                  router.push('/search', undefined, { scroll: true });
+                }} 
+                className={`${isSearchPage ? 'block' : 'md:hidden'} text-gray-400 hover:text-white transition-colors`} 
+                aria-label="Search"
+              >
                 <Search className="w-5 h-5" />
               </button>
             )}

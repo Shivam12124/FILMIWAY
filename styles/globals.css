@@ -31,7 +31,6 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--background-black);
   color: var(--text-primary);
-  scroll-behavior: smooth;
 }
 
 body {

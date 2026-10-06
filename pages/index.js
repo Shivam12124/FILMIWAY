@@ -131,7 +131,10 @@ const SearchBar = () => {
     e.preventDefault();
     if (query.trim()) {
       setIsOpen(false);
-      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`, undefined, { scroll: true });
     }
   };
 
