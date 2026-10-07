@@ -1,0 +1,305 @@
+Title,Year,AgeRating,TotalScenes,TotalExplicitMinutes,FirstSceneMinute,NudityScenes,SexScenes,SexualContentScenes,SuggestiveScenes
+"Forrest Gump",1994,PG-13,2,1.1,35.6,2,0,0,0
+"American Beauty",1999,R,8,2.8,2,5,1,2,0
+"Apocalypse Now",1979,R,5,3.3,7.3,5,0,0,0
+"12 Monkeys",1995,R,1,0.2,16,1,0,0,0
+"Brazil",1985,R,1,0.3,120.7,1,0,0,0
+"American History X",1998,R,2,2.9,2.9,0,2,0,0
+"Blade Runner",1982,R,1,1.2,53.8,1,0,0,0
+"Gladiator",2000,R,1,0.3,50.7,1,0,0,0
+"Taxi Driver",1976,R,2,0.4,35.6,0,0,2,0
+"Back to the Future",1985,PG,1,0.4,81.8,0,0,1,0
+"Scarface",1983,R,1,0.4,92.6,1,0,0,0
+"Brokeback Mountain",2005,R,4,1.6,28.1,1,3,0,0
+"Lost in Translation",2003,R,2,1.6,0.3,1,0,0,1
+"A Clockwork Orange",1971,NC-17,10,6.7,5.1,7,2,1,0
+"Sin City",2005,R,2,2.5,56.5,1,1,0,0
+"Braveheart",1995,R,1,0.9,38.4,1,0,0,0
+"Dead Poets Society",1989,PG,1,0.5,39.2,1,0,0,0
+"Ali: Fear Eats the Soul",1974,NR,2,1.1,51.8,2,0,0,0
+"The Terminator",1984,R,2,3.9,4.6,1,1,0,0
+"The Godfather",1972,R,2,0.7,22.8,1,1,0,0
+"The Silence of the Lambs",1991,R,2,0.2,18.8,1,0,1,0
+"Fargo",1996,R,2,1.3,11.8,0,2,0,0
+"The Shawshank Redemption",1994,R,2,0.5,6.2,1,1,0,0
+"Terminator 2: Judgment Day",1991,R,2,0.4,6.2,2,0,0,0
+"Once Upon a Time in America",1984,R,8,5.6,13.1,3,4,1,0
+"Magnolia",1999,R,2,0.1,7.5,0,2,0,0
+"Eyes Wide Shut",1999,R,17,32.6,0.8,7,2,5,3
+"Rain Man",1988,R,2,1,33.3,1,0,1,0
+"Das Boot",1981,R,3,0.8,17.2,3,0,0,0
+"Inside Man",2006,R,1,0.9,19.7,0,0,0,1
+"Basic Instinct",1992,R,9,12.3,3.2,5,4,0,0
+"The English Patient",1996,R,4,3.5,74.6,3,1,0,0
+"Schindler's List",1993,R,4,6.7,44.3,3,1,0,0
+"Being John Malkovich",1999,R,2,1.2,56.7,0,1,1,0
+"Borat",2006,R,2,3.3,3.6,1,0,1,0
+"The Green Mile",1999,R,3,0.6,56.4,2,0,1,0
+"One Flew Over the Cuckoo's Nest",1975,R,2,0.1,63.4,2,0,0,0
+"Casino",1995,R,4,0.8,18.9,1,2,0,1
+"There's Something About Mary",1998,R,4,1.2,14.3,0,0,2,2
+"Fight Club",1999,R,5,3,32.4,1,2,2,0
+"Die Hard",1988,R,2,0.2,23.5,2,0,0,0
+"Jaws",1975,PG,1,0.2,2.8,1,0,0,0
+"Titanic",1997,PG-13,2,3.4,85.6,1,1,0,0
+"City of God",2002,R,3,1.4,12.7,1,2,0,0
+"Wild Things",1998,R,5,4.3,17.4,1,1,2,1
+"The Ninth Gate",1999,R,1,0.6,124.7,0,1,0,0
+"Easy Rider",1969,R,1,2.5,85.3,0,1,0,0
+"Trainspotting",1996,R,2,2,19.8,0,2,0,0
+"The Usual Suspects",1995,R,1,0.5,60.3,0,0,1,0
+"Lost Highway",1997,R,7,6.5,13.2,1,6,0,0
+"When Harry Met Sally...",1989,R,1,1.1,46.2,0,0,1,0
+"Requiem for a Dream",2000,NR,4,5.7,20,3,1,0,0
+"Troy",2004,R,5,3.4,6.9,4,1,0,0
+"Paris, Texas",1984,R,2,0.8,4.5,2,0,0,0
+"Oldboy",2003,R,5,7.5,11.1,2,2,1,0
+"Pulp Fiction",1994,R,2,1.2,72,1,0,1,0
+"Contact",1997,PG,1,1,45,0,0,1,0
+"Dead Man Walking",1995,R,2,0.3,61.8,2,0,0,0
+"The Shining",1980,R,2,3.2,70.7,2,0,0,0
+"V for Vendetta",2005,R,1,0.2,58.8,1,0,0,0
+"Goodfellas",1990,R,1,0.1,48.5,1,0,0,0
+"Little Miss Sunshine",2006,R,1,0.6,64.1,0,0,0,1
+"Platoon",1986,R,2,1.4,9.3,2,0,0,0
+"Blue Velvet",1986,R,6,11.6,35.3,3,0,2,1
+"Rosemary's Baby",1968,R,2,3.4,10.8,1,1,0,0
+"Chinatown",1974,R,4,1.4,1.9,3,1,0,0
+"Total Recall",1990,R,3,0.4,55.8,3,0,0,0
+"Sliver",1993,R,4,5.4,15.4,1,3,0,0
+"Crash",1996,NC-17,18,17.5,3.1,5,10,3,0
+"Irréversible",2002,NR,4,31.8,5.8,2,1,0,0
+"Mulholland Drive",2001,R,3,6,23.5,1,2,0,0
+"The Talented Mr. Ripley",1999,R,1,0.7,52.5,1,0,0,0
+"300",2006,R,5,3.1,17.5,2,2,0,1
+"Sunshine",2007,R,1,5,65,0,0,1,0
+"The Dreamers",2003,NC-17,11,26.4,26.8,8,2,1,0
+"American Psycho",2000,R,13,7.2,5.7,6,4,2,1
+"The Fountain",2006,PG-13,1,0.1,37,1,0,0,0
+"Y Tu Mamá También",2001,NR,13,11.3,0.8,5,6,1,1
+"The Departed",2006,R,1,0.1,84.7,0,0,1,0
+"Thelma & Louise",1991,R,4,2.1,19.7,0,0,4,0
+"Office Space",1999,R,1,0.1,14.2,1,0,0,0
+"Apocalypto",2006,R,1,1,17.2,1,0,0,0
+"Primal Fear",1996,R,1,0.4,71.5,0,1,0,0
+"Trading Places",1983,R,3,1.3,43,3,0,0,0
+"Last Tango In Paris",1972,NC-17,9,19.5,14.6,4,2,3,0
+"The Piano Teacher",2001,R,5,16.9,25.2,0,5,0,0
+"The Devil's Advocate",1997,R,4,6.6,57.3,2,2,0,0
+"The Long Goodbye",1973,R,1,0.3,57.8,1,0,0,0
+"Open Your Eyes",1997,R,2,2.5,66,0,2,0,0
+"Shakespeare in Love",1998,R,4,2.6,47.6,2,2,0,0
+"The Butterfly Effect",2004,R,1,0.1,56.7,1,0,0,0
+"Training Day",2001,R,1,1.8,97.9,1,0,0,0
+"Original Sin",2001,R,6,7.3,17.1,3,3,0,0
+"American Pie",1999,R,11,13.6,1.5,2,4,4,1
+"L.A. Confidential",1997,R,4,0.5,12,4,0,0,0
+"Unfaithful",2002,R,9,8.3,33.8,3,2,2,2
+"Eastern Promises",2007,R,2,6,35.1,1,1,0,0
+"Jacob's Ladder",1990,R,3,3.2,15.5,3,0,0,0
+"Planes, Trains and Automobiles",1987,R,1,0,15.3,1,0,0,0
+"The Game",1997,R,1,1.6,57.9,0,0,1,0
+"Dark City",1998,R,2,1.4,2.6,2,0,0,0
+"Adaptation.",2002,R,6,1.2,30.5,3,3,0,0
+"Basic Instinct 2",2006,R,8,6.9,2.8,2,5,1,0
+"Gangs of New York",2002,R,2,2.1,82.1,1,1,0,0
+"Shoot 'Em Up",2007,R,6,3.3,5.9,2,0,3,1
+"Revolutionary Road",2008,R,3,1.4,23.8,1,2,0,0
+"Scary Movie",2000,R,3,1.5,27.6,2,0,1,0
+"Indecent Proposal",1993,R,3,3,5.4,0,2,1,0
+"Lady Vengeance",2005,R,2,1.6,24.1,0,2,0,0
+"The Machinist",2004,R,3,1.4,17.1,1,1,1,0
+"Lust, Caution",2007,NC-17,5,9.8,60.3,1,3,0,0
+"Sympathy for Mr. Vengeance",2002,R,4,4,9.9,2,1,1,0
+"The Curious Case of Benjamin Button",2008,PG-13,1,0.1,20.8,1,0,0,0
+"Burn After Reading",2008,R,2,0.5,22.7,0,1,1,0
+"Synecdoche, New York",2008,R,4,4,34.4,2,0,2,0
+"Boogie Nights",1997,R,14,8,10.7,6,4,4,0
+"Into the Wild",2007,R,4,4.2,58.9,3,1,0,0
+"Along Came Polly",2004,PG-13,2,1.1,6.5,1,1,0,0
+"Carlito's Way",1993,R,3,3.2,59.2,2,1,0,0
+"Bram Stoker's Dracula",1992,R,4,4.3,32.6,4,0,0,0
+"Brotherhood of the Wolf",2001,R,4,2.3,41.1,3,1,0,0
+"The 40-Year-Old Virgin",2005,R,10,4.3,15.3,4,1,0,5
+"Tropic Thunder",2008,R,1,0.1,19.8,1,0,0,0
+"Before the Devil Knows You're Dead",2007,R,3,4.8,0.7,2,1,0,0
+"The Reader",2008,R,15,8,9.4,10,5,0,0
+"8mm",1999,R,4,4.7,5.5,3,1,0,0
+"Superbad",2007,R,3,2.5,4.8,2,0,1,0
+"Anchorman: The Legend of Ron Burgundy",2004,PG-13,1,0.5,27.5,0,0,1,0
+"The Bank Job",2008,R,5,3,1,4,1,0,0
+"Disclosure",1994,R,1,3.2,30,0,0,1,0
+"Road Trip",2000,R,9,3.5,4.8,5,1,1,2
+"Bound",1996,R,2,3.8,13,0,1,1,0
+"Risky Business",1983,R,4,4.7,3.2,1,1,2,0
+"EuroTrip",2004,R,16,7.2,9.6,10,3,0,3
+"Donnie Brasco",1997,R,1,0.2,82.8,1,0,0,0
+"Zoolander",2001,PG-13,2,1.1,32.2,0,0,2,0
+"Election",1999,R,4,1.8,20.3,0,4,0,0
+"Wedding Crashers",2005,R,6,3,13.1,2,0,2,2
+"Tears of the Sun",2003,R,1,0.2,56.9,1,0,0,0
+"Happy Gilmore",1996,PG-13,3,0.6,45.9,0,0,0,3
+"The Italian Job",1969,PG-13,1,0.3,41.3,0,0,0,1
+"The Jacket",2005,R,2,1,27.5,1,1,0,0
+"Sideways",2004,R,3,1.4,68.2,1,2,0,0
+"To Live and Die in L.A.",1985,R,7,3.5,37.6,3,0,3,1
+"A Simple Plan",1998,R,1,0.2,4.6,1,0,0,0
+"Perfect Blue",1997,R,4,7.2,33.3,3,0,1,0
+"Wall Street",1987,R,2,0.8,13.4,1,1,0,0
+"Network",1976,R,1,1.4,73.4,0,0,1,0
+"After Hours",1985,R,2,0.6,20.1,2,0,0,0
+"Malèna",2000,R,9,5,14.1,8,0,1,0
+"Fatal Attraction",1987,R,4,4.5,17,2,2,0,0
+"Secretary",2002,R,7,11.6,53.3,2,1,3,1
+"Dressed to Kill",1980,R,4,4.5,2.2,2,1,1,0
+"National Lampoon's Vacation",1983,R,3,0.6,19.5,2,0,0,1
+"Harold & Kumar Go to White Castle",2004,R,4,1.4,8.4,4,0,0,0
+"Shutter Island",2010,R,1,0.1,70.7,1,0,0,0
+"Memories of Murder",2003,Not Rated,3,1.8,10,1,1,1,0
+"Kramer vs. Kramer",1979,PG,1,0.8,44.3,1,0,0,0
+"Sea of Love",1989,R,5,2.5,13.3,5,0,0,0
+"The Wrestler",2008,R,3,2.4,20.4,3,0,0,0
+"Jagged Edge",1985,R,3,0.4,3.2,3,0,0,0
+"Watchmen",2009,R,8,4.1,59.3,4,4,0,0
+"The Chaser",2008,PG-13,1,1,6.5,0,0,0,1
+"Choke",2008,R,12,7,2.3,4,7,1,0
+"Timecrimes",2007,R,2,1.4,7.1,2,0,0,0
+"Body Heat",1981,R,8,6.6,20.9,6,1,1,0
+"Ip Man",2008,R,1,0.1,12.3,1,0,0,0
+"The Proposal",2009,PG-13,1,1.5,54.3,1,0,0,0
+"The Hangover",2009,R,4,2,4.5,4,0,0,0
+"The Town",2010,R,2,1.6,21.1,0,2,0,0
+"Remember Me",2010,PG-13,3,1.5,53.7,0,2,1,0
+"Come and See",1985,NR,2,0.2,121.5,2,0,0,0
+"The Last Seduction",1994,R,5,5.3,30.3,2,3,0,0
+"The Secret in Their Eyes",2009,R,3,2,3.6,2,0,1,0
+"Chloe",2009,R,7,3.5,1.1,4,3,0,0
+"Mr. Nobody",2009,R,2,2.4,77.1,0,0,2,0
+"True Lies",1994,R,1,4.5,81.3,0,0,0,1
+"An Unmarried Woman",1978,R,2,2.7,12.5,2,0,0,0
+"Super Troopers",2001,R,3,3.3,44.2,3,0,0,0
+"127 Hours",2010,R,2,1.7,64.6,0,0,1,1
+"Black Swan",2010,R,5,4.9,39.7,0,1,4,0
+"Blue Valentine",2010,R,4,4.1,30,0,4,0,0
+"I Saw the Devil",2010,R,2,1.5,9.9,1,1,0,0
+"The Man from Nowhere",2010,R,2,1.2,19.8,1,0,0,1
+"One Day",2011,PG-13,2,0.7,11.8,2,0,0,0
+"Limitless",2011,PG-13,2,0.3,28.1,1,1,0,0
+"Bridesmaids",2011,R,4,3.9,1,0,1,1,2
+"Drive",2011,R,1,1.7,64.7,1,0,0,0
+"The Girl with the Dragon Tattoo",2011,R,4,2.9,46.9,1,3,0,0
+"The Master",2012,R,5,4.7,3.4,3,0,2,0
+"Shame",2011,NC-17,9,12,4.2,1,5,3,0
+"12 Years a Slave",2013,R,6,7.4,4.5,4,1,1,0
+"Mad Max: Fury Road",2015,R,2,1,12.7,2,0,0,0
+"The Impossible",2012,PG-13,4,0.7,5.8,4,0,0,0
+"Silver Linings Playbook",2012,R,1,2.2,31,1,0,0,0
+"Filth",2013,R,10,5.7,8.8,2,6,2,0
+"Rush",2013,R,3,0.8,5,1,2,0,0
+"Under the Skin",2013,R,6,9.4,7.1,4,1,0,1
+"The Wolf of Wall Street",2013,R,13,8.5,2,7,5,1,0
+"Before Midnight",2013,R,1,6.4,67.2,1,0,0,0
+"Scenes from a Marriage",1973,Not Rated,1,0.3,64.3,1,0,0,0
+"Dallas Buyers Club",2013,R,10,3.5,1,4,4,2,0
+"Blue Is the Warmest Color",2013,NC-17,8,19.1,18.1,3,4,1,0
+"The Equalizer",2014,R,1,0.3,124.6,1,0,0,0
+"American Hustle",2013,R,2,0.5,19.9,1,1,0,0
+"Inherent Vice",2014,R,2,6.4,103.6,1,1,0,0
+"The Raid 2",2014,R,2,0.6,46,1,0,1,0
+"Enemy",2013,R,27,20.7,1.8,7,20,0,0
+"Birdman",2014,R,1,0.7,18.2,1,0,0,0
+"Predestination",2014,R,2,0.7,19.1,1,1,0,0
+"Kingsman: The Secret Service",2014,R,1,0.1,119.4,1,0,0,0
+"Gone Girl",2014,R,6,3.3,6.7,2,4,0,0
+"Fifty Shades of Grey",2015,R,7,19.4,43.2,3,4,0,0
+"Unbroken",2014,PG-13,2,0.9,13.7,2,0,0,0
+"Marshland",2014,Not Rated,3,2.4,12,3,0,0,0
+"John Wick",2014,R,1,0.5,45,0,0,0,1
+"The Lobster",2015,R,2,1.2,27.5,0,1,1,0
+"Nymphomaniac: Vol. I",2013,NR,16,15.4,21.7,4,11,1,0
+"Carol",2015,R,1,2.2,75.9,0,1,0,0
+"Logan",2017,R,1,0.2,20.3,1,0,0,0
+"Ex Machina",2014,R,2,6.4,70,2,0,0,0
+"Sicario",2015,R,1,0.2,28.6,1,0,0,0
+"Passengers",2016,PG-13,2,0.1,6.6,2,0,0,0
+"The Revenant",2015,R,2,0.5,6.7,1,1,0,0
+"The Martian",2015,PG-13,1,0.2,104.9,1,0,0,0
+"The Handmaiden",2016,R,9,13.1,21.8,4,3,2,0
+"Deadpool",2016,R,2,1.9,23.4,1,1,0,0
+"Annihilation",2018,R,1,0.3,68.4,0,1,0,0
+"Don't Breathe",2016,R,2,1.2,3.2,0,0,1,0
+"The Witch",2015,R,3,3.1,8.5,3,0,0,0
+"The Big Short",2015,R,1,1.3,53.4,1,0,0,0
+"Hacksaw Ridge",2016,R,1,5,28,1,0,0,0
+"Blade Runner 2049",2017,R,4,5.9,38.2,4,0,0,0
+"Fifty Shades Freed",2018,R,8,8.5,7.1,4,4,0,0
+"Hell or High Water",2016,R,1,0.1,45.1,0,1,0,0
+"Nocturnal Animals",2016,R,6,7.3,1.2,6,0,0,0
+"Fifty Shades Darker",2017,R,8,15.3,21.9,2,5,0,1
+"Suspiria",2018,R,1,1.6,95.7,1,0,0,0
+"The Favourite",2018,R,8,5.8,8.3,4,4,0,0
+"Moonlight",2016,R,1,0.3,43,0,1,0,0
+"mother!",2017,R,1,0.2,108.1,1,0,0,0
+"Deadpool 2",2018,R,2,0.1,5,2,0,0,0
+"Jungle",2017,R,2,0.2,12.1,1,0,1,0
+"Lady Bird",2017,R,2,1.2,58,1,1,0,0
+"The Florida Project",2017,R,1,0.9,30.7,1,0,0,0
+"Wind River",2017,R,1,0.5,77.8,0,1,0,0
+"The Autopsy of Jane Doe",2016,R,1,9.9,19.3,1,0,0,0
+"The House That Jack Built",2018,R,2,1.9,84.2,2,0,0,0
+"Call Me by Your Name",2017,R,4,2.6,76.3,1,2,1,0
+"The Killing of a Sacred Deer",2017,R,1,1.7,9.3,0,0,1,0
+"Red Sparrow",2018,R,9,3,15.6,3,5,1,0
+"The First Omen",2024,R,2,1,4.3,2,0,0,0
+"Mid90s",2018,R,1,1.1,50.8,0,0,1,0
+"Uncut Gems",2019,R,3,2,34,0,0,1,2
+"Joker",2019,R,2,0.3,6.1,2,0,0,0
+"The Art of Self-Defense",2019,R,4,0.5,5.3,3,0,1,0
+"Burning",2018,NR,5,7.8,15,1,1,3,0
+"Hereditary",2018,R,1,4.8,118.3,1,0,0,0
+"Parasite",2019,R,1,2.7,88.6,0,0,1,0
+"The Lighthouse",2019,R,2,1.7,49.9,1,0,1,0
+"Shoplifters",2018,R,1,2.7,88.6,0,0,1,0
+"The Empty Man",2020,R,2,1.9,54.2,2,0,0,0
+"Midsommar",2019,R,3,6.7,45.7,1,2,0,0
+"Everything Everywhere All at Once",2022,R,1,1.7,79.1,1,0,0,0
+"The Brutalist",2024,R,1,0.6,62,0,1,0,0
+"Palm Springs",2020,R,4,1.1,1.2,1,1,2,0
+"And Then We Danced",2019,Not Rated,2,1.6,51.9,0,1,1,0
+"The Platform",2019,R,5,1.1,23.9,4,0,1,0
+"Spider-Man: No Way Home",,,1,3.3,85.2,0,0,1,0
+"365 Days",2020,R,6,21.7,11.5,2,3,0,0
+"The Banshees of Inisherin",2022,R,1,0.5,14.9,1,0,0,0
+"Mickey 17",2025,R,1,0.1,27.9,1,0,0,0
+"When Evil Lurks",2023,NR,1,0.3,32.4,1,0,0,0
+"Good Luck to You, Leo Grande",2022,R,3,4.7,65,1,2,0,0
+"If You Were the Last",2023,R,1,0.5,48.8,0,1,0,0
+"The Whale",2022,R,1,0.4,2.2,0,0,1,0
+"Fresh",2022,R,3,0.9,8.4,2,1,0,0
+"Poor Things",2023,R,14,17.9,20.3,4,7,2,1
+"Lady Chatterley's Lover",2022,R,10,11.7,34.9,6,3,1,0
+"The Iron Claw",2023,R,3,0.4,2.8,1,1,1,0
+"Oppenheimer",2023,R,3,2.4,23.2,1,2,0,0
+"No Hard Feelings",2023,R,1,0.7,36.4,1,0,0,0
+"Barbarian",2022,R,1,0.2,42.5,1,0,0,0
+"Saltburn",2023,R,7,7,45.6,2,1,4,0
+"The Substance",2024,R,9,13.6,18.4,8,0,1,0
+"Challengers",2024,R,4,3.8,4.3,2,0,0,2
+"Aftersun",2022,R,1,0.1,73.8,1,0,0,0
+"Perfect Days",2023,PG,1,0.3,23.1,1,0,0,0
+"All of Us Strangers",2023,R,1,2.3,26.5,0,1,0,0
+"Die My Love",2025,R,8,3.2,4.8,7,1,0,0
+"Rye Lane",2023,R,2,2.2,38.4,1,1,0,0
+"One Battle After Another",2025,R,2,1.2,6.3,0,0,2,0
+"Anora",2024,R,12,12.1,1,6,6,0,0
+"Anyone But You",2023,R,3,1.5,21,2,1,0,0
+"We Live in Time",2024,R,3,1.9,21.3,3,0,0,0
+"Sinners",2025,R,5,3.4,40,2,3,0,0
+"Twinless",2025,R,2,3.3,23.8,0,2,0,0
+"Wuthering Heights",2026,R,3,5,37.2,0,1,2,0
+"The Assessment",2024,R,5,5.5,2.7,0,4,0,1
+"Marty Supreme",2025,R,5,3,3.2,2,3,0,0
+"Obsession",2025,R,2,0.4,45.1,1,1,0,0
+"Office Romance",2026,R,2,1.3,64.8,1,0,0,1
+"The Housemaid",2025,R,2,2.8,54.7,0,1,1,0
+"The Odyssey",2026,R,1,0.1,70.5,1,0,0,0
