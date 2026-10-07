@@ -673,8 +673,8 @@ export default function UniversalMoviePage({ movie }) {
                     `}</style>
                 )}
 
-                {/* 🚀 OPPENHEIMER, OBSESSION & WUTHERING HEIGHTS EXCLUSIVE MOBILE ADHESION LIFT */}
-                {(movie?.slug === 'oppenheimer' || movie?.slug === 'obsession' || movie?.slug === 'wuthering-heights') && (
+                {/* 🚀 OPPENHEIMER, OBSESSION, WUTHERING HEIGHTS & GONE GIRL EXCLUSIVE MOBILE ADHESION LIFT */}
+                {(movie?.slug === 'oppenheimer' || movie?.slug === 'obsession' || movie?.slug === 'wuthering-heights' || movie?.slug === 'gone-girl') && (
                     <style>{`
                         @media (max-width: 767px) {
                             body {

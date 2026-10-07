@@ -1062,7 +1062,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </a>
                             <div className="mt-3.5 pt-3 border-t border-white/10 text-center">
                                 <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed">
-                                    We earn a small commission when you purchase through our links, helping keep Filmiway free at no extra cost to you.
+                                    If you want to help support Filmiway, buying through our links earns us a small commission at no extra cost to you.
                                 </p>
                             </div>
                         </div>
