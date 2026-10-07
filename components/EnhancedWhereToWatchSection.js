@@ -787,7 +787,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
             ) : null}
           </AnimatePresence>
 
-          <div className="text-center pt-6 border-t border-white/5">
+          <div className="text-center pt-5 sm:pt-6 border-t border-white/10 space-y-2.5">
+            <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed max-w-lg mx-auto">
+              We earn a small commission when you purchase through our links, helping keep Filmiway free at no extra cost to you.
+            </p>
             <p className="text-[11px] text-gray-400 uppercase tracking-widest font-medium">
               Data via <span className="text-blue-400">TMDB</span> • Auto-IP Detection • 100+ Regions
             </p>

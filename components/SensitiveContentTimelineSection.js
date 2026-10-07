@@ -1060,6 +1060,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     <ExternalLink size={14} className="shrink-0" />
                                 </div>
                             </a>
+                            <div className="mt-3.5 pt-3 border-t border-white/10 text-center">
+                                <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed">
+                                    We earn a small commission when you purchase through our links, helping keep Filmiway free at no extra cost to you.
+                                </p>
+                            </div>
                         </div>
 
                         {/* 2️⃣ WHERE TO WATCH (Amazon affiliate) */}
@@ -1069,11 +1074,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     margin-top: 0 !important; 
                                     padding-top: 0 !important; 
                                     border-top: none !important; 
-                                    margin-bottom: 0 !important;
+                                    margin-bottom: 0 !important; 
                                 }
                             `}</style>
                             <EnhancedWhereToWatchSection movie={movie} compact />
-                            <p className="mt-4 text-[10px] text-gray-500 leading-snug text-center">As an Amazon Associate, Filmiway earns from qualifying purchases.</p>
                         </div>
 
                         {/* 3️⃣ SIMILAR MOVIE GUIDES */}
