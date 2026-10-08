@@ -789,7 +789,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
           <div className="text-center pt-5 sm:pt-6 border-t border-white/10 space-y-2.5">
             <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed max-w-lg mx-auto">
-              If you want to help support Filmiway, buying through our links earns us a small commission at no extra cost to you.
+              If you want to support Filmiway, buying through our links earns us a small commission at no extra cost to you.
             </p>
             <p className="text-[11px] text-gray-400 uppercase tracking-widest font-medium">
               Data via <span className="text-blue-400">TMDB</span> • Auto-IP Detection • 100+ Regions
