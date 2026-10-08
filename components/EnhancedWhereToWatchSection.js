@@ -429,20 +429,21 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
-    const handleCardClick = async () => {
-      try {
-        await addDoc(collection(db, 'amazon_affiliate_clicks'), {
-          movieTitle: movie.Title,
-          tmdbId: movie.tmdbId,
-          country: userCountry || region || 'US',
-          storeRegion: region,
-          providerName: provider.provider_name,
-          timestamp: serverTimestamp()
-        });
-      } catch (e) {
-        console.error('Error tracking platform click:', e);
-      }
+    const handleCardClick = () => {
+      // 🚀 Open link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
       window.open(deepLink, '_blank', 'noopener,noreferrer');
+
+      // Non-blocking fire-and-forget Firestore tracking
+      addDoc(collection(db, 'amazon_affiliate_clicks'), {
+        movieTitle: movie.Title,
+        tmdbId: movie.tmdbId,
+        country: userCountry || region || 'US',
+        storeRegion: region,
+        providerName: provider.provider_name,
+        timestamp: serverTimestamp()
+      }).catch(e => {
+        console.error('Error tracking platform click:', e);
+      });
     };
 
     return (
@@ -492,20 +493,21 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
     const typeLabel = provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
     const buttonText = provider.isFallback ? 'Stream or Buy on Amazon' : (type === 'flatrate' ? 'Stream on Amazon' : 'Watch on Amazon');
 
-    const handleAmazonClick = async () => {
-      try {
-        await addDoc(collection(db, 'amazon_affiliate_clicks'), {
-          movieTitle: movie.Title,
-          tmdbId: movie.tmdbId,
-          country: userCountry || region || 'US',
-          storeRegion: region,
-          providerName: provider.provider_name,
-          timestamp: serverTimestamp()
-        });
-      } catch (e) {
-        console.error('Error tracking Amazon click:', e);
-      }
+    const handleAmazonClick = () => {
+      // 🚀 Open Amazon link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
       window.open(deepLink, '_blank', 'noopener,noreferrer');
+
+      // Non-blocking fire-and-forget Firestore tracking
+      addDoc(collection(db, 'amazon_affiliate_clicks'), {
+        movieTitle: movie.Title,
+        tmdbId: movie.tmdbId,
+        country: userCountry || region || 'US',
+        storeRegion: region,
+        providerName: provider.provider_name,
+        timestamp: serverTimestamp()
+      }).catch(e => {
+        console.error('Error tracking Amazon click:', e);
+      });
     };
 
     return (
