@@ -673,36 +673,7 @@ export default function UniversalMoviePage({ movie }) {
                     `}</style>
                 )}
 
-                {/* 🚀 OPPENHEIMER, OBSESSION, WUTHERING HEIGHTS & GONE GIRL EXCLUSIVE MOBILE ADHESION LIFT */}
-                {(movie?.slug === 'oppenheimer' || movie?.slug === 'obsession' || movie?.slug === 'wuthering-heights' || movie?.slug === 'gone-girl') && (
-                    <style>{`
-                        @media (max-width: 767px) {
-                            body {
-                                padding-bottom: 155px !important;
-                            }
-                            [class*="mediavine-adhesion"],
-                            [class*="adhesion-wrapper"],
-                            [id*="adhesion"],
-                            [class*="sticky-footer"],
-                            [id*="mediavine"],
-                            [class*="mediavine"],
-                            [id*="journey"],
-                            [class*="journey"],
-                            .mv-adhesive,
-                            #mv-adhesive,
-                            a[class*="grow-housead"],
-                            div[style*="position: fixed"][style*="bottom: 0"],
-                            div[style*="position:fixed"][style*="bottom:0"],
-                            div[style*="position: fixed"][style*="bottom: 0px"],
-                            div[style*="position:fixed"][style*="bottom:0px"],
-                            div[style*="position: fixed"][style*="bottom:0"],
-                            div[style*="position: fixed"][style*="bottom:0px"] {
-                                bottom: 85px !important;
-                                z-index: 999999 !important;
-                            }
-                        }
-                    `}</style>
-                )}
+
             </Head>
             <Header />
             <main className="entry-content content article relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-0 sm:pb-2 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
