@@ -3,6 +3,9 @@ const nextConfig = {
   // ✅ CORE SETTINGS
   trailingSlash: false,
   reactStrictMode: false,
+  turbopack: {
+    root: __dirname,
+  },
 
   // ⚡ OPTIMIZED: Image settings with modern formats
   images: {

@@ -699,6 +699,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 Filmiway editors have verified that <span className="underline font-normal text-white">{movie?.Title}</span> has no skip timestamps because it is completely free of explicit, intimate, or sexual scenes throughout its full <span className="text-emerald-400 font-medium" suppressHydrationWarning>{currentRuntime}</span> runtime.
                             </p>
                         </div>
+
+                        {/* 💰 WHERE TO WATCH & EXPRESSVPN (For Movies Without Timestamps) */}
+                        <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-4 sm:p-6 clean-injected-component my-2">
+                            <EnhancedWhereToWatchSection movie={movie} />
+                        </div>
                     </div>
                 ) : (
                     <div className="fw-grid relative z-50">

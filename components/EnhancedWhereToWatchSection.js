@@ -247,14 +247,16 @@ function selectBestRegion(streamingData, userCountry) {
   };
 }
 
-// 🧠 USA-FOCUSED DYNAMIC VPN STREAMING TIP ENGINE
+// 🧠 DYNAMIC VPN STREAMING TIP ENGINE (3 Strict Priorities: 1. Free, 2. Cheaper Abroad, 3. Buffering/ISP)
 function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
   const uCountry = userCountry || 'US';
   const data = streamingData || {};
 
-  // 1. ANGLE 1: 100% FREE STREAMING ABROAD (The #1 Money Saver for US viewers)
-  // In the US, movies usually cost $3.99-$5.99 to rent.
-  // If it's streaming 100% free on UK public broadcasters (Channel 4, BBC iPlayer, ITVX):
+  // =========================================================================
+  // PRIORITY 1: FREE OPTION (Mention exact platform and country)
+  // =========================================================================
+
+  // Check UK 100% Free Broadcasters (Channel 4, BBC iPlayer, ITVX, My5)
   const gbProviders = [
     ...(data['GB']?.flatrate || []),
     ...(data['GB']?.free || []),
@@ -268,15 +270,15 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
   if (gbFree) {
     return {
       type: 'free',
-      eyebrow: 'Free Streaming Tip',
+      eyebrow: '100% Free Streaming Available',
       title: `Stream Free on UK ${gbFree.provider_name}`,
-      description: `Instead of paying $3.99+ on US digital rentals, ${movieTitle || 'this film'} is streaming 100% free with no subscription on the UK public network ${gbFree.provider_name}. Connect to the UK with ExpressVPN to stream right now with zero rental fees.`,
+      description: `Instead of paying rental fees, ${movieTitle || 'this movie'} is streaming completely free with no subscription on the UK public network ${gbFree.provider_name}. Connect to the UK with ExpressVPN to stream right now with zero fees.`,
       cta: `Watch Free on UK ${gbFree.provider_name}`,
       provider: gbFree.provider_name
     };
   }
 
-  // AU Free Broadcaster Check (SBS On Demand, ABC iview, 10 Play)
+  // Check Australia 100% Free Broadcasters (SBS On Demand, ABC iview, 10 Play, 7plus, 9Now)
   const auProviders = [
     ...(data['AU']?.flatrate || []),
     ...(data['AU']?.free || []),
@@ -290,16 +292,38 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
   if (auFree) {
     return {
       type: 'free',
-      eyebrow: 'Free Streaming Tip',
+      eyebrow: '100% Free Streaming Available',
       title: `Stream Free on Australia's ${auFree.provider_name}`,
-      description: `Save on rental fees—${movieTitle || 'this film'} is streaming completely free on Australia's public network ${auFree.provider_name}. Connect to Australia with ExpressVPN to stream right now without paying to rent.`,
+      description: `Instead of paying rental fees, ${movieTitle || 'this movie'} is streaming completely free on Australia's public network ${auFree.provider_name}. Connect to Australia with ExpressVPN to stream right now with zero fees.`,
       cta: `Watch Free on Australian ${auFree.provider_name}`,
       provider: auFree.provider_name
     };
   }
 
-  // 2. ANGLE 2: NETFLIX CATALOG EXPANDER (Save on rentals if you already pay for Netflix)
-  // Check if Netflix US has it. If NOT, but UK or Canada Netflix has it:
+  // Check US 100% Free Broadcasters (Tubi, Pluto TV, Freevee, The Roku Channel)
+  const usFreeProviders = [
+    ...(data['US']?.free || []),
+    ...(data['US']?.ads || [])
+  ];
+  const usFree = usFreeProviders.find(p => {
+    const name = (p.provider_name || '').toLowerCase();
+    return name.includes('tubi') || name.includes('pluto') || name.includes('freevee') || name.includes('roku channel');
+  });
+
+  if (usFree) {
+    return {
+      type: 'free',
+      eyebrow: '100% Free Streaming Available',
+      title: `Stream Free on ${usFree.provider_name} (US)`,
+      description: `Instead of paying $3.99+ on rentals, ${movieTitle || 'this movie'} is streaming 100% free with ads on ${usFree.provider_name} in the United States. Connect with ExpressVPN ($2.99/mo) to stream in Ultra HD without ISP speed throttling.`,
+      cta: `Watch Free on ${usFree.provider_name}`,
+      provider: usFree.provider_name
+    };
+  }
+
+  // =========================================================================
+  // PRIORITY 2: NETFLIX INTERNATIONAL CATALOG (Clever & High-Converting)
+  // =========================================================================
   const usFlatrate = data['US']?.flatrate || [];
   const hasUsNetflix = usFlatrate.some(p => (p.provider_name || '').toLowerCase().includes('netflix') || p.provider_id === 8);
 
@@ -318,21 +342,46 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
       const targetCountriesStr = netflixMatches.slice(0, 2).join(' & ');
       return {
         type: 'netflix',
-        eyebrow: 'Netflix Catalog Expander',
-        title: `Included on Netflix ${targetCountriesStr}`,
-        description: `Not streaming on US Netflix? Avoid paying extra rental fees—switch your region with ExpressVPN to stream ${movieTitle || 'this movie'} directly on your existing Netflix account without extra charges.`,
+        eyebrow: 'Streaming on International Netflix',
+        title: `Available on Netflix ${targetCountriesStr}`,
+        description: `${movieTitle || 'This movie'} is streaming on Netflix in ${targetCountriesStr}. Connect with ExpressVPN ($2.99/mo) to unlock international streaming catalogs and watch on your TV, phone, or PC.`,
         cta: `Stream on Netflix ${targetCountriesStr}`,
         provider: 'Netflix'
       };
     }
   }
 
-  // 3. ANGLE 3: US STREAMING CATALOG (Speed, 4K & Anti-Throttling)
+  // Also check other foreign subscription platforms (e.g. Disney+, Crave, Stan, Sky Cinema, Paramount+)
+  const foreignCodes = ['GB', 'CA', 'AU'].filter(c => c !== uCountry);
+  for (const code of foreignCodes) {
+    const foreignStreams = (data[code]?.flatrate || []).filter(p => {
+      const n = (p.provider_name || '').toLowerCase();
+      // Exclude Amazon so it never clashes with our dedicated Amazon button
+      return !n.includes('amazon') && !n.includes('prime') && !n.includes('netflix');
+    });
+
+    if (foreignStreams.length > 0) {
+      const topForeign = foreignStreams[0].provider_name.replace(/ Premium| Plus|\+/, '');
+      const cName = code === 'GB' ? 'UK' : code === 'CA' ? 'Canada' : 'Australia';
+      return {
+        type: 'unblock',
+        eyebrow: 'Streaming on International Catalogs',
+        title: `Available on ${topForeign} (${cName})`,
+        description: `${movieTitle || 'This movie'} is streaming on ${topForeign} in ${cName}. Connect with ExpressVPN ($2.99/mo) to unlock international streaming catalogs and watch on your TV, phone, or PC.`,
+        cta: `Stream on ${topForeign} (${cName})`,
+        provider: topForeign
+      };
+    }
+  }
+
+  // =========================================================================
+  // PRIORITY 3: HIGH-SPEED STREAMING & ANTI-THROTTLING (Fallback for All Other Films)
+  // =========================================================================
   return {
     type: 'speed',
     eyebrow: 'High-Speed Cinema Access',
     title: `Streaming ${movieTitle || 'this movie'} tonight?`,
-    description: `Stop ISP bandwidth throttling, eliminate buffering during peak evening hours, and stream in crisp Ultra HD with ExpressVPN's ultra-fast servers.`,
+    description: `Stop ISP bandwidth throttling, eliminate buffering during peak evening hours, and stream privately in Ultra HD with ExpressVPN's ultra-fast servers.`,
     cta: `Stream with ExpressVPN`,
     provider: 'ExpressVPN'
   };
@@ -891,9 +940,14 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                 )}
 
                 {!heroAmazonProvider && filteredFlatrate.length === 0 && filteredRent.length === 0 && filteredBuy.length === 0 && (
-                  <div className="flex flex-col items-center justify-center p-10 rounded-2xl border border-white/5 bg-white/[0.02]">
+                  <div className="flex flex-col items-center justify-center p-6 sm:p-10 rounded-2xl border border-white/5 bg-white/[0.02]">
                     <MapPin className="w-8 h-8 text-gray-600 mb-3" />
                     <p className="text-gray-400 text-sm font-medium">No streaming options found in {selectedRegionInfo?.name || selectedRegion}</p>
+                    {vpnTip && (
+                      <div className="w-full mt-5 text-left">
+                        <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
+                      </div>
+                    )}
                   </div>
                 )}
               </motion.div>
@@ -918,6 +972,11 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                       <Play fill="currentColor" size={15} />
                       Find {movie?.Title} on Amazon
                     </button>
+                    {vpnTip && (
+                      <div className="w-full mt-5 text-left">
+                        <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
+                      </div>
+                    )}
                   </>
                 )}
               </div>
