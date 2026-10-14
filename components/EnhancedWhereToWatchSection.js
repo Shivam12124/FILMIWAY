@@ -1,5 +1,5 @@
 // components/EnhancedWhereToWatchSection.js - SEO HIERARCHY FIXED (H2 -> H3) 🍷✅
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
@@ -152,7 +152,12 @@ async function detectUserCountry() {
     const response = await fetch('https://ipinfo.io/json');
     if (response.ok) {
       const data = await response.json();
-      return data.country?.toUpperCase() || 'US';
+      const code = data.country?.toUpperCase();
+      // Tier 1 countries only; otherwise default to USA for clean Amazon/VPN monetization
+      if (['US', 'GB', 'CA', 'AU'].includes(code)) {
+        return code;
+      }
+      return 'US';
     }
   } catch (e) {
     return 'US';
@@ -166,7 +171,7 @@ async function getAllRegionStreamingData(tmdbId, title) {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
 
     const response = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/watch/providers?api_key=${apiKey}`, { signal: controller.signal });
     clearTimeout(timeoutId);
@@ -202,14 +207,7 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
       US: 'amazon.com',
       GB: 'amazon.co.uk',
       CA: 'amazon.ca',
-      AU: 'amazon.com.au',
-      IN: 'amazon.in',
-      DE: 'amazon.de',
-      FR: 'amazon.fr',
-      ES: 'amazon.es',
-      IT: 'amazon.it',
-      JP: 'amazon.co.jp',
-      SA: 'amazon.sa'
+      AU: 'amazon.com.au'
     };
     
     // Direct user to store matching their actual detected location if available, otherwise viewing region
@@ -218,12 +216,9 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
 
     // Country-specific tracking tag routing
     const trackingTags = {
-      IN: 'filmiway-21',
       GB: 'filmiway09-21',
       US: 'filmiway-20',
-      CA: 'filmiway06-20',
-      ES: 'filmiway00-21',
-      SA: 'filmiway08-21'
+      CA: 'filmiway06-20'
     };
     const tag = trackingTags[targetCode] || 'filmiway-20';
 
@@ -239,18 +234,191 @@ function selectBestRegion(streamingData, userCountry) {
   const availableRegions = Object.keys(streamingData);
   if (availableRegions.length === 0) return { selectedRegion: null, fallbackMessage: 'No data' };
 
-  const userCountryName = ALL_REGIONS.find(r => r.code === userCountry)?.name || 'your country';
+  const effectiveCountry = userCountry || 'US';
 
-  if (streamingData[userCountry]) return { selectedRegion: userCountry, fallbackMessage: null };
-  if (streamingData['US']) return { selectedRegion: 'US', fallbackMessage: `Not available in ${userCountryName}. Showing USA availability.` };
+  if (streamingData[effectiveCountry]) return { selectedRegion: effectiveCountry, fallbackMessage: null };
+  if (streamingData['US']) return { selectedRegion: 'US', fallbackMessage: effectiveCountry === 'US' ? null : `Showing USA availability.` };
 
   const firstAvailableName = ALL_REGIONS.find(r => r.code === availableRegions[0])?.name || availableRegions[0];
 
   return {
     selectedRegion: availableRegions[0],
-    fallbackMessage: `Not available in ${userCountryName}. Showing ${firstAvailableName} availability.`
+    fallbackMessage: `Showing ${firstAvailableName} availability.`
   };
 }
+
+// 🧠 USA-FOCUSED DYNAMIC VPN STREAMING TIP ENGINE
+function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
+  const uCountry = userCountry || 'US';
+  const data = streamingData || {};
+
+  // 1. ANGLE 1: 100% FREE STREAMING ABROAD (The #1 Money Saver for US viewers)
+  // In the US, movies usually cost $3.99-$5.99 to rent.
+  // If it's streaming 100% free on UK public broadcasters (Channel 4, BBC iPlayer, ITVX):
+  const gbProviders = [
+    ...(data['GB']?.flatrate || []),
+    ...(data['GB']?.free || []),
+    ...(data['GB']?.ads || [])
+  ];
+  const gbFree = gbProviders.find(p => {
+    const name = (p.provider_name || '').toLowerCase();
+    return name.includes('channel 4') || name.includes('all 4') || name.includes('bbc iplayer') || name.includes('itvx') || name.includes('my5');
+  });
+
+  if (gbFree) {
+    return {
+      type: 'free',
+      eyebrow: 'Free Streaming Tip',
+      title: `Stream Free on UK ${gbFree.provider_name}`,
+      description: `Instead of paying $3.99+ on US digital rentals, ${movieTitle || 'this film'} is streaming 100% free with no subscription on the UK public network ${gbFree.provider_name}. Connect to the UK with ExpressVPN to stream right now with zero rental fees.`,
+      cta: `Watch Free on UK ${gbFree.provider_name}`,
+      provider: gbFree.provider_name
+    };
+  }
+
+  // AU Free Broadcaster Check (SBS On Demand, ABC iview, 10 Play)
+  const auProviders = [
+    ...(data['AU']?.flatrate || []),
+    ...(data['AU']?.free || []),
+    ...(data['AU']?.ads || [])
+  ];
+  const auFree = auProviders.find(p => {
+    const name = (p.provider_name || '').toLowerCase();
+    return name.includes('sbs on demand') || name.includes('abc iview') || name.includes('7plus') || name.includes('9now') || name.includes('10 play');
+  });
+
+  if (auFree) {
+    return {
+      type: 'free',
+      eyebrow: 'Free Streaming Tip',
+      title: `Stream Free on Australia's ${auFree.provider_name}`,
+      description: `Save on rental fees—${movieTitle || 'this film'} is streaming completely free on Australia's public network ${auFree.provider_name}. Connect to Australia with ExpressVPN to stream right now without paying to rent.`,
+      cta: `Watch Free on Australian ${auFree.provider_name}`,
+      provider: auFree.provider_name
+    };
+  }
+
+  // 2. ANGLE 2: NETFLIX CATALOG EXPANDER (Save on rentals if you already pay for Netflix)
+  // Check if Netflix US has it. If NOT, but UK or Canada Netflix has it:
+  const usFlatrate = data['US']?.flatrate || [];
+  const hasUsNetflix = usFlatrate.some(p => (p.provider_name || '').toLowerCase().includes('netflix') || p.provider_id === 8);
+
+  if (!hasUsNetflix) {
+    const targetCodes = ['GB', 'CA', 'AU'].filter(c => c !== uCountry);
+    const netflixMatches = [];
+    for (const code of targetCodes) {
+      const hasNet = (data[code]?.flatrate || []).some(p => (p.provider_name || '').toLowerCase().includes('netflix') || p.provider_id === 8);
+      if (hasNet) {
+        const cName = code === 'GB' ? 'UK' : code === 'CA' ? 'Canada' : 'Australia';
+        netflixMatches.push(cName);
+      }
+    }
+
+    if (netflixMatches.length > 0) {
+      const targetCountriesStr = netflixMatches.slice(0, 2).join(' & ');
+      return {
+        type: 'netflix',
+        eyebrow: 'Netflix Catalog Expander',
+        title: `Included on Netflix ${targetCountriesStr}`,
+        description: `Not streaming on US Netflix? Avoid paying extra rental fees—switch your region with ExpressVPN to stream ${movieTitle || 'this movie'} directly on your existing Netflix account without extra charges.`,
+        cta: `Stream on Netflix ${targetCountriesStr}`,
+        provider: 'Netflix'
+      };
+    }
+  }
+
+  // 3. ANGLE 3: US STREAMING CATALOG (Speed, 4K & Anti-Throttling)
+  return {
+    type: 'speed',
+    eyebrow: 'High-Speed Cinema Access',
+    title: `Streaming ${movieTitle || 'this movie'} tonight?`,
+    description: `Stop ISP bandwidth throttling, eliminate buffering during peak evening hours, and stream in crisp Ultra HD with ExpressVPN's ultra-fast servers.`,
+    cta: `Stream with ExpressVPN`,
+    provider: 'ExpressVPN'
+  };
+}
+
+// 🛡️ SMART VPN STREAMING CARD COMPONENT (Clean Editorial Cinema Design - Straight Clear Words, NO Truncation, NO Cheap Capsules/Boxes)
+const SmartVpnStreamingCard = ({ tip, movieTitle }) => {
+  if (!tip) return null;
+
+  const handleVpnClick = async () => {
+    try {
+      await addDoc(collection(db, 'affiliate_clicks'), {
+        type: 'expressvpn_smart_tip',
+        tipType: tip.type,
+        movieTitle: movieTitle || 'Unknown',
+        deal: '$2.99/mo + 4 mos free',
+        timestamp: serverTimestamp()
+      });
+    } catch (e) {}
+  };
+
+  const ctaButtonText = tip.cta.includes('ExpressVPN') ? tip.cta : `${tip.cta} with ExpressVPN`;
+
+  return (
+    <div className="relative p-4 sm:p-5 rounded-2xl border border-red-900/40 bg-gradient-to-br from-[#130709] via-[#0c0506] to-[#070304] shadow-xl shadow-black/80 overflow-hidden group my-3">
+      {/* Subtle top crimson accent line */}
+      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+
+      <a
+        href="https://go.expressvpn.com/c/7564909/1462856/16063"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleVpnClick}
+        className="flex flex-col gap-3.5"
+      >
+        {/* Content Row: Icon + Full Title + Clear Explanatory Body */}
+        <div className="flex items-start gap-3.5">
+          <div className="w-10 h-10 rounded-xl bg-black/60 border border-red-500/30 p-1.5 shrink-0 flex items-center justify-center shadow-lg shadow-red-900/30 mt-0.5">
+            <Image
+              src="/images/expressvpn/Red, Icon.png"
+              alt="ExpressVPN"
+              width={30}
+              height={30}
+              className="object-contain"
+            />
+          </div>
+
+          <div className="flex-1 min-w-0">
+            {tip.eyebrow && (
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400/90 block mb-1">
+                {tip.eyebrow}
+              </span>
+            )}
+            <h4 className="text-white text-sm sm:text-base font-bold group-hover:text-red-400 transition-colors leading-snug break-words">
+              {tip.title}
+            </h4>
+
+            <p className="text-gray-300 text-xs sm:text-[13px] leading-relaxed mt-1 font-normal break-words">
+              {tip.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Full-Width Solid Red CTA Button: Complete Text, NO Nested Pills, NO Truncation */}
+        <div className="flex flex-col items-center justify-center gap-1 px-4 py-3 bg-[#e01931] hover:bg-[#c0152a] text-white rounded-xl shadow-lg shadow-red-600/30 transition-all border border-red-500/40 group-hover:scale-[1.01] w-full text-center">
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold">
+            <span>{ctaButtonText}</span>
+            <ExternalLink size={14} className="shrink-0" />
+          </div>
+          <span className="text-[11px] font-medium text-red-100/90 tracking-wide">
+            Special Filmiway Deal: $2.99/mo + 4 Months Free
+          </span>
+        </div>
+
+        {/* Reassurance Micro-Footer: Clean Centered Layout (No mobile collision) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between text-[11px] text-gray-400 gap-1 pt-2 border-t border-white/[0.06] text-center sm:text-left">
+          <div className="flex items-center justify-center gap-1.5 text-gray-300">
+            <ShieldCheck size={13} className="text-emerald-400 shrink-0" />
+            <span>30-Day Money-Back Guarantee</span>
+          </div>
+          <span className="text-gray-500 text-[10.5px]">Smart TVs • Phones • PC</span>
+        </div>
+      </a>
+    </div>
+  );
+};
 
 const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
   const [streamingData, setStreamingData] = useState({});
@@ -263,6 +431,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
+  const vpnTip = useMemo(() => {
+    return getVpnStreamingTip(streamingData, userCountry, movie?.Title);
+  }, [streamingData, userCountry, movie?.Title]);
 
   useEffect(() => {
     if (!mounted || !movie?.tmdbId) return;
@@ -387,42 +559,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
   const isGeoBlocked = !isMovieAvailableInRegion || Boolean(fallbackMessage) || (Boolean(userCountry) && selectedRegion !== userCountry && !isAvailableInUserCountry);
   const displayCountryName = (isGeoBlocked && userCountry && ALL_REGIONS.find(r => r.code === userCountry)?.name) || selectedRegionInfo?.name || 'Your Region';
 
-  const handleExpressVpnClick = async (e) => {
-    e.preventDefault();
-    // Open ExpressVPN tracking link immediately in a new tab
-    window.open("https://go.expressvpn.com/c/7564909/1462856/16063", "_blank", "noopener,noreferrer");
 
-    // Log click event analytics to Firebase Firestore INSTANTLY
-    try {
-      let detectedCountry = selectedRegion || userCountry || 'US';
-      try {
-        const ipRes = await fetch('https://ipinfo.io/json');
-        if (ipRes.ok) {
-          const ipData = await ipRes.json();
-          if (ipData.country) detectedCountry = ipData.country;
-        }
-      } catch (err) { }
-
-      const clickData = {
-        movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
-        movieTitle: movie?.Title || movie?.title || 'Unknown Movie',
-        promoType: 'expressvpn',
-        placement: 'where_to_watch',
-        isAvailableInRegion: isMovieAvailableInRegion,
-        selectedRegion: selectedRegion || 'US',
-        country: detectedCountry,
-        timestamp: serverTimestamp(),
-        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
-      };
-
-      addDoc(collection(db, 'affiliate_clicks'), clickData).catch(err => {
-        console.error("Firebase ExpressVPN click tracking error:", err);
-      });
-    } catch (err) {
-      console.error("Firebase ExpressVPN click tracking error:", err);
-    }
-  };
-  // ----------------------------------
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
@@ -606,16 +743,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                   <span className="text-gray-200 sm:text-white font-medium text-sm sm:text-base">
                     {selectedRegionInfo.name}
                   </span>
-                  {selectedRegion === userCountry ? (
-                    <div className="flex items-center gap-1.5 mt-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
-                      <span className="text-emerald-400 text-[11px] font-medium uppercase tracking-wider">Auto-detected Location</span>
-                    </div>
-                  ) : (
-                    <span className="text-yellow-500/80 text-[11px] font-medium uppercase tracking-wider mt-1">
-                      Manual Selection
-                    </span>
-                  )}
                 </div>
               </div>
 
@@ -681,8 +808,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
               >
 
                 {heroAmazonProvider && (
-                  <div className="w-full pb-4">
+                  <div className="w-full pb-2">
                     <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion} />
+                  </div>
+                )}
+
+                {/* 🚀 SMART STREAMING TIP (Angle A & B: Free on UK/AU or Netflix Stacking) */}
+                {vpnTip && (
+                  <div className="w-full">
+                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
                   </div>
                 )}
 
@@ -766,8 +900,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
             ) : availableRegions.length === 0 ? (
               <div className="flex flex-col items-center text-center p-8 sm:p-10 rounded-2xl border border-yellow-500/20 bg-yellow-500/[0.03]">
                 {heroAmazonProvider ? (
-                  <div className="w-full">
+                  <div className="w-full space-y-3">
                     <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion || userCountry || 'US'} />
+                    {vpnTip && <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />}
                   </div>
                 ) : (
                   <>
@@ -789,12 +924,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
             ) : null}
           </AnimatePresence>
 
-          <div className="text-center pt-5 sm:pt-6 border-t border-white/10 space-y-2.5">
+          <div className="text-center pt-5 sm:pt-6 border-t border-white/10">
             <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed max-w-lg mx-auto">
               If you want to support Filmiway, buying through our links earns us a small commission at no extra cost to you.
-            </p>
-            <p className="text-[11px] text-gray-400 uppercase tracking-widest font-medium">
-              Data via <span className="text-blue-400">TMDB</span> • Auto-IP Detection • 100+ Regions
             </p>
           </div>
         </div>

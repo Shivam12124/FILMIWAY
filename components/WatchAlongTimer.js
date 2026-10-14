@@ -660,19 +660,24 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
 
             {/* HEADER */}
             <div className="relative z-50 flex items-center px-4 sm:px-6 py-3 sm:py-3.5 border-b border-white/10 bg-black/90 backdrop-blur-xl w-full shrink-0">
+                {/* ⬅️ THE EXACT BACK BUTTON CIRCLED IN RED */}
                 <button
                     onClick={handleClose}
-                    className="flex items-center justify-center p-2 -ml-2 text-white/80 hover:text-white transition-colors mr-2 sm:mr-4 shrink-0 cursor-pointer pointer-events-auto z-[99999]"
-                    title="Go Back"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 text-white font-semibold text-xs sm:text-sm transition-all shrink-0 cursor-pointer pointer-events-auto z-[99999] shadow-sm active:scale-95"
+                    aria-label="Back to movie timestamps"
+                    title="Back to timestamps"
                 >
-                    <ChevronLeft size={28} strokeWidth={2.5} />
+                    <ChevronLeft size={20} strokeWidth={2.5} className="text-yellow-400 -ml-1 shrink-0" />
+                    <span>Back</span>
                 </button>
-                <div className="flex items-center gap-3 min-w-0">
+
+                {/* SHIFTED RIGHT WITH ml-4 sm:ml-6 SO NO COLLISION */}
+                <div className="flex items-center gap-3 min-w-0 ml-4 sm:ml-6">
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center shrink-0">
                         <Play size={14} className="text-yellow-500" />
                     </div>
                     <div className="text-left min-w-0">
-                        <div className="text-[9px] sm:text-[10px] text-yellow-500/90 uppercase tracking-widest font-bold leading-none mb-0.5">Watch-Along</div>
+                        <div className="text-[9px] sm:text-[10px] text-yellow-500/90 uppercase tracking-widest font-bold leading-none mb-0.5">Live Watch-Along</div>
                         <div className="text-xs sm:text-sm font-semibold text-gray-100 max-w-[200px] sm:max-w-[280px] truncate leading-tight">{movie?.Title || 'Movie'}</div>
                     </div>
                 </div>
