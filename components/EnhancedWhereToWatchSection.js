@@ -390,7 +390,7 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
       type: 'free',
       eyebrow: '100% Free Streaming Available',
       title: `Stream Free on ${usFree.provider_name} (US)`,
-      description: `Instead of paying $3.99+ on rentals, ${movieTitle || 'this movie'} is streaming 100% free with ads on ${usFree.provider_name} in the United States. Connect with ExpressVPN ($2.99/mo) to stream in Ultra HD without ISP speed throttling.`,
+      description: `Instead of paying $3.99+ on rentals, ${movieTitle || 'this movie'} is streaming 100% free with ads on ${usFree.provider_name} in the United States. Connect with ExpressVPN ($2.99/mo + 4 months free) to stream in Ultra HD without ISP speed throttling.`,
       cta: `Watch Free on ${usFree.provider_name}`,
       provider: usFree.provider_name
     };
@@ -419,7 +419,7 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
         type: 'netflix',
         eyebrow: 'Streaming on International Netflix',
         title: `Available on Netflix ${targetCountriesStr}`,
-        description: `${movieTitle || 'This movie'} is streaming on Netflix in ${targetCountriesStr}. Connect with ExpressVPN ($2.99/mo) to unlock international streaming catalogs and watch on your TV, phone, or PC.`,
+        description: `${movieTitle || 'This movie'} is streaming on Netflix in ${targetCountriesStr}. Connect with ExpressVPN ($2.99/mo + 4 months free) to unlock international streaming catalogs and watch on your TV, phone, or PC.`,
         cta: `Stream on Netflix ${targetCountriesStr}`,
         provider: 'Netflix'
       };
@@ -444,8 +444,8 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
         eyebrow: isUS ? 'US Streaming Catalog' : 'International Streaming Catalog',
         title: isUS ? `Unlock US ${topForeign} & Global Catalogs` : `Unlock ${topForeign} (${cName}) & Global Catalogs`,
         description: isUS
-          ? `Get ExpressVPN to watch ${movieTitle || 'this movie'} on ${topForeign} (USA), plus unlock thousands of US-exclusive movies, original series, and global streaming libraries with complete browsing privacy.`
-          : `Get ExpressVPN to watch ${movieTitle || 'this movie'} on ${topForeign} (${cName}), plus unlock thousands of international films, BBC, and global streaming libraries with complete browsing privacy.`,
+          ? `Get ExpressVPN ($2.99/mo + 4 months free) to watch ${movieTitle || 'this movie'} on ${topForeign} (USA), plus unlock thousands of US-exclusive movies, original series, and global streaming libraries with complete browsing privacy.`
+          : `Get ExpressVPN ($2.99/mo + 4 months free) to watch ${movieTitle || 'this movie'} on ${topForeign} (${cName}), plus unlock thousands of international films, BBC, and global streaming libraries with complete browsing privacy.`,
         cta: isUS ? `Unlock US ${topForeign} with ExpressVPN` : `Unlock ${topForeign} (${cName}) with ExpressVPN`,
         provider: topForeign
       };
@@ -459,7 +459,7 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
     type: 'speed',
     eyebrow: 'High-Speed Cinema Access',
     title: `Streaming ${movieTitle || 'this movie'} tonight?`,
-    description: `Stop ISP bandwidth throttling, eliminate buffering during peak evening hours, and stream privately in Ultra HD with ExpressVPN's ultra-fast servers.`,
+    description: `Stop ISP bandwidth throttling, eliminate buffering during peak evening hours, and stream privately in Ultra HD with ExpressVPN ($2.99/mo + 4 months free).`,
     cta: `Stream with ExpressVPN`,
     provider: 'ExpressVPN'
   };
