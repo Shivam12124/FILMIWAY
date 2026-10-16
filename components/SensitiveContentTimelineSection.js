@@ -1006,70 +1006,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                         </div>
                                                     )}
                                                 </li>
-
-                                                {/* 🚀 EMBEDDED EXPRESSVPN BANNER AFTER TIMESTAMP 1 ON MOBILE ONLY */}
-                                                {index === 0 && (
-                                                    <div className="block lg:hidden my-3">
-                                                        <div className="relative p-4 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
-                                                            <a
-                                                                href="https://go.expressvpn.com/c/7564909/1462856/16063"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                onClick={handleExpressVpnClick}
-                                                                className="flex flex-col gap-3"
-                                                            >
-                                                                <div className="flex items-start gap-3 min-w-0">
-                                                                    <div className="w-9 h-9 rounded-xl bg-black/40 flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30 border border-red-500/40 overflow-hidden p-1.5">
-                                                                        <Image
-                                                                            src="/images/expressvpn/Red, Icon.png"
-                                                                            alt="ExpressVPN"
-                                                                            width={32}
-                                                                            height={32}
-                                                                            className="object-contain"
-                                                                        />
-                                                                    </div>
-
-                                                                    <div className="flex flex-col min-w-0 flex-1">
-                                                                        <div className="flex flex-wrap items-center gap-1.5 mb-0.5">
-                                                                            <span className="font-black text-[11px] text-white tracking-widest uppercase">
-                                                                                EXPRESSVPN
-                                                                            </span>
-                                                                            <span className="text-gray-600 text-[10px]">•</span>
-                                                                            <span className="text-red-400 font-bold text-[10.5px] tracking-wide uppercase">
-                                                                                SPECIAL FILMIWAY DEAL
-                                                                            </span>
-                                                                        </div>
-
-                                                                        <h4 className="text-white font-bold text-[13px] leading-snug group-hover:text-red-400 transition-colors">
-                                                                            Streaming <span className="text-white">{movie?.title || movie?.Title || 'this movie'}</span> tonight?
-                                                                        </h4>
-
-                                                                        <p className="text-gray-300 text-[11px] sm:text-xs leading-relaxed mt-0.5">
-                                                                            ExpressVPN stops ISP speed throttling and unblocks international streaming libraries with zero buffering.
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="flex flex-col items-center justify-center gap-0.5 px-4 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-red-600/35 transition-all border border-red-500/60 group-hover:scale-[1.02] w-full text-center">
-                                                                    <div className="flex items-center justify-center gap-1.5">
-                                                                        <span>Claim Filmiway Deal</span>
-                                                                        <ExternalLink size={14} className="shrink-0" />
-                                                                    </div>
-                                                                    <span className="text-[10.5px] font-medium text-red-100">
-                                                                        $2.99/mo + 4 Months Free
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                            <div className="mt-2.5 pt-2 border-t border-white/10 text-center">
-                                                                <p className="text-[11px] text-gray-300/80 leading-relaxed">
-                                                                    If you want to support Filmiway, buying through our links earns us a small commission at no extra cost to you.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )}
-
-
                                             </React.Fragment>
                                         );
                                     })}
@@ -1077,11 +1013,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </div>
                             {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
                             <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
-
-                            {/* 📱 MOBILE ONLY: WHERE TO WATCH (Amazon affiliate) right below the last timestamp! */}
-                            <div className="block lg:hidden w-full mt-4 bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-4 sm:p-5 clean-injected-component">
-                                <EnhancedWhereToWatchSection movie={movie} compact />
-                            </div>
                         </div>
 
                         </div>
