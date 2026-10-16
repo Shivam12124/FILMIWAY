@@ -44,13 +44,12 @@ const iconicCharacterQueries = [
     '"Demi Moore substance"', '"Art the clown"', '"Terrifier"', '"Paul Allen card"'
 ];
 
-// Build FLAT search terms (NO nested parentheses!)
+// Build FLAT search terms (single movie tag for ambiguous titles to save URL space)
 const flatSearchTerms = [];
 uniqueMoviesMap.forEach((year, title) => {
     const cleaned = title.replace(/"/g, '');
     if (isAmbiguousTitle(cleaned)) {
         flatSearchTerms.push(`"${cleaned} movie"`);
-        flatSearchTerms.push(`"${cleaned} film"`);
     } else {
         flatSearchTerms.push(`"${cleaned}"`);
     }
@@ -66,12 +65,27 @@ const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 const yesterdayStr = yesterday.toISOString().split('T')[0];
 
-// Group into 20 clean search groups
-const CHUNK_SIZE = 20;
+// Dynamic Greedy Bin-Packing: Keep each query strictly under 480 chars so Twitter NEVER returns "Something went wrong" (512 char hard limit)
+const MAX_TOTAL_LEN = 480;
+const sampleSuffix = ` filter:media min_faves:1200 since:${yesterdayStr} -filter:replies`;
+const MAX_TERMS_LEN = MAX_TOTAL_LEN - sampleSuffix.length - 2;
+
 const chunks = [];
-for (let i = 0; i < flatSearchTerms.length; i += CHUNK_SIZE) {
-    chunks.push(flatSearchTerms.slice(i, i + CHUNK_SIZE));
+let currentChunk = [];
+let currentLen = 0;
+
+for (const term of flatSearchTerms) {
+    const addLen = currentChunk.length === 0 ? term.length : term.length + 4; // ' OR '
+    if (currentLen + addLen <= MAX_TERMS_LEN) {
+        currentChunk.push(term);
+        currentLen += addLen;
+    } else {
+        chunks.push(currentChunk);
+        currentChunk = [term];
+        currentLen = term.length;
+    }
 }
+if (currentChunk.length > 0) chunks.push(currentChunk);
 
 // -------------------------------------------------------------
 // 🔥 RADAR: FILMIWAY TOP 25 MOST VISITED MOVIES
@@ -171,14 +185,18 @@ mdContent += `--- \n\n`;
 mdContent += `## 🏆 RADAR 0: FILMIWAY TOP 25 POWERHOUSE MOVIES (Split into 2 Fast Links)\n`;
 mdContent += `*Direct live scans for the **Top 25 Most Visited Parents Guides & Skip Timestamps** on Filmiway. Split into two optimal groups so Twitter/X loads smoothly without hitting character limits!*\n\n`;
 
+const makeSafeUrl = (query) => {
+    return `https://x.com/search?q=${encodeURIComponent(query).replace(/\(/g, '%28').replace(/\)/g, '%29')}&f=top`;
+};
+
 // Part 1
 const top25P1Query = `(${top25Part1.join(' OR ')})`;
 const top25P1Monster = `${top25P1Query} filter:media min_faves:800 since:${yesterdayStr} -filter:replies`;
 const top25P1Rising = `${top25P1Query} filter:media min_faves:300 since:${todayStr} -filter:replies`;
 
 mdContent += `### 🎬 Top 25 - Part 1: Fifty Shades, 365 Days, Wolf of Wall Street, Titanic, Oppenheimer, Poor Things, Eyes Wide Shut, etc.\n`;
-mdContent += `* 👉 [**Scan Part 1 Monster Viral (Last 24h | 800+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P1Monster)}&f=top)\n`;
-mdContent += `* ⚡ [**Scan Part 1 Rising Today (Today Only | 300+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P1Rising)}&f=top)\n\n`;
+mdContent += `* 👉 [**Scan Part 1 Monster Viral (Last 24h | 800+ Likes)**](${makeSafeUrl(top25P1Monster)})\n`;
+mdContent += `* ⚡ [**Scan Part 1 Rising Today (Today Only | 300+ Likes)**](${makeSafeUrl(top25P1Rising)})\n\n`;
 
 // Part 2
 const top25P2Query = `(${top25Part2.join(' OR ')})`;
@@ -186,8 +204,8 @@ const top25P2Monster = `${top25P2Query} filter:media min_faves:800 since:${yeste
 const top25P2Rising = `${top25P2Query} filter:media min_faves:300 since:${todayStr} -filter:replies`;
 
 mdContent += `### 🎬 Top 25 - Part 2: Fight Club, Irreversible, Boogie Nights, Original Sin, Malena, Red Sparrow, Secretary, Obsession, etc.\n`;
-mdContent += `* 👉 [**Scan Part 2 Monster Viral (Last 24h | 800+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P2Monster)}&f=top)\n`;
-mdContent += `* ⚡ [**Scan Part 2 Rising Today (Today Only | 300+ Likes)**](https://x.com/search?q=${encodeURIComponent(top25P2Rising)}&f=top)\n\n`;
+mdContent += `* 👉 [**Scan Part 2 Monster Viral (Last 24h | 800+ Likes)**](${makeSafeUrl(top25P2Monster)})\n`;
+mdContent += `* ⚡ [**Scan Part 2 Rising Today (Today Only | 300+ Likes)**](${makeSafeUrl(top25P2Rising)})\n\n`;
 
 mdContent += `--- \n\n`;
 mdContent += `## 😱 RADAR 0.5: "NEVER WATCHING AGAIN", CONTROVERSIAL & CINEMA HISTORY\n`;
@@ -195,14 +213,11 @@ mdContent += `*Viral tweets where people react to disturbing, shocking, or histo
 
 shockingCinemaGroups.forEach((group, idx) => {
     const fullQueryMonster = `${group.query} filter:media min_faves:1200 since:${yesterdayStr} -filter:replies`;
-    const urlMonster = `https://x.com/search?q=${encodeURIComponent(fullQueryMonster)}&f=top`;
-
     const fullQueryRising = `${group.query} filter:media min_faves:400 since:${todayStr} -filter:replies`;
-    const urlRising = `https://x.com/search?q=${encodeURIComponent(fullQueryRising)}&f=top`;
 
     mdContent += `### ⚡ ${group.name}\n`;
-    mdContent += `* 👉 [**Scan Monster Viral (Last 24h | 1,200+ Likes)**](${urlMonster})\n`;
-    mdContent += `* ⚡ [**Scan Rising Today (Today Only | 400+ Likes)**](${urlRising})\n\n`;
+    mdContent += `* 👉 [**Scan Monster Viral (Last 24h | 1,200+ Likes)**](${makeSafeUrl(fullQueryMonster)})\n`;
+    mdContent += `* ⚡ [**Scan Rising Today (Today Only | 400+ Likes)**](${makeSafeUrl(fullQueryRising)})\n\n`;
 });
 
 mdContent += `--- \n\n`;
@@ -210,17 +225,12 @@ mdContent += `## 🌟 RADAR 1: "NO-NAME" VIRAL MOVIE CLIPS (Zero Movie Title In 
 mdContent += `*These are viral clips blowing up right now where the OP **did NOT write the movie name**—just 1 sentence like "this scene was insane" or "acting masterclass"!*\n\n`;
 
 universalClipGroups.forEach((group, idx) => {
-    // 1,500+ likes (Monster Viral)
     const fullQueryMonster = `${group.query} filter:media min_faves:1500 since:${yesterdayStr} -filter:replies`;
-    const urlMonster = `https://x.com/search?q=${encodeURIComponent(fullQueryMonster)}&f=top`;
-
-    // 500+ likes (Rising Today)
     const fullQueryRising = `${group.query} filter:media min_faves:500 since:${todayStr} -filter:replies`;
-    const urlRising = `https://x.com/search?q=${encodeURIComponent(fullQueryRising)}&f=top`;
 
     mdContent += `### 🔥 Category ${idx + 1}: ${group.name}\n`;
-    mdContent += `* 👉 [**Scan Monster Viral (Last 24h | 1,500+ Likes)**](${urlMonster})\n`;
-    mdContent += `* ⚡ [**Scan Rising Today (Today Only | 500+ Likes)**](${urlRising})\n\n`;
+    mdContent += `* 👉 [**Scan Monster Viral (Last 24h | 1,500+ Likes)**](${makeSafeUrl(fullQueryMonster)})\n`;
+    mdContent += `* ⚡ [**Scan Rising Today (Today Only | 500+ Likes)**](${makeSafeUrl(fullQueryRising)})\n\n`;
 });
 
 mdContent += `--- \n\n`;
@@ -229,18 +239,17 @@ mdContent += `*Accounts that post high-definition movie scenes with single-line 
 
 curatorHubs.forEach((hub, idx) => {
     const fullQuery = `${hub.query} filter:media min_faves:800 since:${yesterdayStr} -filter:replies`;
-    const url = `https://x.com/search?q=${encodeURIComponent(fullQuery)}&f=top`;
 
     mdContent += `### 🎥 Hub ${idx + 1}: ${hub.name}\n`;
-    mdContent += `👉 [**Scan Curated Viral Clips (Last 24h | 800+ Likes)**](${url})\n\n`;
+    mdContent += `👉 [**Scan Curated Viral Clips (Last 24h | 800+ Likes)**](${makeSafeUrl(fullQuery)})\n\n`;
 });
 
 mdContent += `--- \n\n`;
 mdContent += `## ❓ RADAR 3: "WHAT MOVIE IS THIS?" (Instant Traffic & Link Conversion)\n`;
 mdContent += `*Tweets where people post an insane clip and ask for the title. Dropping the movie name + your Filmiway skip-timestamps link is the #1 most helpful reply in the whole thread!*\n\n`;
 
-const whatMovieUrlMonster = `https://x.com/search?q=${encodeURIComponent(`${whatMovieQuery} filter:media min_faves:500 since:${yesterdayStr}`)}&f=top`;
-const whatMovieUrlFresh = `https://x.com/search?q=${encodeURIComponent(`${whatMovieQuery} filter:media min_faves:100 since:${todayStr}`)}&f=top`;
+const whatMovieUrlMonster = makeSafeUrl(`${whatMovieQuery} filter:media min_faves:500 since:${yesterdayStr}`);
+const whatMovieUrlFresh = makeSafeUrl(`${whatMovieQuery} filter:media min_faves:100 since:${todayStr}`);
 
 mdContent += `* 👉 [**Scan Viral "What Movie Is This?" (Last 24h | 500+ Likes)**](${whatMovieUrlMonster})\n`;
 mdContent += `* ⚡ [**Scan Fresh "What Movie Is This?" (Today Only | 100+ Likes)**](${whatMovieUrlFresh})\n\n`;
@@ -252,10 +261,11 @@ mdContent += `*Tracks our 300+ database movies + iconic characters (Patrick Bate
 chunks.forEach((chunk, index) => {
     const queryGroup = chunk.join(' OR ');
     const fullQuery = `(${queryGroup}) filter:media min_faves:1200 since:${yesterdayStr} -filter:replies`;
-    const url = `https://x.com/search?q=${encodeURIComponent(fullQuery)}&f=top`;
+    const cleanTitles = chunk.map(t => t.replace(/"/g, '').replace(/ movie$/, '')).join(', ');
 
     mdContent += `### 🚀 Group ${index + 1} of ${chunks.length}\n`;
-    mdContent += `👉 [**Scan Group ${index + 1} (Last 24h | 1,200+ Likes)**](${url})\n\n`;
+    mdContent += `* 🎬 **Movies & characters in this link (${chunk.length}):** ${cleanTitles}\n`;
+    mdContent += `* 👉 [**Scan Group ${index + 1} (Last 24h | 1,200+ Likes)**](${makeSafeUrl(fullQuery)})\n\n`;
 });
 
 mdContent += `---\n\n`;
@@ -265,10 +275,11 @@ mdContent += `*Brand new movie posts posted TODAY (${todayStr}) in the last few 
 chunks.forEach((chunk, index) => {
     const queryGroup = chunk.join(' OR ');
     const fullQuery = `(${queryGroup}) filter:media min_faves:500 since:${todayStr} -filter:replies`;
-    const url = `https://x.com/search?q=${encodeURIComponent(fullQuery)}&f=top`;
+    const cleanTitles = chunk.map(t => t.replace(/"/g, '').replace(/ movie$/, '')).join(', ');
 
     mdContent += `### ⚡ Group ${index + 1} of ${chunks.length}\n`;
-    mdContent += `👉 [**Scan Group ${index + 1} (Today Only | 500+ Likes)**](${url})\n\n`;
+    mdContent += `* 🎬 **Movies & characters in this link (${chunk.length}):** ${cleanTitles}\n`;
+    mdContent += `* ⚡ [**Scan Group ${index + 1} (Today Only | 500+ Likes)**](${makeSafeUrl(fullQuery)})\n\n`;
 });
 
 fs.writeFileSync(outputPath, mdContent, 'utf8');

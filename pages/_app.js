@@ -75,18 +75,6 @@ export default function App({ Component, pageProps }) {
         });
       }
 
-      // Trigger Mediavine Grow Pageview on Route Change for SPA
-      if (typeof window !== 'undefined') {
-        try {
-          if (typeof window.growMe === 'function') {
-            window.growMe('triggerPageview');
-          } else if (Array.isArray(window.growMe)) {
-            window.growMe.push(['triggerPageview']);
-          }
-        } catch (err) {
-          // Mediavine Grow script still initializing - fail gracefully
-        }
-      }
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => router.events.off('routeChangeComplete', handleRouteChange);
