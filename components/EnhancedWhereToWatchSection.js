@@ -148,20 +148,78 @@ const ALL_REGIONS = [
 ];
 
 async function detectUserCountry() {
+  if (typeof window === 'undefined') return 'US';
+
+  // 1. Check Session Cache to prevent repeat lookups
   try {
-    const response = await fetch('https://ipinfo.io/json');
-    if (response.ok) {
-      const data = await response.json();
-      const code = data.country?.toUpperCase();
-      // Tier 1 countries only; otherwise default to USA for clean Amazon/VPN monetization
-      if (['US', 'GB', 'CA', 'AU'].includes(code)) {
-        return code;
-      }
-      return 'US';
+    const cached = sessionStorage.getItem('fw_user_country');
+    if (cached && ALL_REGIONS.some(r => r.code === cached)) {
+      return cached;
     }
-  } catch (e) {
-    return 'US';
+  } catch (e) {}
+
+  // 2. High-speed TimeZone mapping (Instant, 0 network requests, immune to ad blockers/rate limits)
+  const timezoneToCountry = {
+    'Asia/Kolkata': 'IN', 'Asia/Calcutta': 'IN',
+    'Europe/London': 'GB',
+    'America/Toronto': 'CA', 'America/Vancouver': 'CA', 'America/Montreal': 'CA', 'America/Edmonton': 'CA',
+    'Australia/Sydney': 'AU', 'Australia/Melbourne': 'AU', 'Australia/Brisbane': 'AU', 'Australia/Perth': 'AU', 'Australia/Adelaide': 'AU',
+    'Europe/Berlin': 'DE', 'Europe/Paris': 'FR', 'Europe/Madrid': 'ES', 'Europe/Rome': 'IT',
+    'Europe/Amsterdam': 'NL', 'Europe/Dublin': 'IE', 'Europe/Brussels': 'BE', 'Europe/Vienna': 'AT',
+    'Europe/Zurich': 'CH', 'Europe/Stockholm': 'SE', 'Europe/Oslo': 'NO', 'Europe/Copenhagen': 'DK',
+    'Europe/Helsinki': 'FI', 'Europe/Warsaw': 'PL', 'Europe/Prague': 'CZ', 'Europe/Budapest': 'HU',
+    'Europe/Bucharest': 'RO', 'Europe/Athens': 'GR', 'Europe/Lisbon': 'PT',
+    'America/Sao_Paulo': 'BR', 'America/Mexico_City': 'MX', 'America/Buenos_Aires': 'AR', 'America/Bogota': 'CO',
+    'Asia/Tokyo': 'JP', 'Asia/Seoul': 'KR', 'Asia/Singapore': 'SG', 'Asia/Bangkok': 'TH',
+    'Asia/Jakarta': 'ID', 'Asia/Manila': 'PH', 'Asia/Dubai': 'AE', 'Asia/Riyadh': 'SA',
+    'Pacific/Auckland': 'NZ', 'Africa/Johannesburg': 'ZA'
+  };
+
+  let tzCountry = null;
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz) {
+      if (timezoneToCountry[tz]) {
+        tzCountry = timezoneToCountry[tz];
+      } else if (tz.startsWith('America/') && !tz.includes('Toronto') && !tz.includes('Vancouver') && !tz.includes('Sao_Paulo') && !tz.includes('Mexico_City')) {
+        tzCountry = 'US';
+      }
+    }
+  } catch (e) {}
+
+  // 3. Ultra-fast Cloudflare Edge & Public IP Geolocation Fallbacks
+  const ipServices = [
+    { url: 'https://api.country.is/', key: 'country' },
+    { url: 'https://ipwho.is/', key: 'country_code' },
+    { url: 'https://ipinfo.io/json', key: 'country' }
+  ];
+
+  for (const service of ipServices) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      const res = await fetch(service.url, { signal: controller.signal, headers: { 'Accept': 'application/json' } });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        const code = (data[service.key] || '').toUpperCase();
+        if (code && ALL_REGIONS.some(r => r.code === code)) {
+          try { sessionStorage.setItem('fw_user_country', code); } catch (e) {}
+          return code;
+        }
+      }
+    } catch (e) {
+      continue;
+    }
   }
+
+  // 4. If IP services blocked by ad blocker, use timezone detection
+  if (tzCountry && ALL_REGIONS.some(r => r.code === tzCountry)) {
+    try { sessionStorage.setItem('fw_user_country', tzCountry); } catch (e) {}
+    return tzCountry;
+  }
+
   return 'US';
 }
 
@@ -207,7 +265,13 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
       US: 'amazon.com',
       GB: 'amazon.co.uk',
       CA: 'amazon.ca',
-      AU: 'amazon.com.au'
+      AU: 'amazon.com.au',
+      IN: 'amazon.in',
+      DE: 'amazon.de',
+      FR: 'amazon.fr',
+      ES: 'amazon.es',
+      IT: 'amazon.it',
+      JP: 'amazon.co.jp'
     };
     
     // Direct user to store matching their actual detected location if available, otherwise viewing region
@@ -236,14 +300,25 @@ function selectBestRegion(streamingData, userCountry) {
 
   const effectiveCountry = userCountry || 'US';
 
+  // 1. If streaming exists in the user's detected country, show it directly!
   if (streamingData[effectiveCountry]) return { selectedRegion: effectiveCountry, fallbackMessage: null };
-  if (streamingData['US']) return { selectedRegion: 'US', fallbackMessage: effectiveCountry === 'US' ? null : `Showing USA availability.` };
+
+  const userRegionInfo = ALL_REGIONS.find(r => r.code === effectiveCountry);
+  const userRegionName = userRegionInfo?.name || effectiveCountry;
+
+  // 2. If not available in their country, fallback to US catalog
+  if (streamingData['US']) {
+    return {
+      selectedRegion: 'US',
+      fallbackMessage: effectiveCountry === 'US' ? null : `Not streaming in ${userRegionName}. Showing USA availability.`
+    };
+  }
 
   const firstAvailableName = ALL_REGIONS.find(r => r.code === availableRegions[0])?.name || availableRegions[0];
 
   return {
     selectedRegion: availableRegions[0],
-    fallbackMessage: `Showing ${firstAvailableName} availability.`
+    fallbackMessage: `Not streaming in ${userRegionName}. Showing ${firstAvailableName} availability.`
   };
 }
 
@@ -351,8 +426,8 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
     }
   }
 
-  // Also check other foreign subscription platforms (e.g. Disney+, Crave, Stan, Sky Cinema, Paramount+)
-  const foreignCodes = ['GB', 'CA', 'AU'].filter(c => c !== uCountry);
+  // Also check other foreign subscription platforms (e.g. Peacock, Max, Hulu in US for non-US users; Crave, Stan, Sky Cinema abroad for US users)
+  const foreignCodes = (uCountry === 'US' ? ['GB', 'CA', 'AU'] : ['US', 'GB', 'CA', 'AU']).filter(c => c !== uCountry);
   for (const code of foreignCodes) {
     const foreignStreams = (data[code]?.flatrate || []).filter(p => {
       const n = (p.provider_name || '').toLowerCase();
@@ -362,13 +437,16 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
 
     if (foreignStreams.length > 0) {
       const topForeign = foreignStreams[0].provider_name.replace(/ Premium| Plus|\+/, '');
-      const cName = code === 'GB' ? 'UK' : code === 'CA' ? 'Canada' : 'Australia';
+      const cName = code === 'GB' ? 'UK' : code === 'CA' ? 'Canada' : code === 'AU' ? 'Australia' : 'US';
+      const isUS = code === 'US';
       return {
         type: 'unblock',
-        eyebrow: 'Streaming on International Catalogs',
-        title: `Available on ${topForeign} (${cName})`,
-        description: `${movieTitle || 'This movie'} is streaming on ${topForeign} in ${cName}. Connect with ExpressVPN ($2.99/mo) to unlock international streaming catalogs and watch on your TV, phone, or PC.`,
-        cta: `Stream on ${topForeign} (${cName})`,
+        eyebrow: isUS ? 'US Streaming Catalog' : 'International Streaming Catalog',
+        title: isUS ? `Unlock US ${topForeign} & Global Catalogs` : `Unlock ${topForeign} (${cName}) & Global Catalogs`,
+        description: isUS
+          ? `Get ExpressVPN to watch ${movieTitle || 'this movie'} on ${topForeign} (USA), plus unlock thousands of US-exclusive movies, original series, and global streaming libraries with complete browsing privacy.`
+          : `Get ExpressVPN to watch ${movieTitle || 'this movie'} on ${topForeign} (${cName}), plus unlock thousands of international films, BBC, and global streaming libraries with complete browsing privacy.`,
+        cta: isUS ? `Unlock US ${topForeign} with ExpressVPN` : `Unlock ${topForeign} (${cName}) with ExpressVPN`,
         provider: topForeign
       };
     }
@@ -773,12 +851,12 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
           {fallbackMessage && selectedRegion && selectedRegion !== userCountry && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 px-1"
+              className="flex items-start gap-2.5 px-1 py-0.5"
             >
-              <Info size={14} className="text-gray-500 shrink-0" />
-              <p className="text-gray-400 text-xs sm:text-sm font-light tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400/90 shrink-0 mt-1.5" />
+              <p className="text-gray-400 text-xs sm:text-[13px] leading-relaxed">
                 {fallbackMessage} {heroAmazonProvider?.isFallback && `(Stream, rent, or buy physical editions on Amazon below)`}
               </p>
             </motion.div>
