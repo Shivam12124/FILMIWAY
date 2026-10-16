@@ -42,7 +42,10 @@ export const THOUGHT_PROVOKING_MOVIE_SLUGS = {
     'tt0066921': 'a-clockwork-orange',
     
     // Rank 10: Requiem for a Dream
-    'tt0180093': 'requiem-for-a-dream'
+    'tt0180093': 'requiem-for-a-dream',
+    
+    // BONUS: Happiness
+    'tt0147612': 'happiness'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
@@ -202,7 +205,10 @@ export const sortThoughtProvokingMovies = (movies, sortBy) => {
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime);
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies.sort((a, b) => {
+                const getRank = (r) => typeof r === 'number' ? r : 999;
+                return getRank(a.rank) - getRank(b.rank);
+            });
     }
 };
 

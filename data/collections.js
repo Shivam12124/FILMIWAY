@@ -890,7 +890,7 @@ export const COLLECTIONS = {
       { label: "SOCIETAL", desc: "Human nature" }
     ],
     // ✅ Correct IMDb IDs for: 12 Angry Men, Parasite, Incendies,  Dead Poets Society, Taste of Cherry, The Father, Children of Men, Truman Show, Clockwork Orange, Requiem for a Dream
-    movies: ['tt0050083', 'tt6751668', 'tt1255953', 'tt0120265', 'tt0097165', 'tt10272386', 'tt0206634', 'tt0120382', 'tt0066921', 'tt0180093'],
+    movies: ['tt0050083', 'tt6751668', 'tt1255953', 'tt0120265', 'tt0097165', 'tt10272386', 'tt0206634', 'tt0120382', 'tt0066921', 'tt0180093', 'tt0147612'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-the-prestige', 'best-drama-movies-on-hbo-max']
   },
 

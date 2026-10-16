@@ -11568,6 +11568,60 @@
     "Age": "15+",
     "Summary": "Aged 15+ for heavy financial trading floor profanity and corporate conflict."
   },
+  "10683": {
+    "Title": "Happiness",
+    "scenes": [
+      {
+        "start": "0:18:59",
+        "end": "0:19:31",
+        "type": "Sexual Content (Masturbation)",
+        "severity": "High",
+        "startSec": 1139,
+        "endSec": 1171,
+        "durationSec": 32,
+        "category": "Sexual Content",
+        "who": "Unspecified"
+      },
+      {
+        "start": "1:18:50",
+        "end": "1:19:55",
+        "type": "Sex & Nudity",
+        "severity": "High",
+        "startSec": 4730,
+        "endSec": 4795,
+        "durationSec": 65,
+        "category": "Sex",
+        "who": "Unspecified"
+      },
+      {
+        "start": "1:35:30",
+        "end": "1:36:43",
+        "type": "Sex",
+        "severity": "High",
+        "startSec": 5730,
+        "endSec": 5803,
+        "durationSec": 73,
+        "category": "Sex",
+        "who": "Unspecified"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Deeply disturbing psychological content throughout, featuring explicit dialogue and depictions surrounding child sexual abuse, predatory behavior, and psychological trauma."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "High",
+        "description": "Frequent strong coarse language, obscene telephone harassment, and crude sexual discussions throughout."
+      }
+    ],
+    "Age": "18+",
+    "Summary": "Aged 18+ strictly for adults. The film is utterly disturbing, featuring deeply unsettling themes of child abuse, explicit sexual content, and strong language throughout."
+  },
   "10774": {
     "Title": "Network",
     "scenes": [

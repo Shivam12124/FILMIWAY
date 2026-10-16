@@ -623,7 +623,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 transition={{ duration: 0.6 }}
             >
                 {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
-                <style>{`
+                {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
+                <style dangerouslySetInnerHTML={{ __html: `
                 @media (min-width: 1024px) {
                     .desktop-timestamp-scroll::-webkit-scrollbar {
                         width: 6px;
@@ -689,7 +690,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 .timestamp-card-list .group:hover::before {
                     opacity: 1;
                 }
-            `}</style>
+            ` }} />
                 {filteredHeavyScenes.length === 0 ? (
                     <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
                         <div className="space-y-3 w-full">

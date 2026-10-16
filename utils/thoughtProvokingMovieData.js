@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 9693, "imdbID": "tt0206634", "Title": "Children of Men", "year": 2006, "genre": "Sci-Fi", "runtime": 109, "rank": 7 },
     { "tmdbId": 37165, "imdbID": "tt0120382", "Title": "The Truman Show", "year": 1998, "genre": "Drama", "runtime": 103, "rank": 8 },
     { "tmdbId": 185, "imdbID": "tt0066921", "Title": "A Clockwork Orange", "year": 1971, "genre": "Sci-Fi", "runtime": 136, "rank": 9 },
-    { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 10 }
+    { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 10 },
+    { "tmdbId": 10683, "imdbID": "tt0147612", "Title": "Happiness", "year": 1998, "genre": "Drama, Comedy", "runtime": 140, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     9693: "As the sound of the playgrounds faded, the despair set in.",
     37165: "We accept the reality of the world with which we're presented. It's as simple as that.",
     185: "Is it better for a man to have chosen evil than to have good imposed upon him?",
-    641: "I'm somebody now, Harry. Everybody likes me."
+    641: "I'm somebody now, Harry. Everybody likes me.",
+    10683: "I'm not looking for trouble. I'm just looking for a little bit of happiness."
 };
 
 // ✅ SENSITIVE TIMELINES (Crucial for High-Volume Timestamps Search)
@@ -101,6 +103,16 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "High" }
         ] 
     }
+,
+
+    // BONUS: Happiness
+    10683: { 
+        scenes: [
+            { start: "0:18:59", end: "0:19:31", type: "Sexual Content (Masturbation)", severity: "High" },
+            { start: "1:18:50", end: "1:19:55", type: "Sex & Nudity", severity: "High" },
+            { start: "1:35:30", end: "1:36:43", type: "Sex", severity: "High" }
+        ] 
+    }
 };
 
 export const FALLBACK_POSTERS = {
@@ -113,7 +125,8 @@ export const FALLBACK_POSTERS = {
     9693: "https://m.media-amazon.com/images/M/MV5BMTQ5MjAwMDY5Nl5BMl5BanBnXkFtZTcwODc0ODEzMQ@@._V1_SX500.jpg",
     37165: "https://m.media-amazon.com/images/M/MV5BMDIzODcyY2EtMTVhNi00ZGE2LWEwZmItNmRiMWUyNGFmZmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
     185: "https://m.media-amazon.com/images/M/MV5BMTY3MjM1Mzc4N15BMl5BanBnXkFtZTgwODM0NzAxMDE@._V1_SX500.jpg",
-    641: "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWZiYTZkXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_SX500.jpg"
+    641: "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWZiYTZkXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_SX500.jpg",
+    10683: "https://image.tmdb.org/t/p/w500/rYfUcEV88Z3gENrfYTE6i8yBkDr.jpg"
 };
 
 // ✅ Custom metric for this collection
@@ -295,6 +308,24 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "The drug-induced utopias of four Coney Island residents shatter when their addictions spiral out of control. Filmed with relentless, rapid-fire editing, it is a horrific, unglamorous descent into the abyss of addiction that leaves the viewer completely emotionally exhausted.",
         themes: ["Addiction", "Delusion", "Destruction of the American Dream"]
     })
+,
+
+    // BONUS: Happiness (1998)
+    10683: createThoughtData({ 
+        philosophicalDepth: 94, emotionalResonance: 89, complexityLevel: "UNSETTLING", 
+        dominantColor: "#4a154b", rating: 7.7, criticsScore: 82, audienceScore: 84, director: "Todd Solondz", 
+        cast: ["Jane Adams", "Philip Seymour Hoffman", "Dylan Baker", "Lara Flynn Boyle"], boxOffice: "$2.8 million", budget: "$3 million", 
+        dna: { "Drama": 60, "Comedy": 40 },
+        scenes: [
+            { time: 20, intensity: 70, label: "Allen's First Call" }, 
+            { time: 55, intensity: 85, label: "The Dinner Confession" }, 
+            { time: 85, intensity: 95, label: "Bill's Revelation" }, 
+            { time: 110, intensity: 98, label: "Allen Meets Helen" }, 
+            { time: 135, intensity: 100, label: "The Balcony Finale" } 
+        ],
+        synopsis: "The interconnected lives of three suburban New Jersey sisters and their eccentric acquaintances collide in a tragicomic search for intimacy and validation. Todd Solondz crafts a brutally candid, darkly satirical exploration of human vulnerability and moral compromise.",
+        themes: ["The Illusion of Suburban Normalcy", "Desperate Need for Connection", "Moral Hypocrisy"]
+    })
 };
 
 // 🎬 FAQS FOR THE THOUGHT-PROVOKING COLLECTION
@@ -363,6 +394,12 @@ export const THOUGHT_PROVOKING_FAQS = {
         { question: "What does the red dress symbolize?", answer: "Sara Goldfarb's red dress represents her youth, her lost husband, and her desperate need for validation. Her obsession with fitting into the dress for a delusional television appearance drives her to abuse amphetamines, leading directly to her psychosis." },
         { question: "Why does the editing speed up?", answer: "Director Darren Aronofsky used 'hip-hop montages'—rapid-fire sequences of close-ups and sound effects (pills popping, pupils dilating). As the characters spiral deeper into addiction, the editing becomes faster and more frantic, creating a feeling of severe anxiety for the viewer." },
         { question: "What is the meaning of the final fetal positions?", answer: "In the closing shots, all four characters are shown curling into a fetal position in their respective hells (prison, hospital, psychiatric ward). It symbolizes regression; their addictions destroyed their adult lives, reducing them to helpless, broken infants." }
+    ]
+,
+    'Happiness': [
+        { question: "What is the central theme of Happiness?", answer: "The film explores the profound gap between external suburban cheerfulness and the hidden, painful realities of human isolation, taboo obsessions, and the desperate search for genuine intimacy." },
+        { question: "What role does Philip Seymour Hoffman play in Happiness?", answer: "Philip Seymour Hoffman portrays Allen, an emotionally isolated and awkward office worker who struggles with intense loneliness and reaches out through anonymous phone calls in a desperate attempt to find connection." },
+        { question: "Why is Happiness considered a groundbreaking American dark comedy?", answer: "Director Todd Solondz deliberately avoids conventional Hollywood sentimentality, balancing uncomfortable drama with pitch-black satirical humor to confront societal taboos and the complexities of forgiveness." }
     ]
 };
 
