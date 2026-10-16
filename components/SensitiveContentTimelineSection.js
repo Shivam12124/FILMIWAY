@@ -1065,7 +1065,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                 </li>
 
                                                 {/* 🚀 EMBEDDED EXPRESSVPN BANNER AFTER TIMESTAMP 1 ON MOBILE ONLY */}
-                                                {idx === 0 && (
+                                                {index === 0 && (
                                                     <div className="block lg:hidden my-3">
                                                         <div className="relative p-4 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
                                                             <a
