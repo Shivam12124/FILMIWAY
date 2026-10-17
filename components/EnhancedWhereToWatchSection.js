@@ -296,9 +296,8 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
 
 function selectBestRegion(streamingData, userCountry) {
   const availableRegions = Object.keys(streamingData);
-  if (availableRegions.length === 0) return { selectedRegion: null, fallbackMessage: 'No data' };
-
   const effectiveCountry = userCountry || 'US';
+  if (availableRegions.length === 0) return { selectedRegion: effectiveCountry, fallbackMessage: null };
 
   // 1. If streaming exists in the user's detected country, show it directly!
   if (streamingData[effectiveCountry]) return { selectedRegion: effectiveCountry, fallbackMessage: null };
@@ -576,15 +575,17 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
         if (data && Object.keys(data).length > 0) {
           setStreamingData(data);
           const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
-          setSelectedRegion(bestRegion);
+          setSelectedRegion(bestRegion || detectedCountry || 'US');
           setFallbackMessage(message);
         } else {
           setStreamingData({});
-          setFallbackMessage('No streaming data available');
+          setSelectedRegion(detectedCountry || 'US');
+          setFallbackMessage(null);
         }
       } catch (error) {
         setStreamingData({});
-        setFallbackMessage('Error loading streaming data');
+        setSelectedRegion(userCountry || 'US');
+        setFallbackMessage(null);
       } finally {
         setIsLoading(false);
       }
@@ -603,7 +604,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
   const currentRegionData = streamingData[selectedRegion];
   const availableRegions = Object.keys(streamingData);
-  const otherRegions = availableRegions.filter((code) => code !== selectedRegion);
+  const candidateRegions = availableRegions.length > 0 ? availableRegions : ALL_REGIONS.map(r => r.code);
+  const otherRegions = candidateRegions.filter((code) => code !== selectedRegion);
   const selectedRegionInfo = ALL_REGIONS.find((r) => r.code === selectedRegion);
 
   // --- NEW LOGIC FOR HERO AMAZON ---
@@ -862,7 +864,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
             </motion.div>
           )}
 
-          {selectedRegionInfo && availableRegions.length > 0 && (
+          {selectedRegionInfo && (
             <div className={compact ? "flex flex-col gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md" : "flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md"}>
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <span className="text-2xl sm:text-3xl drop-shadow-md">{selectedRegionInfo.flag}</span>
@@ -895,7 +897,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
               >
                 <div className="p-5 sm:p-6 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm">
                   <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">
-                    Also available in
+                    {availableRegions.length > 0 ? "Also available in" : "Select Region"}
                   </h3>
                   <div className="flex flex-wrap gap-2.5 max-h-72 overflow-y-auto pr-2 custom-scrollbar">
                     {otherRegions.map((regionCode) => {
