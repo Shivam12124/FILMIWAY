@@ -58,9 +58,9 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                         alt={movie.Title || movie.title || 'Movie Poster'}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                        priority={rank <= 4}
-                        sizes="(max-width: 640px) 25vw, (max-width: 1024px) 33vw, 25vw"
-                        quality={40}
+                        priority={Boolean(isActive)}
+                        sizes="(max-width: 640px) 70vw, (max-width: 1024px) 50vw, 384px"
+                        quality={60}
                     />
                     </div>
 

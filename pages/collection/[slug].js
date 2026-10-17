@@ -44,14 +44,23 @@ const CollectionPage = ({ collection: propCollection, movies: propMovies }) => {
 
 
     // Handle return from movie detail page + position tracking
-// Handle return from movie detail page + position tracking
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const returningFromMovie = sessionStorage.getItem('returningFromMovie');
+            const returnToCollection = sessionStorage.getItem('currentCollection');
             const returnToPosition = sessionStorage.getItem('returnToPosition');
             
-            if (returningFromMovie && returnToPosition) {
-                setCurrentMovieIndex(parseInt(returnToPosition));
+            // Only restore position if user is explicitly returning to the SAME collection
+            if (returningFromMovie === 'true' && returnToCollection === collection.slug && returnToPosition) {
+                const pos = parseInt(returnToPosition, 10);
+                if (!isNaN(pos) && pos >= 0 && pos < movies.length) {
+                    setCurrentMovieIndex(pos);
+                }
+                sessionStorage.removeItem('returningFromMovie');
+                sessionStorage.removeItem('returnToPosition');
+            } else {
+                // Fresh visit: Always land user at position 0 (Rank 10)
+                setCurrentMovieIndex(0);
                 sessionStorage.removeItem('returningFromMovie');
                 sessionStorage.removeItem('returnToPosition');
             }
@@ -60,7 +69,7 @@ const CollectionPage = ({ collection: propCollection, movies: propMovies }) => {
         // ✅ LOADER: Animation for Humans (Content is already rendered behind it for SEO)
         const timer = setTimeout(() => setIsLoading(false), 300);
         return () => clearTimeout(timer);
-    }, []);
+    }, [collection.slug, movies.length]);
 
 const StrategicControls = () => null; // Placeholder
 
@@ -3725,21 +3734,39 @@ const getStaticMetaContent = () => {
 
 
 
+    const [direction, setDirection] = useState(0);
+
+    // ⚡ PRELOAD ADJACENT MOVIE POSTERS IN MEMORY FOR ZERO-LAG 60FPS SWIPING
+    useEffect(() => {
+        if (!movies || movies.length === 0 || typeof window === 'undefined') return;
+        const nextIdx = (currentMovieIndex + 1) % movies.length;
+        const prevIdx = (currentMovieIndex - 1 + movies.length) % movies.length;
+        [movies[nextIdx], movies[prevIdx]].forEach(m => {
+            if (!m) return;
+            const poster = m.Poster || (m.poster_path ? `https://image.tmdb.org/t/p/w500${m.poster_path}` : null);
+            if (poster) {
+                const img = new window.Image();
+                img.src = poster;
+            }
+        });
+    }, [currentMovieIndex, movies]);
+
     const nextMovie = useCallback(() => {
         if (!movies || movies.length === 0) return;
+        setDirection(1);
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
     }, [movies]);
 
     const prevMovie = useCallback(() => {
         if (!movies || movies.length === 0) return;
+        setDirection(-1);
         setCurrentMovieIndex((prev) => (prev - 1 + movies.length) % movies.length);
     }, [movies]);
 
     const goToMovie = useCallback((index) => {
+        setDirection(index > currentMovieIndex ? 1 : -1);
         setCurrentMovieIndex(index);
-    }, []);
-
-    
+    }, [currentMovieIndex]);
 
     useEffect(() => {
         const handleKeyPress = (e) => {
@@ -4042,13 +4069,8 @@ const getStaticMetaContent = () => {
     const loaderContent = getLoaderContent();
     const metaContent = getStaticMetaContent();
 
-    //  ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
-    const CinematicExplorerSection = ({ currentIndex }) => {
-        // Only render when it's the first slide (Index 0)
-        if (currentIndex !== 0) {
-            return null;
-        }
-
+    //  ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - PERSISTENT TO PREVENT REFLOW JANK
+    const CinematicExplorerSection = () => {
         const icons = {
             icon1: Brain,
             icon2: Film,
@@ -4213,59 +4235,31 @@ const getStaticMetaContent = () => {
 const CinematicHeader = React.memo(() => {
     return (
         <header className="text-center mb-1 sm:mb-10 lg:mb-16 px-4 sm:px-6 w-full relative">
-            <motion.div 
-                initial={{ opacity: 0, y: -40 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 1.2, ease: "easeOut" }} 
-                className="space-y-2 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
-            >
+            <div className="space-y-2 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10">
                 <div className="relative">
-                    <motion.div
-                        initial={{ opacity: 0, y: -40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    <h1 
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extralight tracking-tight sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300 md:ml-20 lg:ml-24 xl:ml-28" 
+                        style={{ 
+                            fontFamily: "var(--font-playfair), 'Playfair Display', serif", 
+                            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
+                            lineHeight: '1.1'
+                        }}
                     >
-                        {/* Visual Title */}
-{/* Visual Title */}
-{/* Visual Title */}
-{/* Visual Title */}
-<h1 
-    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extralight tracking-tight sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300 md:ml-20 lg:ml-24 xl:ml-28" 
-    style={{ 
-        fontFamily: "var(--font-playfair), 'Playfair Display', serif", 
-        textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
-        lineHeight: '1.1'
-    }}
->
-    <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-        {`${headerContent.title}`}
-    </span>
-</h1>
-
-                    </motion.div>
+                        <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
+                            {`${headerContent.title}`}
+                        </span>
+                    </h1>
                     
-                    <motion.p 
-                        className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-2 sm:mt-6 text-yellow-200/60"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
+                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-2 sm:mt-6 text-yellow-200/60">
                         {headerContent.subtitle}
-                    </motion.p>
+                    </p>
                 </div>
                 
-                <motion.div 
-                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-6 sm:mt-12 lg:mt-16 max-w-4xl mx-auto" 
-                    initial={{ opacity: 0, y: 40 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ delay: 2, duration: 0.8 }}
-                >
+                <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-6 sm:mt-12 lg:mt-16 max-w-4xl mx-auto">
                     {collection.badges?.map((badge, index) => (
-                        <motion.div 
+                        <div 
                             key={index}
-                            className="relative group" 
-                            whileHover={{ y: -8, scale: 1.03 }} 
-                            transition={{ duration: 0.4 }}
+                            className="relative group transition-transform duration-200 hover:-translate-y-1" 
                         >
                             <div className="h-full p-3 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -4285,10 +4279,10 @@ const CinematicHeader = React.memo(() => {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
-            </motion.div>
+                </div>
+            </div>
         </header>
     );
 });
@@ -4532,23 +4526,55 @@ return (
                         </motion.button>
                     )}
                     
-                    <AnimatePresence mode="popLayout">
+                    <AnimatePresence mode="wait" custom={direction}>
                         {currentMovie && (
                             <motion.div
                                 key={currentMovieIndex}
-                                initial={{ opacity: 0, scale: 0.96, x: 30 }}
-                                animate={{ opacity: 1, scale: 1, x: 0 }}
-                                exit={{ opacity: 0, scale: 0.96, x: -30 }}
-                                transition={{ duration: 0.15, ease: "easeOut" }}
+                                custom={direction}
+                                variants={{
+                                    enter: (dir) => ({
+                                        x: dir >= 0 ? 80 : -80,
+                                        opacity: 0,
+                                        scale: 0.96
+                                    }),
+                                    center: {
+                                        x: 0,
+                                        opacity: 1,
+                                        scale: 1,
+                                        transition: {
+                                            x: { type: "spring", stiffness: 320, damping: 28 },
+                                            opacity: { duration: 0.22, ease: "easeOut" },
+                                            scale: { duration: 0.22, ease: "easeOut" }
+                                        }
+                                    },
+                                    exit: (dir) => ({
+                                        x: dir >= 0 ? -80 : 80,
+                                        opacity: 0,
+                                        scale: 0.96,
+                                        transition: {
+                                            x: { type: "spring", stiffness: 320, damping: 28 },
+                                            opacity: { duration: 0.18, ease: "easeIn" },
+                                            scale: { duration: 0.18, ease: "easeIn" }
+                                        }
+                                    })
+                                }}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
                                 drag="x"
                                 dragConstraints={{ left: 0, right: 0 }}
-                                dragElastic={0.2}
-                                onDragEnd={(e, { offset }) => {
-                                    if (offset.x < -50 && !isLastMovie) nextMovie();
-                                    else if (offset.x > 50 && !isFirstMovie) prevMovie();
+                                dragElastic={0.65}
+                                onDragEnd={(e, { offset, velocity }) => {
+                                    const isSwipeNext = offset.x < -40 || velocity.x < -300;
+                                    const isSwipePrev = offset.x > 40 || velocity.x > 300;
+                                    if (isSwipeNext && !isLastMovie) {
+                                        nextMovie();
+                                    } else if (isSwipePrev && !isFirstMovie) {
+                                        prevMovie();
+                                    }
                                 }}
-                                className="w-full flex justify-center z-20 cursor-grab active:cursor-grabbing"
-                                style={{ userSelect: 'none', WebkitUserDrag: 'none' }}
+                                className="w-full flex justify-center z-20 cursor-grab active:cursor-grabbing will-change-transform"
+                                style={{ userSelect: 'none', WebkitUserDrag: 'none', touchAction: 'pan-y' }}
                             >
                                 {currentMovie.isBonusSlide ? (
                                     <div className="flex flex-col md:flex-row gap-8 sm:gap-16 justify-center items-center w-full">
@@ -4630,7 +4656,7 @@ return (
 
                     {/* 3. SEO TEXT: Drops below the movie poster to fix layout shift from 10 to 9 */}
                     <div className="order-3 w-full mt-12 lg:mt-16">
-                        <CinematicExplorerSection currentIndex={currentMovieIndex} />
+                        <CinematicExplorerSection />
                     </div>
                     </main>
 
@@ -4856,6 +4882,8 @@ export async function getStaticProps({ params }) {
                 : (target.Poster || target.poster || '');
             const generatedSlug = (target.Title || target.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
+            const isBonusMovie = movie?.rank === "BONUS" || movie?.rank === "bonus" || target?.rank === "BONUS" || target?.rank === "bonus" || index >= 10;
+
             return {
                 imdbID: target.imdbID || '',
                 tmdbId: target.tmdbId || 0,
@@ -4874,26 +4902,26 @@ export async function getStaticProps({ params }) {
                 dominantColor: target.dominantColor || null,
                 quote: target.quote || null,
                 synopsis: target.synopsis || null,
-                rank: slug === 'top-25-parents-guides' ? (index + 1) : (target.rank || null)
+                isBonus: isBonusMovie,
+                rank: isBonusMovie ? "BONUS" : null
             };
         })
         .filter(Boolean);
 
-    // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
-    // Automatically applies to any collection that contains a BONUS movie (or more than 10 movies), UNLESS it is top-25-parents-guides
-    const hasBonus = slug !== 'top-25-parents-guides' && (
-        movies.some(m => m.rank === "BONUS" || m.rank === "bonus") || 
-        movies.length > 10 || 
-        movieArray.some(m => m.rank === "BONUS" || m.rank === "bonus")
-    );
+    if (slug === 'top-25-parents-guides') {
+        movies = movies.map((m, index) => ({
+            ...m,
+            rank: index + 1
+        }));
+    } else {
+        // ⚡ GUARANTEED 10 -> 1 COUNTDOWN SEQUENCE
+        // 1. Separate standard countdown movies (first 10 non-bonus) vs bonus movies
+        const standardList = movies.filter(m => !m.isBonus).slice(0, 10);
+        let bonusMovies = movies.filter(m => m.isBonus);
 
-    if (hasBonus) {
-        const standardMovies = movies.filter(m => m.rank !== "BONUS" && m.rank !== "bonus").slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
-        let bonusMovies = movies.filter(m => m.rank === "BONUS" || m.rank === "bonus");
-        
-        // ✅ FIX: If the user forgot to add the BONUS movie to data/collections.js, automatically fetch it from the database!
+        // 2. Fallback: If no bonus in collection.movies, check if movieArray has any bonus movies
         if (bonusMovies.length === 0) {
-            const bonusFromDB = movieArray.filter(m => m.rank === "BONUS");
+            const bonusFromDB = movieArray.filter(m => m.rank === "BONUS" || m.rank === "bonus");
             bonusMovies = bonusFromDB.map(movie => {
                 const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
                 const cachedMovie = tmdbCache[movie.imdbID] || {};
@@ -4920,14 +4948,30 @@ export async function getStaticProps({ params }) {
                     dominantColor: movie.dominantColor || null,
                     quote: movie.quote || null,
                     synopsis: movie.synopsis || null,
-                    rank: movie.rank || null
+                    isBonus: true,
+                    rank: "BONUS"
                 };
             });
+        } else {
+            bonusMovies = bonusMovies.map(b => ({ ...b, rank: "BONUS" }));
         }
 
-        movies = [...standardMovies, { isBonusSlide: true, bonusMovies }];
-    } else {
-        movies.reverse();
+        // 3. Countdown standard movies:
+        // In data/collections.js, movies are ordered from #1 to #10 (best to 10th).
+        // Reversing places #10 at index 0 so user lands on #10, then counts down cleanly:
+        // index 0 -> #10, index 1 -> #9, index 2 -> #8, ..., index 9 -> #1!
+        const totalStandard = standardList.length;
+        const countdownMovies = standardList.slice().reverse().map((movie, idx) => ({
+            ...movie,
+            rank: totalStandard - idx
+        }));
+
+        // 4. Combine standard countdown movies with bonus slide
+        if (bonusMovies.length > 0) {
+            movies = [...countdownMovies, { isBonusSlide: true, bonusMovies }];
+        } else {
+            movies = countdownMovies;
+        }
     }
 
     return {

@@ -608,24 +608,17 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
   const otherRegions = candidateRegions.filter((code) => code !== selectedRegion);
   const selectedRegionInfo = ALL_REGIONS.find((r) => r.code === selectedRegion);
 
-  // --- NEW LOGIC FOR HERO AMAZON ---
-  const targetRegions = ['US', 'GB', 'CA', 'IN', 'ES'];
-  const isTargetRegion = targetRegions.includes(selectedRegion);
-  const isUserInTargetRegion = targetRegions.includes(userCountry);
-
-  // Check if movie is specifically Irreversible (by slug or tmdbId 979)
-  const isIrreversible = movie?.slug === 'irreversible' || Number(movie?.tmdbId) === 979 || (movie?.Title || '').toLowerCase().includes('irreversible');
-
+  // --- HERO AMAZON LOGIC (GLOBAL FOR ALL COUNTRIES & REGIONS) ---
   let heroAmazonProvider = null;
   let heroAmazonType = null;
   let filteredFlatrate = currentRegionData?.flatrate || [];
   let filteredRent = currentRegionData?.rent || [];
   let filteredBuy = currentRegionData?.buy || [];
 
-  const isAmazon = (p) => p.provider_name.toLowerCase().includes('amazon') || [119, 9, 10, 2100].includes(p.provider_id);
+  const isAmazon = (p) => (p?.provider_name || '').toLowerCase().includes('amazon') || [119, 9, 10, 2100].includes(p?.provider_id);
 
   if (currentRegionData) {
-    // Check flatrate first
+    // 1. Check flatrate first
     const amzFlatrate = filteredFlatrate.find(isAmazon);
     if (amzFlatrate) {
       heroAmazonProvider = amzFlatrate;
@@ -646,34 +639,11 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
         }
       }
     }
+  }
 
-    // 🔥 FALLBACK: Force Amazon card if not available on Prime but the movie is NOT a streaming exclusive,
-    // OR if it's Irreversible, OR if the movie fell back to another country for a US/GB/CA/IN visitor
-    if (!heroAmazonProvider) {
-      const isStreamingExclusive = (filteredFlatrate.length > 0) &&
-                                   (filteredRent.length === 0) &&
-                                   (filteredBuy.length === 0) &&
-                                   filteredFlatrate.every(p => {
-                                     const n = p.provider_name.toLowerCase();
-                                     return n.includes('netflix') || n.includes('apple tv') || n.includes('disney') || n.includes('hbo max') || n.includes('max');
-                                   });
-
-      const shouldForceAmazon = isIrreversible ||
-                                (isTargetRegion && !isStreamingExclusive) ||
-                                (isUserInTargetRegion && selectedRegion !== userCountry);
-
-      if (shouldForceAmazon) {
-        heroAmazonProvider = {
-          provider_id: 9,
-          provider_name: 'Amazon',
-          logo_path: '/pvske1MyAoymrs5bguRfVqYiM9a.jpg',
-          isFallback: true
-        };
-        heroAmazonType = 'buy';
-      }
-    }
-  } else if (isIrreversible || isUserInTargetRegion || isTargetRegion) {
-    // Even if no streaming data is available globally, render Amazon card so users can buy physical media or digital copies
+  // 2. GLOBAL AMAZON FALLBACK: If Amazon was not in the region's TMDB feed, ALWAYS show Hero Amazon Card!
+  // Every film can be rented, purchased digitally, or bought on 4K/Blu-ray/DVD on Amazon globally.
+  if (!heroAmazonProvider) {
     heroAmazonProvider = {
       provider_id: 9,
       provider_name: 'Amazon',
@@ -1019,48 +989,42 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                   </>
                 )}
 
-                {!heroAmazonProvider && filteredFlatrate.length === 0 && filteredRent.length === 0 && filteredBuy.length === 0 && (
-                  <div className="flex flex-col items-center justify-center p-6 sm:p-10 rounded-2xl border border-white/5 bg-white/[0.02]">
-                    <MapPin className="w-8 h-8 text-gray-600 mb-3" />
-                    <p className="text-gray-400 text-sm font-medium">No streaming options found in {selectedRegionInfo?.name || selectedRegion}</p>
-                    {vpnTip && (
-                      <div className="w-full mt-5 text-left">
-                        <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
-                      </div>
-                    )}
+                {filteredFlatrate.length === 0 && filteredRent.length === 0 && filteredBuy.length === 0 && (
+                  <div className="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-400">
+                    <Info className="w-4 h-4 text-yellow-500/80 shrink-0" />
+                    <span>No digital subscription services currently licensed in {selectedRegionInfo?.name || selectedRegion}. Digital and physical editions available on Amazon above.</span>
                   </div>
                 )}
               </motion.div>
-            ) : availableRegions.length === 0 ? (
-              <div className="flex flex-col items-center text-center p-8 sm:p-10 rounded-2xl border border-yellow-500/20 bg-yellow-500/[0.03]">
-                {heroAmazonProvider ? (
-                  <div className="w-full space-y-3">
+            ) : (
+              <motion.div
+                key={selectedRegion}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                <div className="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+                  <MapPin className="w-5 h-5 text-yellow-500/80 shrink-0 mt-0.5" />
+                  <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                    <strong>{movie?.Title}</strong> is not currently streaming on digital subscription services in <strong>{selectedRegionInfo?.name || selectedRegion}</strong>. You can find physical Blu-ray, 4K UHD, DVD, or digital rental editions on Amazon below, or use ExpressVPN to access foreign streaming catalogs.
+                  </p>
+                </div>
+
+                {heroAmazonProvider && (
+                  <div className="w-full">
                     <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion || userCountry || 'US'} />
-                    {vpnTip && <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />}
                   </div>
-                ) : (
-                  <>
-                    <Globe className="w-10 h-10 text-yellow-500 mb-4 opacity-80" />
-                    <h3 className="text-base font-semibold text-yellow-300 mb-2">No Subscription Streaming Available</h3>
-                    <p className="text-[13px] text-gray-300 max-w-md leading-relaxed mb-6">
-                      <strong>{movie?.Title}</strong> is not currently streaming on digital subscription services in this region. You can find physical Blu-ray, DVD, and digital rental editions on Amazon.
-                    </p>
-                    <button
-                      onClick={() => window.open(getDeepLink(9, userCountry || 'US', movie?.Title, movie?.tmdbId, 'Amazon', 'buy', userCountry), '_blank', 'noopener,noreferrer')}
-                      className="group flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold transition-all text-xs sm:text-sm tracking-wide shadow-lg shadow-yellow-500/20"
-                    >
-                      <Play fill="currentColor" size={15} />
-                      Find {movie?.Title} on Amazon
-                    </button>
-                    {vpnTip && (
-                      <div className="w-full mt-5 text-left">
-                        <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
-                      </div>
-                    )}
-                  </>
                 )}
-              </div>
-            ) : null}
+
+                {vpnTip && (
+                  <div className="w-full">
+                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
+                  </div>
+                )}
+              </motion.div>
+            )}
           </AnimatePresence>
 
           <div className="text-center pt-5 sm:pt-6 border-t border-white/10">
