@@ -652,6 +652,13 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-4 sm:p-6 clean-injected-component my-2">
                             <EnhancedWhereToWatchSection movie={movie} />
                         </div>
+
+                        {/* 3️⃣ SIMILAR MOVIE GUIDES (For Movies Without Timestamps) */}
+                        {movie?.similarMovies && movie.similarMovies.length > 0 && (
+                            <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-4 sm:p-6 my-2">
+                                <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
+                            </div>
+                        )}
                     </div>
                 ) : (
                     <div className="fw-grid relative z-50">

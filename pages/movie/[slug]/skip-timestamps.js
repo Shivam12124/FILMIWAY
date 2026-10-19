@@ -246,27 +246,17 @@ const UniversalBanner = ({ movie }) => {
                             {title}
                         </h1>
 
-                        {/* 2 HORIZONTAL LINES ON MOBILE, 1 ROW ON DESKTOP */}
-                        <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3.5 text-gray-200 text-sm sm:text-base font-semibold tracking-wide uppercase mt-2.5 sm:mt-3 md:mt-3.5">
-                            {/* Horizontal Line 1: Year • Director */}
-                            <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
-                                {year && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base">{year}</span>}
-                                {year && director && <span className="text-gray-400 font-bold">•</span>}
-                                {director && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base tracking-normal sm:tracking-wide" suppressHydrationWarning>{director}</span>}
-                            </div>
-
-                            {/* Separator bullet between Line 1 and Line 2 only on desktop */}
-                            {(year || director) && (runtime || ageRating) && (
-                                <span className="hidden md:inline text-gray-500 font-bold">•</span>
-                            )}
-
-                            {/* Horizontal Line 2: Runtime • Age Rating */}
-                            <div className="flex items-center gap-2 sm:gap-2.5">
-                                {runtime && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base" suppressHydrationWarning>{runtime}</span>}
-                                {runtime && ageRating && <span className="text-gray-400 font-bold">•</span>}
+                        {/* PROFESSIONAL 2-LINE METADATA: SPECS + DIRECTOR */}
+                        <div className="flex flex-col mt-2 sm:mt-2.5 md:mt-3">
+                            {/* Line 1: Year • Runtime • Age Rating Badge */}
+                            <div className="flex items-center gap-2 sm:gap-2.5 text-xs sm:text-sm md:text-base font-semibold tracking-wide uppercase flex-wrap">
+                                {year && <span className="font-bold text-white">{year}</span>}
+                                {year && runtime && <span className="text-gray-500 font-bold">•</span>}
+                                {runtime && <span className="font-bold text-white" suppressHydrationWarning>{runtime}</span>}
+                                {(year || runtime) && ageRating && <span className="text-gray-500 font-bold">•</span>}
                                 {ageRating && (
                                     <span
-                                        className="px-2 py-0.5 rounded-md border text-[11px] sm:text-xs md:text-sm font-black tracking-wider inline-flex items-center justify-center"
+                                        className="px-2 py-0.5 rounded-md border text-[11px] sm:text-xs md:text-sm font-black tracking-wider inline-flex items-center justify-center shrink-0"
                                         style={{
                                             color: getAgeRatingColor(ageRating),
                                             borderColor: getAgeRatingColor(ageRating),
@@ -278,6 +268,14 @@ const UniversalBanner = ({ movie }) => {
                                     </span>
                                 )}
                             </div>
+
+                            {/* Line 2: Director Credit */}
+                            {director && (
+                                <div className="flex items-center gap-1.5 text-xs sm:text-sm md:text-base font-medium tracking-wide uppercase mt-1 sm:mt-1.5">
+                                    <span className="text-gray-500 font-bold text-[10.5px] sm:text-xs tracking-wider">DIR.</span>
+                                    <span className="font-bold text-white tracking-normal sm:tracking-wide" suppressHydrationWarning>{director}</span>
+                                </div>
+                            )}
                         </div>
 
                         {/* DESKTOP CARDS PLACED BESIDE POSTER */}
