@@ -625,83 +625,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
-                {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
-                <style dangerouslySetInnerHTML={{ __html: `
-                @media (min-width: 1024px) {
-                    .desktop-timestamp-scroll::-webkit-scrollbar {
-                        width: 6px;
-                    }
-                    .desktop-timestamp-scroll::-webkit-scrollbar-track {
-                        background: rgba(255, 255, 255, 0.03);
-                        border-radius: 10px;
-                    }
-                    .desktop-timestamp-scroll::-webkit-scrollbar-thumb {
-                        background: rgba(234, 179, 8, 0.5);
-                        border-radius: 10px;
-                    }
-                    .desktop-timestamp-scroll::-webkit-scrollbar-thumb:hover {
-                        background: rgba(234, 179, 8, 0.8);
-                    }
-                    .desktop-timestamp-scroll {
-                        scrollbar-width: thin;
-                        scrollbar-color: rgba(234, 179, 8, 0.5) transparent;
-                    }
-                }
-                /* 🎬 TWO-COLUMN MOVIE PAGE: main column + money sidebar (collapses to one column on mobile in priority order) */
-                .fw-grid {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.25rem;
-                }
-                .fw-top {
-                    position: relative;
-                    z-index: 10;
-                }
-                .fw-bottom {
-                    position: relative;
-                    z-index: 30;
-                }
-                .fw-side {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.25rem;
-                    min-width: 0;
-                }
-                @media (min-width: 1024px) {
-                    .fw-grid {
-                        display: grid;
-                        grid-template-columns: minmax(0, 1fr) 360px;
-                        grid-template-areas: "top side" "bottom side";
-                        grid-template-rows: auto 1fr;
-                        column-gap: 1.5rem;
-                        row-gap: 1.5rem;
-                        align-items: start;
-                    }
-                    .fw-top { grid-area: top; min-width: 0; position: relative; z-index: 10; }
-                    .fw-bottom { grid-area: bottom; min-width: 0; position: relative; z-index: 30; }
-                    .fw-side { grid-area: side; }
-                }
-                .timestamp-card-list .group {
-                    position: relative;
-                    overflow: hidden;
-                }
-                .timestamp-card-list .group::before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    bottom: 0;
-                    width: 3px;
-                    border-radius: 3px 0 0 3px;
-                    background: var(--accent-color, rgba(107,114,128,0.5));
-                    opacity: 0.6;
-                    transition: opacity 0.3s ease;
-                }
-                .timestamp-card-list .group:hover::before {
-                    opacity: 1;
-                }
-            ` }} />
                 {filteredHeavyScenes.length === 0 ? (
                     <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
                         <div className="space-y-3 w-full">
@@ -711,29 +634,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     <span className="block">{movie?.Title} Parents Guide & Content Advisory</span>
                                 </h1>
                             </div>
-                            {minimalistSafetyBadge}
                         </div>
 
-                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
-                        {recommendedAge && ageSummary && (
-                            <motion.div
-                                className="my-1 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
-                                initial={{ opacity: 0, y: 5 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                            >
-                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-
-                                <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-12 h-12 sm:w-14 sm:h-14 rounded-full'}`}>
-                                    <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-lg sm:text-xl tracking-tight'}`}>{recommendedAge}</span>
-                                </div>
-
-                                <div className="flex-1 flex flex-col justify-center">
-                                    <span className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest block">Recommended Age</span>
-                                    <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
-                                </div>
-                            </motion.div>
-                        )}
+                        {/* 🟢 REASSURANCE BOX (Green card positioned above Content Advisory) */}
 
                         {/* 🟢 REASSURANCE BOX (Green card positioned below Recommended Age & above Content Advisory) */}
                         <div className="my-1 relative overflow-hidden rounded-xl border border-emerald-500/20 bg-emerald-950/20 backdrop-blur-md p-3.5 sm:p-4 flex items-start gap-3 shadow-md w-full">
@@ -1036,14 +939,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         {/* 1️⃣ WHERE TO WATCH & STREAMING DEALS (DESKTOP ONLY) */}
                         <div className="hidden lg:block w-full min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 clean-injected-component">
-                            <style>{`
-                                .clean-injected-component section { 
-                                    margin-top: 0 !important; 
-                                    padding-top: 0 !important; 
-                                    border-top: none !important; 
-                                    margin-bottom: 0 !important; 
-                                }
-                            `}</style>
                             <EnhancedWhereToWatchSection movie={movie} compact />
                         </div>
 
@@ -1056,34 +951,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </aside>
                         {/* end fw-side */}
 
-                        {/* 📋 BOTTOM CARD: safety score, recommended age and explainer (below the money cards on mobile, under the timestamps on desktop) */}
+                        {/* 📋 BOTTOM CARD: explainer and watch-along timer (under the timestamps on desktop, below money cards on mobile) */}
                         <div className="fw-bottom relative z-30 flex flex-col gap-3 sm:gap-3.5 bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
-                        <div className="flex flex-col gap-2.5 sm:gap-3">
-                            {/* 🛡️ FAMILY SAFETY SCORE BADGE */}
-                            {minimalistSafetyBadge}
-
-                            {/* 🔥 RECOMMENDED AGE BADGE */}
-                            {recommendedAge && ageSummary && (
-                                <motion.div
-                                    className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-3.5 sm:p-5 lg:p-6 flex flex-row items-center gap-3.5 sm:gap-5 shadow-xl m-0"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                >
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-
-                                    <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3 py-1.5 rounded-xl min-w-[60px]' : 'w-12 h-12 sm:w-16 sm:h-16 rounded-full sm:rounded-2xl'}`}>
-                                        <span className={`font-black text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-lg sm:text-2xl tracking-tight'}`}>{recommendedAge}</span>
-                                    </div>
-
-                                    <div className="flex-1 flex flex-col justify-center">
-                                        <span className="text-[11px] sm:text-xs lg:text-sm font-semibold text-gray-300 mb-0.5 sm:mb-1 uppercase tracking-widest block">Recommended Age</span>
-                                        <p className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 leading-relaxed font-light sm:font-normal">{ageSummary}</p>
-                                    </div>
-                                </motion.div>
-                            )}
-                        </div>
-
                         <p className="text-xs sm:text-sm lg:text-[15px] text-gray-400 sm:text-gray-300 leading-relaxed font-light sm:font-normal mt-1 sm:mt-2 max-w-3xl ml-1">
                             {(() => {
                                 const title = movie?.Title || 'this movie';

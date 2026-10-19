@@ -151,8 +151,7 @@ const SearchBar = () => {
         />
       </form>
       {isOpen && (
-        <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[350px] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <style dangerouslySetInnerHTML={{ __html: `div::-webkit-scrollbar { display: none; }` }} />
+        <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[350px] overflow-y-auto no-scrollbar">
           {results.length > 0 ? (
             <ul className="py-1">
               {results.map((movie) => {

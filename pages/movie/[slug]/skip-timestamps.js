@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, Film, Star, ChevronDown, ShieldCheck, ArrowDown, Clock, CheckCircle } from 'lucide-react';
+import { ChevronLeft, Play, X, Film, Star, ChevronDown, ShieldCheck, ArrowDown, Clock, CheckCircle, Shield } from 'lucide-react';
 import Header from '../../../components/Header';
 import dynamic from 'next/dynamic';
 import { getVisibleMovieFAQs } from '../../../utils/movieData';
@@ -127,33 +127,71 @@ const UniversalBanner = ({ movie }) => {
     const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
     const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
 
-    const unifiedHeroCSS = `
-    .unified-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1280px; gap: 8px; margin: -60px auto 0 auto; padding: 0 32px; position: relative; z-index: 20; }
-    .unified-hero-poster { width: 25%; max-width: 260px; min-width: 140px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.8); margin: 0; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
-    .unified-hero-poster img { width: 100%; height: auto; border-radius: 16px; display: block; }
-    .unified-psych-card { background: #000000; border-radius: 16px; box-shadow: -8px 0 24px -8px rgba(234, 179, 8, 0.6), 0 8px 32px rgba(0,0,0,0.8); margin: 0; flex: 1; border-left: 4px solid #eab308; border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: flex-start; padding: 24px; min-height: 140px; position: relative; }
-    .unified-psych-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .unified-psych-icon { min-width: 24px; min-height: 24px; width: 24px; height: 24px; color: #facc15; }
-    .unified-psych-title { font-size: 24px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.2; }
-    .unified-psych-desc { font-size: 19px; color: #ededed; line-height: 1.6; }
-    .insight-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    const title = movie?.Title || 'Movie';
+    const year = movie?.Year || movie?.year || '';
+    const director = movie?.Director || '';
+    let runtime = movie?.Runtime || movie?.runtime || '';
+    if (typeof runtime === 'number') runtime = `${runtime} min`;
+    const ageRating = (movie?.Rated && movie?.Rated !== 'Rated') ? movie?.Rated : (movie?.Age ? movie.Age : 'NR');
 
-    @media (max-width: 767px) {
-      .unified-hero-row { width: 100vw; max-width: 100vw; gap: 4px; margin: 0; padding: 0 8px; }
-      .unified-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; box-shadow: 0 3px 14px #0007; border: none; }
-      .unified-hero-poster img { border-radius: 12px; }
-      .unified-psych-card { border-radius: 12px; padding: 10px 10px 10px 12px; min-height: 110px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; border-top: none; border-right: none; border-bottom: none; }
-      .unified-psych-row { gap: 6px; margin-bottom: 4px; }
-      .unified-psych-icon { min-width: 18px; min-height: 18px; width: 18px; height: 18px; margin-top: -2px; }
-      .unified-psych-title { font-size: 14px; line-height: 1.12; }
-      .unified-psych-desc { font-size: 12.3px; line-height: 1.36; }
-      .insight-text { -webkit-line-clamp: 4; }
-    }
-    `;
+    const getAgeRatingColor = (rating) => {
+        switch (rating) {
+            case 'G': return '#22c55e';
+            case 'PG': return '#3b82f6';
+            case 'PG-13': return '#f59e0b';
+            case 'R': return '#ef4444';
+            case 'NC-17': return '#7c2d12';
+            default: return '#6b7280';
+        }
+    };
+
+    const safetyScoreColor = movie?.safetyScore >= 8 ? '#10b981' : movie?.safetyScore >= 5 ? '#eab308' : '#ef4444';
+    const safetyScoreBorder = movie?.safetyScore >= 8 ? 'rgba(16,185,129,0.3)' : movie?.safetyScore >= 5 ? 'rgba(234,179,8,0.3)' : 'rgba(239,68,68,0.3)';
+
+    const safetyCardContent = movie?.safetyScore ? (
+        <div
+            className="flex flex-row items-center justify-between gap-3 sm:gap-5 w-full rounded-xl sm:rounded-2xl border backdrop-blur-md p-2.5 sm:p-4 md:p-5 shadow-xl relative z-40 overflow-hidden"
+            style={{ backgroundColor: 'rgba(10, 10, 12, 0.85)', borderColor: safetyScoreBorder }}
+        >
+            <div className="absolute left-0 top-0 bottom-0 w-1 sm:w-1.5 rounded-l-xl sm:rounded-l-2xl" style={{ backgroundColor: safetyScoreColor }} />
+            <div className="flex items-center gap-2.5 sm:gap-4 min-w-0 flex-1">
+                <Shield size={16} style={{ color: safetyScoreColor }} className="opacity-90 shrink-0" />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-3.5">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                        <span className="text-[11px] sm:text-base font-semibold text-gray-200 tracking-wider uppercase">Family Safety Score:</span>
+                        <span className="text-xs sm:text-lg md:text-xl font-black" style={{ color: safetyScoreColor }}>
+                            {movie.safetyScore}/10
+                        </span>
+                    </div>
+                    <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-widest font-bold opacity-90" style={{ color: safetyScoreColor }}>
+                        {movie.safetyLabel}
+                    </span>
+                </div>
+            </div>
+        </div>
+    ) : null;
+
+    const ageCardContent = movie?.Age ? (
+        <div
+            className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-2.5 sm:p-4 md:p-5 flex flex-row items-center gap-2.5 sm:gap-5 shadow-xl w-full z-40"
+        >
+            <div className="absolute left-0 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+
+            <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${movie.Age.length > 4 ? 'px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl min-w-[45px] sm:min-w-[55px]' : 'w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-2xl'}`}>
+                <span className={`font-black text-yellow-400 text-center ${movie.Age.length > 4 ? 'text-[11px] sm:text-sm whitespace-nowrap' : 'text-sm sm:text-xl md:text-2xl tracking-tight'}`}>{movie.Age}</span>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center min-w-0">
+                <span className="text-[10px] sm:text-sm font-semibold text-gray-300 uppercase tracking-widest block">Recommended Age</span>
+                {movie.hasTimestampDescriptions && movie.Summary && (
+                    <p className="text-[11px] sm:text-base text-gray-400 sm:text-gray-300 leading-snug sm:leading-relaxed font-light mt-0.5 sm:mt-1">{movie.Summary}</p>
+                )}
+            </div>
+        </div>
+    ) : null;
 
     return (
-        <div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8">
-            <style>{unifiedHeroCSS}</style>
+        <div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] mb-3 sm:mb-5">
             <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
                 <AnimatePresence>
                     {(!showTrailer || !trailerKey) ? (
@@ -190,17 +228,70 @@ const UniversalBanner = ({ movie }) => {
                 </AnimatePresence>
             </div>
 
-            {/* UNIFIED LAYOUT */}
-            <div className="unified-hero-row">
-                <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
-                    {/* ⚡ THE MAIN IMAGE */}
-                    {posterImage ? <Image src={posterImage} alt={`${movie?.Title || 'Movie'} official poster`} width={320} height={480} sizes="(max-width: 768px) 140px, 320px" className="w-full h-auto relative z-10" priority fetchPriority="high" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
-                </div>
-                <div className="unified-psych-card">
-                    <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
-                    <div className="unified-psych-desc insight-text font-medium text-white" suppressHydrationWarning>
-                        {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
+            {/* UNIFIED HERO SECTION */}
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-8 -mt-2.5 md:-mt-[35px] relative z-20">
+                {/* TOP ROW: POSTER + (TITLE & METADATA on mobile, OR FULL COLUMN on desktop) */}
+                <div className="flex flex-row items-stretch gap-3.5 md:gap-7">
+                    {/* POSTER */}
+                    <div className="w-[34vw] min-w-[110px] max-w-[135px] md:w-1/4 md:max-w-[260px] md:min-w-[150px] aspect-[2/3] md:aspect-auto rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.9)] border border-white/15 md:border-white/10 shrink-0 self-start relative bg-[#030303]">
+                        {posterImage ? <Image src={posterImage} alt={`${movie?.Title || 'Movie'} official poster`} width={320} height={480} sizes="(max-width: 768px) 140px, 320px" className="w-full h-full md:h-auto object-cover rounded-2xl relative z-10 block" priority fetchPriority="high" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
                     </div>
+
+                    {/* TITLE + METADATA */}
+                    <div className="flex-1 min-w-0 flex flex-col justify-start pt-1 pb-1 md:pt-3.5 md:pb-0">
+                        <h1
+                            className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight sm:tracking-wider text-white leading-[1.08] -mt-1 md:mt-0"
+                            style={{ fontFamily: "'Playfair Display', serif" }}
+                        >
+                            {title}
+                        </h1>
+
+                        {/* 2 HORIZONTAL LINES ON MOBILE, 1 ROW ON DESKTOP */}
+                        <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3.5 text-gray-200 text-sm sm:text-base font-semibold tracking-wide uppercase mt-2.5 sm:mt-3 md:mt-3.5">
+                            {/* Horizontal Line 1: Year • Director */}
+                            <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                                {year && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base">{year}</span>}
+                                {year && director && <span className="text-gray-400 font-bold">•</span>}
+                                {director && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base tracking-normal sm:tracking-wide" suppressHydrationWarning>{director}</span>}
+                            </div>
+
+                            {/* Separator bullet between Line 1 and Line 2 only on desktop */}
+                            {(year || director) && (runtime || ageRating) && (
+                                <span className="hidden md:inline text-gray-500 font-bold">•</span>
+                            )}
+
+                            {/* Horizontal Line 2: Runtime • Age Rating */}
+                            <div className="flex items-center gap-2 sm:gap-2.5">
+                                {runtime && <span className="font-bold text-white text-[13px] sm:text-sm md:text-base" suppressHydrationWarning>{runtime}</span>}
+                                {runtime && ageRating && <span className="text-gray-400 font-bold">•</span>}
+                                {ageRating && (
+                                    <span
+                                        className="px-2 py-0.5 rounded-md border text-[11px] sm:text-xs md:text-sm font-black tracking-wider inline-flex items-center justify-center"
+                                        style={{
+                                            color: getAgeRatingColor(ageRating),
+                                            borderColor: getAgeRatingColor(ageRating),
+                                            backgroundColor: `${getAgeRatingColor(ageRating)}18`
+                                        }}
+                                        suppressHydrationWarning
+                                    >
+                                        {ageRating}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* DESKTOP CARDS PLACED BESIDE POSTER */}
+                        <div className="hidden md:flex flex-col gap-3.5 w-full max-w-2xl mt-4">
+                            {safetyCardContent}
+                            {ageCardContent}
+                        </div>
+                    </div>
+                </div>
+
+                {/* MOBILE CARDS PLACED FULL WIDTH BELOW POSTER + TITLE */}
+                <div className="flex md:hidden flex-col gap-2.5 w-full mt-3">
+                    {safetyCardContent}
+                    {ageCardContent}
                 </div>
             </div>
         </div>
@@ -1080,6 +1171,8 @@ export async function getStaticProps({ params }) {
         metaTitle,
         metaDesc,
         lastVerifiedDate,
+        // Only show detailed age summary description if this movie has timestamp descriptions
+        hasTimestampDescriptions: resolvedSensitiveScenes.some(s => ((s.start && s.start.trim() !== '') || typeof s.startSec === 'number') && s.description && s.description.trim().length > 0),
         Age: sensitiveData.Age || null,
         Summary: sensitiveData.Summary || null,
         safetyScore,

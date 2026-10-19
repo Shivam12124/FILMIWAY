@@ -160,8 +160,7 @@ const Header = () => {
                 {isDropdownOpen && (
                   <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50">
                     {suggestions.length > 0 ? (
-                      <ul className="max-h-[350px] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                        <style dangerouslySetInnerHTML={{__html: `ul::-webkit-scrollbar { display: none; }`}} />
+                      <ul className="max-h-[350px] overflow-y-auto no-scrollbar">
                         {suggestions.map(movie => {
                           const cached = searchDB.cache[movie.imdbID] || {};
                           const posterUrl = cached.poster_path ? `https://image.tmdb.org/t/p/w92${cached.poster_path}` : null;

@@ -766,47 +766,11 @@ const MovieDetailsSection = React.memo(({
 
   return (
     <motion.div
-      className="max-w-4xl lg:max-w-[1216px] mx-auto w-full flex flex-col gap-5 sm:gap-7 mt-4 sm:mt-6"
-      initial={{ opacity: 1, y: 40 }} // WAS: opacity: 0
+      className="max-w-4xl lg:max-w-[1216px] mx-auto w-full flex flex-col gap-5 sm:gap-7 mt-0"
+      initial={{ opacity: 1, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="text-center space-y-4 sm:space-y-5">
-        <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-        >
-          {title}
-        </motion.h2>
-
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 md:gap-5 text-gray-300 text-sm sm:text-base md:text-lg font-medium tracking-wide uppercase"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          <span className="font-semibold text-white">{year}</span>
-          <span className="text-gray-500 font-bold">•</span>
-          <span className="font-semibold text-white" suppressHydrationWarning>{director}</span>
-          <span className="text-gray-500 font-bold">•</span>
-          <span className="font-semibold text-white" suppressHydrationWarning>{runtime}</span>
-          <span className="text-gray-500 font-bold">•</span>
-          <span
-            className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-md border text-xs sm:text-sm md:text-base font-bold tracking-wider inline-flex items-center justify-center"
-            style={{
-              color: getAgeRatingColor(ageRating),
-              borderColor: getAgeRatingColor(ageRating),
-              backgroundColor: `${getAgeRatingColor(ageRating)}18`
-            }}
-            suppressHydrationWarning
-          >
-            {ageRating}
-          </span>
-        </motion.div>
-      </div>
 
       {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
       <div id="timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
@@ -820,15 +784,6 @@ const MovieDetailsSection = React.memo(({
 
       {/* FAQ SECTIONS */}
       <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
-        <style>{`
-          .faq-unified-container section,
-          .clean-injected-component section { 
-              margin-top: 0 !important; 
-              padding-top: 0 !important; 
-              border-top: none !important; 
-              margin-bottom: 0 !important;
-          }
-        `}</style>
         <SEOFAQSection movie={{ ...movie, Runtime: runtime, runtime: runtime }} />
       </div>
     </motion.div>
