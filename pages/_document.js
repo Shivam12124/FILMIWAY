@@ -4,14 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Impact.com Site Verification & Tracking Script */}
-        <meta name='impact-site-verification' value='6b59a763-6f50-4bca-a43c-817e01c6a068' />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A8000471-365f-4e2c-8305-ee88766a34a41.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');`
-          }}
-        />
+        {/* Impact.com Site Verification */}
+        <meta name="impact-site-verification" value="17744139-9b54-4cb8-8b15-6302d04ea1ae" content="17744139-9b54-4cb8-8b15-6302d04ea1ae" />
 
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />

@@ -139,6 +139,28 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [showSafetyInfo, setShowSafetyInfo] = useState(false);
     const safetyInfoRef = useRef(null);
 
+    // --- TIMELINE TRACKER PIN INTERACTION STATE ---
+    const [activeMarkerId, setActiveMarkerId] = useState(null);
+    const [highlightedCardId, setHighlightedCardId] = useState(null);
+    const trackerRef = useRef(null);
+
+    const handleMarkerClick = useCallback((marker) => {
+        setActiveMarkerId(prev => prev === marker.id ? null : marker.id);
+        setHighlightedCardId(marker.id);
+
+        if (typeof document !== 'undefined') {
+            const targetElement = document.getElementById(marker.id);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Highlight for 2.5s then fade out
+        setTimeout(() => {
+            setHighlightedCardId(null);
+        }, 2500);
+    }, []);
+
     // --- REAL FIREBASE VOTE STATE ---
     const [helpfulCount, setHelpfulCount] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
@@ -221,6 +243,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         const handleClickOutside = (event) => {
             if (infoRef.current && !infoRef.current.contains(event.target)) setShowInfo(false);
             if (safetyInfoRef.current && !safetyInfoRef.current.contains(event.target)) setShowSafetyInfo(false);
+            if (trackerRef.current && !trackerRef.current.contains(event.target)) setActiveMarkerId(null);
         };
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
@@ -373,6 +396,20 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     });
     sensitiveData.scenes = uniqueScenes;
 
+    // 🔥 Assign stable unique IDs to sorted scenes for interactive timeline tapping & scroll-highlighting
+    const sortedScenes = useMemo(() => {
+        return [...sensitiveData.scenes].sort((a, b) => {
+            const aStart = a.start || '';
+            const bStart = b.start || '';
+            if (!aStart && bStart) return 1;
+            if (aStart && !bStart) return -1;
+            return 0;
+        }).map((scene, idx) => ({
+            ...scene,
+            sceneId: `scene-entry-${idx}`
+        }));
+    }, [sensitiveData.scenes]);
+
     let contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(Boolean))];
     if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content'];
 
@@ -450,21 +487,23 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         "Zero intimate scenes detected. The movie has no timestamps as it has no sexual or major explicit scenes. Verified for the "
     ], []);
 
-    //  VISUAL TIMELINE MARKERS GENERATION
+    //  VISUAL TIMELINE MARKERS GENERATION (Directly linked to sorted scenes)
     const timelineMarkers = useMemo(() => {
         const runtimeSeconds = parseRuntimeToSeconds(currentRuntime);
-        return sensitiveData.scenes.map((scene, idx) => {
-            const startSec = parseTimestampToSeconds(scene.start);
-            let percentage = (startSec / runtimeSeconds) * 100;
-            percentage = Math.max(0.5, Math.min(percentage, 99.5)); // Keep inside bounds securely
+        return sortedScenes
+            .filter(m => m.start && m.start !== 'N/A' && m.start !== '' && m.start.toLowerCase() !== 'none')
+            .map((scene) => {
+                const startSec = parseTimestampToSeconds(scene.start);
+                let percentage = (startSec / runtimeSeconds) * 100;
+                percentage = Math.max(1.5, Math.min(percentage, 98.5)); // Keep inside bounds securely
 
-            return {
-                ...scene,
-                percentage,
-                id: idx
-            };
-        }).filter(m => m.start && m.start !== 'N/A' && m.start !== '' && m.start.toLowerCase() !== 'none');
-    }, [sensitiveData.scenes, currentRuntime]);
+                return {
+                    ...scene,
+                    percentage,
+                    id: scene.sceneId
+                };
+            });
+    }, [sortedScenes, currentRuntime]);
 
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
@@ -724,6 +763,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     <h2 className="text-xs sm:text-sm lg:text-base font-bold text-gray-300 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
                                         <Film size={16} className="text-yellow-500 sm:w-[18px] sm:h-[18px]" /> Parents Guide Tracker
                                     </h2>
+                                    <span className="text-[10px] sm:text-xs text-gray-400 font-normal">
+                                        Tap dots to jump to scene ↓
+                                    </span>
                                 </div>
 
                                 {/* 🎬 WATCH-ALONG TIMER OVERLAY */}
@@ -748,44 +790,69 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     </div>
                                 )}
 
-                                <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-3 sm:mt-4">
+                                <div ref={trackerRef} className="relative w-full h-3 sm:h-3.5 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-3 sm:mt-4">
                                     <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />
 
                                     {timelineMarkers.map((marker) => {
-                                        // 🔥 Improved Edge Detection: Widened threshold to 25% so it NEVER gets cut off on narrow mobile screens
-                                        const isStartEdge = marker.percentage < 25;
-                                        const isEndEdge = marker.percentage > 75;
+                                        // 🔥 Improved Edge Detection: Widened threshold so it NEVER gets cut off on narrow mobile screens
+                                        const isStartEdge = marker.percentage < 22;
+                                        const isEndEdge = marker.percentage > 78;
                                         const tooltipAlign = isStartEdge ? "left-0" : isEndEdge ? "right-0" : "left-1/2 -translate-x-1/2";
-                                        const pointerAlign = isStartEdge ? "left-2" : isEndEdge ? "right-2" : "left-1/2 -translate-x-1/2";
+                                        const pointerAlign = isStartEdge ? "left-3" : isEndEdge ? "right-3" : "left-1/2 -translate-x-1/2";
+                                        const isActive = activeMarkerId === marker.id;
 
                                         return (
-                                            <div
+                                            <button
                                                 key={`pin-${marker.id}`}
-                                                aria-label={`${marker.type} starting at ${marker.start}`}
-                                                className="group/pin absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#0a0a0c] shadow-[0_0_8px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-[1.5] focus:scale-[1.5] transition-all duration-300 z-10 hover:z-50 focus:z-50 outline-none"
-                                                style={{
-                                                    left: `${marker.percentage}%`,
-                                                    backgroundColor: getMarkerColorHex(marker.severity)
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleMarkerClick(marker);
                                                 }}
-                                                tabIndex="0"
+                                                aria-label={`${marker.type} starting at ${marker.start}. Tap to jump to scene.`}
+                                                className="group/pin absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center cursor-pointer z-20 hover:z-50 focus:z-50 focus:outline-none touch-manipulation bg-transparent border-0 p-0 m-0"
+                                                style={{
+                                                    left: `${marker.percentage}%`
+                                                }}
                                             >
+                                                {/* The visible dot */}
+                                                <span
+                                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#0a0a0c] shadow-[0_0_8px_rgba(0,0,0,0.8)] transition-all duration-300 pointer-events-none block ${
+                                                        isActive ? 'scale-[1.6] ring-2 ring-yellow-400 ring-offset-1 ring-offset-black' : 'group-hover/pin:scale-[1.4] group-focus/pin:scale-[1.4]'
+                                                    }`}
+                                                    style={{
+                                                        backgroundColor: getMarkerColorHex(marker.severity)
+                                                    }}
+                                                />
+
                                                 {/* Properly scaled micro-tooltip - Readable on mobile, sleek on PC */}
-                                                <div className={`pointer-events-none absolute bottom-full mb-1.5 sm:mb-2 w-max max-w-[120px] sm:max-w-[140px] opacity-0 group-hover/pin:opacity-100 group-focus/pin:opacity-100 transition-all duration-200 z-[100] transform group-hover/pin:-translate-y-1 group-focus/pin:-translate-y-1 origin-bottom ${tooltipAlign}`}>
-                                                    <div className="bg-[#111113] border border-gray-600/50 rounded-md px-2 py-1.5 shadow-xl text-left relative">
-                                                        <div className={`absolute -bottom-1 w-2 h-2 bg-[#111113] border-b border-r border-gray-600/50 transform rotate-45 ${pointerAlign}`}></div>
-                                                        <span className="text-gray-400 font-mono block mb-1 flex items-center gap-1 text-[10px] sm:text-[11px]">
-                                                            <Clock size={10} className="text-gray-500 shrink-0" />
-                                                            <span className="truncate">{marker.start}{marker.end ? `-${marker.end}` : ''}</span>
+                                                <div
+                                                    className={`pointer-events-none absolute bottom-full mb-2 w-max max-w-[140px] sm:max-w-[160px] transition-all duration-200 z-[100] transform origin-bottom ${tooltipAlign} ${
+                                                        isActive
+                                                            ? 'opacity-100 -translate-y-1 scale-100'
+                                                            : 'opacity-0 scale-95 group-hover/pin:opacity-100 group-focus/pin:opacity-100 group-hover/pin:-translate-y-1 group-focus/pin:-translate-y-1 group-hover/pin:scale-100'
+                                                    }`}
+                                                >
+                                                    <div className="bg-[#111113] border border-gray-600/70 rounded-md px-2.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.9)] text-left relative backdrop-blur-md">
+                                                        <div className={`absolute -bottom-1 w-2 h-2 bg-[#111113] border-b border-r border-gray-600/70 transform rotate-45 ${pointerAlign}`}></div>
+                                                        <span className="text-gray-400 font-mono block mb-0.5 flex items-center gap-1 text-[10px] sm:text-[11px]">
+                                                            <Clock size={10} className="text-yellow-400 shrink-0" />
+                                                            <span className="truncate text-gray-200 font-semibold">{marker.start}{marker.end ? ` - ${marker.end}` : ''}</span>
                                                         </span>
                                                         <span className="text-gray-200 font-medium block leading-tight break-words whitespace-normal text-[11px] sm:text-[12px]">
                                                             {marker.type}
                                                         </span>
-                                                        <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mt-1 block" style={{ color: getMarkerColorHex(marker.severity) }}>
-                                                            {marker.severity}
-                                                        </span>
+                                                        <div className="flex items-center justify-between mt-1 pt-1 border-t border-white/10 gap-2">
+                                                            <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold block" style={{ color: getMarkerColorHex(marker.severity) }}>
+                                                                {marker.severity}
+                                                            </span>
+                                                            <span className="text-[8px] text-yellow-400/90 font-medium flex items-center gap-0.5">
+                                                                Tap to view ↓
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </button>
                                         );
                                     })}
                                 </div>
@@ -824,13 +891,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <div className="w-full">
                                 {/* 🚀 SEO UPGRADE: Semantic list extraction for search engines */}
                                 <ul className="journey-content space-y-2.5 sm:space-y-5 lg:space-y-6 m-0 p-0 list-none timestamp-card-list">
-                                    {[...sensitiveData.scenes].sort((a, b) => {
-                                        const aStart = a.start || '';
-                                        const bStart = b.start || '';
-                                        if (!aStart && bStart) return 1;
-                                        if (aStart && !bStart) return -1;
-                                        return 0;
-                                    }).map((scene, index, arr) => {
+                                    {sortedScenes.map((scene, index) => {
                                         const rawStart = scene.start || '';
                                         const sceneEnd = scene.end || '';
                                         const sceneType = scene.type || scene.description || 'Content Warning';
@@ -855,14 +916,20 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                         ) : null;
 
                                         const isGeneralWarning = rawStart === '' || rawStart.toLowerCase() === 'none';
+                                        const isHighlighted = highlightedCardId === scene.sceneId;
 
                                         return (
-                                            <React.Fragment key={index}>
+                                            <React.Fragment key={scene.sceneId || index}>
                                                 <li
-                                                    id={index === 0 ? "first-timestamp" : undefined}
-                                                    className="group rounded-lg sm:rounded-xl lg:rounded-2xl border border-white/[0.06] sm:border-white/10 bg-white/[0.015] sm:bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.15] transition-all duration-300 flex flex-col gap-2.5 sm:gap-3 p-3.5 pl-5 sm:p-5 lg:p-6 shadow-md scroll-mt-24 sm:scroll-mt-28"
+                                                    id={scene.sceneId}
+                                                    className={`group rounded-lg sm:rounded-xl lg:rounded-2xl border transition-all duration-500 flex flex-col gap-2.5 sm:gap-3 p-3.5 pl-5 sm:p-5 lg:p-6 shadow-md scroll-mt-24 sm:scroll-mt-28 relative ${
+                                                        isHighlighted
+                                                            ? 'border-yellow-400/90 bg-yellow-500/10 shadow-[0_0_25px_rgba(234,179,8,0.25)] ring-2 ring-yellow-400/50 scale-[1.01]'
+                                                            : 'border-white/[0.06] sm:border-white/10 bg-white/[0.015] sm:bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.15]'
+                                                    }`}
                                                     style={{ '--accent-color': getMarkerColorHex(scene.severity) }}
                                                 >
+                                                    {index === 0 && <span id="first-timestamp" className="absolute -top-28 left-0 pointer-events-none" aria-hidden="true" />}
                                                     {isGeneralWarning ? (
                                                         // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
                                                         <div className="flex items-start gap-3 sm:gap-3.5 w-full">

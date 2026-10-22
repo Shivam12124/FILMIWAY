@@ -444,6 +444,7 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
         <meta name="description" content="Get exact skip timestamps to bypass intimate and sensitive scenes in popular movies. Plan a safe, worry-free family movie night instantly." />
         <link rel="canonical" href="https://www.filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="impact-site-verification" value="17744139-9b54-4cb8-8b15-6302d04ea1ae" content="17744139-9b54-4cb8-8b15-6302d04ea1ae" />
 
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
