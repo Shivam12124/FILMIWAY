@@ -12,6 +12,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 // 🎬 WATCH-ALONG TIMER — loaded only when user opens it
 const WatchAlongTimer = dynamic(() => import('./WatchAlongTimer'), { ssr: false });
 import FanFavoritesSection from './FanFavoritesSection';
+import AudibleBookPromo from './AudibleBookPromo';
 const EnhancedWhereToWatchSection = dynamic(() => import('./EnhancedWhereToWatchSection'));
 
 const COLORS = {
@@ -692,6 +693,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <EnhancedWhereToWatchSection movie={movie} />
                         </div>
 
+                        {/* 🎧 AUDIBLE AUDIOBOOK & 30-DAY TRIAL DEAL */}
+                        <div className="w-full my-3">
+                            <AudibleBookPromo movie={movie} />
+                        </div>
+
                         {/* 3️⃣ SIMILAR MOVIE GUIDES (For Movies Without Timestamps) */}
                         {movie?.similarMovies && movie.similarMovies.length > 0 && (
                             <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-4 sm:p-6 my-2">
@@ -1004,16 +1010,25 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
                         </div>
 
+                        {/* 🎧 MOBILE ONLY: Audible Audiobook Deal below the last timestamp! */}
+                        <div className="block lg:hidden mt-1">
+                            <AudibleBookPromo movie={movie} />
+                        </div>
+
                         </div>
                         {/* end fw-top (main column: tracker + stats + timestamps) */}
 
-                        {/* 💰 SIDEBAR — priority order: 1) ExpressVPN  2) Where to Watch (Amazon)  3) Similar Guides  4) Watch-Along Timer.
-                            On desktop this displays in the right column. On mobile, ExpressVPN is below timestamp 1 and Where to Watch is below the last timestamp. */}
+                        {/* 💰 SIDEBAR — priority order: 1) Where to Watch (Amazon)  2) Audible Deal  3) Similar Guides  4) Watch-Along Timer. */}
                         <aside className="fw-side" aria-label="Streaming deals, where to watch and similar movie guides">
 
                         {/* 1️⃣ WHERE TO WATCH & STREAMING DEALS (DESKTOP ONLY) */}
                         <div className="hidden lg:block w-full min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 clean-injected-component">
                             <EnhancedWhereToWatchSection movie={movie} compact />
+                        </div>
+
+                        {/* 2️⃣ AUDIBLE AUDIOBOOK & 30-DAY TRIAL DEAL (DESKTOP) */}
+                        <div className="hidden lg:block w-full">
+                            <AudibleBookPromo movie={movie} />
                         </div>
 
                         {/* 3️⃣ SIMILAR MOVIE GUIDES */}

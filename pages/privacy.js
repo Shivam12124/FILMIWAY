@@ -182,6 +182,17 @@ export default function Privacy() {
 
           {/* ✅ FOOTER */}
           <footer className="text-center pt-16 border-t border-white/5 mt-16">
+            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 mb-6">
+              <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/contact-us" className="hover:text-white transition-colors">Contact Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/privacy" className="text-white font-medium transition-colors">Privacy Policy</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </nav>
             <div className="flex items-center justify-center gap-2 mb-3 text-gray-500">
                <FileText className="w-4 h-4" />
                <span className="font-semibold text-xs uppercase tracking-widest">Legal Documentation</span>

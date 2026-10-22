@@ -510,15 +510,16 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
               <div>
                 <h3 className="text-gray-400 font-bold mb-3 uppercase text-[10px] tracking-widest">Resources & Legal</h3>
                 <ul className="space-y-2.5 text-xs text-gray-300">
-                  <li><Link href="/collection/top-25-parents-guides" className="hover:text-yellow-400 text-yellow-400 font-extrabold transition-colors inline-block py-1">Top 25 Parents Guides</Link></li>
-                  <li><Link href="/how-we-work" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">How We Work (Methodology)</Link></li>
-                  <li><Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-green-400 text-green-500/90 transition-colors inline-block py-1 font-medium">How to Skip Awkward Scenes in Movies</Link></li>
-                  <li><Link href="/vidangel-alternatives" className="hover:text-amber-400 text-amber-500/90 transition-colors inline-block py-1 font-medium">Best VidAngel Alternatives</Link></li>
-                  <li><Link href="/watch-along-timer" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">Watch-Along Timer</Link></li>
-                  <li><Link href="/movie-directory" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">A-Z Directory</Link></li>
+                  <li><Link href="/collection/top-25-parents-guides" className="hover:text-white transition-colors inline-block py-1">Top 25 Parents Guides</Link></li>
+                  <li><Link href="/how-we-work" className="hover:text-white transition-colors inline-block py-1">How We Work (Methodology)</Link></li>
+                  <li><Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-white transition-colors inline-block py-1">How to Skip Awkward Scenes in Movies</Link></li>
+                  <li><Link href="/vidangel-alternatives" className="hover:text-white transition-colors inline-block py-1">Best VidAngel Alternatives</Link></li>
+                  <li><Link href="/watch-along-timer" className="hover:text-white transition-colors inline-block py-1">Watch-Along Timer</Link></li>
+                  <li><Link href="/movie-directory" className="hover:text-white transition-colors inline-block py-1">A-Z Directory</Link></li>
                   <li><Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-white transition-colors inline-block py-1">Filmiway vs IMDb</Link></li>
-                  <li><Link href="/partners" className="hover:text-red-400 text-red-500/90 transition-colors inline-block py-1 font-medium">Official Partners</Link></li>
+                  <li><Link href="/partners" className="hover:text-white transition-colors inline-block py-1">Official Partners</Link></li>
                   <li><Link href="/about-us" className="hover:text-white transition-colors inline-block py-1">About Us</Link></li>
+                  <li><Link href="/contact-us" className="hover:text-white transition-colors inline-block py-1">Contact Us</Link></li>
                   <li><Link href="/faq" className="hover:text-white transition-colors inline-block py-1">FAQ</Link></li>
                   <li><Link href="/privacy" className="hover:text-white transition-colors inline-block py-1">Privacy Policy</Link></li>
                   <li><Link href="/terms" className="hover:text-white transition-colors inline-block py-1">Terms of Use</Link></li>

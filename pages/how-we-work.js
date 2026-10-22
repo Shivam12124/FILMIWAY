@@ -302,6 +302,24 @@ export default function HowWeWork() {
             </div>
           </div>
 
+          {/* ✅ FOOTER */}
+          <footer className="text-center pt-16 border-t border-white/5 mt-16 pb-12">
+            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 mb-6">
+              <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/contact-us" className="hover:text-white transition-colors">Contact Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </nav>
+            <p className="text-gray-600 text-xs">
+              &copy; 2026 Filmiway Media. All rights reserved.
+            </p>
+          </footer>
+
         </main>
       </div>
     </>

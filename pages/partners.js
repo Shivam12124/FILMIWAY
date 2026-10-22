@@ -1,6 +1,7 @@
 // pages/partners.js
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, ExternalLink, Zap, CheckCircle } from 'lucide-react';
@@ -154,6 +155,17 @@ export default function Partners() {
 
           {/* Legal Partner Disclosure (Crucial for Google HCS Guidelines) */}
           <footer className="text-center pt-8 border-t border-white/5 text-xs text-gray-500 leading-relaxed max-w-3xl mx-auto">
+            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 mb-6">
+              <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/contact-us" className="hover:text-white transition-colors">Contact Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </nav>
             <p className="mb-2">
               <strong>Affiliate Disclosure:</strong> Filmiway is an official partner and approved affiliate of ExpressVPN. When you click links on our page and purchase a subscription, we receive a commission from ExpressVPN. This comes at no additional cost to you and helps us keep our manual movie guide database 100% free for families worldwide.
             </p>

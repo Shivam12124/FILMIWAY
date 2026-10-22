@@ -31,7 +31,7 @@ ${formData.message}`
     );
     
     // Open user's email client with pre-filled data
-    const mailtoLink = `mailto:filmiway9893@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:filmiway.media@gmail.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
     
     setSubmitted(true);
@@ -76,8 +76,8 @@ ${formData.message}`
               <h1 className="text-5xl sm:text-6xl font-extralight mb-4 bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">
                 Get In Touch
               </h1>
-              <p className="text-gray-400 text-lg">
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                We'd love to hear from you. Whether you want to share a new feature idea, provide feedback, or reach out regarding business inquiries, send us a message and we'll respond as soon as possible.
               </p>
             </div>
 
@@ -164,18 +164,29 @@ ${formData.message}`
             <div className="mt-12 text-center">
               <p className="text-gray-400 mb-4">Or reach us directly at:</p>
               <a 
-                href="mailto:filmiway9893@gmail.com" 
+                href="mailto:filmiway.media@gmail.com" 
                 className="text-yellow-400 text-xl font-medium hover:text-yellow-300 transition"
               >
-                filmiway9893@gmail.com
+                filmiway.media@gmail.com
               </a>
             </div>
           </motion.div>
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
-          <p>&copy; (2026) Filmiway. All rights reserved.</p>
+        <footer className="border-t border-gray-800 py-10 text-center text-gray-500 text-sm">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 mb-6">
+            <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
+            <span className="text-gray-700 hidden sm:inline">•</span>
+            <Link href="/contact-us" className="text-white font-medium transition-colors">Contact Us</Link>
+            <span className="text-gray-700 hidden sm:inline">•</span>
+            <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+            <span className="text-gray-700 hidden sm:inline">•</span>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span className="text-gray-700 hidden sm:inline">•</span>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+          </nav>
+          <p className="text-xs text-gray-600">&copy; 2026 Filmiway Media. All rights reserved.</p>
         </footer>
       </div>
     </>

@@ -131,41 +131,24 @@ export default function AboutUs() {
           </section>
 
           {/* ✅ THE MISSION */}
-          <section className="mb-24 max-w-5xl mx-auto">
+          <section className="mb-24 max-w-4xl mx-auto">
             <div className="bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-[2rem] p-8 sm:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px] pointer-events-none" />
               
-              <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center">
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
-                    Why We Built <span className="text-yellow-400 font-normal">Filmiway</span>
-                  </h2>
-                  <div className="space-y-4 text-base sm:text-lg text-gray-300 font-light leading-relaxed">
-                    <p>
-                      Watching a great movie with your family shouldn't mean constantly hovering over the remote control. We built this platform as a <strong>free educational resource</strong> to give parents their peace of mind back.
-                    </p>
-                    <p>
-                      Our Parents Guide is strictly for educational purposes, designed to help you monitor and understand exactly what you and your kids are going to see. Every film listed features precise skip timestamps for sensitive or explicit content.
-                    </p>
-                    <p>
-                      To maintain a completely family-safe environment, <strong>we do not host, upload, or display any explicit images or screenshots</strong>. We provide only clear, text-based descriptions and exact timestamps, empowering you to make informed viewing choices safely.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex-shrink-0 w-full md:w-auto grid grid-cols-2 gap-3">
-                  <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
-                    <div className="text-2xl font-bold text-yellow-400 mb-1">570+</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Films</div>
-                  </div>
-                  <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
-                    <div className="text-2xl font-bold text-yellow-400 mb-1">Free</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Forever</div>
-                  </div>
-                  <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center col-span-2">
-                    <div className="text-2xl font-bold text-white mb-1">Global</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Coverage</div>
-                  </div>
+              <div className="relative z-10 text-center md:text-left">
+                <h2 className="text-2xl sm:text-3xl font-light text-white mb-4">
+                  Why We Built <span className="text-yellow-400 font-normal">Filmiway</span>
+                </h2>
+                <div className="space-y-4 text-base sm:text-lg text-gray-300 font-light leading-relaxed">
+                  <p>
+                    Watching a great movie with your family shouldn't mean constantly hovering over the remote control. We built this platform as a <strong>free educational resource</strong> to give parents their peace of mind back.
+                  </p>
+                  <p>
+                    Our Parents Guide is strictly for educational purposes, designed to help you monitor and understand exactly what you and your kids are going to see. Every film listed features precise skip timestamps for sensitive or explicit content.
+                  </p>
+                  <p>
+                    To maintain a completely family-safe environment, <strong>we do not host, upload, or display any explicit images or screenshots</strong>. We provide only clear, text-based descriptions and exact timestamps, empowering you to make informed viewing choices safely.
+                  </p>
                 </div>
               </div>
             </div>
@@ -192,7 +175,18 @@ export default function AboutUs() {
           </section>
 
           {/* ✅ LEGAL DISCLAIMER */}
-          <footer className="text-center pt-8 border-t border-white/5">
+          <footer className="text-center pt-10 border-t border-white/5">
+            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 mb-6">
+              <Link href="/about-us" className="text-white font-medium transition-colors">About Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/contact-us" className="hover:text-white transition-colors">Contact Us</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <span className="text-gray-700 hidden sm:inline">•</span>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </nav>
             <div className="flex items-center justify-center gap-2 mb-3 text-yellow-500">
                <ShieldCheck className="w-4 h-4" />
                <span className="font-semibold text-sm">Official & Legal</span>
