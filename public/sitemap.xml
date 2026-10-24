@@ -2,11 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <sitemap>
       <loc>https://www.filmiway.com/sitemap-main.xml</loc>
+      <lastmod>2026-10-24T08:00:00.000Z</lastmod>
    </sitemap>
    <sitemap>
       <loc>https://www.filmiway.com/sitemap-movies.xml</loc>
+      <lastmod>2026-10-24T08:00:00.000Z</lastmod>
    </sitemap>
    <sitemap>
       <loc>https://www.filmiway.com/sitemap-advisory.xml</loc>
+      <lastmod>2026-10-24T08:00:00.000Z</lastmod>
    </sitemap>
 </sitemapindex>

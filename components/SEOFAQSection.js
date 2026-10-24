@@ -113,7 +113,27 @@ const SEOFAQSection = ({ movie }) => {
             : `No. Filmiway editors have manually verified that ${title} is free of nudity throughout its full ${currentRuntime} runtime.`
     };
 
-    const generatedExplicitFAQs = [faqSex, faqNudity];
+    // 🏆 Rated R / NC-17 FAQ (ONLY for movies with timestamp descriptions that are rated R or NC-17)
+    let ratedFaq = null;
+    const cleanRating = (movie?.Rated || '').toUpperCase();
+    let ratingCode = null;
+    if (cleanRating.includes('NC-17')) {
+        ratingCode = 'NC-17';
+    } else if (cleanRating === 'R' || cleanRating.includes(' R') || cleanRating.startsWith('R')) {
+        ratingCode = 'R';
+    }
+
+    if (movie?.hasTimestampDescriptions && movie?.Summary && ratingCode) {
+        const rawSummary = movie.Summary.trim();
+        const reasons = rawSummary.replace(/^Aged\s+\d+\+?\s+for\s+/i, '').replace(/\.$/, '');
+        const age = movie.Age || '18+';
+        ratedFaq = {
+            question: `Why is ${title} rated ${ratingCode}?`,
+            answer: `${title} is rated ${ratingCode} because of ${reasons}. Filmiway recommendation age is ${age}.`
+        };
+    }
+
+    const generatedExplicitFAQs = [faqSex, faqNudity, ratedFaq].filter(Boolean);
 
     // Load base FAQs and filter out legacy vague questions (limiting base to 3 max to prevent FAQ floodgate)
     const faqsRaw = (movie?.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
@@ -123,6 +143,8 @@ const SEOFAQSection = ({ movie }) => {
             return !q.includes('inappropriate scenes') && 
                    !q.includes('does ' + (title || '').toLowerCase() + ' have sex scenes') && 
                    !q.includes('does ' + (title || '').toLowerCase() + ' have nudity') &&
+                   !q.includes('why is ' + (title || '').toLowerCase() + ' rated') &&
+                   !q.includes('why is this movie rated') &&
                    !q.includes('why does filmiway provide skip timestamps');
         })
         .map(faq => {

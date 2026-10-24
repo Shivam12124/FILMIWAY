@@ -505,7 +505,27 @@ export default function UniversalMoviePage({ movie }) {
         answer: `Filmiway provides exact skip timestamps for ${movie.Title} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
     } : null;
 
-    const dynamicTemplateFaqs = [faq1, faq2, educationalFaq, faq5].filter(Boolean);
+    // 🏆 Rated R / NC-17 FAQ (ONLY for movies with timestamp descriptions that are rated R or NC-17)
+    let ratedFaq = null;
+    const cleanRating = (movie.Rated || '').toUpperCase();
+    let ratingCode = null;
+    if (cleanRating.includes('NC-17')) {
+        ratingCode = 'NC-17';
+    } else if (cleanRating === 'R' || cleanRating.includes(' R') || cleanRating.startsWith('R')) {
+        ratingCode = 'R';
+    }
+
+    if (movie.hasTimestampDescriptions && movie.Summary && ratingCode) {
+        const rawSummary = movie.Summary.trim();
+        const reasons = rawSummary.replace(/^Aged\s+\d+\+?\s+for\s+/i, '').replace(/\.$/, '');
+        const age = movie.Age || '18+';
+        ratedFaq = {
+            question: `Why is ${movie.Title} rated ${ratingCode}?`,
+            answer: `${movie.Title} is rated ${ratingCode} because of ${reasons}. Filmiway recommendation age is ${age}.`
+        };
+    }
+
+    const dynamicTemplateFaqs = [faq1, faq2, ratedFaq, educationalFaq, faq5].filter(Boolean);
     const filteredFaqs = dynamicTemplateFaqs;
 
     const rawFaqs = (movie.customFaqs && movie.customFaqs.length > 0) ? movie.customFaqs : (getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || []);
@@ -675,7 +695,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
-                <meta name="robots" content={hasTimestamps ? "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" : "noindex, follow"} />
+                <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
                 <link rel="canonical" href={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
@@ -1095,13 +1115,18 @@ export async function getStaticProps({ params }) {
     const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
     const profanityScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
 
-    // 🏆 GOLDMINE HIGH-CTR FORMULA: Front-loads Parents Guide & Timestamps to Skip for top Google ranking
-    const metaTitle = hasExactTimestamps
-        ? `${displayTitleWithYear} – Parents Guide & Timestamps to Skip`
-        : `${displayTitleWithYear} – Parents Guide & Age Rating`;
+    // ⚡ ACTUAL HISTORICAL CUSTOM TITLES (15 May – 20 May 2026)
+    const MAY_CUSTOM_META_TITLES = {
+        'blue-is-the-warmest-color': "Blue Is the Warmest Color Skip Sex & Nudity Timestamps",
+        'the-dreamers': "The Dreamers Skip Sex & Nudity Timestamps"
+    };
+
+    let metaTitle = '';
     let metaDesc = '';
 
     if (hasExactTimestamps) {
+        metaTitle = `${baseMovie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
+
         const sortedScenes = [...resolvedSensitiveScenes].filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none').sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
             const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -1110,21 +1135,22 @@ export async function getStaticProps({ params }) {
             return 0;
         });
 
-        const timestampList = sortedScenes.map(s => s.end ? `${s.start}-${s.end}` : s.start);
-        let rawTimestampsText = '';
-        if (timestampList.length >= 2) {
-            rawTimestampsText = `${timestampList[0]}, ${timestampList[1]} and more`;
-        } else if (timestampList.length === 1) {
-            rawTimestampsText = `${timestampList[0]}`;
-        }
-
-        metaDesc = `Verified skip timestamps for ${baseMovie.Title} (${rawTimestampsText}). Family Safety Score ${safetyScore}/10. Skip awkward scenes effortlessly.`;
+        const scenesText = sortedScenes.slice(0, 2).map(s => `${s.type || 'Scene'} ${s.end ? `${s.start}-${s.end}` : s.start}`).join(', ');
+        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${scenesText ? `${scenesText} and more.` : ''}`.trim();
     } else {
+        // Clean movies: leave meta title & meta description untouched
+        metaTitle = `${displayTitleWithYear} – Parents Guide & Age Rating`;
+
         let vPart = violenceScene ? `Violence: ${violenceScene.severity}${violenceScene.description ? ` (${violenceScene.description})` : ''}. ` : '';
         let pPart = profanityScene ? `Profanity: ${profanityScene.severity}${profanityScene.description ? ` (${profanityScene.description})` : ''}. ` : '';
         let agePart = sensitiveData.Age ? `Age Rating: ${sensitiveData.Age}. ` : '';
 
         metaDesc = `Parents Guide for ${baseMovie.Title}: Family Safety Score ${safetyScore}/10 (${safetyLabel}). ${agePart}${vPart}${pPart}`.trim();
+    }
+
+    // Apply exact custom movie meta title (ONLY meta title, NOT meta description)
+    if (MAY_CUSTOM_META_TITLES[baseMovie.slug]) {
+        metaTitle = MAY_CUSTOM_META_TITLES[baseMovie.slug];
     }
 
     // 🗓️ DETERMINISTIC FRESHNESS DATE: August 22, 2026 ONLY for updated movies (Wild Things & Obsession)

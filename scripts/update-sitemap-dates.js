@@ -3,10 +3,11 @@ const path = require('path');
 
 const sitemapsToUpdate = [
     '../public/sitemap-movies.xml',
-    '../public/sitemap.xml'
+    '../public/sitemap-main.xml',
+    '../public/sitemap-advisory.xml'
 ];
 
-const newDate = '2026-06-01T08:00:00.000Z';
+const newDate = '2026-10-24T08:00:00.000Z';
 
 sitemapsToUpdate.forEach(file => {
     const sitemapPath = path.join(__dirname, file);
