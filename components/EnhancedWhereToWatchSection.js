@@ -662,24 +662,32 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type);
+    const deepLink = getDeepLink(provider.provider_id, region, movie?.Title || movie?.title, movie?.tmdbId, provider.provider_name, type, userCountry);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
     const handleCardClick = () => {
       // 🚀 Open link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
       window.open(deepLink, '_blank', 'noopener,noreferrer');
 
-      // Non-blocking fire-and-forget Firestore tracking
-      addDoc(collection(db, 'amazon_affiliate_clicks'), {
-        movieTitle: movie.Title,
-        tmdbId: movie.tmdbId,
-        country: userCountry || region || 'US',
-        storeRegion: region,
-        providerName: provider.provider_name,
-        timestamp: serverTimestamp()
-      }).catch(e => {
-        console.error('Error tracking platform click:', e);
-      });
+      // Check if this click routes to an Amazon search page link
+      const isAmazonLink = deepLink.includes('amazon.') || (provider.provider_name || '').toLowerCase().includes('amazon') || type === 'rent' || type === 'buy';
+
+      if (isAmazonLink) {
+        addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
+          movieTitle: movie?.Title || movie?.title || 'Unknown',
+          movieSlug: movie?.slug || 'unknown',
+          tmdbId: movie?.tmdbId || null,
+          country: userCountry || region || 'US',
+          storeRegion: region || 'US',
+          providerName: provider?.provider_name || 'Amazon',
+          type: type || 'buy',
+          targetUrl: deepLink,
+          timestamp: serverTimestamp(),
+          userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+        }).catch(e => {
+          console.error('Error tracking where-to-watch Amazon click:', e);
+        });
+      }
     };
 
     return (
@@ -725,7 +733,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
   const HeroAmazonCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type, userCountry);
+    const deepLink = getDeepLink(provider.provider_id, region, movie?.Title || movie?.title, movie?.tmdbId, provider.provider_name, type, userCountry);
     const typeLabel = provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
     const buttonText = provider.isFallback ? 'Stream or Buy on Amazon' : (type === 'flatrate' ? 'Stream on Amazon' : 'Watch on Amazon');
 
@@ -733,16 +741,20 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
       // 🚀 Open Amazon link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
       window.open(deepLink, '_blank', 'noopener,noreferrer');
 
-      // Non-blocking fire-and-forget Firestore tracking
-      addDoc(collection(db, 'amazon_affiliate_clicks'), {
-        movieTitle: movie.Title,
-        tmdbId: movie.tmdbId,
+      // Non-blocking fire-and-forget Firestore tracking to dedicated where-to-watch Amazon collection
+      addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
+        movieTitle: movie?.Title || movie?.title || 'Unknown',
+        movieSlug: movie?.slug || 'unknown',
+        tmdbId: movie?.tmdbId || null,
         country: userCountry || region || 'US',
-        storeRegion: region,
-        providerName: provider.provider_name,
-        timestamp: serverTimestamp()
+        storeRegion: region || 'US',
+        providerName: provider?.provider_name || 'Amazon',
+        type: provider?.isFallback ? 'fallback_search' : (type || 'flatrate'),
+        targetUrl: deepLink,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
       }).catch(e => {
-        console.error('Error tracking Amazon click:', e);
+        console.error('Error tracking where-to-watch Amazon click:', e);
       });
     };
 

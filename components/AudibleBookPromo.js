@@ -205,7 +205,7 @@ const AudibleBookPromo = ({ movie, movieSlug, movieTitle, compact = true, classN
     window.open(targetUrl, '_blank', 'noopener,noreferrer');
 
     try {
-      await addDoc(collection(db, 'affiliate_clicks'), {
+      await addDoc(collection(db, 'audible_clicks'), {
         promoType: 'audible',
         mode: adaptation ? 'book_match' : 'generic_trial',
         movieSlug: slug || 'unknown',
@@ -214,7 +214,9 @@ const AudibleBookPromo = ({ movie, movieSlug, movieTitle, compact = true, classN
         author: adaptation ? adaptation.author : 'N/A',
         country: userCountry,
         deal: '30-Day Free Trial ($0.00)',
-        timestamp: serverTimestamp()
+        targetUrl: targetUrl,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
       });
     } catch (e) {
       // Non-blocking analytics
