@@ -1020,7 +1020,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                 <div className="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
                   <MapPin className="w-5 h-5 text-yellow-500/80 shrink-0 mt-0.5" />
                   <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                    <strong>{movie?.Title}</strong> is not currently streaming on digital subscription services in <strong>{selectedRegionInfo?.name || selectedRegion}</strong>. You can find physical Blu-ray, 4K UHD, DVD, or digital rental editions on Amazon below, or use ExpressVPN to access foreign streaming catalogs.
+                    {(movie?.inTheaters || movie?.tmdbId === 1765072 || movie?.imdbID === 'tt45368240') ? (
+                      <>
+                        <strong>{movie?.Title}</strong> is not currently available online as it is currently playing in theaters. Physical Blu-ray or digital editions will be available on Amazon later.
+                      </>
+                    ) : (
+                      <>
+                        <strong>{movie?.Title}</strong> is not currently streaming on digital subscription services in <strong>{selectedRegionInfo?.name || selectedRegion}</strong>. You can find physical Blu-ray, 4K UHD, DVD, or digital rental editions on Amazon below, or use ExpressVPN to access foreign streaming catalogs.
+                      </>
+                    )}
                   </p>
                 </div>
 

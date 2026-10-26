@@ -6619,6 +6619,7 @@
     "runtime": 174,
     "rank": "BONUS",
     "slug": "you-can-see-everything",
-    "sourceFile": "a24MovieData.js"
+    "sourceFile": "a24MovieData.js",
+    "inTheaters": true
   }
 ]
