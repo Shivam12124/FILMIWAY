@@ -21,7 +21,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 901563, "imdbID": "tt9660502", "Title": "Close", "year": 2022, "genre": "Drama", "runtime": 104, "rank": 9 },
     { "tmdbId": 785084, "imdbID": "tt13833688", "Title": "The Whale", "year": 2022, "genre": "Drama", "runtime": 117, "rank": 10 },
     { "tmdbId": 1100099, "imdbID": "tt27131358", "Title": "We Live in Time", "year": 2024, "genre": "Drama", "runtime": 108, "rank": "BONUS" },
-    { "tmdbId": 437586, "imdbID": "tt5613484", "Title": "Mid90s", "year": 2018, "genre": "Drama", "runtime": 85, "rank": "BONUS" }
+    { "tmdbId": 437586, "imdbID": "tt5613484", "Title": "Mid90s", "year": 2018, "genre": "Drama", "runtime": 85, "rank": "BONUS" },
+    { "tmdbId": 1765072, "imdbID": "tt45368240", "Title": "You Can See Everything", "year": 2026, "genre": "Documentary, Comedy, Drama", "runtime": 174, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -37,7 +38,8 @@ export const STRATEGIC_QUOTES = {
     901563: "I miss him.", // Close
     785084: "I need to know that I have done one right thing with my life!", // The Whale
     1100099: "I think I'm starting to realize that the things that happen to you... they don't define you, it's what you do with them.", // We Live in Time
-    437586: "A lot of the time we feel like our lives the worst, but I think if you looked in anybody else's window, you'd trade your stuff for their stuff in a second." // Mid90s
+    437586: "A lot of the time we feel like our lives the worst, but I think if you looked in anybody else's window, you'd trade your stuff for their stuff in a second.", // Mid90s
+    1765072: "Why would I deceive you?" // You Can See Everything
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -121,6 +123,11 @@ export const SENSITIVE_TIMELINES = {
             { start: "38:10", end: "38:20", type: "Nudity", severity: "Moderate" },
             { start: "57:15", end: "58:15", type: "Nudity", severity: "Moderate" }
         ]
+    },
+
+    // 13. You Can See Everything
+    1765072: {
+        scenes: []
     },
 
     // 12. Mid90s
@@ -413,6 +420,12 @@ export const A24_MOVIE_FAQS = {
         { question: "What is the meaning of the Moby Dick essay?", answer: "The essay, written by an 8th-grade Ellie, represents raw, unfiltered honesty. It describes the futility of chasing something destructive (the whale) and serves as Charlie's only anchor to truth and beauty in a world filled with religious and social hypocrisy." },
         { question: "Why does Charlie constantly say 'I need to know I have done one right thing'?", answer: "Charlie's entire motivation is redemption. He knows his life is ending and that he made terrible mistakes, but he desperately wants to ensure that Ellie realizes her own brilliance and potential before he dies, proving his life wasn't entirely a failure." },
         { question: "What happens in the final scene of The Whale?", answer: "As Charlie walks toward Ellie and a bright light fills the room, it symbolizes his spiritual ascension and release from his physical suffering. He has finally achieved his redemption, proving his absolute, unwavering belief in his daughter." }
+    ],
+    'You Can See Everything': [
+        { question: "Why is the documentary called You Can See Everything?", answer: "The title reflects the total, unfiltered access granted by Elizabeth Holmes and Billy Evans to the film crew during their final weeks before Holmes reported to prison, as well as the film's meta-commentary on public transparency versus performative deception." },
+        { question: "Did Nathan Fielder uncover the truth about Elizabeth Holmes?", answer: "Rather than an ordinary investigative exposé, Nathan Fielder crafts a psychological cat-and-mouse game that explores whether anyone—including Holmes, Evans, or the filmmakers—can truly be genuine under constant camera surveillance." },
+        { question: "Why does Amanda Seyfried appear in the documentary?", answer: "Amanda Seyfried, who portrayed Elizabeth Holmes in the Hulu miniseries The Dropout, appears to reenact unfilmed private moments, adding another surreal, meta-layer questioning the boundary between real life and theatrical performance." },
+        { question: "Who controls Elizabeth Holmes's official Twitter/X account?", answer: "The documentary reveals that prior to beginning her 11-year federal prison sentence, Holmes granted power of attorney and social media management to her partner, Billy Evans, who posts statements on her behalf." }
     ]
 };
 

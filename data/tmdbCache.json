@@ -10880,5 +10880,23 @@
     "budget": "$3,000,000",
     "revenue": "$2,800,000",
     "tagline": "You want. He wants. She wants. But nobody wants what I want."
+  },
+  "tt45368240": {
+    "tmdbId": "1765072",
+    "poster_path": "/Ap8QwmKfSjYbWC4XIP8w9pdn72O.jpg",
+    "backdrop_path": "/nhIL3O4W9h5V5JbNQm7yjoDk3So.jpg",
+    "runtime": 174,
+    "release_date": "2026-10-16",
+    "overview": "Thirty-four days before she's sent to prison, notorious Silicon Valley founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait of an enigmatic felon becomes a mind-bending three-year journey into the abyss.",
+    "ageRating": "R",
+    "director": "Nathan Fielder",
+    "cast": [
+      "Elizabeth Holmes",
+      "Nathan Fielder",
+      "Billy Evans"
+    ],
+    "budget": "$7,000,000",
+    "revenue": "$45,145,476",
+    "tagline": ""
   }
 }

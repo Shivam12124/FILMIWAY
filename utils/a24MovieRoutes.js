@@ -48,7 +48,10 @@ export const A24_MOVIE_SLUGS = {
     'tt27131358': 'we-live-in-time',
 
     // Bonus: Mid90s
-    'tt5613484': 'mid90s'
+    'tt5613484': 'mid90s',
+
+    // Bonus: You Can See Everything
+    'tt45368240': 'you-can-see-everything'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
