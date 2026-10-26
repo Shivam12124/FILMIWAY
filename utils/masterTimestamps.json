@@ -25083,7 +25083,7 @@
       {
         "start": "0:22:32",
         "end": "0:22:50",
-        "type": "Nudity",
+        "type": "Nudity(Man)",
         "severity": "High",
         "startSec": 1352,
         "endSec": 1370,
