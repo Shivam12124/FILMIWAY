@@ -128,7 +128,9 @@ export const SENSITIVE_TIMELINES = {
     // 13. You Can See Everything
     1765072: {
         scenes: [
-            { start: "0:22:32", end: "0:22:50", type: "Nudity(Man)", severity: "High", description: "Billy Evans is shown taking a shower while brushing his teeth, appearing fully frontally naked with prolonged male genitalia visibility." }
+            { start: "0:22:32", end: "0:22:50", type: "Nudity(Man)", severity: "High", description: "Billy Evans is shown taking a shower while brushing his teeth, appearing fully frontally naked with prolonged male genitalia visibility." },
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Frequent strong language throughout the dialogue-heavy runtime, featuring approximately 45 uses of the F-bomb and roughly a dozen milder obscenities (S-words), alongside occasional mild insults and several misuses of religious deity names. The profanity is largely spoken by Billy Evans and seen in online text exchanges, while Elizabeth Holmes does not use strong language on camera." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Mild", description: "Zero physical violence or gore is depicted on screen. Content is limited to verbal discussions and non-graphic staged material: Elizabeth Holmes's father verbally mentions that she was previously a victim of sexual assault, Billy Evans verbally mentions carrying a firearm and expresses desires for retribution, and a promoter stages an amateur kidnapping reenactment skit without physical injury." }
         ]
     },
 
