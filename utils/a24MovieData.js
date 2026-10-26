@@ -127,7 +127,9 @@ export const SENSITIVE_TIMELINES = {
 
     // 13. You Can See Everything
     1765072: {
-        scenes: []
+        scenes: [
+            { start: "0:22:32", end: "0:22:50", type: "Nudity", severity: "High", description: "Billy Evans is shown taking a shower while brushing his teeth, appearing fully frontally naked with prolonged male genitalia visibility." }
+        ]
     },
 
     // 12. Mid90s
