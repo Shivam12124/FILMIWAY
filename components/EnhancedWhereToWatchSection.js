@@ -465,17 +465,26 @@ function getVpnStreamingTip(streamingData, userCountry, movieTitle) {
 }
 
 // 🛡️ SMART VPN STREAMING CARD COMPONENT (Clean Editorial Cinema Design - Straight Clear Words, NO Truncation, NO Cheap Capsules/Boxes)
-const SmartVpnStreamingCard = ({ tip, movieTitle }) => {
+const SmartVpnStreamingCard = ({ tip, movieTitle, movieSlug, userCountry }) => {
   if (!tip) return null;
 
   const handleVpnClick = async () => {
     try {
-      await addDoc(collection(db, 'affiliate_clicks'), {
-        type: 'expressvpn_smart_tip',
-        tipType: tip.type,
+      // 🚀 Write to dedicated expressvpn_clicks collection in Firestore (Matching audible_clicks & wheretowatch_amazon_clicks)
+      addDoc(collection(db, 'expressvpn_clicks'), {
+        promoType: 'expressvpn',
+        placement: 'where_to_watch_smart_tip',
+        tipType: tip.type || 'general',
+        tipTitle: tip.title || '',
         movieTitle: movieTitle || 'Unknown',
+        movieSlug: movieSlug || 'unknown',
+        country: userCountry || 'US',
         deal: '$2.99/mo + 4 mos free',
-        timestamp: serverTimestamp()
+        targetUrl: 'https://go.expressvpn.com/c/7564909/1462856/16063',
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      }).catch(err => {
+        console.error("expressvpn_clicks tracking error:", err);
       });
     } catch (e) {}
   };
@@ -927,7 +936,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                 {/* 🚀 SMART STREAMING TIP (Angle A & B: Free on UK/AU or Netflix Stacking) */}
                 {vpnTip && (
                   <div className="w-full">
-                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
+                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title || movie?.title} movieSlug={movie?.slug || movie?.tmdbId} userCountry={userCountry} />
                   </div>
                 )}
 
@@ -1040,7 +1049,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
                 {vpnTip && (
                   <div className="w-full">
-                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title} />
+                    <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title || movie?.title} movieSlug={movie?.slug || movie?.tmdbId} userCountry={userCountry} />
                   </div>
                 )}
               </motion.div>

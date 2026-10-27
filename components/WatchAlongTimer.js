@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { createPortal } from 'react-dom';
 import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle, Tv, Smartphone, Bell, Eye, ExternalLink } from 'lucide-react';
 import { db } from '../lib/firebase';
-import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc, serverTimestamp } from 'firebase/firestore';
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 const parseTimestampToSeconds = (t) => {
@@ -874,6 +874,20 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                             href="https://go.expressvpn.com/c/7564909/1462856/16063" 
                             target="_blank" 
                             rel="noopener noreferrer" 
+                            onClick={() => {
+                                try {
+                                    addDoc(collection(db, 'expressvpn_clicks'), {
+                                        promoType: 'expressvpn',
+                                        placement: 'watch_along_timer',
+                                        movieTitle: movie?.Title || movie?.title || 'Unknown',
+                                        movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
+                                        deal: '$2.99/mo + 4 mos free',
+                                        targetUrl: 'https://go.expressvpn.com/c/7564909/1462856/16063',
+                                        timestamp: serverTimestamp(),
+                                        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+                                    }).catch(err => console.error("expressvpn_clicks error:", err));
+                                } catch (e) {}
+                            }}
                             className="mt-6 flex items-center justify-between w-full bg-[#0d0708] border border-red-900/40 hover:border-red-600/60 rounded-xl p-3 transition-all group shadow-[0_0_15px_rgba(220,38,38,0.08)]"
                         >
                             <div className="flex items-center gap-2.5 min-w-0 flex-1">

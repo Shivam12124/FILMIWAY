@@ -6,9 +6,26 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, ExternalLink, Zap, CheckCircle } from 'lucide-react';
 import Header from '../components/Header';
+import { db } from '../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Partners() {
   const affiliateLink = "https://go.expressvpn.com/c/7564909/1462856/16063";
+
+  const handlePartnersClick = () => {
+    try {
+      addDoc(collection(db, 'expressvpn_clicks'), {
+        promoType: 'expressvpn',
+        placement: 'partners_page',
+        movieTitle: 'Official Partners Page',
+        movieSlug: 'partners',
+        deal: '$2.99/mo + 4 mos free',
+        targetUrl: affiliateLink,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      }).catch(err => console.error("expressvpn_clicks error:", err));
+    } catch (e) {}
+  };
 
   return (
     <>
@@ -111,6 +128,7 @@ export default function Partners() {
                   href={affiliateLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handlePartnersClick}
                   className="inline-flex items-center justify-center gap-2 font-bold text-sm sm:text-base px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-red-600/30 cursor-pointer bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white w-full sm:w-auto border border-red-500/50 hover:scale-[1.02]"
                 >
                   <span>Claim Filmiway Deal ($2.99/mo)</span>

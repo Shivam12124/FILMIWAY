@@ -192,15 +192,16 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 placement: 'below_timestamps',
                 country: detectedCountry,
                 deal: '$2.99/mo + 4 mos free',
+                targetUrl: 'https://go.expressvpn.com/c/7564909/1462856/16063',
                 timestamp: serverTimestamp(),
                 userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
             };
 
-            addDoc(collection(db, 'affiliate_clicks'), clickData).catch(err => {
-                console.error("Firebase analytics click tracking failed:", err);
+            addDoc(collection(db, 'expressvpn_clicks'), clickData).catch(err => {
+                console.error("Firebase expressvpn_clicks tracking failed:", err);
             });
         } catch (err) {
-            console.error("Firebase analytics click tracking failed:", err);
+            console.error("Firebase expressvpn_clicks tracking failed:", err);
         }
     }, [movie]);
 
