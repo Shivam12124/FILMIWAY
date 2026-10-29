@@ -163,7 +163,7 @@ export default function App({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 
-        {/* 🚀 ORGANIZATION SCHEMA (DOMAIN-LEVEL TRUST) 🚀 */}
+        {/* 🚀 ORGANIZATION & AUTHOR SCHEMA (DOMAIN-LEVEL TRUST & E-E-A-T) 🚀 */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -178,6 +178,9 @@ export default function App({ Component, pageProps }) {
                   "description": "Educational utility and parents guide providing precise skip timestamps for sensitive content in movies.",
                   "publisher": {
                     "@id": "https://www.filmiway.com/#organization"
+                  },
+                  "author": {
+                    "@id": "https://www.filmiway.com/#author"
                   }
                 },
                 {
@@ -191,9 +194,7 @@ export default function App({ Component, pageProps }) {
                   },
                   "email": "filmiway.media@gmail.com",
                   "founder": {
-                    "@type": "Person",
-                    "name": "Shivam Singh",
-                    "url": "https://www.linkedin.com/in/shivam-singh-2ba0a541a/"
+                    "@id": "https://www.filmiway.com/#author"
                   },
                   "sameAs": [
                     "https://x.com/FilmiwayMedia",
@@ -203,6 +204,22 @@ export default function App({ Component, pageProps }) {
                     "@type": "ContactPoint",
                     "email": "filmiway.media@gmail.com",
                     "contactType": "customer support"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://www.filmiway.com/#author",
+                  "name": "Shivam Singh",
+                  "jobTitle": "Founder",
+                  "url": "https://www.filmiway.com/about",
+                  "image": "https://www.filmiway.com/filmiway-logo.png",
+                  "description": "Founder and lead film analyst at Filmiway. Manually verifies and audits film runtimes to provide second-by-second skip timestamps for family-safe movie viewing.",
+                  "sameAs": [
+                    "https://www.linkedin.com/in/shivam-singh-2ba0a541a/",
+                    "https://x.com/FilmiwayMedia"
+                  ],
+                  "worksFor": {
+                    "@id": "https://www.filmiway.com/#organization"
                   }
                 }
               ]

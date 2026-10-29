@@ -40,7 +40,7 @@ Common Sense Media, Plugged In, and Dove are all great for getting a general sen
 
 That’s why we built Filmiway (https://filmiway.com). 
 
-Rather than just summarizing content, Filmiway logs exact timestamps for mature scenes (start time, end time, and severity rating), complete with a real-time countdown timer that warns parents 10 seconds before a flagged scene begins so they can skip it seamlessly.
+Rather than just summarizing content, our editors personally watch each film from start to finish to log exact start and end timestamps for mature scenes, paired with a real-time countdown timer that warns parents 10 seconds before a sensitive scene begins so they can skip it seamlessly with complete confidence.
 
 If you ever refresh or expand your 3-site list, we’d love for you to consider mentioning Filmiway as a practical timestamp and skip tool for parents.
 
@@ -75,9 +75,9 @@ I loved your post on "Media Review Websites & Apps" (https://fishfulllife.com/me
 I wanted to share a complementary resource we built called Filmiway (https://filmiway.com).
 
 While Plugged In, Common Sense Media, and MovieGuide do a wonderful job describing what content exists in a film, Filmiway tells families exactly when it happens:
-1. Exact Skip Timestamps: Start and end minutes/seconds for mature scenes so parents can fast-forward past them.
-2. Scene Severity & Duration: Knowing how long a scene lasts and whether it's mild or intense.
-3. Sync Countdown Timer: Alerts viewers 10 seconds before a flagged scene begins.
+1. Editor-Verified Skip Timestamps: Every timestamp is logged by an editor watching the complete movie from beginning to end, so parents can 100% rely on the exact timing.
+2. Scene Severity & Duration: Knowing how long a scene lasts (in seconds) and whether it's mild or intense.
+3. Sync Countdown Timer: Alerts viewers 10 seconds before a flagged scene begins so they can fast-forward past it.
 4. Family Safety Score: An at-a-glance suitability rating.
 
 It works as a practical companion tool alongside traditional review sites for parents who want to watch movies together without unexpected surprises.
@@ -116,10 +116,10 @@ I came across your article "5 Helpful Websites for Parents Who Want to Know More
 I wanted to introduce a newer, complementary tool designed for parents navigating modern media: Filmiway (https://filmiway.com).
 
 While traditional review sites describe what elements exist in a movie, Filmiway maps out precisely when they occur:
-- Exact Skip Timestamps: Pinpointing the exact start and end minute:second of flagged sex/nudity scenes.
-- Severity & Duration: Detailed scene breakdowns indicating whether scenes are brief/mild or explicit.
-- Interactive Sync Timer: Allows parents to synchronize their playback with a timer that alerts them ahead of flagged moments.
-- Family Safety Score: A comprehensive suitability rating for each film.
+- Editor-Verified Timestamps: Every timestamp is personally logged by an editor watching the complete movie from start to finish, so parents can 100% rely on the exact start and end seconds.
+- Scene Duration & Severity: Tells parents exactly how long a scene lasts (e.g., 20 seconds) and whether it is mild, moderate, or explicit.
+- Live Countdown Sync Timer: Parents can sync their playback with a timer that gives a 10-second warning before a sensitive scene begins, allowing them to fast-forward seamlessly.
+- Family Safety Score: An at-a-glance suitability rating for each film.
 
 If you ever do a follow-up or refresh on modern media discernment tools for parents, we’d be honored to have Filmiway considered as a resource.
 

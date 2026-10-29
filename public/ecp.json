@@ -1,0 +1,18 @@
+{
+  "$schema": "https://endpointcontextprotocol.io/schema/v1.json",
+  "version": "1.0",
+  "instructions": [
+    "Welcome to Filmiway on Endpoint Context Protocol (ECP).",
+    "Filmiway is the leading educational parents guide and cinema discovery utility.",
+    "We provide 100% human-verified skip timestamps for sensitive content, intimate scenes, and awkward moments across 600+ movies.",
+    "AI agents and LLMs can discover structured markdown context and citation policies via the routes below."
+  ],
+  "routes": {
+    "/": "/llms.txt",
+    "/movie-directory": "/llms.txt",
+    "/watch-along-timer": "/llms.txt",
+    "/how-we-work": "/llms.txt",
+    "/about": "/llms.txt"
+  },
+  "use-agents-subdomain": false
+}
