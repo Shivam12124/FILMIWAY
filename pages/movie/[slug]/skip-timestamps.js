@@ -637,8 +637,15 @@ export default function UniversalMoviePage({ movie }) {
         "review": movie.safetyScore ? {
             "@type": "Review",
             "author": {
+                "@type": "Person",
+                "name": "Shivam Singh",
+                "jobTitle": "Founder",
+                "url": "https://www.filmiway.com/about"
+            },
+            "publisher": {
                 "@type": "Organization",
-                "name": "Filmiway"
+                "name": "Filmiway",
+                "url": "https://www.filmiway.com"
             },
             "reviewRating": {
                 "@type": "Rating",
@@ -1126,7 +1133,7 @@ export async function getStaticProps({ params }) {
     let metaDesc = '';
 
     if (hasExactTimestamps) {
-        metaTitle = `${baseMovie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
+        metaTitle = `${displayTitleWithYear} Parents Guide (Skip Sex & Nudity Timestamps)`;
 
         const sortedScenes = [...resolvedSensitiveScenes].filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none').sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -1247,17 +1254,26 @@ export async function getStaticProps({ params }) {
             return true;
         });
 
-        // Get details for up to 4 movies
-        for (let i = 0; i < candidateIDs.length && similarMovies.length < 4; i++) {
-            const id = candidateIDs[i];
-            const m = masterDatabase.find(dbm => dbm.imdbID === id);
-            if (m) {
-                const cData = tmdbCache[id] || {};
-                similarMovies.push({
-                    title: m.Title,
-                    slug: m.slug,
-                    poster: cData.poster_path ? `${cData.poster_path}` : null
-                });
+        // Circular neighbor selection: start right after current movie's position in the collection
+        // This ensures every movie in the collection receives inbound links instead of only the first 4
+        if (candidateIDs.length > 0) {
+            const collectionList = COLLECTIONS[primarySlug].movies;
+            const selfIdx = collectionList.indexOf(baseMovie.imdbID);
+            const startIndex = selfIdx !== -1 ? (selfIdx % candidateIDs.length) : 0;
+            const takeCount = Math.min(4, candidateIDs.length);
+
+            for (let step = 0; step < takeCount; step++) {
+                const targetIdx = (startIndex + step) % candidateIDs.length;
+                const id = candidateIDs[targetIdx];
+                const m = masterDatabase.find(dbm => dbm.imdbID === id);
+                if (m && !similarMovies.some(sm => sm.slug === m.slug)) {
+                    const cData = tmdbCache[id] || {};
+                    similarMovies.push({
+                        title: m.Title,
+                        slug: m.slug,
+                        poster: cData.poster_path ? `${cData.poster_path}` : null
+                    });
+                }
             }
         }
     }

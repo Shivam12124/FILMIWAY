@@ -1096,7 +1096,7 @@ export const COLLECTIONS = {
       { label: "BANTER", desc: "Sharp dialogue" },
       { label: "CHEMISTRY", desc: "Electric leads" }
     ],
-    movies: ['tt0414387', 'tt0098635', 'tt0147746', 'tt1045658', 'tt0128853', 'tt0092890', 'tt2674426', 'tt1041829', 'tt0251127', 'tt26047818'],
+    movies: ['tt0414387', 'tt0098635', 'tt0147746', 'tt1045658', 'tt0128853', 'tt0092890', 'tt2674426', 'tt1041829', 'tt0251127', 'tt26047818', 'tt33397980'],
     relatedCollections: ['best-romance-movies-on-hulu', 'best-romance-movies-on-hbo-max', 'best-marriage-crisis-movies']
   },
 
