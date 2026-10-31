@@ -10898,5 +10898,41 @@
     "budget": "$7,000,000",
     "revenue": "$45,145,476",
     "tagline": ""
+  },
+  "tt11138512": {
+    "tmdbId": "639933",
+    "poster_path": "/aSSJMnHknzKjlZ6zybwD7eyJ4Po.jpg",
+    "backdrop_path": "/fMiEp00v8gGWEceL4QeLu6H6z69.jpg",
+    "runtime": 137,
+    "release_date": "2022-04-07",
+    "overview": "Prince Amleth is on the verge of becoming a man when his father is brutally murdered by his uncle, who kidnaps the boy's mother. Two decades later, Amleth is now a Viking who's on a mission to save his mother, kill his uncle and avenge his father.",
+    "ageRating": "R",
+    "director": "Robert Eggers",
+    "cast": [
+      "Alexander Skarsgård",
+      "Nicole Kidman",
+      "Claes Bang"
+    ],
+    "budget": "$70,000,000",
+    "revenue": "$69,633,110",
+    "tagline": "Conquer your fate."
+  },
+  "tt0094625": {
+    "tmdbId": "149",
+    "poster_path": "/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg",
+    "backdrop_path": "/fK40VGYIm7hmKrLJ26fgPQU0qRG.jpg",
+    "runtime": 124,
+    "release_date": "1988-07-16",
+    "overview": "A secret military project endangers Neo-Tokyo when it turns a biker gang member into a rampaging psychic psychopath that only two teenagers and a group of psychics can stop.",
+    "ageRating": "R",
+    "director": "Katsuhiro Otomo",
+    "cast": [
+      "Mitsuo Iwata",
+      "Nozomu Sasaki",
+      "Mami Koyama"
+    ],
+    "budget": "$5,700,000",
+    "revenue": "$56,725,538",
+    "tagline": "Neo-Tokyo is about to E.X.P.L.O.D.E."
   }
 }

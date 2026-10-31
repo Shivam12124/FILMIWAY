@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
   { tmdbId: 500664, imdbID: 'tt6499752', Title: 'Upgrade', year: 2018, genre: 'Sci-Fi', runtime: 100, rank: 7 },
   { tmdbId: 861, imdbID: 'tt0100802', Title: 'Total Recall', year: 1990, genre: 'Sci-Fi', runtime: 113, rank: 8 },
   { tmdbId: 335984, imdbID: 'tt1856101', Title: 'Blade Runner 2049', year: 2017, genre: 'Sci-Fi', runtime: 164, rank: 9 },
-  { tmdbId: 137113, imdbID: 'tt1631867', Title: 'Edge of Tomorrow', year: 2014, genre: 'Sci-Fi', runtime: 113, rank: 10 }
+  { tmdbId: 137113, imdbID: 'tt1631867', Title: 'Edge of Tomorrow', year: 2014, genre: 'Sci-Fi', runtime: 113, rank: 10 },
+  { tmdbId: 149, imdbID: 'tt0094625', Title: 'Akira', year: 1988, genre: 'Animation, Sci-Fi, Action', runtime: 124, rank: 'BONUS' }
 ];
 
 // Helper to ensure default values exist
@@ -78,7 +79,12 @@ export const SENSITIVE_TIMELINES = {
   },
   
   // Edge of Tomorrow
-  137113: { scenes: [] }
+  137113: { scenes: [] },
+  149: {
+    scenes: [
+      { start: '28:19', end: '28:24', type: 'Nudity (Woman)', severity: 'High', description: 'While held captive by members of a rival gang, Kaori has her blouse violently ripped open, briefly exposing her bare breasts.' }
+    ]
+  }
 };
 
 export const FALLBACK_POSTERS = {
@@ -91,7 +97,8 @@ export const FALLBACK_POSTERS = {
   500664: 'https://m.media-amazon.com/images/M/MV5BMjM1MTcyNDM4MV5BMl5BanBnXkFtZTgwNDYwNTM5NjE@._V1_SX500.jpg',
   861: 'https://m.media-amazon.com/images/M/MV5BMTU0NTg4OTI3MF5BMl5BanBnXkFtZTcwMzk2NjY0OA@@._V1_SX500.jpg',
   335984: 'https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZGRhMi00YzJhLWJmOTMtMjE0MjY5ZjE4MzlkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX500.jpg',
-  137113: 'https://m.media-amazon.com/images/M/MV5BMTk1NTQyMzk0NF5BMl5BanBnXkFtZTgwNDk0NjY3MTE@._V1_SX500.jpg'
+  137113: 'https://m.media-amazon.com/images/M/MV5BMTk1NTQyMzk0NF5BMl5BanBnXkFtZTgwNDk0NjY3MTE@._V1_SX500.jpg',
+  149: 'https://image.tmdb.org/t/p/w500/neZ0ykEsPqxamsX6o5QNUFILQrz.jpg'
 };
 
 export const COMPLETE_MOVIE_DATA = {
@@ -303,6 +310,27 @@ export const COMPLETE_MOVIE_DATA = {
     synopsis: "When publicity officer William Cage dies fighting alien Mimics on D-Day, he awakens the previous morning with full memory intact—trapped in an endless combat loop. Partnering with battle-hardened warrior Rita Vrataski, Cage masters the time mechanic to trace the hive mind back to its source. Liman's video game-inspired sci-fi actioner brilliantly weaponizes repetition as strategy, turning trial-and-error death into perfected alien extermination.", 
     themes: ["Time Loops", "Skill Mastery", "Alien Hive Mind"], 
     awards: ["Academy Award Nominations", "Saturn Award Winner"] 
+  }),
+
+  // BONUS. Akira (1988)
+  149: createMovieData({ 
+    tmdbId: 149, imdbID: 'tt0094625', Title: 'Akira',
+    cyberComplexity: 98, philosophicalDepth: 96,
+    complexityLevel: "EXTREME", dominantColor: "#dc2626", 
+    rating: 8.0, criticsScore: 91, audienceScore: 90, 
+    director: "Katsuhiro Otomo", cast: ["Mitsuo Iwata", "Nozomu Sasaki", "Mami Koyama"], 
+    boxOffice: "$49 million", budget: "$8.5 million", 
+    dna: { "Sci-Fi": 50, "Animation": 30, "Action": 20 }, 
+    scenes: [
+      { time: 15, intensity: 65, label: "Neo-Tokyo Clash", color: "#b91c1c" }, 
+      { time: 40, intensity: 80, label: "Awakening Power", color: "#dc2626" }, 
+      { time: 75, intensity: 88, label: "Military Showdown", color: "#ef4444" }, 
+      { time: 100, intensity: 95, label: "Flesh Mutation", color: "#f87171" }, 
+      { time: 120, intensity: 100, label: "Akira Reborn", color: "#fca5a5" }
+    ], 
+    synopsis: "In post-apocalyptic Neo-Tokyo, biker delinquent Tetsuo Shima is injured in an encounter with an escaped psychic and gains godlike, uncontrollable telekinetic abilities that mirror the cataclysmic energy that destroyed Tokyo thirty years earlier. As Tetsuo descends into megalomania and horrific biological mutation, his childhood friend Kaneda must confront the military, underground rebels, and his closest friend to prevent total annihilation. Katsuhiro Otomo's cyberpunk animation masterwork fundamentally shaped global pop culture and directly inspired The Matrix, pioneering visual motifs of digital rebellion, psychic awakening, and dystopian tech-noir.", 
+    themes: ["Psychic Transcendence", "Cyberpunk Dystopia", "Unchecked Power", "Rebellion"], 
+    awards: ["Amsterdam Fantastic Film Festival Winner", "Global Anime Landmark"] 
   })
 };
 
@@ -316,7 +344,8 @@ export const STRATEGIC_QUOTES = {
   500664: "You're going to change everything.",
   861: "Remember — you’re not you. You’re me.",
   335984: "I’ve seen things…",
-  137113: 'Live. Die. Repeat.'
+  137113: 'Live. Die. Repeat.',
+  149: 'Kaneda, what have you done to your bike?'
 };
 
 export const CINEMATIC_COLORS = {
@@ -376,6 +405,13 @@ export const MATRIX_MOVIE_FAQS = {
   'Edge of Tomorrow': [
     { question: "How does the time loop work in Edge of Tomorrow?", answer: "The 'Mimic' aliens use time as a tactical weapon. When Cage is covered in the blood of an 'Alpha' Mimic, he inadvertently hijacks their biological ability to reset the day upon death. This turns the war into a 'video game' scenario where he must learn through thousands of deaths to find the one perfect path to victory." },
     { question: "What is the 'Training' theme in Edge of Tomorrow?", answer: "Much like Neo 'downloading' Kung Fu in The Matrix, Cage must achieve mastery through repetition. The film highlights that 'greatness' isn't born; it's forged through the brutal, iterative process of failure. By the end, Cage’s reflexes are so advanced they appear supernatural to everyone around him." }
+  ],
+  'Akira': [
+    { question: "How did Akira directly influence The Matrix?", answer: "The Wachowskis have cited Akira and Ghost in the Shell as their primary cinematic touchstones for The Matrix. The opening rooftop chase, the cyberpunk megacity aesthetic, the rebel underground, the green digital grids, and Neo's bullet-stopping telekinesis are all direct visual homages to Katsuhiro Otomo's groundbreaking anime." },
+    { question: "Does Akira have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Akira is rated as High. Severe, graphic animated violence and intense body horror throughout. Features brutal shootouts with point-blank headshots, characters severed by orbital lasers, dismemberment with severed bleeding limbs, and explosive blasts with scattered gore and entrails. Includes extreme physical brutality during biker gang clashes with hammer strikes, bloody beatings, and characters crushed under rubble. Highlights horrifying telekinetic violence, culminating in a young woman crushed into a burst of blood and an uncontrollable mutation into an enormous mass of pulsating flesh." },
+    { question: "Does Akira have profanity or swearing?", answer: "According to the Filmiway Parents Guide, the profanity in Akira is rated as Moderate. Moderate language throughout. Dialogue contains several uses of the F-bomb, frequent crude terms, vulgar insults, scatological references, derogatory slurs, and mild expletives." },
+    { question: "What is the meaning behind Tetsuo's mutation at the end of Akira?", answer: "Tetsuo's horrific body horror mutation represents the terrifying consequences of human beings obtaining godlike energy without the emotional or spiritual maturity to control it. His body physically expands and warps as his psychic power outgrows his biological vessel, symbolizing science and ambition run catastrophically out of control." },
+    { question: "What does the final line 'I am Tetsuo' mean in Akira?", answer: "When Tetsuo triggers a new Big Bang and ascends into another dimension, his final declaration 'I am Tetsuo' signifies that despite shedding his physical human form and losing his mortal life, his distinct conscious identity survived the birth of a new universe." }
   ]
 };
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {

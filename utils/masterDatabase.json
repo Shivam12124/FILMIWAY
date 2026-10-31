@@ -297,6 +297,17 @@
     "sourceFile": "bestActionMoviesData.js"
   },
   {
+    "tmdbId": 149,
+    "imdbID": "tt0094625",
+    "Title": "Akira",
+    "year": 1988,
+    "genre": "Animation, Sci-Fi, Action",
+    "runtime": 124,
+    "rank": "BONUS",
+    "slug": "akira",
+    "sourceFile": "matrixMovieData.js"
+  },
+  {
     "tmdbId": 153,
     "imdbID": "tt0335266",
     "Title": "Lost in Translation",
@@ -5654,6 +5665,17 @@
     "sourceFile": "parasiteMovieData.js"
   },
   {
+    "tmdbId": 639933,
+    "imdbID": "tt11138512",
+    "Title": "The Northman",
+    "year": 2022,
+    "genre": "Action, Adventure, Drama",
+    "runtime": 137,
+    "rank": "BONUS",
+    "slug": "the-northman",
+    "sourceFile": "revengeMovieData.js"
+  },
+  {
     "tmdbId": 664413,
     "imdbID": "tt10886166",
     "Title": "365 Days",
@@ -6619,7 +6641,6 @@
     "runtime": 174,
     "rank": "BONUS",
     "slug": "you-can-see-everything",
-    "sourceFile": "a24MovieData.js",
-    "inTheaters": true
+    "sourceFile": "a24MovieData.js"
   }
 ]

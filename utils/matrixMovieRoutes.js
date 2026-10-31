@@ -41,7 +41,10 @@ export const MATRIX_MOVIE_SLUGS = {
     'tt1856101': 'blade-runner-2049',
     
     // Rank 10: Edge of Tomorrow (2014)
-    'tt1631867': 'edge-of-tomorrow'
+    'tt1631867': 'edge-of-tomorrow',
+    
+    // Rank BONUS: Akira (1988)
+    'tt0094625': 'akira'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

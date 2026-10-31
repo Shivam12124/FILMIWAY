@@ -904,6 +904,39 @@
     "Age": "12+",
     "Summary": "Aged 12+ for moderate martial arts action and stylized sword battles."
   },
+  "149": {
+    "Title": "Akira",
+    "Age": "16+",
+    "Summary": "Aged 16+ for severe graphic animated body horror, intense violence and gore, mature nudity, and coarse language.",
+    "scenes": [
+      {
+        "start": "0:28:19",
+        "end": "0:28:24",
+        "type": "Nudity (Woman)",
+        "severity": "High",
+        "description": "While held captive by members of a rival gang, Kaori has her blouse violently ripped open, briefly exposing her bare breasts.",
+        "startSec": 1699,
+        "endSec": 1704,
+        "durationSec": 5,
+        "category": "Nudity",
+        "who": "Female"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Severe, graphic animated violence and intense body horror throughout. Features brutal shootouts with point-blank headshots, characters severed by orbital lasers, dismemberment with severed bleeding limbs, and explosive blasts with scattered gore and entrails. Includes extreme physical brutality during biker gang clashes with hammer strikes, bloody beatings, and characters crushed under rubble. Highlights horrifying telekinetic violence, culminating in a young woman crushed into a burst of blood and an uncontrollable mutation into an enormous mass of pulsating flesh."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Moderate",
+        "description": "Moderate language throughout. Dialogue contains several uses of the F-bomb, frequent crude terms, vulgar insults, scatological references, derogatory slurs, and mild expletives."
+      }
+    ]
+  },
   "153": {
     "Title": "Lost in Translation",
     "scenes": [
@@ -11580,7 +11613,19 @@
         "endSec": 1171,
         "durationSec": 32,
         "category": "Sexual Content",
-        "who": "Unspecified"
+        "who": "Male"
+      },
+      {
+        "start": "0:30:55",
+        "end": "0:31:40",
+        "type": "Sexual Content (Masturbation)",
+        "severity": "Moderate",
+        "description": "Allen (Philip Seymour Hoffman) makes an obscene phone call while masturbating with suggestive physical hand motions.",
+        "startSec": 1855,
+        "endSec": 1900,
+        "durationSec": 45,
+        "category": "Sexual Content",
+        "who": "Male"
       },
       {
         "start": "1:18:50",
@@ -11603,6 +11648,18 @@
         "durationSec": 73,
         "category": "Sex",
         "who": "Unspecified"
+      },
+      {
+        "start": "2:14:00",
+        "end": "2:14:30",
+        "type": "Sexual Content (Masturbation)",
+        "severity": "High",
+        "description": "Billy Maplewood (Rufus Read) masturbates with explicit physical motions on a balcony.",
+        "startSec": 8040,
+        "endSec": 8070,
+        "durationSec": 30,
+        "category": "Sexual Content",
+        "who": "Male"
       },
       {
         "start": "",
@@ -21800,6 +21857,75 @@
     ],
     "Summary": "Aged 12+ for sci-fi action, fantasy violence, brief language, and intense emotional scenes.",
     "Age": "12+"
+  },
+  "639933": {
+    "Title": "The Northman",
+    "Age": "16+",
+    "Summary": "Aged 16+ for severe graphic battle violence, intense gore, mutilation, sexual content, and graphic nudity.",
+    "scenes": [
+      {
+        "start": "1:03:58",
+        "end": "1:04:06",
+        "type": "Nudity (Woman)",
+        "severity": "High",
+        "description": "A woman is shown lifting her skirt and exposing her pubic hair to a man.",
+        "startSec": 3838,
+        "endSec": 3846,
+        "durationSec": 8,
+        "category": "Nudity",
+        "who": "Female"
+      },
+      {
+        "start": "1:15:20",
+        "end": "1:16:43",
+        "type": "Sex & Partial Nudity",
+        "severity": "Moderate",
+        "description": "Filmed from a distant wide angle at night, Amleth (Alexander Skarsgård) and Olga (Anya Taylor-Joy) have sex in a forest with thrusting visible as well as the woman's buttocks.",
+        "startSec": 4520,
+        "endSec": 4603,
+        "durationSec": 83,
+        "category": "Sex & Nudity",
+        "who": "Both"
+      },
+      {
+        "start": "1:46:10",
+        "end": "1:46:20",
+        "type": "Partial Nudity (Man)",
+        "severity": "Mild",
+        "description": "Amleth (Alexander Skarsgård) is shown nude from behind in a back shot at night with bare buttocks visible.",
+        "startSec": 6370,
+        "endSec": 6380,
+        "durationSec": 10,
+        "category": "Nudity",
+        "who": "Male"
+      },
+      {
+        "start": "1:48:15",
+        "end": "1:48:20",
+        "type": "Partial Nudity (Woman)",
+        "severity": "Moderate",
+        "description": "Olga (Anya Taylor-Joy) enters a natural hot spring, showing rear nudity with her bare buttocks visible.",
+        "startSec": 6495,
+        "endSec": 6500,
+        "durationSec": 5,
+        "category": "Nudity",
+        "who": "Female"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Severe, graphic violence and intense gore throughout. Features brutal combat with frequent decapitations, severed limbs, throat-slitting with arterial blood spray, a man's nose violently sliced off, and blades driven into faces. Includes visceral mutilation with corpses missing hearts, spilled intestines, hung bodies with genital mutilation, ritual human sacrifices, and animal slaughter including a horse decapitation. Concludes with a lethal sword duel resulting in severe lacerations, chest impalement, and beheading."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Mild",
+        "description": "Mild coarse language throughout. Dialogue contains infrequent period-accurate insults, derogatory remarks directed at women, mild expletives, and coarse bodily references."
+      }
+    ]
   },
   "664413": {
     "Title": "365 Days",

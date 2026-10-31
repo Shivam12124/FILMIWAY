@@ -4,6 +4,8 @@ const path = require('path');
 // 🛡️ VERIFIED TOP & MANUAL MOVIES (Same set as skip-timestamps.js)
 const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '1765072', 'tt45368240', // You Can See Everything (2026)
+    '149', 'tt0094625', // Akira (1988)
+    '639933', 'tt11138512', // The Northman (2022)
     'tt15398776', 'tt0993846', 'tt0137523', 'tt0120338', 'tt1375666', 'tt0468569', 'tt0114369', 'tt0103772',
     'tt2322441', 'tt0163970', 'tt0477348', 'tt0110912', 'tt0068646', 'tt0246578', 'tt33397980', 'tt0816692',
     'tt1130884', 'tt0482571', 'tt0209144', 'tt6751668', 'tt0364569', 'tt0947798', 'tt0120663', 'tt0099685',

@@ -20,7 +20,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 393, imdbID: 'tt0378194', Title: 'Kill Bill: Vol. 2', year: 2004, genre: 'Action Crime', runtime: 137, rank: 7 },
     { tmdbId: 245891, imdbID: 'tt2911666', Title: 'John Wick', year: 2014, genre: 'Action Thriller', runtime: 101, rank: 8 },
     { tmdbId: 49797, imdbID: 'tt1588170', Title: 'I Saw the Devil', year: 2010, genre: 'Thriller Horror', runtime: 144, rank: 9 },
-    { tmdbId: 11362, imdbID: 'tt0245844', Title: 'The Count of Monte Cristo', year: 2002, genre: 'Adventure Action', runtime: 131, rank: 10 }
+    { tmdbId: 11362, imdbID: 'tt0245844', Title: 'The Count of Monte Cristo', year: 2002, genre: 'Adventure Action', runtime: 131, rank: 10 },
+    { tmdbId: 639933, imdbID: 'tt11138512', Title: 'The Northman', year: 2022, genre: 'Action, Adventure, Drama', runtime: 137, rank: 'BONUS' }
 ];
 
 const timeToSeconds = (timeStr) => {
@@ -55,7 +56,15 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
     49797: { scenes: [{ start: '9:53', end: '10:25 ', type: 'Nudity', severity: 'Moderate"' }, { start: '26:40', end: '27:40', type: 'Sex & Nudity', severity: 'Moderate"' }] },
-    11362: { scenes: [] }
+    11362: { scenes: [] },
+    639933: {
+        scenes: [
+            { start: "1:03:58", end: "1:04:06", type: "Nudity (Woman)", severity: "High", description: "A woman is shown lifting her skirt and exposing her pubic hair to a man." },
+            { start: "1:15:20", end: "1:16:43", type: "Sex & Partial Nudity", severity: "Moderate", description: "Filmed from a distant wide angle at night, Amleth (Alexander Skarsgård) and Olga (Anya Taylor-Joy) have sex in a forest with thrusting visible as well as the woman's buttocks." },
+            { start: "1:46:10", end: "1:46:20", type: "Partial Nudity (Man)", severity: "Mild", description: "Amleth (Alexander Skarsgård) is shown nude from behind in a back shot at night with bare buttocks visible." },
+            { start: "1:48:15", end: "1:48:20", type: "Partial Nudity (Woman)", severity: "Moderate", description: "Olga (Anya Taylor-Joy) enters a natural hot spring, showing rear nudity with her bare buttocks visible." }
+        ]
+    }
 };
 
 // 3. FALLBACK POSTERS
@@ -69,7 +78,8 @@ export const FALLBACK_POSTERS = {
     393: "https://image.tmdb.org/t/p/w500/2yhg0mZQMhDyvUQ4rG1IZ4oIaP6.jpg",
     245891: "https://image.tmdb.org/t/p/w500/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
     49797: "https://image.tmdb.org/t/p/w500/zp5jh4fyqGRyPd2b9X2E8C.jpg",
-    11362: "https://image.tmdb.org/t/p/w500/9.jpg"
+    11362: "https://image.tmdb.org/t/p/w500/9.jpg",
+    639933: "https://image.tmdb.org/t/p/w500/aSSJMnHknzKjlZ6zybwD7eyJ4Po.jpg"
 };
 
 // Helper: Create Data with Revenge Metrics
@@ -252,6 +262,23 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "The ultimate tale of transformation and patience. Edmond Dantès' journey from betrayed prisoner to wealthy nobleman is a masterclass in slow-burn, strategic justice.",
         themes: ["Justice", "Patience", "Class Struggle", "Betrayal"]
+    }),
+
+    // BONUS. The Northman (2022) - STATUS: MYTHIC VIKING VENGEANCE
+    639933: createRevengeData({
+        revengeIntensity: 98, moralComplexity: 90, visceralImpact: 98, complexityLevel: "HIGH",
+        dominantColor: "#1c1917", rating: 7.1, director: "Robert Eggers",
+        cast: ["Alexander Skarsgård", "Nicole Kidman", "Claes Bang", "Anya Taylor-Joy"],
+        dna: { "Action": 45, "Drama": 35, "Fantasy": 20 },
+        scenes: [
+            { time: 15, intensity: 85, label: 'Father Murdered', color: '#7f1d1d' },
+            { time: 40, intensity: 90, label: 'Berserker Raid', color: '#991b1b' },
+            { time: 75, intensity: 70, label: 'The Slave Camp', color: '#44403c' },
+            { time: 110, intensity: 88, label: 'The Revelation', color: '#b91c1c' },
+            { time: 130, intensity: 100, label: 'Volcano Duel', color: '#dc2626' }
+        ],
+        synopsis: "A mythic Viking revenge saga rooted in ancient Norse lore. Prince Amleth embarks on a brutal, unrelenting blood quest to avenge his father, save his mother, and slay his treacherous uncle.",
+        themes: ["Fate", "Vengeance", "Honor", "Norse Mythology"]
     })
 };
 // 5. CUSTOM FAQs
@@ -321,6 +348,14 @@ export const REVENGE_MOVIE_FAQS = {
         { question: "Where was the Château d'If prison filmed for the movie?", answer: "The exterior and interior scenes of the terrifying island prison, the Château d'If, were filmed at Saint Mary's Tower on the island of Comino in Malta, which provided the perfect isolated, ancient stone aesthetic." },
         { question: "What is the meaning of the name 'Zatarra' in the film?", answer: "When Edmond is rescued by the smugglers, they call him 'Zatarra,' which they translate as 'driftwood.' This perfectly symbolizes his state at the time: a man with no identity, floating aimlessly through life before he discovers the treasure and his purpose." },
         { question: "Why does Edmond spare Fernand Mondego initially?", answer: "Edmond's revenge is meticulous. He believes death is too easy a punishment. He wants Mondego to experience the exact same despair he felt in prison by systematically destroying Mondego's fortune, reputation, and family before finally allowing him to die." }
+    ],
+    'The Northman': [
+        { question: "Does The Northman have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Northman is rated as High. Severe, graphic violence and intense gore throughout. Features brutal combat with frequent decapitations, severed limbs, throat-slitting with arterial blood spray, a man's nose violently sliced off, and blades driven into faces. Includes visceral mutilation with corpses missing hearts, spilled intestines, hung bodies with genital mutilation, ritual human sacrifices, and animal slaughter including a horse decapitation. Concludes with a lethal sword duel resulting in severe lacerations, chest impalement, and beheading." },
+        { question: "Does The Northman have profanity or swearing?", answer: "According to the Filmiway Parents Guide, the profanity in The Northman is rated as Mild. Mild coarse language throughout. Dialogue contains infrequent period-accurate insults, derogatory remarks directed at women, mild expletives, and coarse bodily references." },
+        { question: "Is The Northman based on the legend that inspired Hamlet?", answer: "Yes. The Northman is based on the Scandinavian legend of Amleth, chronicled by Saxo Grammaticus in the 12th century, which served as William Shakespeare's direct inspiration for Hamlet." },
+        { question: "Where was the final volcano duel in The Northman filmed?", answer: "The apocalyptic climax at the Gates of Hel was filmed against the volcanic landscapes of Mount Hekla in Iceland and reconstructed on sound stages with CGI smoke, embers, and practical basalt terrain." },
+        { question: "How historically accurate is The Northman to Viking culture?", answer: "Director Robert Eggers collaborated with leading historians, archaeologists, and folklorists to ensure rigorous historical accuracy in Norse clothing, rituals, weaponry, architecture, and spiritual beliefs." },
+        { question: "What does the ending of The Northman mean for Amleth?", answer: "Amleth fulfills his fate by slaying his uncle Fjölnir, securing the survival of his bloodline through Olga and his unborn twin daughters. His dying vision of being carried to Valhalla by a Valkyrie represents his spiritual ascension and adherence to Norse destiny." }
     ]
 };
 // 6. HELPER FUNCTIONS (🔥 UPGRADED FOR UNIVERSAL SEO)

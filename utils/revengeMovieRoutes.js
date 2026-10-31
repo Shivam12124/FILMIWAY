@@ -13,7 +13,8 @@ export const REVENGE_MOVIE_SLUGS = {
   'tt0378194': 'kill-bill-vol-2',
   'tt2911666': 'john-wick',
   'tt1588170': 'i-saw-the-devil',
-  'tt0245844': 'the-count-of-monte-cristo'
+  'tt0245844': 'the-count-of-monte-cristo',
+  'tt11138512': 'the-northman'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

@@ -226,7 +226,7 @@ export const COLLECTIONS = {
       { label: "METHODICAL", desc: "Patient planning" },
       { label: "DAMNATION", desc: "Moral descent" }
     ],
-    movies: ['tt0364569', 'tt0172495', 'tt0105695', 'tt0112573', 'tt0482571', 'tt1663202', 'tt0378194', 'tt2911666', 'tt1588170', 'tt0245844'],
+    movies: ['tt0364569', 'tt0172495', 'tt0105695', 'tt0112573', 'tt0482571', 'tt1663202', 'tt0378194', 'tt2911666', 'tt1588170', 'tt0245844', 'tt11138512'],
     relatedCollections: ['best-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
   },
 
@@ -254,7 +254,7 @@ export const COLLECTIONS = {
       { label: "AWAKENING", desc: "Reality shift" },
       { label: "PHILOSOPHY", desc: "Free will" }
     ],
-    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120907', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867'],
+    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120907', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867', 'tt0094625'],
     relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
   },
 
@@ -1261,7 +1261,8 @@ export const getPrimaryCollectionForMovie = (imdbID) => {
           'gangsterMovieData.js': 'best-gangster-movies-of-all-time',
           'bookAdaptationData.js': 'top-10-book-adaptations',
           'marriageCrisisMovieData.js': 'best-marriage-crisis-movies',
-          'sciFiMovieData.js': 'best-sci-fi-movies'
+          'sciFiMovieData.js': 'best-sci-fi-movies',
+          'revengeMovieData.js': 'best-revenge-movies'
         };
         primarySlug = sourceMap[movie.sourceFile] || null;
       }

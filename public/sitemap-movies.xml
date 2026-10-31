@@ -3612,4 +3612,16 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.filmiway.com/movie/the-northman/skip-timestamps</loc>
+    <lastmod>2026-10-31T08:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.filmiway.com/movie/akira/skip-timestamps</loc>
+    <lastmod>2026-10-31T08:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

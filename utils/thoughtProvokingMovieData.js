@@ -109,8 +109,10 @@ export const SENSITIVE_TIMELINES = {
     10683: { 
         scenes: [
             { start: "0:18:59", end: "0:19:31", type: "Sexual Content (Masturbation)", severity: "High" },
+            { start: "0:30:55", end: "0:31:40", type: "Sexual Content (Masturbation)", severity: "Moderate", description: "Allen (Philip Seymour Hoffman) makes an obscene phone call while masturbating with suggestive physical hand motions." },
             { start: "1:18:50", end: "1:19:55", type: "Sex & Nudity", severity: "High" },
-            { start: "1:35:30", end: "1:36:43", type: "Sex", severity: "High" }
+            { start: "1:35:30", end: "1:36:43", type: "Sex", severity: "High" },
+            { start: "2:14:00", end: "2:14:30", type: "Sexual Content (Masturbation)", severity: "High", description: "Billy Maplewood (Rufus Read) masturbates with explicit physical motions on a balcony." }
         ] 
     }
 };
