@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 import { db } from '../lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, doc, setDoc, increment, serverTimestamp } from 'firebase/firestore';
 
 // 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL
 const ALL_REGIONS = [
@@ -289,7 +289,11 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
     // Normalize accents (e.g., "Irréversible" -> "Irreversible") so Amazon search finds the exact movie/physical disc
     const normalizedTitle = (title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 
-    return `https://www.${domain}/s?k=${encodeURIComponent(normalizedTitle + " movie")}&tag=${tag}`;
+    // Use Amazon Instant Video department filter for US/UK/CA/DE so Prime Video player is displayed directly at top of search
+    const isVideoSupported = ['US', 'GB', 'CA', 'DE'].includes(targetCode);
+    const videoParam = isVideoSupported ? '&i=instant-video' : '';
+
+    return `https://www.${domain}/s?k=${encodeURIComponent(normalizedTitle + " movie")}${videoParam}&tag=${tag}`;
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
 }
@@ -470,7 +474,12 @@ const SmartVpnStreamingCard = ({ tip, movieTitle, movieSlug, userCountry }) => {
 
   const handleVpnClick = async () => {
     try {
-      // 🚀 Write to dedicated expressvpn_clicks collection in Firestore (Matching audible_clicks & wheretowatch_amazon_clicks)
+      const now = new Date();
+      const todayDateStr = now.toISOString().slice(0, 10); // YYYY-MM-DD
+      const timeStr = now.toTimeString().slice(0, 8); // HH:MM:SS
+      const countryCode = userCountry || 'US';
+
+      // 1. Detailed click stream
       addDoc(collection(db, 'expressvpn_clicks'), {
         promoType: 'expressvpn',
         placement: 'where_to_watch_smart_tip',
@@ -478,14 +487,31 @@ const SmartVpnStreamingCard = ({ tip, movieTitle, movieSlug, userCountry }) => {
         tipTitle: tip.title || '',
         movieTitle: movieTitle || 'Unknown',
         movieSlug: movieSlug || 'unknown',
-        country: userCountry || 'US',
+        country: countryCode,
         deal: '$2.99/mo + 4 mos free',
         targetUrl: 'https://go.expressvpn.com/c/7564909/1462856/16063',
+        date: todayDateStr,
+        time: timeStr,
         timestamp: serverTimestamp(),
         userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
       }).catch(err => {
         console.error("expressvpn_clicks tracking error:", err);
       });
+
+      // 2. Daily summary document for instant at-a-glance counting
+      const dailySummaryRef = doc(db, 'expressvpn_daily_summary', todayDateStr);
+      setDoc(dailySummaryRef, {
+        date: todayDateStr,
+        totalClicks: increment(1),
+        lastClickedMovie: movieTitle || 'Unknown',
+        lastClickedSlug: movieSlug || 'unknown',
+        lastClickedCountry: countryCode,
+        lastClickedAt: serverTimestamp(),
+        [`countries.${countryCode}`]: increment(1)
+      }, { merge: true }).catch(err => {
+        console.error("expressvpn_daily_summary error:", err);
+      });
+
     } catch (e) {}
   };
 
@@ -682,19 +708,42 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
       const isAmazonLink = deepLink.includes('amazon.') || (provider.provider_name || '').toLowerCase().includes('amazon') || type === 'rent' || type === 'buy';
 
       if (isAmazonLink) {
+        const now = new Date();
+        const todayDateStr = now.toISOString().slice(0, 10);
+        const timeStr = now.toTimeString().slice(0, 8);
+        const countryCode = userCountry || region || 'US';
+        const movieTitleStr = movie?.Title || movie?.title || 'Unknown';
+        const movieSlugStr = movie?.slug || 'unknown';
+
         addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
-          movieTitle: movie?.Title || movie?.title || 'Unknown',
-          movieSlug: movie?.slug || 'unknown',
+          movieTitle: movieTitleStr,
+          movieSlug: movieSlugStr,
           tmdbId: movie?.tmdbId || null,
-          country: userCountry || region || 'US',
+          country: countryCode,
           storeRegion: region || 'US',
           providerName: provider?.provider_name || 'Amazon',
           type: type || 'buy',
           targetUrl: deepLink,
+          date: todayDateStr,
+          time: timeStr,
           timestamp: serverTimestamp(),
           userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
         }).catch(e => {
           console.error('Error tracking where-to-watch Amazon click:', e);
+        });
+
+        // Daily summary doc
+        const dailySummaryRef = doc(db, 'wheretowatch_amazon_daily_summary', todayDateStr);
+        setDoc(dailySummaryRef, {
+          date: todayDateStr,
+          totalClicks: increment(1),
+          lastClickedMovie: movieTitleStr,
+          lastClickedSlug: movieSlugStr,
+          lastClickedCountry: countryCode,
+          lastClickedAt: serverTimestamp(),
+          [`countries.${countryCode}`]: increment(1)
+        }, { merge: true }).catch(err => {
+          console.error("wheretowatch_amazon_daily_summary error:", err);
         });
       }
     };
@@ -750,20 +799,43 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
       // 🚀 Open Amazon link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
       window.open(deepLink, '_blank', 'noopener,noreferrer');
 
-      // Non-blocking fire-and-forget Firestore tracking to dedicated where-to-watch Amazon collection
+      const now = new Date();
+      const todayDateStr = now.toISOString().slice(0, 10);
+      const timeStr = now.toTimeString().slice(0, 8);
+      const countryCode = userCountry || region || 'US';
+      const movieTitleStr = movie?.Title || movie?.title || 'Unknown';
+      const movieSlugStr = movie?.slug || 'unknown';
+
+      // 1. Detailed click log
       addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
-        movieTitle: movie?.Title || movie?.title || 'Unknown',
-        movieSlug: movie?.slug || 'unknown',
+        movieTitle: movieTitleStr,
+        movieSlug: movieSlugStr,
         tmdbId: movie?.tmdbId || null,
-        country: userCountry || region || 'US',
+        country: countryCode,
         storeRegion: region || 'US',
         providerName: provider?.provider_name || 'Amazon',
         type: provider?.isFallback ? 'fallback_search' : (type || 'flatrate'),
         targetUrl: deepLink,
+        date: todayDateStr,
+        time: timeStr,
         timestamp: serverTimestamp(),
         userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
       }).catch(e => {
         console.error('Error tracking where-to-watch Amazon click:', e);
+      });
+
+      // 2. Daily summary document for instant at-a-glance counting
+      const dailySummaryRef = doc(db, 'wheretowatch_amazon_daily_summary', todayDateStr);
+      setDoc(dailySummaryRef, {
+        date: todayDateStr,
+        totalClicks: increment(1),
+        lastClickedMovie: movieTitleStr,
+        lastClickedSlug: movieSlugStr,
+        lastClickedCountry: countryCode,
+        lastClickedAt: serverTimestamp(),
+        [`countries.${countryCode}`]: increment(1)
+      }, { merge: true }).catch(err => {
+        console.error("wheretowatch_amazon_daily_summary error:", err);
       });
     };
 
@@ -1058,7 +1130,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
           <div className="text-center pt-5 sm:pt-6 border-t border-white/10">
             <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed max-w-lg mx-auto">
-              If you want to support Filmiway, buying through our links earns us a small commission at no extra cost to you.
+              If you want Filmiway to sustain and support our work, buying through our links earns us a small commission at no extra cost to you (in fact, it&apos;s free).
             </p>
           </div>
         </div>
