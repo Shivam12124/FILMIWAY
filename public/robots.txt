@@ -26,7 +26,6 @@ Disallow: /
 # These bots scrape data to pretrain models without citing Filmiway.
 # --------------------------------------------------
 User-agent: GPTBot
-User-agent: Google-Extended
 User-agent: CCBot
 User-agent: ClaudeBot
 User-agent: Amazonbot
@@ -40,6 +39,7 @@ Disallow: /
 # These bots deliver real-time answers and cite Filmiway links to users!
 # (6,000+ weekly answer retrievals from ChatGPT, Claude, Applebot & Perplexity)
 # --------------------------------------------------
+User-agent: Google-Extended
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: Claude-SearchBot
