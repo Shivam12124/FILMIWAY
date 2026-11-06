@@ -605,22 +605,19 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         </div>
     ) : null;
 
-    // ⏱️ STICKY CTA BAR — Top on mobile, Bottom on desktop
+    // ⏱️ STICKY CTA BAR — Bottom positioned on all devices to prevent blocking user reading view
     const stickyBar = (typeof document !== 'undefined' && showStickyBar && !showWatchAlong && filteredHeavyScenes.length > 0)
         ? createPortal(
             <AnimatePresence>
                 <motion.div
-                    key={`sticky-watch-along-${isMobile ? 'mobile' : 'desktop'}`}
-                    initial={{ y: isMobile ? -120 : 100, opacity: 0 }}
+                    key="sticky-watch-along-bar"
+                    initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: isMobile ? -120 : 100, opacity: 0 }}
+                    exit={{ y: 100, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className={isMobile
-                        ? "fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none md:hidden"
-                        : "fixed bottom-6 left-0 right-0 z-[9999] px-4 pb-2 pointer-events-none hidden md:block"
-                    }
+                    className="fixed bottom-3 sm:bottom-6 left-0 right-0 z-[9999] px-3 sm:px-4 pb-1 pointer-events-none"
                 >
-                    <div className="max-w-xl mx-auto flex items-center gap-3 bg-[#111113] border border-yellow-500/40 rounded-2xl px-4 py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
+                    <div className="max-w-xl mx-auto flex items-center gap-2.5 sm:gap-3 bg-[#111113]/95 backdrop-blur-md border border-yellow-500/40 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
                         {/* Pulsing live dot */}
                         <div className="relative flex-shrink-0 flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
@@ -629,14 +626,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         {/* Text */}
                         <div className="flex-1 min-w-0">
-                            <p className="text-white text-[13px] font-semibold leading-tight truncate">⏱ Watch-Along Timer</p>
-                            <p className="text-gray-400 text-[11px] leading-tight">Auto-alerts you 15 sec before each scene</p>
+                            <p className="text-white text-[12px] sm:text-[13px] font-semibold leading-tight truncate">⏱ Watch-Along Timer</p>
+                            <p className="text-gray-400 text-[10px] sm:text-[11px] leading-tight truncate">Auto-alerts you 15s before sensitive scenes</p>
                         </div>
 
                         {/* CTA */}
                         <button
                             onClick={() => { handleOpenWatchAlong(); setStickyDismissed(true); }}
-                            className="flex-shrink-0 flex items-center gap-1.5 bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-300 text-black text-[12px] font-bold px-4 py-2 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(234,179,8,0.4)] active:scale-95 cursor-pointer"
+                            className="flex-shrink-0 flex items-center gap-1.5 bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-300 text-black text-[11px] sm:text-[12px] font-bold px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(234,179,8,0.4)] active:scale-95 cursor-pointer"
                         >
                             <Play size={12} />
                             Start

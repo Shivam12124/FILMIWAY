@@ -202,6 +202,9 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
     const doubleTapFeedback = useRef(null);
     const [tapFeedback, setTapFeedback] = useState(null);
 
+    const hasPushedStateRef = useRef(false);
+    const isClosingRef = useRef(false);
+
     const audioCtxRef = useRef(null);
     const audioUnlockedRef = useRef(false);
     const wakeLockRef = useRef(null);
@@ -429,6 +432,9 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
         });
     }, [isRunning, resumeAudio]);
     const closeTimer = useCallback(() => {
+        if (isClosingRef.current) return;
+        isClosingRef.current = true;
+
         setIsRunning(false);
         releaseWakeLock();
         try {
@@ -441,8 +447,61 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
             audioCtxRef.current.close().catch(() => { });
             audioCtxRef.current = null;
         }
+
+        // Clean up history state if user clicked on-screen back/close button
+        if (hasPushedStateRef.current && typeof window !== 'undefined') {
+            hasPushedStateRef.current = false;
+            try {
+                window.history.back();
+            } catch (e) {}
+        }
+
+        // Smooth scroll back to timestamps so mobile user lands directly at the content
+        if (typeof document !== 'undefined') {
+            setTimeout(() => {
+                const firstTimestamp = document.getElementById('first-timestamp');
+                if (firstTimestamp) {
+                    firstTimestamp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    const list = document.querySelector('.timestamp-card-list');
+                    if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 60);
+        }
+
         onClose();
     }, [releaseWakeLock, onClose]);
+
+    // 📱 MOBILE BROWSER HISTORY SUPPORT:
+    // Pushes a history state so phone's native back button or swipe gesture
+    // closes the timer overlay cleanly instead of kicking the user off the website!
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try {
+                window.history.pushState({ filmiwayTimerOpen: true }, '');
+                hasPushedStateRef.current = true;
+            } catch (e) {}
+        }
+
+        const handlePopState = () => {
+            if (!isClosingRef.current) {
+                // The browser already popped the state, so avoid calling history.back()
+                hasPushedStateRef.current = false;
+                closeTimer();
+            }
+        };
+
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+            if (hasPushedStateRef.current && !isClosingRef.current) {
+                hasPushedStateRef.current = false;
+                try {
+                    window.history.back();
+                } catch (e) {}
+            }
+        };
+    }, [closeTimer]);
 
     const handleClose = useCallback(() => {
         console.log('FILMIWAY: handleClose triggered');
@@ -660,25 +719,21 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
 
             {/* HEADER */}
             <div className="relative z-50 flex items-center px-4 sm:px-6 py-3 sm:py-3.5 border-b border-white/10 bg-black/90 backdrop-blur-xl w-full shrink-0">
-                {/* ⬅️ THE EXACT BACK BUTTON CIRCLED IN RED */}
+                {/* ✕ CROSS BUTTON (EASY TO SPOT ON MOBILE) */}
                 <button
                     onClick={handleClose}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 text-white font-semibold text-xs sm:text-sm transition-all shrink-0 cursor-pointer pointer-events-auto z-[99999] shadow-sm active:scale-95"
-                    aria-label="Back to movie timestamps"
-                    title="Back to timestamps"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 border border-white/20 text-white flex items-center justify-center shrink-0 cursor-pointer pointer-events-auto z-[99999] shadow-sm active:scale-95 transition-all"
+                    aria-label="Close Watch-Along Timer"
+                    title="Close"
                 >
-                    <ChevronLeft size={20} strokeWidth={2.5} className="text-yellow-400 -ml-1 shrink-0" />
-                    <span>Back</span>
+                    <X size={20} strokeWidth={2.5} className="text-yellow-400" />
                 </button>
 
-                {/* SHIFTED RIGHT WITH ml-4 sm:ml-6 SO NO COLLISION */}
-                <div className="flex items-center gap-3 min-w-0 ml-4 sm:ml-6">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center shrink-0">
-                        <Play size={14} className="text-yellow-500" />
-                    </div>
+                {/* MOVIE INFO (FAKE PLAY ICON REMOVED TO PREVENT ACCIDENTAL CLICKS) */}
+                <div className="flex items-center min-w-0 ml-3.5 sm:ml-4">
                     <div className="text-left min-w-0">
                         <div className="text-[9px] sm:text-[10px] text-yellow-500/90 uppercase tracking-widest font-bold leading-none mb-0.5">Live Watch-Along</div>
-                        <div className="text-xs sm:text-sm font-semibold text-gray-100 max-w-[200px] sm:max-w-[280px] truncate leading-tight">{movie?.Title || 'Movie'}</div>
+                        <div className="text-xs sm:text-sm font-semibold text-gray-100 max-w-[220px] sm:max-w-[320px] truncate leading-tight">{movie?.Title || movie?.title || 'Movie'}</div>
                     </div>
                 </div>
             </div>
