@@ -1125,17 +1125,12 @@ export async function getStaticProps({ params }) {
     const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
     const profanityScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
 
-    // ⚡ ACTUAL HISTORICAL CUSTOM TITLES (15 May – 20 May 2026)
-    const MAY_CUSTOM_META_TITLES = {
-        'blue-is-the-warmest-color': "Blue Is the Warmest Color Skip Sex & Nudity Timestamps",
-        'the-dreamers': "The Dreamers Skip Sex & Nudity Timestamps"
-    };
-
     let metaTitle = '';
     let metaDesc = '';
 
     if (hasExactTimestamps) {
-        metaTitle = `${displayTitleWithYear} Parents Guide (Skip Sex & Nudity Timestamps)`;
+        // 🏆 PREVIOUS (SEPT - OCT) PROVEN FORMULA FOR ALL MOVIES WITH TIMESTAMPS
+        metaTitle = `${displayTitleWithYear} – Parents Guide & Timestamps to Skip`;
 
         const sortedScenes = [...resolvedSensitiveScenes].filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none').sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -1145,8 +1140,15 @@ export async function getStaticProps({ params }) {
             return 0;
         });
 
-        const scenesText = sortedScenes.slice(0, 2).map(s => `${s.type || 'Scene'} ${s.end ? `${s.start}-${s.end}` : s.start}`).join(', ');
-        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${scenesText ? `${scenesText} and more.` : ''}`.trim();
+        const timestampList = sortedScenes.map(s => s.end ? `${s.start}-${s.end}` : s.start);
+        let rawTimestampsText = '';
+        if (timestampList.length >= 2) {
+            rawTimestampsText = `${timestampList[0]}, ${timestampList[1]} and more`;
+        } else if (timestampList.length === 1) {
+            rawTimestampsText = `${timestampList[0]}`;
+        }
+
+        metaDesc = `Verified skip timestamps for ${baseMovie.Title} (${rawTimestampsText}). Family Safety Score ${safetyScore}/10. Skip awkward scenes effortlessly.`;
     } else {
         // Clean movies: leave meta title & meta description untouched
         metaTitle = `${displayTitleWithYear} – Parents Guide & Age Rating`;
@@ -1156,11 +1158,6 @@ export async function getStaticProps({ params }) {
         let agePart = sensitiveData.Age ? `Age Rating: ${sensitiveData.Age}. ` : '';
 
         metaDesc = `Parents Guide for ${baseMovie.Title}: Family Safety Score ${safetyScore}/10 (${safetyLabel}). ${agePart}${vPart}${pPart}`.trim();
-    }
-
-    // Apply exact custom movie meta title (ONLY meta title, NOT meta description)
-    if (MAY_CUSTOM_META_TITLES[baseMovie.slug]) {
-        metaTitle = MAY_CUSTOM_META_TITLES[baseMovie.slug];
     }
 
     // 🗓️ DETERMINISTIC FRESHNESS DATE: August 22, 2026 ONLY for updated movies (Wild Things & Obsession)
