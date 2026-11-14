@@ -401,13 +401,20 @@ body {
   gap: 1.25rem;
   min-width: 0;
 }
+.fw-faq {
+  position: relative;
+  z-index: 20;
+}
 
 @media (min-width: 1024px) {
   .fw-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 360px;
-    grid-template-areas: "top side" "bottom side";
-    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "top side" 
+      "bottom side" 
+      "faq side";
+    grid-template-rows: auto auto 1fr;
     column-gap: 1.5rem;
     row-gap: 1.5rem;
     align-items: start;
@@ -415,6 +422,7 @@ body {
   .fw-top { grid-area: top; min-width: 0; position: relative; z-index: 10; }
   .fw-bottom { grid-area: bottom; min-width: 0; position: relative; z-index: 30; }
   .fw-side { grid-area: side; }
+  .fw-faq { grid-area: faq; min-width: 0; position: relative; z-index: 20; }
 }
 
 .timestamp-card-list .group {

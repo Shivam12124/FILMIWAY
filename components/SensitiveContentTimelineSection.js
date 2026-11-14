@@ -125,7 +125,7 @@ const consolidateTimelineScenes = (scenes, gapThreshold = 15) => {
     return merged.map(({ startSec, endSec, ...rest }) => rest);
 };
 
-const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
+const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes, faqSection }) => {
     const consolidatedScenes = useMemo(() => {
         const raw = sensitiveScenes || [];
         const timedScenes = raw.filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
@@ -1146,6 +1146,13 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </div>
                             </div>
                         </div>
+                        {/* end fw-bottom */}
+
+                        {faqSection && (
+                            <div className="fw-faq relative z-20">
+                                {faqSection}
+                            </div>
+                        )}
                     </div>
                 )}
 
@@ -1185,6 +1192,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 )}
                             </motion.button>
                         </div>
+                    </div>
+                )}
+
+                {filteredHeavyScenes.length === 0 && faqSection && (
+                    <div className="w-full mt-5 sm:mt-7">
+                        {faqSection}
                     </div>
                 )}
             </motion.section>

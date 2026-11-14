@@ -15,7 +15,8 @@ export const WAR_FILMS_MOVIE_SLUGS = {
   'tt0091763': 'platoon',
   'tt0050825': 'paths-of-glory',
   'tt0332452': 'troy',
-  'tt33764258': 'the-odyssey'
+  'tt33764258': 'the-odyssey',
+  'tt0361748': 'inglourious-basterds'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

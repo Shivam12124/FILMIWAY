@@ -776,15 +776,15 @@ const MovieDetailsSection = React.memo(({
       <div id="timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
       <div id="skip-timestamps" className="scroll-mt-24 sm:scroll-mt-28"></div>
       <div id="parents-guide" className="scroll-mt-24 sm:scroll-mt-28 w-full max-w-4xl lg:max-w-[1216px] mx-auto min-h-[400px]">
-        <SensitiveContentTimelineSection movie={{ ...movie, Runtime: runtime }} sensitiveScenes={sensitiveScenes} />
-      </div>
-
-
-
-
-      {/* FAQ SECTIONS */}
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
-        <SEOFAQSection movie={{ ...movie, Runtime: runtime, runtime: runtime }} />
+        <SensitiveContentTimelineSection 
+          movie={{ ...movie, Runtime: runtime }} 
+          sensitiveScenes={sensitiveScenes} 
+          faqSection={
+            <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
+              <SEOFAQSection movie={{ ...movie, Runtime: runtime, runtime: runtime }} />
+            </div>
+          }
+        />
       </div>
     </motion.div>
   );

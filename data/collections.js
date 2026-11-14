@@ -816,7 +816,7 @@ export const COLLECTIONS = {
       { label: "ANTI-WAR", desc: "Moral cost" },
       { label: "TRAUMA", desc: "Psychological toll" }
     ],
-    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8579674', 'tt0082096', 'tt0091763', 'tt0050825', 'tt0332452', 'tt33764258'],
+    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8579674', 'tt0082096', 'tt0091763', 'tt0050825', 'tt0332452', 'tt33764258', 'tt0361748'],
     relatedCollections: ['best-survival-movies', 'best-crime-thriller-movies']
   },
 

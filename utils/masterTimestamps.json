@@ -13346,6 +13346,39 @@
     "Age": "All ages",
     "Summary": "Suitable for all ages; wholesome, peaceful animated fantasy."
   },
+  "16869": {
+    "Title": "Inglourious Basterds",
+    "scenes": [
+      {
+        "start": "0:49:38",
+        "end": "0:49:42",
+        "type": "Sex",
+        "severity": "Mild",
+        "description": "Joseph Goebbels (Sylvester Groth) and Francesca Mondino (Julie Dreyfus) are shown having sex in a close-up angle with no nudity visible.",
+        "startSec": 2978,
+        "endSec": 2982,
+        "durationSec": 4,
+        "category": "Sex",
+        "who": "Both"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Intense wartime violence and brutal executions, including scalping, baseball bat beatings, strangulation, and intense shootouts."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Moderate",
+        "description": "Frequent strong language and insults throughout wartime dialogue."
+      }
+    ],
+    "Summary": "Aged 17+ for brutal wartime violence, scalping, brief sexual content, and strong language.",
+    "Age": "17+"
+  },
   "17295": {
     "Title": "The Battle of Algiers",
     "scenes": [

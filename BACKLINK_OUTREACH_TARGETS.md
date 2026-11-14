@@ -14,7 +14,7 @@ Every URL has been verified via direct HTTP request (`HTTP 200 OK`) and tested t
 | **cringeMDb** | Direct Peer / "Can I Watch With Parents?" | `info@cringemdb.com` | [cringemdb.com](https://cringemdb.com) | Ready to Pitch (Win-Win Add-on) |
 | **Parent Previews** | Veteran Tier-1 US/CA Family Reviews | `sales@parentpreviews.com` | [parentpreviews.com](https://parentpreviews.com) | Ready to Pitch |
 | **Kids-In-Mind** | Legacy Content Database (Online since 1998) | `comments@kids-in-mind.com` | [kids-in-mind.com](https://kids-in-mind.com) | Ready to Pitch |
-| **Screenwise** | Modern Digital Parenting App | `dg@screenwiseapp.com` (Founder) | [screenwiseapp.com](https://screenwiseapp.com) | Ready to Pitch |
+| **Screenwise** | Modern Digital Parenting App | `hello@screenwise.com` | [screenwiseapp.com](https://screenwiseapp.com) | **Sent (Nov 12, 2026)** |
 | **iMOM** | High Authority US Parenting | `imom@familyfirst.net` | [3 Reasons to Use Movie Reviews for Kids](https://www.imom.com/3-reasons-to-use-movie-reviews-for-kids/) | **Sent** |
 | **Deeper KidMin** | Family Ministry / Parent Resource | `brittany@deeperkidmin.com` | [3 Sites For Parents to Review Movie Content](https://deeperkidmin.com/3moviesitesforparents/) | Ready to Send |
 | **Fish Full Life** | Family / Parenting Blog | `amberjohnson.marie@gmail.com` | [Media Review Websites & Apps](https://fishfulllife.com/media-review-websites-apps/) | Ready to Send |
@@ -156,7 +156,8 @@ Filmiway (https://filmiway.com)
 ## 4. Screenwise (`screenwiseapp.com`)
 
 * **Platform Overview:** Modern tech-forward platform providing personalized WISE scores and digital parenting guidance.
-* **Direct Contact:** `dg@screenwiseapp.com` (Founder)
+* **Direct Contact:** `hello@screenwise.com`
+* **Status:** Sent (November 12, 2026)
 
 ### Email Pitch Template
 

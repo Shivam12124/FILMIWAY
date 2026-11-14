@@ -21,7 +21,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
     { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 },
     { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 196, "rank": "BONUS" },
-    { "tmdbId": 1368337, "imdbID": "tt33764258", "Title": "The Odyssey", "year": 2026, "genre": "Action, Adventure, Fantasy, War", "runtime": 173, "rank": "BONUS" }
+    { "tmdbId": 1368337, "imdbID": "tt33764258", "Title": "The Odyssey", "year": 2026, "genre": "Action, Adventure, Fantasy, War", "runtime": 173, "rank": "BONUS" },
+    { "tmdbId": 16869, "imdbID": "tt0361748", "Title": "Inglourious Basterds", "year": 2009, "genre": "Drama, War, Action", "runtime": 153, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -37,7 +38,8 @@ export const STRATEGIC_QUOTES = {
     792: "The first casualty of war is innocence.", // Platoon
     975: "The paths of glory lead but to the grave.", // Paths of Glory
     652: "I want what all men want. I just want it more.", // Troy
-    1368337: "My name is Nobody." // The Odyssey
+    1368337: "My name is Nobody.", // The Odyssey
+    16869: "I think this just might be my masterpiece." // Inglourious Basterds
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -117,6 +119,12 @@ export const SENSITIVE_TIMELINES = {
     1368337: {
         scenes: [
             { start: "01:10:32", end: "01:10:37", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
+    },
+    // BONUS 3: Inglourious Basterds
+    16869: {
+        scenes: [
+            { start: "0:49:38", end: "0:49:42", type: "Sex", severity: "Mild" }
         ]
     }
 };
