@@ -1,10 +1,18 @@
 // components/EnhancedWhereToWatchSection.js - SEO HIERARCHY FIXED (H2 -> H3) 🍷✅
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, ShieldCheck } from 'lucide-react';
+import { Play, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Info, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 import { db } from '../lib/firebase';
 import { collection, addDoc, doc, setDoc, increment, serverTimestamp } from 'firebase/firestore';
+import PrimeVideoTrialPromo from './AudibleBookPromo';
+import {
+  AMAZON_STORES,
+  detectCountryCode,
+  getAmazonMovieSearchUrl,
+  getPrimeTrialUrl,
+  trackPrimeTrialClick
+} from '../utils/amazonAffiliate';
 
 // 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL
 const ALL_REGIONS = [
@@ -147,80 +155,10 @@ const ALL_REGIONS = [
   { code: 'ZW', name: 'Zimbabwe', flag: '🇿🇼' },
 ];
 
+const VALID_REGION_CODES = new Set(ALL_REGIONS.map(r => r.code));
+
 async function detectUserCountry() {
-  if (typeof window === 'undefined') return 'US';
-
-  // 1. Check Session Cache to prevent repeat lookups
-  try {
-    const cached = sessionStorage.getItem('fw_user_country');
-    if (cached && ALL_REGIONS.some(r => r.code === cached)) {
-      return cached;
-    }
-  } catch (e) {}
-
-  // 2. High-speed TimeZone mapping (Instant, 0 network requests, immune to ad blockers/rate limits)
-  const timezoneToCountry = {
-    'Asia/Kolkata': 'IN', 'Asia/Calcutta': 'IN',
-    'Europe/London': 'GB',
-    'America/Toronto': 'CA', 'America/Vancouver': 'CA', 'America/Montreal': 'CA', 'America/Edmonton': 'CA',
-    'Australia/Sydney': 'AU', 'Australia/Melbourne': 'AU', 'Australia/Brisbane': 'AU', 'Australia/Perth': 'AU', 'Australia/Adelaide': 'AU',
-    'Europe/Berlin': 'DE', 'Europe/Paris': 'FR', 'Europe/Madrid': 'ES', 'Europe/Rome': 'IT',
-    'Europe/Amsterdam': 'NL', 'Europe/Dublin': 'IE', 'Europe/Brussels': 'BE', 'Europe/Vienna': 'AT',
-    'Europe/Zurich': 'CH', 'Europe/Stockholm': 'SE', 'Europe/Oslo': 'NO', 'Europe/Copenhagen': 'DK',
-    'Europe/Helsinki': 'FI', 'Europe/Warsaw': 'PL', 'Europe/Prague': 'CZ', 'Europe/Budapest': 'HU',
-    'Europe/Bucharest': 'RO', 'Europe/Athens': 'GR', 'Europe/Lisbon': 'PT',
-    'America/Sao_Paulo': 'BR', 'America/Mexico_City': 'MX', 'America/Buenos_Aires': 'AR', 'America/Bogota': 'CO',
-    'Asia/Tokyo': 'JP', 'Asia/Seoul': 'KR', 'Asia/Singapore': 'SG', 'Asia/Bangkok': 'TH',
-    'Asia/Jakarta': 'ID', 'Asia/Manila': 'PH', 'Asia/Dubai': 'AE', 'Asia/Riyadh': 'SA',
-    'Pacific/Auckland': 'NZ', 'Africa/Johannesburg': 'ZA'
-  };
-
-  let tzCountry = null;
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (tz) {
-      if (timezoneToCountry[tz]) {
-        tzCountry = timezoneToCountry[tz];
-      } else if (tz.startsWith('America/') && !tz.includes('Toronto') && !tz.includes('Vancouver') && !tz.includes('Sao_Paulo') && !tz.includes('Mexico_City')) {
-        tzCountry = 'US';
-      }
-    }
-  } catch (e) {}
-
-  // 3. Ultra-fast Cloudflare Edge & Public IP Geolocation Fallbacks
-  const ipServices = [
-    { url: 'https://api.country.is/', key: 'country' },
-    { url: 'https://ipwho.is/', key: 'country_code' },
-    { url: 'https://ipinfo.io/json', key: 'country' }
-  ];
-
-  for (const service of ipServices) {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2000);
-      const res = await fetch(service.url, { signal: controller.signal, headers: { 'Accept': 'application/json' } });
-      clearTimeout(timeoutId);
-
-      if (res.ok) {
-        const data = await res.json();
-        const code = (data[service.key] || '').toUpperCase();
-        if (code && ALL_REGIONS.some(r => r.code === code)) {
-          try { sessionStorage.setItem('fw_user_country', code); } catch (e) {}
-          return code;
-        }
-      }
-    } catch (e) {
-      continue;
-    }
-  }
-
-  // 4. If IP services blocked by ad blocker, use timezone detection
-  if (tzCountry && ALL_REGIONS.some(r => r.code === tzCountry)) {
-    try { sessionStorage.setItem('fw_user_country', tzCountry); } catch (e) {}
-    return tzCountry;
-  }
-
-  return 'US';
+  return detectCountryCode(VALID_REGION_CODES);
 }
 
 async function getAllRegionStreamingData(tmdbId, title) {
@@ -261,39 +199,8 @@ function getDeepLink(providerId, region, title, tmdbId, providerName, type, user
 
   // 119 = Amazon Prime Video, 9 = Amazon Video (Rent/Buy), 10 = Amazon Video (Rent), 2100 = Amazon Prime Video with Ads
   if (name.includes('amazon') || pId === 119 || pId === 9 || pId === 10 || pId === 2100 || isRentOrBuy) {
-    const amazonDomains = {
-      US: 'amazon.com',
-      GB: 'amazon.co.uk',
-      CA: 'amazon.ca',
-      AU: 'amazon.com.au',
-      IN: 'amazon.in',
-      DE: 'amazon.de',
-      FR: 'amazon.fr',
-      ES: 'amazon.es',
-      IT: 'amazon.it',
-      JP: 'amazon.co.jp'
-    };
-    
-    // Direct user to store matching their actual detected location if available, otherwise viewing region
-    const targetCode = (userCountry && amazonDomains[userCountry]) ? userCountry : (region || 'US');
-    const domain = amazonDomains[targetCode] || 'amazon.com';
-
-    // Country-specific tracking tag routing
-    const trackingTags = {
-      GB: 'filmiway09-21',
-      US: 'filmiway-20',
-      CA: 'filmiway06-20'
-    };
-    const tag = trackingTags[targetCode] || 'filmiway-20';
-
-    // Normalize accents (e.g., "Irréversible" -> "Irreversible") so Amazon search finds the exact movie/physical disc
-    const normalizedTitle = (title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-
-    // Use Amazon Instant Video department filter for US/UK/CA/DE so Prime Video player is displayed directly at top of search
-    const isVideoSupported = ['US', 'GB', 'CA', 'DE'].includes(targetCode);
-    const videoParam = isVideoSupported ? '&i=instant-video' : '';
-
-    return `https://www.${domain}/s?k=${encodeURIComponent(normalizedTitle + " movie")}${videoParam}&tag=${tag}`;
+    const targetCode = (userCountry && AMAZON_STORES[userCountry]) ? userCountry : (region || 'US');
+    return getAmazonMovieSearchUrl(title, targetCode);
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
 }
@@ -695,61 +602,64 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
 
 
 
+  const logWhereToWatchAmazonClick = (provider, type, region, deepLink) => {
+    try {
+      const now = new Date();
+      const todayDateStr = now.toISOString().slice(0, 10);
+      const timeStr = now.toTimeString().slice(0, 8);
+      const countryCode = userCountry || region || 'US';
+      const movieTitleStr = movie?.Title || movie?.title || 'Unknown';
+      const movieSlugStr = movie?.slug || 'unknown';
+
+      addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
+        movieTitle: movieTitleStr,
+        movieSlug: movieSlugStr,
+        tmdbId: movie?.tmdbId || null,
+        country: countryCode,
+        storeRegion: region || 'US',
+        providerName: provider?.provider_name || 'Amazon',
+        type: provider?.isFallback ? 'fallback_search' : (type || 'buy'),
+        targetUrl: deepLink,
+        date: todayDateStr,
+        time: timeStr,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      }).catch(e => {
+        console.error('Error tracking where-to-watch Amazon click:', e);
+      });
+
+      const dailySummaryRef = doc(db, 'wheretowatch_amazon_daily_summary', todayDateStr);
+      setDoc(dailySummaryRef, {
+        date: todayDateStr,
+        totalClicks: increment(1),
+        lastClickedMovie: movieTitleStr,
+        lastClickedSlug: movieSlugStr,
+        lastClickedCountry: countryCode,
+        lastClickedAt: serverTimestamp(),
+        [`countries.${countryCode}`]: increment(1)
+      }, { merge: true }).catch(err => {
+        console.error("wheretowatch_amazon_daily_summary error:", err);
+      });
+    } catch (e) {}
+  };
+
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
     const deepLink = getDeepLink(provider.provider_id, region, movie?.Title || movie?.title, movie?.tmdbId, provider.provider_name, type, userCountry);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
     const handleCardClick = () => {
-      // 🚀 Open link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
-      window.open(deepLink, '_blank', 'noopener,noreferrer');
-
-      // Check if this click routes to an Amazon search page link
       const isAmazonLink = deepLink.includes('amazon.') || (provider.provider_name || '').toLowerCase().includes('amazon') || type === 'rent' || type === 'buy';
-
       if (isAmazonLink) {
-        const now = new Date();
-        const todayDateStr = now.toISOString().slice(0, 10);
-        const timeStr = now.toTimeString().slice(0, 8);
-        const countryCode = userCountry || region || 'US';
-        const movieTitleStr = movie?.Title || movie?.title || 'Unknown';
-        const movieSlugStr = movie?.slug || 'unknown';
-
-        addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
-          movieTitle: movieTitleStr,
-          movieSlug: movieSlugStr,
-          tmdbId: movie?.tmdbId || null,
-          country: countryCode,
-          storeRegion: region || 'US',
-          providerName: provider?.provider_name || 'Amazon',
-          type: type || 'buy',
-          targetUrl: deepLink,
-          date: todayDateStr,
-          time: timeStr,
-          timestamp: serverTimestamp(),
-          userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
-        }).catch(e => {
-          console.error('Error tracking where-to-watch Amazon click:', e);
-        });
-
-        // Daily summary doc
-        const dailySummaryRef = doc(db, 'wheretowatch_amazon_daily_summary', todayDateStr);
-        setDoc(dailySummaryRef, {
-          date: todayDateStr,
-          totalClicks: increment(1),
-          lastClickedMovie: movieTitleStr,
-          lastClickedSlug: movieSlugStr,
-          lastClickedCountry: countryCode,
-          lastClickedAt: serverTimestamp(),
-          [`countries.${countryCode}`]: increment(1)
-        }, { merge: true }).catch(err => {
-          console.error("wheretowatch_amazon_daily_summary error:", err);
-        });
+        logWhereToWatchAmazonClick(provider, type || 'buy', region, deepLink);
       }
     };
 
     return (
-      <motion.button
+      <motion.a
+        href={deepLink}
+        target="_blank"
+        rel="noopener noreferrer"
         onClick={handleCardClick}
         className="group relative p-3 sm:p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-yellow-500/30 transition-all duration-300 flex flex-col items-center gap-3 w-full backdrop-blur-sm overflow-hidden"
         whileHover={{ y: -2 }}
@@ -785,111 +695,149 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
         </div>
 
         <ExternalLink className="absolute top-2 right-2 w-3 h-3 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-      </motion.button>
+      </motion.a>
     );
   };
 
   const HeroAmazonCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
     const deepLink = getDeepLink(provider.provider_id, region, movie?.Title || movie?.title, movie?.tmdbId, provider.provider_name, type, userCountry);
-    const typeLabel = provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
-    const buttonText = provider.isFallback ? 'Stream or Buy on Amazon' : (type === 'flatrate' ? 'Stream on Amazon' : 'Watch on Amazon');
+    const activeCountry = userCountry || region || 'US';
+    const primeTrialUrl = getPrimeTrialUrl(activeCountry);
+    const isIncludedWithPrime = type === 'flatrate' && !provider.isFallback;
+    const typeLabel = provider.isFallback ? 'Rent, Buy Digital, or 4K / Blu-ray' : (type === 'rent' ? 'Rent Digital Copy' : 'Buy Digital or Disc');
+    const buttonText = provider.isFallback ? 'Rent or Buy on Amazon' : (type === 'rent' ? 'Rent on Amazon' : 'Buy on Amazon');
 
     const handleAmazonClick = () => {
-      // 🚀 Open Amazon link IMMEDIATELY within the direct user gesture tick (never blocked by popup blockers)
-      window.open(deepLink, '_blank', 'noopener,noreferrer');
+      logWhereToWatchAmazonClick(provider, type || 'flatrate', region, deepLink);
+    };
 
-      const now = new Date();
-      const todayDateStr = now.toISOString().slice(0, 10);
-      const timeStr = now.toTimeString().slice(0, 8);
-      const countryCode = userCountry || region || 'US';
-      const movieTitleStr = movie?.Title || movie?.title || 'Unknown';
-      const movieSlugStr = movie?.slug || 'unknown';
-
-      // 1. Detailed click log
-      addDoc(collection(db, 'wheretowatch_amazon_clicks'), {
-        movieTitle: movieTitleStr,
-        movieSlug: movieSlugStr,
-        tmdbId: movie?.tmdbId || null,
-        country: countryCode,
-        storeRegion: region || 'US',
-        providerName: provider?.provider_name || 'Amazon',
-        type: provider?.isFallback ? 'fallback_search' : (type || 'flatrate'),
-        targetUrl: deepLink,
-        date: todayDateStr,
-        time: timeStr,
-        timestamp: serverTimestamp(),
-        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
-      }).catch(e => {
-        console.error('Error tracking where-to-watch Amazon click:', e);
-      });
-
-      // 2. Daily summary document for instant at-a-glance counting
-      const dailySummaryRef = doc(db, 'wheretowatch_amazon_daily_summary', todayDateStr);
-      setDoc(dailySummaryRef, {
-        date: todayDateStr,
-        totalClicks: increment(1),
-        lastClickedMovie: movieTitleStr,
-        lastClickedSlug: movieSlugStr,
-        lastClickedCountry: countryCode,
-        lastClickedAt: serverTimestamp(),
-        [`countries.${countryCode}`]: increment(1)
-      }, { merge: true }).catch(err => {
-        console.error("wheretowatch_amazon_daily_summary error:", err);
+    const handlePrimeTrialClick = () => {
+      trackPrimeTrialClick({
+        movieSlug: movie?.slug,
+        movieTitle: movie?.Title || movie?.title,
+        country: activeCountry,
+        targetUrl: primeTrialUrl,
+        placement: 'hero_amazon_flatrate_card'
       });
     };
 
+    // 🎯 CASE A: Film IS included with Amazon Prime Video -> Unified Free Trial Hero (Consistent with ExpressVPN card styling)
+    if (isIncludedWithPrime) {
+      return (
+        <div className={compact
+          ? "group relative w-full p-4 rounded-2xl border border-amber-900/40 bg-gradient-to-br from-[#140e06] via-[#0d0904] to-[#070502] flex flex-col items-center gap-3.5 backdrop-blur-md overflow-hidden shadow-xl shadow-black/80"
+          : "group relative w-full p-6 sm:p-7 rounded-2xl border border-amber-900/40 bg-gradient-to-br from-[#140e06] via-[#0d0904] to-[#070502] flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-xl shadow-black/80"}
+        >
+          {/* Subtle top amber accent line (Exact match to ExpressVPN top line) */}
+          <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+
+          <div className="shrink-0 flex items-center justify-center">
+            <div className="h-11 sm:h-12 px-3.5 sm:px-4 py-2 rounded-xl bg-black/70 border border-amber-500/35 shrink-0 flex items-center justify-center shadow-lg shadow-amber-900/30">
+              <img
+                src="/logos/prime-video-cinema.svg"
+                alt="Prime Video"
+                className="h-7 sm:h-8 w-auto max-w-[125px] sm:max-w-[150px] object-contain"
+              />
+            </div>
+          </div>
+
+          <div className={compact ? "text-center w-full flex flex-col gap-1 z-10" : "text-center sm:text-left flex-1 flex flex-col gap-1.5 z-10"}>
+            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-amber-400/90">
+              Included Free with Prime Video
+            </div>
+            <div className={compact ? "text-base font-bold text-white leading-snug" : "text-xl sm:text-2xl font-bold text-white"}>
+              Watch {movie?.Title} Free
+            </div>
+            <p className="text-xs sm:text-[13px] text-gray-300">
+              30-Day Free Trial ($0.00 today) • Cancel anytime in 1 click
+            </p>
+          </div>
+
+          <div className={compact ? "w-full flex flex-col items-center gap-2 z-10" : "shrink-0 w-full sm:w-auto flex flex-col items-center sm:items-end gap-2 z-10"}>
+            <a
+              href={primeTrialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handlePrimeTrialClick}
+              className={compact
+                ? "w-full flex flex-col items-center justify-center gap-1 px-4 py-3 bg-[#c97a06] hover:bg-[#a86403] text-white rounded-xl shadow-lg shadow-amber-600/30 transition-all border border-amber-500/40 hover:scale-[1.01] active:scale-[0.99] text-center"
+                : "w-full sm:w-auto flex flex-col items-center justify-center gap-1 px-6 py-2.5 bg-[#c97a06] hover:bg-[#a86403] text-white rounded-xl shadow-lg shadow-amber-600/30 transition-all border border-amber-500/40 hover:scale-[1.01] active:scale-[0.99] text-center whitespace-nowrap"}
+            >
+              <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold">
+                <Play fill="currentColor" size={13} className="shrink-0" />
+                <span>Watch Free — 30-Day Prime Trial</span>
+                <ExternalLink size={13} className="shrink-0" />
+              </div>
+              <span className="text-[10.5px] sm:text-[11px] font-medium text-amber-100/90 tracking-wide">
+                $0.00 Today • Cancel Anytime Online
+              </span>
+            </a>
+            <a
+              href={deepLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleAmazonClick}
+              className="text-[11px] text-gray-400 hover:text-amber-400 underline underline-offset-2 transition-colors"
+            >
+              Already have Prime? Stream on Amazon →
+            </a>
+          </div>
+        </div>
+      );
+    }
+
+    // 🎯 CASE B: Rent/Buy or Fallback -> Subtle secondary gold-outline movie card so it doesn't fight the Free Trial CTA below
     return (
-      <motion.button
+      <motion.a
+        href={deepLink}
+        target="_blank"
+        rel="noopener noreferrer"
         onClick={handleAmazonClick}
         className={compact
-          ? "group relative w-full p-4 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col items-center gap-4 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"
-          : "group relative w-full p-6 sm:p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"}
-        whileHover={{ y: -4, scale: 1.01 }}
-        whileTap={{ scale: 0.98 }}
+          ? "group relative w-full p-4 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/40 transition-all duration-300 flex flex-col items-center gap-3 backdrop-blur-md overflow-hidden"
+          : "group relative w-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-amber-500/40 transition-all duration-300 flex flex-col sm:flex-row items-center gap-5 backdrop-blur-md overflow-hidden"}
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.99 }}
       >
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute inset-0 bg-yellow-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
         {logoUrl ? (
-          <div className={compact ? "relative w-14 h-14 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10" : "relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10"}>
+          <div className={compact ? "relative w-12 h-12 rounded-xl overflow-hidden shadow-lg shrink-0 border border-white/10" : "relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shadow-lg shrink-0 border border-white/10"}>
             <Image
               src={logoUrl}
               alt={provider.provider_name}
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 64px, 80px"
+              sizes="(max-width: 640px) 48px, 64px"
             />
           </div>
         ) : (
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-            <Tv className="w-8 h-8 text-yellow-500/80" />
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+            <Tv className="w-6 h-6 text-amber-500/80" />
           </div>
         )}
 
-        <div className={compact ? "text-center w-full flex flex-col gap-1.5 z-10" : "text-center sm:text-left w-full flex flex-col gap-1.5 sm:gap-2 z-10"}>
-          <div className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-yellow-500/90 sm:text-yellow-400 group-hover:text-yellow-300 transition-colors">
-            Featured on Amazon
+        <div className={compact ? "text-center w-full flex flex-col gap-1 z-10" : "text-center sm:text-left w-full flex flex-col gap-1 z-10"}>
+          <div className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-gray-400 group-hover:text-amber-400 transition-colors">
+            Amazon Store
           </div>
-          <div className={compact ? "text-base font-bold text-white group-hover:text-yellow-50 transition-colors leading-snug" : "text-xl sm:text-2xl lg:text-3xl font-semibold sm:font-bold text-white group-hover:text-yellow-50 transition-colors"}>
-            Watch {movie.Title} on Amazon
+          <div className={compact ? "text-sm sm:text-base font-bold text-white leading-snug" : "text-lg sm:text-xl font-bold text-white"}>
+            {movie?.Title} on Amazon
           </div>
-          <div className={compact ? "text-xs text-gray-300 group-hover:text-white transition-colors flex flex-wrap items-center justify-center gap-2" : "text-xs sm:text-sm lg:text-base text-gray-400 sm:text-gray-300 group-hover:text-white transition-colors flex items-center justify-center sm:justify-start gap-2"}>
-            <span className="font-medium">{provider.provider_name}</span>
-            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-600 sm:bg-gray-500" />
-            <span className="text-yellow-500/80 sm:text-yellow-400 font-medium">
-              {provider.isFallback ? 'Stream, Rent, or Buy (Blu-ray / 4K)' : typeLabel}
-            </span>
+          <div className={compact ? "text-xs text-gray-400 flex flex-wrap items-center justify-center gap-1.5" : "text-xs sm:text-sm text-gray-400 flex items-center justify-center sm:justify-start gap-2"}>
+            <span>{typeLabel}</span>
           </div>
         </div>
 
-        <div className={compact ? "shrink-0 w-full z-10" : "shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10"}>
-          <div className={compact ? "w-full px-4 py-3 rounded-xl bg-yellow-500 text-black font-semibold text-xs tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25" : "w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-yellow-500 text-black font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25"}>
-            <Play fill="currentColor" size={16} />
-            {buttonText}
+        <div className={compact ? "shrink-0 w-full z-10" : "shrink-0 w-full sm:w-auto z-10"}>
+          <div className={compact
+            ? "w-full px-4 py-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 group-hover:bg-[#c97a06] group-hover:text-white group-hover:border-amber-500/50 font-semibold text-xs tracking-wide flex items-center justify-center gap-2 transition-all"
+            : "w-full sm:w-auto px-5 py-3 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 group-hover:bg-[#c97a06] group-hover:text-white group-hover:border-amber-500/50 font-semibold text-xs sm:text-sm tracking-wide flex items-center justify-center gap-2 transition-all whitespace-nowrap"}
+          >
+            <Play fill="currentColor" size={14} />
+            <span>{buttonText}</span>
           </div>
         </div>
-      </motion.button>
+      </motion.a>
     );
   };
 
@@ -996,12 +944,18 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-8"
+                className="space-y-4"
               >
 
                 {heroAmazonProvider && (
-                  <div className="w-full pb-2">
+                  <div className="w-full">
                     <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion} />
+                  </div>
+                )}
+
+                {(!heroAmazonProvider || heroAmazonType !== 'flatrate' || heroAmazonProvider?.isFallback) && (
+                  <div className="w-full">
+                    <PrimeVideoTrialPromo movie={movie} compact={compact} embedded />
                   </div>
                 )}
 
@@ -1013,7 +967,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                 )}
 
                 {heroAmazonProvider && hasOtherOptions && !showAllOptions && (
-                  <div className="flex justify-center -mt-4">
+                  <div className="flex justify-center">
                     <button
                       onClick={() => setShowAllOptions(true)}
                       className="px-6 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-xs sm:text-sm text-gray-200 hover:text-white flex items-center gap-2 cursor-pointer font-medium"
@@ -1119,6 +1073,12 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
                   </div>
                 )}
 
+                {(!heroAmazonProvider || heroAmazonType !== 'flatrate' || heroAmazonProvider?.isFallback) && (
+                  <div className="w-full">
+                    <PrimeVideoTrialPromo movie={movie} compact={compact} embedded />
+                  </div>
+                )}
+
                 {vpnTip && (
                   <div className="w-full">
                     <SmartVpnStreamingCard tip={vpnTip} movieTitle={movie?.Title || movie?.title} movieSlug={movie?.slug || movie?.tmdbId} userCountry={userCountry} />
@@ -1128,9 +1088,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie, compact = false }) => {
             )}
           </AnimatePresence>
 
-          <div className="text-center pt-5 sm:pt-6 border-t border-white/10">
+          <div className="text-center pt-4 border-t border-white/10">
             <p className="text-xs sm:text-[13px] text-gray-300/80 leading-relaxed max-w-lg mx-auto">
-              If you want Filmiway to sustain and support our work, buying through our links earns us a small commission at no extra cost to you (in fact, it&apos;s free).
+              If you want Filmiway to sustain and support our work, buying or starting a trial through our links earns us a small commission at no extra cost to you (in fact, it&apos;s free).
             </p>
           </div>
         </div>
