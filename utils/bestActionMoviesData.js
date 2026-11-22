@@ -47,8 +47,8 @@ export const SENSITIVE_TIMELINES = {
     // 1. Die Hard
     562: { 
         scenes: [
-            { start: "0:23:32", end: "0:23:39", type: "Nudity (Woman)", severity: "High" },
-            { start: "0:42:19", end: "0:42:24", type: "Nudity (Women / Images)", severity: "Moderate" }
+            { start: "0:23:32", end: "0:23:39", type: "Nudity (Woman)", severity: "High", description: "Party Guest (Cheryl Baker) is dragged screaming from a room by armed terrorists, showing topless nudity." },
+            { start: "0:42:19", end: "0:42:24", type: "Nudity (Women / Images)", severity: "Moderate", description: "John McClane (Bruce Willis) encounters several pin-up photographs on a wall, including a calendar centerfold displaying topless nudity." }
         ]
     },
 
@@ -322,8 +322,8 @@ export const COMPLETE_MOVIE_DATA = {
 
 export const BEST_ACTION_MOVIES_FAQS = {
     'Die Hard': [
-        { question: "Does Die Hard have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Die Hard is rated as High. Strong bloody action violence throughout, featuring frequent shootouts, gunfights, explosions, and close-range killings. Numerous characters are shot and killed with visible blood effects, including headshots and point-blank executions, along with several brutal hand-to-hand fights involving choking, hanging by the neck, and severe beatings. The film also contains injury detail such as a broken neck, glass-related foot injuries with blood, and bodies being thrown or falling from height, alongside large-scale carnage from explosives and building destruction." },
-        { question: "Does Die Hard have profanity or swearing?", answer: "The profanity in Die Hard is rated as High. Strong language throughout, including over 50 uses of the F-word, around 25 uses of the S-word, and frequent additional coarse profanity." },
+        { question: "Does Die Hard have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Die Hard is rated as High. Strong graphic violence throughout, featuring frequent shootouts, explosions, and close-range executions. Characters are shot with visible blood effects and headshots, alongside brutal hand-to-hand fights involving choking, hanging by a chain, and severe beatings. Injury detail includes bloody feet cut by shattered glass, a broken neck, and bodies falling from skyscraper heights." },
+        { question: "Does Die Hard have profanity or swearing?", answer: "The profanity in Die Hard is rated as High. Pervasive strong language throughout, including over 50 F-bombs and compound variations, occasional racial slurs and derogatory insults, and frequent coarse profanity." },
         { question: "Why is Die Hard considered the perfect action movie?", answer: "Die Hard revolutionized the genre by shifting focus from invincible muscle-bound heroes to an 'everyman' protagonist. John McClane gets hurt, runs out of ammo, and acts out of desperate necessity, creating grounded, relatable stakes." },
         { question: "Did Bruce Willis actually do his own stunts in Die Hard?", answer: "Willis performed many of his own stunts, including the iconic leap off the Nakatomi roof. However, the production had incredible stunt doubles for the most dangerous falls and glass-breaking sequences." }
     ],

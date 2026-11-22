@@ -3027,7 +3027,7 @@
   "562": {
     "Title": "Die Hard",
     "Age": "16+",
-    "Summary": "Aged 16+ for heavy action violence,  nudity, and strong language throughout.",
+    "Summary": "Aged 16+ for heavy graphic violence, brief nudity, and strong language throughout.",
     "scenes": [
       {
         "start": "0:23:32",
@@ -3038,7 +3038,8 @@
         "endSec": 1419,
         "durationSec": 7,
         "category": "Nudity",
-        "who": "Female"
+        "who": "Female",
+        "description": "Party Guest (Cheryl Baker) is dragged screaming from a room by armed terrorists, showing topless nudity."
       },
       {
         "start": "0:42:19",
@@ -3049,21 +3050,22 @@
         "endSec": 2544,
         "durationSec": 5,
         "category": "Nudity",
-        "who": "Female"
+        "who": "Female",
+        "description": "John McClane (Bruce Willis) encounters several pin-up photographs on a wall, including a calendar centerfold displaying topless nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Strong bloody action violence throughout, featuring frequent shootouts, gunfights, explosions, and close-range killings. Numerous characters are shot and killed with visible blood effects, including headshots and point-blank executions, along with several brutal hand-to-hand fights involving choking, hanging by the neck, and severe beatings. The film also contains injury detail such as a broken neck, glass-related foot injuries with blood, and bodies being thrown or falling from height, alongside large-scale carnage from explosives and building destruction."
+        "description": "Strong graphic violence throughout, featuring frequent shootouts, explosions, and close-range executions. Characters are shot with visible blood effects and headshots, alongside brutal hand-to-hand fights involving choking, hanging by a chain, and severe beatings. Injury detail includes bloody feet cut by shattered glass, a broken neck, and bodies falling from skyscraper heights."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Strong language throughout, including over 50 uses of the F-word, around 25 uses of the S-word, and frequent additional coarse profanity."
+        "description": "Pervasive strong language throughout, including over 50 F-bombs and compound variations, occasional racial slurs and derogatory insults, and frequent coarse profanity."
       }
     ]
   },
