@@ -4,72 +4,14 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Impact.com Site Verification */}
-        <meta name="impact-site-verification" value="17744139-9b54-4cb8-8b15-6302d04ea1ae" content="17744139-9b54-4cb8-8b15-6302d04ea1ae" />
-
-        {/* Google Site Verification */}
-        <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />
-
-        {/* Google AdSense Verification */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9989540501740548"
-          crossOrigin="anonymous"
-        ></script>
-
-        {/* Global CSS */}
-        <style>{`
-          body {
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            overflow-x: hidden;
-          }
-          * { 
-            box-sizing: border-box; 
-          }
-          .loading-fallback {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #000000;
-            color: #ca8a04;
-          }
-        `}</style>
-
-        {/* ✅ SIMPLIFIED: Just site-level schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'Filmiway',
-              url: 'https://www.filmiway.com',
-              description: 'Filmiway is a parents guide website with skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see.',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: 'https://www.filmiway.com/search?q={search_term_string}'
-                },
-                'query-input': 'required name=search_term_string'
-              }
-            })
-          }}
-        />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+        <meta name="bingbot" content="noindex, nofollow" />
+        <meta name="theme-color" content="#000000" />
       </Head>
-      <body>
+      <body className="bg-black text-white antialiased">
         <Main />
         <NextScript />
-        {/* 🚀 Skimlinks Commerce Content Monetization */}
-        <script
-          type="text/javascript"
-          src="https://s.skimresources.com/js/311303X1799802.skimlinks.js"
-        />
       </body>
     </Html>
   );

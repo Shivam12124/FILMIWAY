@@ -622,6 +622,16 @@ const nextConfig = {
   // ⚡ IMMUTABLE ASSET CACHING: Prevents Vercel Edge Request limit exhaustion
   async headers() {
     return [
+      // 🛑 GRAVEYARD DE-INDEXING: Instruct all search engines and crawlers to remove every URL
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
       // ⚡ CACHE HTML PAGES: Force Cloudflare to cache static HTML and avoid Vercel Edge Request billing
       {
         source: '/movie/:slug/skip-timestamps',
