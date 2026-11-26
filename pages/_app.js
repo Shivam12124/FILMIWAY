@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
 export default function App() {
   return (
@@ -7,6 +8,26 @@ export default function App() {
         <title>Filmiway</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
+
+      {/* 🚀 GOOGLE ANALYTICS (To monitor visitor drop in real-time) */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-WSQMYM9R9G"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WSQMYM9R9G');
+            gtag('config', 'G-EDS2VZ5HP1');
+          `,
+        }}
+      />
+
       <div
         style={{
           minHeight: '100vh',
